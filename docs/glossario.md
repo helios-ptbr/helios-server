@@ -9,8 +9,8 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 
 | Inglês | pt-BR | Situação | Observação |
 |---|---|---|---|
-| voter | pessoa eleitora (frases longas), eleitor/eleitores (rótulos, botões, listas e contagens) | em uso | Decidido em 2026-11-18: a forma neutra deixava frases curtas pesadas ("Contatar as pessoas eleitoras", "2 pessoas eleitoras"). Nesses lugares vale o masculino genérico: "Contatar os eleitores", "2 eleitores". Nas frases longas e explicativas, e nos textos do verificador, fica "pessoa eleitora". |
-| voter list | lista de eleitores | em uso | |
+| voter | pessoa eleitora | proposta | Plural: pessoas eleitoras. Em frase curta, "quem vota". |
+| voter list | lista de pessoas eleitoras | proposta | |
 | election administrator, admin | pessoa administradora | proposta | |
 | trustee | pessoa curadora | em uso | Quem guarda parte da chave secreta e ajuda a abrir a apuração. Decidido em 2026-11-18. Descartado: "fiscal", porque no Brasil é quem observa a votação (fiscal de partido) e não guarda chave, e porque se confundiria com "auditar" e "cédulas auditadas". Outras opções vistas: custodiante da chave, pessoa fiduciária, pessoa guardiã. |
 | candidate | pessoa candidata | proposta | O Helios chama a opção de "answer"; veja abaixo. |

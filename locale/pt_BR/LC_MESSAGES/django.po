@@ -50,7 +50,7 @@ msgstr "Consulta"
 
 #: helios/forms.py:18
 msgid "Use voter aliases"
-msgstr "Usar apelidos de eleitores"
+msgstr "Usar apelidos de pessoas eleitoras"
 
 #: helios/forms.py:18
 msgid ""
@@ -78,7 +78,8 @@ msgstr "Privada?"
 
 #: helios/forms.py:21
 msgid "A private election is only visible to registered voters."
-msgstr "Uma eleição privada só é visível para os eleitores cadastrados."
+msgstr ""
+"Uma eleição privada só é visível para as pessoas eleitoras cadastradas."
 
 #: helios/forms.py:22
 msgid "Help Email Address"
@@ -87,7 +88,8 @@ msgstr "E-mail de ajuda"
 #: helios/forms.py:22
 msgid "An email address voters should contact if they need help."
 msgstr ""
-"Um endereço de e-mail que os eleitores devem procurar se precisarem de ajuda."
+"Um endereço de e-mail que as pessoas eleitoras devem procurar se precisarem "
+"de ajuda."
 
 #: helios/forms.py:25
 msgid "Election Info Download URL"
@@ -139,15 +141,15 @@ msgstr "Enviar para"
 
 #: helios/forms.py:40 helios/forms.py:56
 msgid "all voters"
-msgstr "todos os eleitores"
+msgstr "todas as pessoas eleitoras"
 
 #: helios/forms.py:40
 msgid "voters who have cast a ballot"
-msgstr "eleitores que já enviaram a cédula"
+msgstr "pessoas eleitoras que já enviaram a cédula"
 
 #: helios/forms.py:40
 msgid "voters who have not yet cast a ballot"
-msgstr "eleitores que ainda não enviaram a cédula"
+msgstr "pessoas eleitoras que ainda não enviaram a cédula"
 
 #: helios/forms.py:50
 #, python-format
@@ -162,7 +164,7 @@ msgstr ""
 
 #: helios/forms.py:56
 msgid "only voters who cast a ballot"
-msgstr "só os eleitores que enviaram a cédula"
+msgstr "só as pessoas eleitoras que enviaram a cédula"
 
 #: helios/forms.py:56
 msgid "no one -- are you sure about this?"
@@ -196,7 +198,8 @@ msgstr "pedir que a pessoa curadora %(name)s gere um par de chaves"
 
 #: helios/models.py:467
 msgid "enter your voter list (or open registration to the public)"
-msgstr "informar a sua lista de eleitores (ou abrir o cadastro ao público)"
+msgstr ""
+"informar a sua lista de pessoas eleitoras (ou abrir o cadastro ao público)"
 
 #: helios/models.py:485
 #, python-format
@@ -219,7 +222,8 @@ msgid ""
 "invalid voter type '%(voter_type)s' for voter id '%(voter_id)s', available "
 "voter types are %(types)s"
 msgstr ""
-"tipo de eleitor inválido '%(voter_type)s' para o login '%(voter_id)s'. Os tipos disponíveis são %(types)s"
+"tipo de pessoa eleitora inválido '%(voter_type)s' para o login "
+"'%(voter_id)s'. Os tipos disponíveis são %(types)s"
 
 #: helios/models.py:862
 #, python-format
@@ -633,7 +637,7 @@ msgstr[1] "<b>%(n)s</b> votos enviados."
 #: helios/templates/voters_manage.html:13
 #, python-format
 msgid "Voters %(a)s - %(b)s"
-msgstr "Eleitores %(a)s - %(b)s"
+msgstr "Pessoas eleitoras %(a)s - %(b)s"
 
 #: helios/templates/election_bboard.html:29
 msgid "Show:"
@@ -825,7 +829,8 @@ msgstr ""
 #: helios/templates/election_freeze.html:20
 msgid "You must freeze the ballot before you can contact voters."
 msgstr ""
-"Você precisa congelar a urna antes de poder entrar em contato com os eleitores."
+"Você precisa congelar a urna antes de poder entrar em contato com as pessoas "
+"eleitoras."
 
 #: helios/templates/election_freeze.html:26
 msgid "Before you can freeze the election, you will need to:"
@@ -1210,7 +1215,7 @@ msgstr "perguntas (%(n)s)"
 
 #: helios/templates/election_view.html:87
 msgid "voters &amp; ballots"
-msgstr "eleitores e cédulas"
+msgstr "pessoas eleitoras e cédulas"
 
 #: helios/templates/election_view.html:89
 #, python-format
@@ -2008,7 +2013,7 @@ msgstr "Você está prestes a liberar o resultado desta eleição."
 
 #: helios/templates/release_result.html:15
 msgid "Send email to voters reporting release of result."
-msgstr "Enviar e-mail aos eleitores avisando da liberação do resultado."
+msgstr "Enviar e-mail às pessoas eleitoras avisando da liberação do resultado."
 
 #: helios/templates/release_result.html:17
 msgid "release result!"
@@ -2156,8 +2161,8 @@ msgstr "Sem congelar há mais de um dia."
 #, python-format
 msgid "%(n)s voter"
 msgid_plural "%(n)s voters"
-msgstr[0] "%(n)s eleitor"
-msgstr[1] "%(n)s eleitores"
+msgstr[0] "%(n)s pessoa eleitora"
+msgstr[1] "%(n)s pessoas eleitoras"
 
 #: helios/templates/stats_recent_votes.html:6 server_ui/templates/index.html:79
 msgid "Recent Votes"
@@ -2226,7 +2231,7 @@ msgstr "Nenhuma"
 #: helios/templates/stats_user_search.html:44
 #, python-format
 msgid "Elections as Voter (%(n)s)"
-msgstr "Eleições como eleitor (%(n)s)"
+msgstr "Eleições como pessoa eleitora (%(n)s)"
 
 #: helios/templates/stats_user_search.html:60
 #, python-format
@@ -2443,15 +2448,15 @@ msgstr ""
 #: helios/templates/voters_eligibility.html:4
 #, python-format
 msgid "Voter Eligibility for %(name)s"
-msgstr "Elegibilidade dos eleitores em %(name)s"
+msgstr "Elegibilidade das pessoas eleitoras em %(name)s"
 
 #: helios/templates/voters_eligibility.html:6
 msgid "Voter Eligibility"
-msgstr "Elegibilidade dos eleitores"
+msgstr "Elegibilidade das pessoas eleitoras"
 
 #: helios/templates/voters_eligibility.html:6
 msgid "back to voters"
-msgstr "voltar aos eleitores"
+msgstr "voltar às pessoas eleitoras"
 
 #: helios/templates/voters_eligibility.html:13
 #, python-format
@@ -2459,7 +2464,8 @@ msgid ""
 "You may limit eligibility of voters to one of these categories, as defined "
 "by %(user_type)s:"
 msgstr ""
-"Você pode limitar a elegibilidade dos eleitores a uma destas categorias, definidas por %(user_type)s:"
+"Você pode limitar a elegibilidade das pessoas eleitoras a uma destas "
+"categorias, definidas por %(user_type)s:"
 
 #: helios/templates/voters_eligibility.html:19
 msgid "(no constraint)"
@@ -2472,11 +2478,11 @@ msgstr "definir a elegibilidade"
 #: helios/templates/voters_email.html:4
 #, python-format
 msgid "Contact Voters for %(name)s"
-msgstr "Contato com os eleitores de %(name)s"
+msgstr "Contato com as pessoas eleitoras de %(name)s"
 
 #: helios/templates/voters_email.html:13
 msgid "Contact Voters"
-msgstr "Contatar os eleitores"
+msgstr "Contatar as pessoas eleitoras"
 
 #: helios/templates/voters_email.html:17
 #, python-format
@@ -2528,11 +2534,11 @@ msgstr ""
 #: helios/templates/voters_list.html:5
 #, python-format
 msgid "Voters &amp; Ballot Tracking Center for %(name)s"
-msgstr "Eleitores e centro de rastreamento de cédulas de %(name)s"
+msgstr "Pessoas eleitoras e centro de rastreamento de cédulas de %(name)s"
 
 #: helios/templates/voters_list.html:7
 msgid "Voters and Ballot Tracking Center"
-msgstr "Eleitores e centro de rastreamento de cédulas"
+msgstr "Pessoas eleitoras e centro de rastreamento de cédulas"
 
 #: helios/templates/voters_list.html:10
 msgid "Who can vote?"
@@ -2540,7 +2546,7 @@ msgstr "Quem pode votar?"
 
 #: helios/templates/voters_list.html:14
 msgid "Only the voters listed here"
-msgstr "Só os eleitores listados aqui"
+msgstr "Só as pessoas eleitoras listadas aqui"
 
 #: helios/templates/voters_list.html:20
 msgid ""
@@ -2556,11 +2562,11 @@ msgstr "qualquer pessoa pode votar"
 
 #: helios/templates/voters_list.html:25
 msgid "only voters listed explicitly below can vote"
-msgstr "só os eleitores listados abaixo podem votar"
+msgstr "só as pessoas eleitoras listadas abaixo podem votar"
 
 #: helios/templates/voters_list.html:27
 msgid "only voters who are members of"
-msgstr "só os eleitores que são membros de"
+msgstr "só as pessoas eleitoras que são membros de"
 
 #: helios/templates/voters_list.html:35
 msgid "update"
@@ -2568,12 +2574,12 @@ msgstr "atualizar"
 
 #: helios/templates/voters_list.html:43
 msgid "email voters"
-msgstr "enviar e-mail aos eleitores"
+msgstr "enviar e-mail às pessoas eleitoras"
 
 #: helios/templates/voters_list.html:45
 #, python-format
 msgid "email voters (disabled: %(reason)s)"
-msgstr "enviar e-mail aos eleitores (desativado: %(reason)s)"
+msgstr "enviar e-mail às pessoas eleitoras (desativado: %(reason)s)"
 
 #: helios/templates/voters_list.html:53
 #, python-format
@@ -2582,16 +2588,16 @@ msgstr "buscando por <u>%(term)s</u>."
 
 #: helios/templates/voters_list.html:61
 msgid "Download Voters as CSV"
-msgstr "Baixar a lista de eleitores em CSV"
+msgstr "Baixar a lista de pessoas eleitoras em CSV"
 
 #: helios/templates/voters_list.html:69 helios/templates/voters_manage.html:10
 msgid "bulk upload voters"
-msgstr "enviar eleitores em lote"
+msgstr "enviar pessoas eleitoras em lote"
 
 #: helios/templates/voters_list.html:71
 #, python-format
 msgid "bulk upload voters (disabled: %(reason)s)"
-msgstr "enviar eleitores em lote (desativado: %(reason)s)"
+msgstr "enviar pessoas eleitoras em lote (desativado: %(reason)s)"
 
 #: helios/templates/voters_list.html:76
 msgid "Prior Bulk Uploads:"
@@ -2606,8 +2612,8 @@ msgstr "%(size)s bytes, em %(t)s:"
 #, python-format
 msgid "done processing: %(n)s voter loaded"
 msgid_plural "done processing: %(n)s voters loaded"
-msgstr[0] "processamento concluído: %(n)s eleitor carregado"
-msgstr[1] "processamento concluído: %(n)s eleitores carregados"
+msgstr[0] "processamento concluído: %(n)s pessoa eleitora carregada"
+msgstr[1] "processamento concluído: %(n)s pessoas eleitoras carregadas"
 
 #: helios/templates/voters_list.html:90
 msgid "currently processing"
@@ -2626,13 +2632,15 @@ msgid_plural ""
 "Are you sure you want to remove ALL %(n)s voters? This action cannot be "
 "undone."
 msgstr[0] ""
-"Tem certeza de que quer remover o %(n)s eleitor? Esta ação não pode ser desfeita."
+"Tem certeza de que quer remover a %(n)s pessoa eleitora? Esta ação não pode "
+"ser desfeita."
 msgstr[1] ""
-"Tem certeza de que quer remover TODOS os %(n)s eleitores? Esta ação não pode ser desfeita."
+"Tem certeza de que quer remover TODAS as %(n)s pessoas eleitoras? Esta ação "
+"não pode ser desfeita."
 
 #: helios/templates/voters_list.html:106
 msgid "clear all voters"
-msgstr "remover todos os eleitores"
+msgstr "remover todas as pessoas eleitoras"
 
 #: helios/templates/voters_list.html:118
 #, python-format
@@ -2653,7 +2661,7 @@ msgstr "%(n)s anteriores"
 #: helios/templates/voters_list.html:130
 #, python-format
 msgid "Voters %(a)s - %(b)s (of %(total)s)"
-msgstr "Eleitores %(a)s - %(b)s (de %(total)s)"
+msgstr "Pessoas eleitoras %(a)s - %(b)s (de %(total)s)"
 
 #: helios/templates/voters_list.html:140
 msgid "Actions"
@@ -2680,11 +2688,11 @@ msgstr "Tem certeza de que quer remover %(name)s?"
 
 #: helios/templates/voters_list.html:181
 msgid "no voters."
-msgstr "nenhum eleitor."
+msgstr "nenhuma pessoa eleitora."
 
 #: helios/templates/voters_manage.html:5
 msgid "Manage Voters"
-msgstr "Gerenciar eleitores"
+msgstr "Gerenciar pessoas eleitoras"
 
 #: helios/templates/voters_manage.html:28
 #: helios_auth/templates/ldapauth/login.html:11
@@ -2695,30 +2703,31 @@ msgstr "Login"
 #: helios/templates/voters_search.html:5
 #, python-format
 msgid "Search Voters for '%(term)s'"
-msgstr "Buscar eleitores por '%(term)s'"
+msgstr "Buscar pessoas eleitoras por '%(term)s'"
 
 #: helios/templates/voters_search.html:8
 #, python-format
 msgid "Voter Found: %(name)s (%(voter_id)s)"
-msgstr "Eleitor encontrado: %(name)s (%(voter_id)s)"
+msgstr "Pessoa eleitora encontrada: %(name)s (%(voter_id)s)"
 
 #: helios/templates/voters_search.html:10
 msgid "email this voter"
-msgstr "enviar e-mail a este eleitor"
+msgstr "enviar e-mail a esta pessoa eleitora"
 
 #: helios/templates/voters_search.html:12
 msgid "once this election is frozen, you'll be able to email this voter."
 msgstr ""
-"depois que a urna for congelada, você poderá enviar e-mail a este eleitor."
+"depois que a urna for congelada, você poderá enviar e-mail a esta pessoa "
+"eleitora."
 
 #: helios/templates/voters_search.html:15
 msgid "no such voter found"
-msgstr "nenhum eleitor encontrado"
+msgstr "nenhuma pessoa eleitora encontrada"
 
 #: helios/templates/voters_upload.html:5
 #: helios/templates/voters_upload_confirm.html:5
 msgid "Bulk Upload Voters"
-msgstr "Envio de eleitores em lote"
+msgstr "Envio de pessoas eleitoras em lote"
 
 #: helios/templates/voters_upload.html:9
 msgid ""
@@ -2755,7 +2764,8 @@ msgid ""
 "OK, done uploading.<br /> You can now <a href=\"./manage\">view the list of "
 "voters</a>."
 msgstr ""
-"Pronto, o envio terminou.<br /> Agora você pode <a href=\"./manage\">ver a lista de eleitores</a>."
+"Pronto, o envio terminou.<br /> Agora você pode <a href=\"./manage\">ver a "
+"lista de pessoas eleitoras</a>."
 
 #: helios/templates/voters_upload_confirm.html:5
 msgid "Confirm"
@@ -2764,7 +2774,8 @@ msgstr "Confirmar"
 #: helios/templates/voters_upload_confirm.html:8
 msgid ""
 "You have uploaded a file of voters. The first few rows of this file are:"
-msgstr "Você enviou um arquivo de eleitores. As primeiras linhas dele são:"
+msgstr ""
+"Você enviou um arquivo de pessoas eleitoras. As primeiras linhas dele são:"
 
 #: helios/templates/voters_upload_confirm.html:12
 msgid "Voter Type"
@@ -2854,7 +2865,7 @@ msgstr "o cadastro está fechado nesta eleição"
 
 #: helios/views.py:1760
 msgid "no valid lines found in voter file"
-msgstr "nenhuma linha válida no arquivo de eleitores"
+msgstr "nenhuma linha válida no arquivo de pessoas eleitoras"
 
 #: helios/views.py:1763
 #, python-format
