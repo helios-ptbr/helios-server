@@ -240,3 +240,20 @@ class PtBrVoterFileMessagesTests(WebTest):
             with self.assertRaises(Exception) as ctx:
                 list(f.itervoters())
         self.assertIn("tipo de pessoa eleitora inválido 'xyz'", str(ctx.exception))
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrTimezoneTextsTests(WebTest):
+    def get(self, lang):
+        with override_settings(MIDDLEWARE=ptbr_middleware(), LOCALE_PATHS=[os.path.join(ROOT, 'locale')]):
+            return self.client.get('/', HTTP_ACCEPT_LANGUAGE=lang)
+
+    def test_timezone_script_gets_portuguese_texts_and_language(self):
+        r = self.get('pt-br')
+        self.assertContains(r, 'Tempo Universal Coordenado')
+        self.assertContains(r, 'lang="pt-br"')
+
+    def test_timezone_script_texts_in_english(self):
+        r = self.get('en')
+        self.assertContains(r, 'Universal Coordinated Time')
+        self.assertNotContains(r, 'Tempo Universal Coordenado')

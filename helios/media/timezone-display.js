@@ -6,9 +6,35 @@
 var HeliosTimezone = (function() {
   'use strict';
 
+  // Language of the page (<html lang>), so dates read right in each language.
+  // Falls back to English if the browser does not know it.
+  function pageLocale() {
+    var lang = document.documentElement.lang || 'en-US';
+    try {
+      Intl.DateTimeFormat.supportedLocalesOf([lang]);
+      return lang;
+    } catch (e) {
+      return 'en-US';
+    }
+  }
+  var LOCALE = pageLocale();
+
+  // Texts come from the page (translated by Django); English is the default.
+  var TEXTS = {
+    utcTitle: 'Universal Coordinated Time',
+    localTitle: 'Your local timezone',
+    thisTimeIs: 'This time is:'
+  };
+  var fromPage = window.HELIOS_TZ_TEXTS || {};
+  for (var key in TEXTS) {
+    if (Object.prototype.hasOwnProperty.call(fromPage, key) && typeof fromPage[key] === 'string') {
+      TEXTS[key] = fromPage[key];
+    }
+  }
+
   // Module configuration
   var config = {
-    utcFormatter: new Intl.DateTimeFormat('en-US', {
+    utcFormatter: new Intl.DateTimeFormat(LOCALE, {
       timeZone: 'UTC',
       year: 'numeric',
       month: 'short',
@@ -17,7 +43,7 @@ var HeliosTimezone = (function() {
       minute: '2-digit',
       hour12: false
     }),
-    localFormatter: new Intl.DateTimeFormat('en-US', {
+    localFormatter: new Intl.DateTimeFormat(LOCALE, {
       year: 'numeric',
       month: 'short',
       day: '2-digit',
@@ -27,13 +53,21 @@ var HeliosTimezone = (function() {
     })
   };
 
+  function escapeHtml(text) {
+    return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function escapeAttr(text) {
+    return escapeHtml(text).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
   /**
    * Get local timezone name/abbreviation using Intl API
    * @returns {string} Timezone abbreviation or 'Local'
    */
   function getLocalTimezoneName() {
     try {
-      var formatter = new Intl.DateTimeFormat('en-US', {
+      var formatter = new Intl.DateTimeFormat(LOCALE, {
         timeZoneName: 'short'
       });
       var parts = formatter.formatToParts(new Date());
@@ -91,10 +125,10 @@ var HeliosTimezone = (function() {
       return '<strong>' + utcFormatted + ' UTC</strong>';
     }
 
-    return '<span class="tz-utc" title="Universal Coordinated Time">' +
+    return '<span class="tz-utc" title="' + escapeAttr(TEXTS.utcTitle) + '">' +
            utcFormatted + ' UTC</span>' +
            '<span class="tz-separator"> / </span>' +
-           '<span class="tz-local" title="Your local timezone">' +
+           '<span class="tz-local" title="' + escapeAttr(TEXTS.localTitle) + '">' +
            localFormatted + ' ' + localTz + '</span>';
   }
 
@@ -137,10 +171,10 @@ var HeliosTimezone = (function() {
     var localTz = getLocalTimezoneName();
 
     if (isUTCTimezone(date)) {
-      return '<small>This time is: <strong>' + utcFormatted + ' UTC</strong></small>';
+      return '<small>' + escapeHtml(TEXTS.thisTimeIs) + ' <strong>' + utcFormatted + ' UTC</strong></small>';
     }
 
-    return '<small>This time is: <strong>' + utcFormatted + ' UTC</strong> / ' +
+    return '<small>' + escapeHtml(TEXTS.thisTimeIs) + ' <strong>' + utcFormatted + ' UTC</strong> / ' +
            '<strong>' + localFormatted + ' ' + localTz + '</strong></small>';
   }
 

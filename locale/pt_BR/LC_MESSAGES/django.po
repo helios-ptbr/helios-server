@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 06:50-0800\n"
+"POT-Creation-Date: 2026-11-18 08:25-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -304,7 +304,7 @@ msgid "Cast as many ballots as you wish: only the last one counts."
 msgstr "Envie quantas cédulas quiser: só a última conta."
 
 #: helios/templates/_castconfirm_password.html:24
-#: server_ui/templates/base.html:107
+#: server_ui/templates/base.html:115
 msgid "log in"
 msgstr "entrar"
 
@@ -1470,13 +1470,12 @@ msgstr "prévia da cabine"
 
 #: helios/templates/election_view.html:333
 #, python-format
-#| msgid ""
-#| "verify <a target=\"_blank\" href=\"/verifier/verify.html?"
-#| "election_url=%(path)s\">election tally</a>."
 msgid ""
 "verify <a target=\"_blank\" href=\"/verifier/%(verifier)s?"
 "election_url=%(path)s\">election tally</a>."
-msgstr "verifique <a target=\"_blank\" href=\"/verifier/%(verifier)s?election_url=%(path)s\">a apuração da eleição</a>."
+msgstr ""
+"verifique <a target=\"_blank\" href=\"/verifier/%(verifier)s?"
+"election_url=%(path)s\">a apuração da eleição</a>."
 
 #: helios/templates/election_view.html:336
 #, python-format
@@ -2026,7 +2025,7 @@ msgstr "liberar o resultado!"
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: helios/templates/stats.html:6 server_ui/templates/base.html:50
+#: helios/templates/stats.html:6 server_ui/templates/base.html:58
 msgid "Admin"
 msgstr "Administração"
 
@@ -2980,7 +2979,7 @@ msgstr ""
 "Você está com a sessão iniciada como<br /><b>%(user_id)s</b> via "
 "<b>%(user_type)s</b>."
 
-#: helios_auth/templates/index.html:12 server_ui/templates/base.html:101
+#: helios_auth/templates/index.html:12 server_ui/templates/base.html:109
 msgid "logout"
 msgstr "sair"
 
@@ -3058,43 +3057,55 @@ msgstr "não, quero sair daqui"
 msgid "an error occurred trying to contact %(system_name)s, try again later"
 msgstr "ocorreu um erro ao contatar %(system_name)s. Tente de novo mais tarde"
 
-#: server_ui/templates/base.html:42
+#: server_ui/templates/base.html:30
+msgid "Universal Coordinated Time"
+msgstr "Tempo Universal Coordenado"
+
+#: server_ui/templates/base.html:31
+msgid "Your local timezone"
+msgstr "Seu fuso horário local"
+
+#: server_ui/templates/base.html:32
+msgid "This time is:"
+msgstr "Este horário é:"
+
+#: server_ui/templates/base.html:50
 msgid "Menu"
 msgstr "Menu"
 
-#: server_ui/templates/base.html:54
+#: server_ui/templates/base.html:62
 msgid "About Helios"
 msgstr "Sobre o Helios"
 
-#: server_ui/templates/base.html:62
+#: server_ui/templates/base.html:70
 msgid "About"
 msgstr "Sobre"
 
-#: server_ui/templates/base.html:64
+#: server_ui/templates/base.html:72
 msgid "Code"
 msgstr "Código"
 
-#: server_ui/templates/base.html:66
+#: server_ui/templates/base.html:74
 msgid "Docs"
 msgstr "Documentação"
 
-#: server_ui/templates/base.html:68
+#: server_ui/templates/base.html:76
 msgid "FAQ"
 msgstr "Perguntas frequentes"
 
-#: server_ui/templates/base.html:70
+#: server_ui/templates/base.html:78
 msgid "Privacy"
 msgstr "Privacidade"
 
-#: server_ui/templates/base.html:73
+#: server_ui/templates/base.html:81
 msgid "Help!"
 msgstr "Ajuda!"
 
-#: server_ui/templates/base.html:100
+#: server_ui/templates/base.html:108
 msgid "logged in as"
 msgstr "sessão iniciada como"
 
-#: server_ui/templates/base.html:104
+#: server_ui/templates/base.html:112
 #, python-format
 msgid ""
 "You are signed in as voter <u>%(voter_name)s</u> in election "
@@ -3105,11 +3116,11 @@ msgstr ""
 "<u>%(election_name)s</u>. [<a href=\"%(host)s%(logout_path)s?"
 "return_url=%(return_url)s\">sair</a>]"
 
-#: server_ui/templates/base.html:107
+#: server_ui/templates/base.html:115
 msgid "not logged in."
 msgstr "sem sessão iniciada."
 
-#: server_ui/templates/base.html:109
+#: server_ui/templates/base.html:117
 msgid "powered by <a href=\"http://heliosvoting.org\">Helios Voting</a>."
 msgstr "feito com <a href=\"http://heliosvoting.org\">Helios Voting</a>."
 
