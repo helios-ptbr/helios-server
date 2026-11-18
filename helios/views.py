@@ -20,7 +20,7 @@ from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.decorators.http import require_http_methods
 
-from booth_lang import booth_page, verify_page
+from booth_lang import booth_page, verify_page, election_verifier_page
 import helios_auth.url_names as helios_auth_urls
 from helios import utils, VOTERS_EMAIL, VOTERS_UPLOAD, url_names
 from helios_auth import views as auth_views
@@ -360,7 +360,7 @@ def one_election_view(request, election):
                           'voter': voter, 'votes': votes, 'notregistered': notregistered, 'eligible_p': eligible_p,
                           'can_feature_p': can_feature_p, 'election_url' : election_url, 
                           'vote_url': vote_url, 'election_badge_url' : election_badge_url,
-                          'show_result': show_result,
+                          'show_result': show_result, 'election_verifier_page': election_verifier_page(),
                           'test_cookie_url': test_cookie_url})
 
 def test_cookie(request):

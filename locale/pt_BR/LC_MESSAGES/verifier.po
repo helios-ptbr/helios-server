@@ -1,0 +1,157 @@
+# Textos do verificador da eleição (heliosverifier/verify.html): T("...") do código.
+# Veja tools/po2js.py.
+msgid ""
+msgstr ""
+"Project-Id-Version: helios-ptbr\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: heliosverifier/verify.html
+msgid "sorry, in-browser verification requires Java Support at this time."
+msgstr "desculpe, por enquanto a verificação no navegador exige suporte a Java."
+
+#: heliosverifier/verify.html
+msgid "VERIFIED"
+msgstr "VERIFICADO"
+
+#: heliosverifier/verify.html
+msgid "FAIL"
+msgstr "FALHOU"
+
+#: heliosverifier/verify.html
+msgid "loading ballot for voter #%(num)s"
+msgstr "carregando a cédula da pessoa eleitora #%(num)s"
+
+#: heliosverifier/verify.html
+msgid "no ballot for this voter #%(num)s"
+msgstr "nenhuma cédula da pessoa eleitora #%(num)s"
+
+#: heliosverifier/verify.html
+msgid "FOUND a ballot for voter #%(num)s"
+msgstr "ENCONTRADA uma cédula da pessoa eleitora #%(num)s"
+
+#: heliosverifier/verify.html
+msgid "Election"
+msgstr "Eleição"
+
+#: heliosverifier/verify.html
+msgid "loading election..."
+msgstr "carregando a eleição..."
+
+#: heliosverifier/verify.html
+msgid "loaded election: %(name)s"
+msgstr "eleição carregada: %(name)s"
+
+#: heliosverifier/verify.html
+msgid "election fingerprint: %(hash)s"
+msgstr "impressão digital da eleição: %(hash)s"
+
+#: heliosverifier/verify.html
+msgid "PROBLEM: this election is not a straight-forward homomorphic-tally election. As a result, Helios cannot currently verify it."
+msgstr "PROBLEMA: esta eleição não usa a apuração homomórfica simples. Por isso, o Helios não consegue verificá-la por enquanto."
+
+#: heliosverifier/verify.html
+msgid "loading list of voters..."
+msgstr "carregando a lista de pessoas eleitoras..."
+
+#: heliosverifier/verify.html
+msgid "loaded voter list, now loading ballots for each.."
+msgstr "lista de pessoas eleitoras carregada. Carregando a cédula de cada uma.."
+
+#: heliosverifier/verify.html
+msgid "Ballots"
+msgstr "Cédulas"
+
+#: heliosverifier/verify.html
+msgid "Voter #%(num)s"
+msgstr "Pessoa eleitora #%(num)s"
+
+#: heliosverifier/verify.html
+msgid "-- UUID: %(uuid)s"
+msgstr "-- UUID: %(uuid)s"
+
+#: heliosverifier/verify.html
+msgid "-- Ballot Tracking Number: %(hash)s"
+msgstr "-- Código de rastreamento da cédula: %(hash)s"
+
+#: heliosverifier/verify.html
+msgid "Question #%(q)s, Option #%(o)s -- %(result)s"
+msgstr "Pergunta #%(q)s, Opção #%(o)s -- %(result)s"
+
+#: heliosverifier/verify.html
+msgid "Question #%(q)s OVERALL -- %(result)s"
+msgstr "Pergunta #%(q)s, NO TOTAL -- %(result)s"
+
+#: heliosverifier/verify.html
+msgid "Trustees"
+msgstr "Pessoas curadoras"
+
+#: heliosverifier/verify.html
+msgid "Trustee #%(num)s: %(email)s"
+msgstr "Pessoa curadora #%(num)s: %(email)s"
+
+#: heliosverifier/verify.html
+msgid "-- PK %(hash)s -- VERIFIED."
+msgstr "-- Chave pública %(hash)s -- VERIFICADA."
+
+#: heliosverifier/verify.html
+msgid "==== ERROR for PK of trustee %(email)s"
+msgstr "==== ERRO na chave pública da pessoa curadora %(email)s"
+
+#: heliosverifier/verify.html
+msgid "election public key CORRECTLY FORMED"
+msgstr "chave pública da eleição FORMADA CORRETAMENTE"
+
+#: heliosverifier/verify.html
+msgid "==== ERROR, election public key doesn't match"
+msgstr "==== ERRO: a chave pública da eleição não confere"
+
+#: heliosverifier/verify.html
+msgid "Tally"
+msgstr "Apuração"
+
+#: heliosverifier/verify.html
+msgid "Question #%(num)s: %(name)s"
+msgstr "Pergunta #%(num)s: %(name)s"
+
+#: heliosverifier/verify.html
+msgid "Answer #%(num)s: %(answer)s - COUNT = %(count)s"
+msgstr "Opção #%(num)s: %(answer)s - CONTAGEM = %(count)s"
+
+#: heliosverifier/verify.html
+msgid "-- Trustee %(email)s: decryption factor verifies"
+msgstr "-- Pessoa curadora %(email)s: o fator de decifragem confere"
+
+#: heliosverifier/verify.html
+msgid "==== ERROR with Trustee %(email)s: decryption factor does not verify"
+msgstr "==== ERRO com a pessoa curadora %(email)s: o fator de decifragem não confere"
+
+#: heliosverifier/verify.html
+msgid "FINAL RESULT"
+msgstr "RESULTADO FINAL"
+
+#: heliosverifier/verify.html
+msgid "ELECTION FULLY VERIFIED -- SUCCESS!"
+msgstr "ELEIÇÃO TOTALMENTE VERIFICADA -- SUCESSO!"
+
+#: heliosverifier/verify.html
+msgid "VERIFICATION FAILED"
+msgstr "A VERIFICAÇÃO FALHOU"
+
+#: heliosverifier/verify.html
+msgid "It appears that you are trying to verify a private election."
+msgstr "Parece que você está tentando verificar uma eleição privada."
+
+#: heliosverifier/verify.html
+msgid "You can log in as a valid voter or log in as the election admin."
+msgstr "Você pode entrar como pessoa eleitora cadastrada ou como pessoa administradora da eleição."
+
+#: heliosverifier/verify.html
+msgid "Log in as a valid voter"
+msgstr "Entrar como pessoa eleitora cadastrada"
+
+#: heliosverifier/verify.html
+msgid "Log in as the election admin"
+msgstr "Entrar como pessoa administradora da eleição"

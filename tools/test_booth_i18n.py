@@ -148,7 +148,8 @@ class GenPagesTest(unittest.TestCase):
         self.assertEqual(len(b), len(a) + 1)
         added = [l.strip() for l in b if l not in a]
         self.assertEqual(sorted(added), sorted(['<script src="js/strings.pt-BR.js"></script>',
-                                                '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">']))
+                                                '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">',
+                                                'var JSCRYPTO_HOME = document.location.pathname.replace("single-ballot-verify.pt-BR.html", "js/jscrypto");']))
         i = [out.index(x) for x in ("strings.pt-BR.js", "js/i18n.js")]
         self.assertEqual(i, sorted(i))
 
@@ -172,6 +173,50 @@ class GenPagesTest(unittest.TestCase):
 
     def test_generated_files_are_up_to_date(self):
         self.assertEqual(gen_booth_pages.main(["pt_BR", "--check"]), 0)
+
+
+class ElectionVerifierTest(unittest.TestCase):
+    """heliosverifier/verify.html: own .po files, same method as the booth."""
+    SRC = ROOT / "heliosverifier" / "verify.html"
+    PO_JS = ROOT / "locale" / "pt_BR" / "LC_MESSAGES" / "verifier.po"
+
+    def test_T_calls_match_po(self):
+        src = self.SRC.read_text(encoding="utf-8")
+        ids = set()
+        for m in re.finditer(r"""\bT\((?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")""", src):
+            t = m.group(1) if m.group(1) is not None else m.group(2)
+            ids.add(t.encode().decode("unicode_escape"))
+        po = {e[0] for e in po2js.parse_po(self.PO_JS.read_text(encoding="utf-8"))} - {""}
+        self.assertEqual(ids, po)
+
+    def test_all_po_entries_translated_and_valid(self):
+        entries = po2js.parse_po(self.PO_JS.read_text(encoding="utf-8"))
+        for msgid, msgstr, fuzzy in entries:
+            if msgid:
+                self.assertTrue(msgstr and not fuzzy, msgid)
+        po2js.build_strings(entries)
+
+    def test_html_texts_all_translated_and_none_obsolete(self):
+        table = gen_booth_pages.load_table("pt_BR", "verifier_html")
+        src = self.SRC.read_text(encoding="utf-8")
+        seen = {t for _, _, t in gen_booth_pages.segments(src)} | set(gen_booth_pages.submit_values(src))
+        self.assertEqual(sorted(seen - set(table)), [])
+        self.assertEqual(sorted(set(table) - seen), [])
+
+    def test_strings_file_is_up_to_date(self):
+        out = ROOT / "heliosverifier" / "js" / "strings.pt-BR.js"
+        self.assertEqual(po2js.main(["pt_BR", "--po", str(self.PO_JS), "--out", str(out), "--check"]), 0)
+
+    def test_page_keeps_working_under_its_new_name(self):
+        out = (ROOT / "heliosverifier" / "verify.pt-BR.html").read_text(encoding="utf-8")
+        self.assertIn('replace("verify.pt-BR.html", "js/jscrypto")', out)
+        self.assertIn("/verifier/verify.pt-BR.html?election_url=", out)
+        self.assertNotIn("/verifier/verify.html", out)
+        self.assertIn('<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">', out)
+
+    def test_i18n_js_copy_is_identical_to_the_booth_one(self):
+        self.assertEqual((ROOT / "heliosverifier" / "js" / "i18n.js").read_bytes(),
+                         (ROOT / "heliosbooth" / "js" / "i18n.js").read_bytes())
 
 
 class I18nJsTest(unittest.TestCase):

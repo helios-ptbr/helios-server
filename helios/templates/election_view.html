@@ -330,7 +330,7 @@ but has been extended until {{ t2 }}.{% endblocktranslate %}
 {% if election.voting_has_stopped %}
 <p style="font-size: 1.2em;">
 {% if election.result %}
-{% url "election@home" election.uuid as home_path %}{% blocktranslate with path=home_path %}verify <a target="_blank" href="/verifier/verify.html?election_url={{ path }}">election tally</a>.{% endblocktranslate %}
+{% url "election@home" election.uuid as home_path %}{% blocktranslate with path=home_path verifier=election_verifier_page %}verify <a target="_blank" href="/verifier/{{ verifier }}?election_url={{ path }}">election tally</a>.{% endblocktranslate %}
 {% endif %}
 
 {% blocktranslate with url=vote_url %}review the <a href="{{ url }}">voting booth</a>.{% endblocktranslate %}

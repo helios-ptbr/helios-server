@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 06:45-0800\n"
+"POT-Creation-Date: 2026-11-18 06:50-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -570,15 +570,14 @@ msgstr ""
 
 #: helios/templates/election_audited_ballots.html:18
 #, python-format
-#| msgid ""
-#| "To verify an audited ballot, copy its entire content and paste it in the "
-#| "<a target=\"_new\" href=\"/booth/single-ballot-verify.html?"
-#| "election_url=%(path)s\">single ballot verifier</a>."
 msgid ""
 "To verify an audited ballot, copy its entire content and paste it in the <a "
 "target=\"_new\" href=\"/booth/%(verify)s?election_url=%(path)s\">single "
 "ballot verifier</a>."
-msgstr "Para verificar uma cédula auditada, copie todo o conteúdo dela e cole no <a target=\"_new\" href=\"/booth/%(verify)s?election_url=%(path)s\">verificador de cédula única</a>."
+msgstr ""
+"Para verificar uma cédula auditada, copie todo o conteúdo dela e cole no <a "
+"target=\"_new\" href=\"/booth/%(verify)s?election_url=%(path)s\">verificador "
+"de cédula única</a>."
 
 #: helios/templates/election_audited_ballots.html:23
 #, python-format
@@ -1471,12 +1470,13 @@ msgstr "prévia da cabine"
 
 #: helios/templates/election_view.html:333
 #, python-format
+#| msgid ""
+#| "verify <a target=\"_blank\" href=\"/verifier/verify.html?"
+#| "election_url=%(path)s\">election tally</a>."
 msgid ""
-"verify <a target=\"_blank\" href=\"/verifier/verify.html?"
+"verify <a target=\"_blank\" href=\"/verifier/%(verifier)s?"
 "election_url=%(path)s\">election tally</a>."
-msgstr ""
-"verifique <a target=\"_blank\" href=\"/verifier/verify.html?"
-"election_url=%(path)s\">a apuração da eleição</a>."
+msgstr "verifique <a target=\"_blank\" href=\"/verifier/%(verifier)s?election_url=%(path)s\">a apuração da eleição</a>."
 
 #: helios/templates/election_view.html:336
 #, python-format

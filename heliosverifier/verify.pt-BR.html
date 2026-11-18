@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
+<head>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /> 
+  <title>Sistema de Votação Helios -- Verificador</title>
+  <link rel="stylesheet" type="text/css" href="css/booth.css" />
+  <link rel="stylesheet" type="text/css" href="css/forms.css" />
+  <script language="javascript" src="js/jscrypto/jsbn.js"></script>
+  <script language="javascript" src="js/jscrypto/jsbn2.js"></script>
+  <script language="javascript" src="js/jscrypto/sjcl.js"></script>
+  <script language="javascript" src="js/underscore-min.js"></script> 
+  <script language="javascript" src="js/jquery-1.2.2.min.js"></script>
+  <script language="javascript" src="js/jquery-jtemplates.js"></script>
+  <script language="javascript" src="js/jquery.query-2.1.5.js"></script>
+  <script language="javascript" src="js/jquery.json.min.js"></script>
+  <script src="js/strings.pt-BR.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <script language="javascript">
+    // required for jscrypto library
+    var JSCRYPTO_HOME = document.location.pathname.replace("verify.pt-BR.html", "js/jscrypto");
+  </script>
+
+  <script language="javascript" src="js/jscrypto/class.js"></script>  
+  <script language="javascript" src="js/jscrypto/bigint.js"></script>
+  <script language="javascript" src="js/jscrypto/random.js"></script>
+  <script language="javascript" src="js/jscrypto/elgamal.js"></script>
+  <script language="javascript" src="js/jscrypto/sha1.js"></script>
+  <script language="javascript" src="js/jscrypto/sha2.js"></script>
+  <script language="javascript" src="js/jscrypto/helios.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+    BigInt.setup(function() {
+       $('#verifier_loading').hide();
+       $('#verifier').show();
+    }, function() {
+       alert(T('sorry, in-browser verification requires Java Support at this time.'));
+    });
+});    
+
+function result_append(str) {
+    $('#results').append(str).append("<br />");
+}
+
+function pretty_result(result) {return result? T("VERIFIED") : T("FAIL");}
+
+function load_ballots(election_url, ballot_list, ballots, final_callback) {
+    // the ballots array is the place where we build up the list of ballots
+
+    // end of the iteration?
+    if (ballot_list.length == ballots.length) {
+        final_callback(ballots);
+        return;
+    }
+    
+    result_append(T("loading ballot for voter #%(num)s", {num: ballots.length + 1}));
+        
+    // get the next ballot
+    $.get(election_url + "/ballots/" + ballot_list[ballots.length].uuid + '/last', function(result) {
+        var new_ballot = jQuery.secureEvalJSON(result);
+        ballots.push(new_ballot);
+        if (new_ballot.vote == null)
+          result_append(T("no ballot for this voter #%(num)s", {num: ballots.length}));
+        else
+          result_append(T("FOUND a ballot for voter #%(num)s", {num: ballots.length}));
+        load_ballots(election_url, ballot_list, ballots, final_callback);
+    });
+}
+
+// load the ballot list in increments of 50, for long ballots
+function load_ballot_list(election_url, ballot_list, after, final_callback) {
+    var url = election_url + "/voters/?limit=50";
+    if (after)
+        url+= "&after=" + after;
+        
+    $.get(url, function(result) {
+        var new_ballot_list = jQuery.secureEvalJSON(result);
+
+        // done, no more ballots?
+        if (new_ballot_list.length == 0)
+            return final_callback(ballot_list);
+            
+        // not done, add to the list
+        ballot_list = ballot_list.concat(new_ballot_list);
+        after = ballot_list[ballot_list.length - 1].uuid;
+        
+        // and iterate
+        load_ballot_list(election_url, ballot_list, after, final_callback);
+    });
+}
+
+function load_election_and_ballots(election_url) {
+        
+    result_append("<h3>" + T("Election") + "</h3>");
+    result_append(T("loading election..."));
+
+    var overall_result = true;
+    
+    // the hash will be computed within the setup function call now
+    $.get(election_url, function(raw_json) {
+        try {
+            election = HELIOS.Election.fromJSONString(raw_json);
+            result_append(T("loaded election: %(name)s", {name: election.name}));
+            result_append(T("election fingerprint: %(hash)s", {hash: election.get_hash()}));
+
+            var tally = [];
+
+            $(election.questions).each(function(qnum, q) {
+                if (q.tally_type != "homomorphic") {
+                  result_append(T("PROBLEM: this election is not a straight-forward homomorphic-tally election. As a result, Helios cannot currently verify it."));
+                  return;
+                }
+
+                tally[qnum] = $(q.answers).map(function(anum, a) {
+                    return 1;
+                });
+            });
+
+            result_append(T("loading list of voters..."));
+            
+            // load voter list
+            load_ballot_list(election_url, [], null, function(ballot_list) {
+                result_append(T("loaded voter list, now loading ballots for each.."));
+
+                // load all ballots
+                load_ballots(election_url, ballot_list, [], function(ballots) {
+                    result_append("");
+                    result_append("<h3>" + T("Ballots") + "</h3>");
+                    // now load each ballot
+                    $(ballots).each(function(i, cast_vote){
+
+                        if (cast_vote.vote == null)
+                          return;
+
+                        var vote = HELIOS.EncryptedVote.fromJSONObject(cast_vote.vote, election);
+                        result_append(T("Voter #%(num)s", {num: i+1}));
+                        result_append(T("-- UUID: %(uuid)s", {uuid: cast_vote.voter_uuid}));
+                        result_append(T("-- Ballot Tracking Number: %(hash)s", {hash: vote.get_hash()}));
+
+                        vote.verifyProofs(election.public_key, function(answer_num, choice_num, result, choice) {
+                            overall_result = overall_result && result;
+                            if (choice_num != null) {
+                                // keep track of tally
+                                tally[answer_num][choice_num] = choice.multiply(tally[answer_num][choice_num]);
+
+                                result_append(T("Question #%(q)s, Option #%(o)s -- %(result)s", {q: answer_num+1, o: choice_num+1, result: pretty_result(result)}));
+                            } else {
+                                result_append(T("Question #%(q)s OVERALL -- %(result)s", {q: answer_num+1, result: pretty_result(result)}));
+                            }
+                        });
+
+                        result_append("");
+                    });
+
+                    // get the election result
+                    $.get(election_url + "/result", function(result) {
+                        var results = $.secureEvalJSON(result);
+
+                        // get the trustees and proofs
+                        $.get(election_url + "/trustees/", function(trustees_json) {
+                           trustees = $.secureEvalJSON(trustees_json);
+
+                           // create the Helios objects
+                           trustees = $(trustees).map(function(i, trustee) {return HELIOS.Trustee.fromJSONObject(trustee)});
+
+                           // the public key that we'll check
+                           var combined_key = 1;
+
+                           result_append("<h3>" + T("Trustees") + "</h3>");
+                           // verify the keys
+                           $(trustees).each(function(i, trustee) {
+                              result_append(T("Trustee #%(num)s: %(email)s", {num: i+1, email: trustee.email}));
+                              if (trustee.public_key.verifyKnowledgeOfSecretKey(trustee.pok, ElGamal.fiatshamir_dlog_challenge_generator)) {
+                                  result_append(T("-- PK %(hash)s -- VERIFIED.", {hash: trustee.public_key_hash}));
+
+                                  // FIXME check the public key hash
+                              } else {
+                                  result_append(T("==== ERROR for PK of trustee %(email)s", {email: trustee.email}));
+                                  overall_result = false;
+                              }
+
+                              combined_key = trustee.public_key.multiply(combined_key);
+
+                              result_append("");
+                           });
+
+                           // verify the combination of the keys into the final public key
+                           if (combined_key.equals(election.public_key)) {
+                               result_append(T("election public key CORRECTLY FORMED"));
+                           } else {
+                               result_append(T("==== ERROR, election public key doesn't match"));
+                               overall_result = false;
+                           }
+
+                           result_append("<h3>" + T("Tally") + "</h3>");
+
+                           $(tally).each(function(q_num, q) {
+                               result_append(T("Question #%(num)s: %(name)s", {num: q_num+1, name: election.questions[q_num].short_name}));
+                               $(q).each(function(a_num, a) {
+                                   var plaintext = new ElGamal.Plaintext(election.public_key.g.modPow(BigInt.fromInt(results[q_num][a_num]), election.public_key.p), election.public_key);
+
+                                   var check = true;
+                                   result_append(T("Answer #%(num)s: %(answer)s - COUNT = %(count)s", {num: a_num + 1, answer: election.questions[q_num].answers[a_num], count: results[q_num][a_num]}));
+
+                                   var decryption_factors = [];
+
+                                   // go through the trustees' decryption factors and verify each one
+                                   $(trustees).each(function(t_num, trustee) {
+                                       if (trustee.public_key.verifyDecryptionFactor(a, trustee.decryption_factors[q_num][a_num],
+                                                       trustee.decryption_proofs[q_num][a_num], ElGamal.fiatshamir_challenge_generator)) {
+                                           result_append(T("-- Trustee %(email)s: decryption factor verifies", {email: trustee.email}));
+                                       } else {
+                                           result_append(T("==== ERROR with Trustee %(email)s: decryption factor does not verify", {email: trustee.email}));
+                                           check= false;
+                                           overall_result = false;
+                                       }
+
+                                       decryption_factors.push(trustee.decryption_factors[q_num][a_num]);
+                                   });
+
+                                   // recheck decryption factors
+                                   var expected_value = election.public_key.g.modPow(BigInt.fromInt(results[q_num][a_num]), election.public_key.p);                        
+                                   var recomputed_value = a.decrypt(decryption_factors).getM();
+                                   if (expected_value.equals(recomputed_value)) {
+                                   } else {
+                                       check = false;
+                                       overall_result = false;
+                                   }
+
+                                   result_append("-" + pretty_result(check));
+                               });
+
+                           });
+
+                           result_append("<h3>" + T("FINAL RESULT") + "</h3>");
+
+                           if (overall_result) {
+                             result_append(T("ELECTION FULLY VERIFIED -- SUCCESS!"));
+                           } else {
+                             result_append(T("VERIFICATION FAILED"));
+                           }
+                        });
+                    });
+                });
+
+            });
+    } catch (error) {
+        result_append("<p>" + T("It appears that you are trying to verify a private election.") + "</p>");
+        result_append('<p>' + T('You can log in as a valid voter or log in as the election admin.') + '</p>');
+        result_append('<a class="btn" href="' + election_url + '">' + T('Log in as a valid voter') + '</a>');
+        result_append('<a class="btn" href="/auth/?return_url=/verifier/verify.pt-BR.html?election_url=' + election_url + '">' + T('Log in as the election admin') + '</a>');
+    }
+    });
+        
+}
+
+$(document).ready(function() {
+   var election_url = $.query.get('election_url');
+   $('#election_url').val(election_url); 
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
+<div id="banner">
+    Verificador de Eleição Helios
+</div>
+<div id="content">
+
+<div id="verifier_loading">
+carregando o verificador ...
+</div>
+
+<div id="verifier" align="center" style="display:none;">
+Digite o endereço (URL) da eleição:
+<form onsubmit="try{load_election_and_ballots(this.election_url.value);} catch (e) {} return false;">
+    <input type="text" size="50" name="election_url" id="election_url" /><br />
+    <input type="submit" value="iniciar a verificação" />
+</form>
+</div>
+
+<br /><br />
+<div id="results">
+</div>
+</div>
+</div>
+<div id="applet_div">
+</div>
+</body>
+</html>

@@ -6,6 +6,7 @@ Usage: python3 tools/gen_booth_pages.py <lang> [--check]
 For <lang> (e.g. pt_BR) it writes:
   heliosbooth/vote.<lang>.html          from heliosbooth/vote.html
   heliosbooth/single-ballot-verify.<lang>.html  from heliosbooth/single-ballot-verify.html
+  heliosverifier/verify.<lang>.html     from heliosverifier/verify.html (texts in verifier_html.po)
   heliosbooth/templates/<lang>/*.html   from heliosbooth/templates/*.html
 
 The original files are never changed. In each page, the text between tags and
@@ -88,6 +89,7 @@ def generate_template(source, table, lang=None):
     return out
 
 
+JSCRYPTO_RE = re.compile(r'\.replace\("([\w-]+)\.html", "js/jscrypto"\)')
 SUBMIT_RE = re.compile(r'(<input\b[^>]*\btype="submit"[^>]*\bvalue=")([^"{}<>]*)(")')
 
 
@@ -110,6 +112,9 @@ def generate_verify(source, lang, table):
         raise ValueError('expected one <html ... lang="en"> in single-ballot-verify.html')
     out = translate_html(source, table)
     out = translate_submit_values(out, table)
+    # the page finds its own folder by its file name, and links to itself: keep both working
+    out = JSCRYPTO_RE.sub(lambda m: '.replace("%s.%s.html", "js/jscrypto")' % (m.group(1), web), out)
+    out = out.replace("/verifier/verify.html", "/verifier/verify.%s.html" % web)
     out = I18N_RE_ANY.sub(lambda m: '%s<script src="js/strings.%s.js"></script>\n%s' % (m.group("ind"), web, m.group(0)),
                           out, count=1)
     return HTML_TAG_RE.sub(lambda m: m.group(0).replace('lang="en"', 'lang="%s"' % web), out, count=1)
@@ -130,12 +135,15 @@ def generate_vote(source, lang, table):
     return HTML_LANG_RE.sub('<html lang="%s">' % web, out, count=1)
 
 
-def po_path(lang):
-    return ROOT / "locale" / lang / "LC_MESSAGES" / "booth_html.po"
+VERIFIER = ROOT / "heliosverifier"
 
 
-def load_table(lang):
-    p = po_path(lang)
+def po_path(lang, name="booth_html"):
+    return ROOT / "locale" / lang / "LC_MESSAGES" / ("%s.po" % name)
+
+
+def load_table(lang, name="booth_html"):
+    p = po_path(lang, name)
     if not p.exists():
         return {}
     return build_table(po2js.parse_po(p.read_text(encoding="utf-8")))
@@ -147,6 +155,8 @@ def outputs(lang):
     table = load_table(lang)
     out = {BOOTH / ("vote.%s.html" % web):
            generate_vote((BOOTH / "vote.html").read_text(encoding="utf-8"), lang, table)}
+    out[VERIFIER / ("verify.%s.html" % web)] = generate_verify(
+        (VERIFIER / "verify.html").read_text(encoding="utf-8"), lang, load_table(lang, "verifier_html"))
     out[BOOTH / ("single-ballot-verify.%s.html" % web)] = generate_verify(
         (BOOTH / "single-ballot-verify.html").read_text(encoding="utf-8"), lang, table)
     for t in sorted((BOOTH / "templates").glob("*.html")):

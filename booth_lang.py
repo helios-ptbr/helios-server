@@ -9,6 +9,7 @@ import re
 
 _LANG_RE = re.compile(r'([a-z]{2,3})(?:-([a-z0-9]{2,8}))?')
 _BOOTH_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'heliosbooth')
+_VERIFIER_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'heliosverifier')
 DEFAULT_PAGE = 'vote.html'
 DEFAULT_VERIFY_PAGE = 'single-ballot-verify.html'
 
@@ -34,6 +35,12 @@ def booth_page():
     """Página da cabine para o idioma da requisição atual."""
     from django.utils import translation
     return page_for_language(translation.get_language())
+
+
+def election_verifier_page():
+    """Página do verificador da eleição inteira (heliosverifier) para o idioma da requisição."""
+    from django.utils import translation
+    return page_for_language(translation.get_language(), _VERIFIER_DIR, base='verify')
 
 
 def verify_page():
