@@ -11,6 +11,7 @@ from django.urls import reverse
 from django_webtest import WebTest
 
 from helios import models
+from helios_auth import models as auth_models
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MO = os.path.join(ROOT, 'locale', 'pt_BR', 'LC_MESSAGES', 'django.mo')
@@ -51,3 +52,36 @@ class PtBrRenderTests(WebTest):
         r = self.get('en')
         self.assertContains(r, 'Audit Info')
         self.assertNotContains(r, 'Informações de auditoria')
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrAdminPagesTests(WebTest):
+    fixtures = ['users.json', 'election.json']
+    allow_database_queries = True
+
+    def setUp(self):
+        self.election = models.Election.objects.all()[0]
+        user = auth_models.User.objects.get(user_id='ben@adida.net', user_type='google')
+        # não faça requisição aqui: o client guarda a lista de middlewares da primeira requisição
+        session = self.client.session
+        session['user'] = {'type': user.user_type, 'user_id': user.user_id}
+        session.save()
+
+    def get(self, url, lang='pt-br'):
+        with override_settings(MIDDLEWARE=ptbr_middleware(), LOCALE_PATHS=[os.path.join(ROOT, 'locale')]):
+            return self.client.get(url, HTTP_ACCEPT_LANGUAGE=lang)
+
+    def test_new_election_page(self):
+        r = self.get(reverse('elections@new'))
+        self.assertContains(r, 'Criar uma nova eleição')
+        self.assertNotContains(r, 'Create a New Election')
+
+    def test_new_election_page_in_english(self):
+        r = self.get(reverse('elections@new'), lang='en')
+        self.assertContains(r, 'Create a New Election')
+
+    def test_freeze_page(self):
+        r = self.get(reverse('election@freeze', args=[self.election.uuid]))
+        self.assertEqual(r.status_code, 200)
+        self.assertNotContains(r, 'Freeze Ballot')
+        self.assertContains(r, 'Congelar a urna')

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 04:01-0800\n"
+"POT-Creation-Date: 2026-11-18 04:18-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -13,6 +13,175 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: helios/templates/election_build.html:5
+msgid "Questions"
+msgstr "Perguntas"
+
+#: helios/templates/election_build.html:5
+msgid "back to election"
+msgstr "voltar à eleição"
+
+#: helios/templates/election_edit.html:6 helios/templates/election_edit.html:20
+msgid "Update"
+msgstr "Atualizar"
+
+#: helios/templates/election_edit.html:6
+#: helios/templates/election_extend.html:6
+msgid "cancel"
+msgstr "cancelar"
+
+#: helios/templates/election_extend.html:6
+#: helios/templates/election_extend.html:14
+msgid "Extend Voting"
+msgstr "Prorrogar a votação"
+
+#: helios/templates/election_freeze.html:5
+msgid "Freeze Ballot"
+msgstr "Congelar a urna"
+
+#: helios/templates/election_freeze.html:7
+msgid ""
+"Once an election is frozen, the questions, options, and trustees can no "
+"longer be modified."
+msgstr "Depois que uma eleição é congelada, as perguntas, as opções e as pessoas curadoras não podem mais ser alteradas."
+
+#: helios/templates/election_freeze.html:12
+msgid ""
+"Registration for your election is currently <b>open</b>, which means anyone "
+"can vote, even after you freeze the ballot."
+msgstr "O cadastro da sua eleição está <b>aberto</b>, o que significa que qualquer pessoa pode votar, mesmo depois de você congelar a urna."
+
+#: helios/templates/election_freeze.html:14
+msgid ""
+"Registration for your election is currently <b>closed</b>, which means only "
+"the voters you designate will be able to cast a ballot. As the "
+"administrator, you will still be able to modify that voter list as the "
+"election progresses."
+msgstr "O cadastro da sua eleição está <b>fechado</b>, o que significa que só as pessoas eleitoras que você indicar poderão enviar uma cédula. Como pessoa administradora, você ainda poderá alterar essa lista de pessoas eleitoras durante a eleição."
+
+#: helios/templates/election_freeze.html:20
+msgid "You must freeze the ballot before you can contact voters."
+msgstr "Você precisa congelar a urna antes de poder entrar em contato com as pessoas eleitoras."
+
+#: helios/templates/election_freeze.html:26
+msgid "Before you can freeze the election, you will need to:"
+msgstr "Antes de congelar a eleição, você precisará:"
+
+#: helios/templates/election_freeze.html:32
+msgid "go back to the election"
+msgstr "voltar à eleição"
+
+#: helios/templates/election_freeze.html:38
+msgid "Freeze the ballot"
+msgstr "Congelar a urna"
+
+#: helios/templates/election_freeze.html:39
+msgid "do NOT freeze yet"
+msgstr "NÃO congelar ainda"
+
+#: helios/templates/election_new.html:6
+msgid "Create a New Election"
+msgstr "Criar uma nova eleição"
+
+#: helios/templates/election_new.html:20
+msgid "Next &gt;&gt;"
+msgstr "Próximo &gt;&gt;"
+
+#: helios/templates/election_new_2.html:11
+msgid "Have you made sure to copy the private key to a safe place?"
+msgstr "Você copiou a chave privada para um lugar seguro?"
+
+#: helios/templates/election_new_2.html:11
+msgid ""
+"Once you click OK, Helios will not be able to recover the secret key without "
+"your help!"
+msgstr "Depois que você clicar em OK, o Helios não poderá recuperar a chave secreta sem a sua ajuda!"
+
+#: helios/templates/election_new_2.html:50
+#, python-format
+msgid "Create a New Election: %(name)s"
+msgstr "Criar uma nova eleição: %(name)s"
+
+#: helios/templates/election_new_2.html:52
+msgid "An election managed by Helios"
+msgstr "Uma eleição gerenciada pelo Helios"
+
+#: helios/templates/election_new_2.html:55
+msgid "An election managed by you, the single administrator"
+msgstr "Uma eleição gerenciada por você, a única pessoa administradora"
+
+#: helios/templates/election_new_2.html:57
+msgid "An election managed by multiple trustees"
+msgstr "Uma eleição gerenciada por várias pessoas curadoras"
+
+#: helios/templates/election_new_2.html:67
+msgid "Generate Election Keys"
+msgstr "Gerar as chaves da eleição"
+
+#: helios/templates/election_new_2.html:70
+msgid "Trustees (up to 5)"
+msgstr "Pessoas curadoras (até 5)"
+
+#: helios/templates/election_new_2.html:79
+msgid "create"
+msgstr "criar"
+
+#: helios/templates/election_new_2.html:85
+msgid "Your Election's Secret Key:"
+msgstr "A chave secreta da sua eleição:"
+
+#: helios/templates/election_new_2.html:89
+msgid ""
+"(You need to copy and paste this key and keep it safe,<br /> otherwise you "
+"won't be able to tally your election.)"
+msgstr "(Você precisa copiar e colar esta chave e guardá-la em segurança,<br /> senão não conseguirá apurar a sua eleição.)"
+
+#: helios/templates/election_not_started.html:6
+#, python-format
+msgid "Election %(name)s Not Yet Open"
+msgstr "A eleição %(name)s ainda não está aberta"
+
+#: helios/templates/election_not_started.html:9
+msgid "This election is not yet open."
+msgstr "Esta eleição ainda não está aberta."
+
+#: helios/templates/election_not_started.html:13
+#: helios/templates/election_view.html:76
+#, python-format
+msgid "Voting start at %(t)s"
+msgstr "A votação começa em %(t)s"
+
+#: helios/templates/election_not_started.html:14
+#: helios/templates/election_view.html:77
+#, python-format
+msgid "Voting end at %(t)s"
+msgstr "A votação termina em %(t)s"
+
+#: helios/templates/election_not_started.html:18
+msgid "back to the election"
+msgstr "voltar à eleição"
+
+#: helios/templates/election_register.html:5
+msgid "Register"
+msgstr "Cadastro"
+
+#: helios/templates/election_register.html:9
+#, python-format
+msgid "You are currently logged in as %(user_id)s [%(user_type)s]"
+msgstr "Você está com a sessão iniciada como %(user_id)s [%(user_type)s]"
+
+#: helios/templates/election_register.html:13
+msgid "You are currently registered for this election."
+msgstr "Você tem cadastro nesta eleição."
+
+#: helios/templates/election_register.html:17
+msgid "You are <em>not</em> registered for this election."
+msgstr "Você <em>não</em> tem cadastro nesta eleição."
+
+#: helios/templates/election_register.html:21
+msgid "register!"
+msgstr "cadastrar"
 
 #: helios/templates/election_view.html:6
 msgid "election"
@@ -95,16 +264,6 @@ msgstr "pôr em destaque"
 #, python-format
 msgid "Help Email Address: %(email)s"
 msgstr "E-mail de ajuda: %(email)s"
-
-#: helios/templates/election_view.html:76
-#, python-format
-msgid "Voting start at %(t)s"
-msgstr "A votação começa em %(t)s"
-
-#: helios/templates/election_view.html:77
-#, python-format
-msgid "Voting end at %(t)s"
-msgstr "A votação termina em %(t)s"
 
 #: helios/templates/election_view.html:81
 msgid "download candidate bios &amp; statements"
