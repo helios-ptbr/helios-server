@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 06:38-0800\n"
+"POT-Creation-Date: 2026-11-18 06:42-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -215,6 +215,18 @@ msgstr "A eleição já foi apurada"
 #: helios/models.py:503
 msgid "Tallying has started"
 msgstr "A apuração já começou"
+
+#: helios/models.py:854
+#, python-format
+msgid ""
+"invalid voter type '%(voter_type)s' for voter id '%(voter_id)s', available "
+"voter types are %(types)s"
+msgstr "tipo de pessoa eleitora inválido '%(voter_type)s' para o login '%(voter_id)s'. Os tipos disponíveis são %(types)s"
+
+#: helios/models.py:862
+#, python-format
+msgid "invalid voter email '%(voter_email)s' for voter id '%(voter_id)s'"
+msgstr "e-mail inválido '%(voter_email)s' para o login '%(voter_id)s'"
 
 #: helios/templates/_castconfirm_docast.html:19
 #, python-format
@@ -1765,8 +1777,7 @@ msgstr "Você não receberá nenhum e-mail do sistema de votação Helios"
 #: helios/templates/optout_confirm_form.html:26
 #: helios/templates/optout_confirmed.html:24
 msgid "You cannot be added to new elections until you opt back in"
-msgstr ""
-"Você não entrará em novas eleições até voltar a receber e-mails"
+msgstr "Você não entrará em novas eleições até voltar a receber e-mails"
 
 #: helios/templates/optout_confirm_form.html:27
 msgid "You can opt back in at any time"
@@ -2174,10 +2185,11 @@ msgstr "Ops, a sua chave está errada."
 #, python-format
 msgid ""
 "%(election_name)s &mdash; Trustee %(trustee_name)s &mdash; Check Secret Key"
-msgstr "%(election_name)s &mdash; Pessoa curadora %(trustee_name)s &mdash; Conferir a chave secreta"
+msgstr ""
+"%(election_name)s &mdash; Pessoa curadora %(trustee_name)s &mdash; Conferir "
+"a chave secreta"
 
 #: helios/templates/trustee_check_sk.html:55
-#| msgid "back to home"
 msgid "back to trustee home"
 msgstr "voltar ao início da pessoa curadora"
 
@@ -2209,15 +2221,15 @@ msgstr "a verificação falhou. Você provavelmente usou a chave errada."
 #: helios/templates/trustee_decrypt_and_prove.html:135
 #, python-format
 msgid "Trustee %(trustee_name)s &mdash; Decrypt Result for %(election_name)s"
-msgstr "Pessoa curadora %(trustee_name)s &mdash; Decifrar o resultado de %(election_name)s"
+msgstr ""
+"Pessoa curadora %(trustee_name)s &mdash; Decifrar o resultado de "
+"%(election_name)s"
 
 #: helios/templates/trustee_decrypt_and_prove.html:138
-#| msgid "Trustees"
 msgid "Trustee:"
 msgstr "Pessoa curadora:"
 
 #: helios/templates/trustee_decrypt_and_prove.html:140
-#| msgid "Election Fingerprint:"
 msgid "Encrypted Tally Fingerprint:"
 msgstr "Impressão digital da apuração cifrada:"
 
@@ -2225,7 +2237,9 @@ msgstr "Impressão digital da apuração cifrada:"
 msgid ""
 "The encrypted tally for your election has been computed.<br /> Now it's time "
 "to compute and submit your partial decryption."
-msgstr "A apuração cifrada da sua eleição foi calculada.<br /> Agora é hora de calcular e enviar a sua decifragem parcial."
+msgstr ""
+"A apuração cifrada da sua eleição foi calculada.<br /> Agora é hora de "
+"calcular e enviar a sua decifragem parcial."
 
 #: helios/templates/trustee_decrypt_and_prove.html:149
 msgid ""
@@ -2238,19 +2252,25 @@ msgid ""
 "compute your decryption factors, copy them to your clipboard, restart your "
 "browser, and<br /> skip to the second step so that your browser is never "
 "online when you enter your secret key."
-msgstr "Este processo tem dois passos.<br /><br /> No <u>primeiro</u>, a sua chave secreta decifra a apuração <em>dentro</em> do seu navegador, sem usar a rede.<br /> Se quiser, deixe o navegador “offline” neste passo.<br /><br /> No <u>segundo</u>, depois que os fatores de decifragem estiverem calculados, o navegador precisa estar “online” para enviá-los ao servidor.<br /> Se preferir, calcule os fatores, copie-os para a área de transferência, reinicie o navegador e<br /> vá direto ao segundo passo. Assim o navegador nunca fica online quando você digita a chave secreta."
+msgstr ""
+"Este processo tem dois passos.<br /><br /> No <u>primeiro</u>, a sua chave "
+"secreta decifra a apuração <em>dentro</em> do seu navegador, sem usar a rede."
+"<br /> Se quiser, deixe o navegador “offline” neste passo.<br /><br /> No "
+"<u>segundo</u>, depois que os fatores de decifragem estiverem calculados, o "
+"navegador precisa estar “online” para enviá-los ao servidor.<br /> Se "
+"preferir, calcule os fatores, copie-os para a área de transferência, "
+"reinicie o navegador e<br /> vá direto ao segundo passo. Assim o navegador "
+"nunca fica online quando você digita a chave secreta."
 
 #: helios/templates/trustee_decrypt_and_prove.html:160
 msgid "FIRST STEP: enter your secret key"
 msgstr "PRIMEIRO PASSO: digite a sua chave secreta"
 
 #: helios/templates/trustee_decrypt_and_prove.html:164
-#| msgid "Generate Election Keys"
 msgid "Generate partial decryption"
 msgstr "Gerar a decifragem parcial"
 
 #: helios/templates/trustee_decrypt_and_prove.html:168
-#| msgid "back to the election"
 msgid "skip to the second step"
 msgstr "ir direto ao segundo passo"
 
@@ -2275,7 +2295,10 @@ msgid ""
 "Your partial decryption factors and proofs have been generated below.<br /> "
 "Your secret key has been cleared from memory.<br /> When you're ready, you "
 "can submit this result to the server."
-msgstr "Os fatores e as provas da sua decifragem parcial foram gerados abaixo.<br /> A sua chave secreta foi apagada da memória.<br /> Quando for a hora, envie este resultado ao servidor."
+msgstr ""
+"Os fatores e as provas da sua decifragem parcial foram gerados abaixo.<br /> "
+"A sua chave secreta foi apagada da memória.<br /> Quando for a hora, envie "
+"este resultado ao servidor."
 
 #: helios/templates/trustee_decrypt_and_prove.html:190
 msgid "Your partial decryption:"
@@ -2294,7 +2317,6 @@ msgid "Done!"
 msgstr "Pronto!"
 
 #: helios/templates/trustee_decrypt_and_prove.html:199
-#| msgid "back to election"
 msgid "Back to election"
 msgstr "Voltar à eleição"
 
@@ -2697,6 +2719,22 @@ msgstr "Sim, pode seguir"
 msgid "no, let me upload a different file"
 msgstr "não, quero enviar outro arquivo"
 
+#: helios/views.py:168 helios/views.py:634 helios/views.py:652
+#| msgid ""
+#| "Once an election is frozen, the questions, options, and trustees can no "
+#| "longer be modified."
+msgid "the election is frozen, so trustee keys can no longer be changed"
+msgstr "a eleição está congelada, então as chaves das pessoas curadoras não podem mais ser alteradas"
+
+#: helios/views.py:177
+#| msgid "No additional administrators have been added."
+msgid "only an administrator has elections to administer"
+msgstr "só pessoas administradoras têm eleições para administrar"
+
+#: helios/views.py:195
+msgid "only an administrator can create an election"
+msgstr "só pessoas administradoras podem criar uma eleição"
+
 #: helios/views.py:428
 msgid "There is already a trustee with that email address for this election."
 msgstr "Já existe uma pessoa curadora com esse e-mail nesta eleição."
@@ -2728,6 +2766,29 @@ msgstr "Não é possível remover a pessoa que criou a eleição."
 #: helios/views.py:564
 msgid "You cannot remove yourself as an administrator."
 msgstr "Você não pode remover o seu próprio acesso de administração."
+
+#: helios/views.py:803
+msgid "Email sending is not enabled on this server."
+msgstr "O envio de e-mail não está ligado neste servidor."
+
+#: helios/views.py:828
+#| msgid "Please enter an email address."
+msgid "Please enter a valid voter ID."
+msgstr "Digite um login válido."
+
+#: helios/views.py:1293
+#| msgid "You are currently registered for this election."
+msgid "registration is closed for this election"
+msgstr "o cadastro está fechado nesta eleição"
+
+#: helios/views.py:1760
+msgid "no valid lines found in voter file"
+msgstr "nenhuma linha válida no arquivo de pessoas eleitoras"
+
+#: helios/views.py:1763
+#, python-format
+msgid "your CSV file could not be processed because %(reason)s"
+msgstr "não foi possível processar o seu arquivo CSV, porque: %(reason)s"
 
 #: helios/views.py:1795
 msgid "Time to Vote"
@@ -2992,6 +3053,11 @@ msgstr "Ok, entendi. Vamos fazer o login."
 #: helios_auth/templates/perms_why.html:14
 msgid "nope, get me out of here"
 msgstr "não, quero sair daqui"
+
+#: helios_auth/views.py:159
+#, python-format
+msgid "an error occurred trying to contact %(system_name)s, try again later"
+msgstr "ocorreu um erro ao contatar %(system_name)s. Tente de novo mais tarde"
 
 #: server_ui/templates/base.html:42
 msgid "Menu"

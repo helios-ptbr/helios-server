@@ -165,7 +165,7 @@ def trustee_keygenerator(request, election, trustee):
   A key generator with the current params, like the trustee home but without a specific election.
   """
   if election.frozen_at:
-    return HttpResponseForbidden("the election is frozen, so trustee keys can no longer be changed")
+    return HttpResponseForbidden(gettext("the election is frozen, so trustee keys can no longer be changed"))
 
   eg_params_json = utils.to_json(ELGAMAL_PARAMS_LD_OBJECT.toJSONDict())
 
@@ -174,7 +174,7 @@ def trustee_keygenerator(request, election, trustee):
 @login_required
 def elections_administered(request):
   if not can_create_election(request):
-    return HttpResponseForbidden('only an administrator has elections to administer')
+    return HttpResponseForbidden(gettext('only an administrator has elections to administer'))
   
   user = get_user(request)
   elections = Election.get_by_user_as_admin(user)
@@ -192,7 +192,7 @@ def elections_voted(request):
 @login_required
 def election_new(request):
   if not can_create_election(request):
-    return HttpResponseForbidden('only an administrator can create an election')
+    return HttpResponseForbidden(gettext('only an administrator can create an election'))
     
   error = None
   
@@ -631,7 +631,7 @@ def trustee_upload_pk(request, election, trustee):
     check_csrf(request)
 
     if election.frozen_at:
-      return HttpResponseForbidden("the election is frozen, so trustee keys can no longer be changed")
+      return HttpResponseForbidden(gettext("the election is frozen, so trustee keys can no longer be changed"))
 
     # get the public key and the hash, and add it
     public_key_and_proof = utils.from_json(request.POST['public_key_json'])
@@ -649,7 +649,7 @@ def trustee_upload_pk(request, election, trustee):
       # keys and votes are encrypted under it: a new trustee key couldn't decrypt them.
       # Check under the same row lock freeze takes, so the two can't interleave.
       if Election.objects.select_for_update().get(pk=election.pk).frozen_at:
-        return HttpResponseForbidden("the election is frozen, so trustee keys can no longer be changed")
+        return HttpResponseForbidden(gettext("the election is frozen, so trustee keys can no longer be changed"))
 
       trustee.save()
     
@@ -800,7 +800,7 @@ def password_voter_resend(request, election):
   if not VOTERS_EMAIL:
     return render_template(request, 'password_voter_resend', {
       'election': election,
-      'error': 'Email sending is not enabled on this server.'
+      'error': gettext('Email sending is not enabled on this server.')
     })
 
   can_send, reason = election.can_send_voter_emails()
@@ -825,7 +825,7 @@ def password_voter_resend(request, election):
     return render_template(request, 'password_voter_resend', {
       'election': election,
       'resend_form': resend_form,
-      'error': 'Please enter a valid voter ID.'
+      'error': gettext('Please enter a valid voter ID.')
     })
 
   voter_id = resend_form.cleaned_data['voter_id'].strip()
@@ -1290,7 +1290,7 @@ def _register_voter(election, user):
 @election_view()
 def one_election_register(request, election):
   if not election.openreg:
-    return HttpResponseForbidden('registration is closed for this election')
+    return HttpResponseForbidden(gettext('registration is closed for this election'))
     
   check_csrf(request)
     
@@ -1757,10 +1757,10 @@ def voters_upload(request, election):
         try:
           voters = [v for v in voter_file_obj.itervoters()][:5]
           if len(voters) == 0:
-            raise Exception("no valid lines found in voter file")
+            raise Exception(gettext("no valid lines found in voter file"))
         except Exception as e:
           voters = []
-          problems.append("your CSV file could not be processed because %s" % str(e))
+          problems.append(gettext("your CSV file could not be processed because %(reason)s") % {'reason': str(e)})
 
         return render_template(request, 'voters_upload_confirm', {'election': election, 'voters': voters, 'problems': problems})
       else:

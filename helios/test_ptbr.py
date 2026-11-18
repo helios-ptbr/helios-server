@@ -227,3 +227,16 @@ class PtBrTrusteePagesTests(WebTest):
     def test_decrypt_page_in_portuguese_and_english(self):
         self.assertIn('PRIMEIRO PASSO: digite a sua chave secreta', self.render('trustee_decrypt_and_prove', 'pt-br'))
         self.assertIn('FIRST STEP: enter your secret key', self.render('trustee_decrypt_and_prove', 'en'))
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrVoterFileMessagesTests(WebTest):
+    def test_voter_file_errors_in_portuguese(self):
+        from django.utils import translation
+        from helios import models as m
+        with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override('pt-br'):
+            f = m.VoterFile()
+            f.voter_file_content = "xyz,maria,maria@example.com,Maria"
+            with self.assertRaises(Exception) as ctx:
+                list(f.itervoters())
+        self.assertIn("tipo de pessoa eleitora inválido 'xyz'", str(ctx.exception))

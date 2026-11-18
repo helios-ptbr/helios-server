@@ -9,6 +9,7 @@ import logging
 from urllib.parse import urlencode
 
 from django.http import HttpResponseRedirect, HttpResponse
+from django.utils.translation import gettext
 from django.urls import reverse
 
 import settings
@@ -155,7 +156,7 @@ def _do_auth(request):
   if auth_url:
     return HttpResponseRedirect(auth_url)
   else:
-    return HttpResponse("an error occurred trying to contact " + system_name +", try again later")
+    return HttpResponse(gettext("an error occurred trying to contact %(system_name)s, try again later") % {'system_name': system_name})
   
 def start(request, system_name):
   if not (system_name in ENABLED_AUTH_SYSTEMS):

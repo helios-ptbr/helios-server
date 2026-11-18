@@ -851,7 +851,7 @@ class VoterFile(models.Model):
       voter_id = voter_fields[1].strip()
 
       if not voter_type in AUTH_SYSTEMS:
-        raise Exception("invalid voter type '%s' for voter id '%s', available voter types are %s" % (voter_type, voter_id, ",".join(AUTH_SYSTEMS.keys())))
+        raise Exception(gettext("invalid voter type '%(voter_type)s' for voter id '%(voter_id)s', available voter types are %(types)s") % {'voter_type': voter_type, 'voter_id': voter_id, 'types': ",".join(AUTH_SYSTEMS.keys())})
 
       # default to having email be the same as voter_id
       voter_email = voter_id
@@ -859,7 +859,7 @@ class VoterFile(models.Model):
         # but if it's supplied, it will be the 3rd field.
         voter_email = voter_fields[2].strip()
       if voter_type == "password" and not validate_email(voter_email):
-        raise Exception("invalid voter email '%s' for voter id '%s'" % (voter_email, voter_id))
+        raise Exception(gettext("invalid voter email '%(voter_email)s' for voter id '%(voter_id)s'") % {'voter_email': voter_email, 'voter_id': voter_id})
 
       # same thing for voter display name.
       voter_name = voter_email
