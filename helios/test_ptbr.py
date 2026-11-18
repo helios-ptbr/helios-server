@@ -132,6 +132,8 @@ class PtBrAdminPagesTests(WebTest):
         for url, (pt, en) in self.STATIC_PAGES.items():
             r = self.get(url)
             self.assertContains(r, pt, msg_prefix=url)
+            self.assertContains(r, 'Tradução não oficial', msg_prefix=url)
+            self.assertContains(r, 'https://vote.heliosvoting.org' + url, msg_prefix=url)
             self.assertNotContains(r, en, msg_prefix=url)
 
     def test_static_pages_in_english_are_unchanged(self):
@@ -139,6 +141,7 @@ class PtBrAdminPagesTests(WebTest):
             r = self.get(url, 'en')
             self.assertContains(r, en, msg_prefix=url)
             self.assertNotContains(r, pt, msg_prefix=url)
+            self.assertNotContains(r, 'Tradução não oficial', msg_prefix=url)
 
     def test_new_election_page(self):
         r = self.get(reverse('elections@new'))

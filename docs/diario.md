@@ -111,14 +111,16 @@ Guia: `docs/docker.md`. Decisões:
 
 - #17 idioma do e-mail por eleição (hoje vem do `LANGUAGE_CODE`).
 - #21 varredura de telas: feita para eleição e site, e as páginas longas já estão traduzidas (seção 12). Falta só cobrir login, opt-out e telas da pessoa curadora na varredura.
-- #23 plurais feitos (seção 12). Falta decidir o separador de milhar (2603 ou 2.603).
+- #23 plurais feitos (seção 12). Separador de milhar: mantido sem (decisão do usuário).
 - #23 resto da rodada de localização (números, plurais, ordenação).
 - Teste real da pessoa curadora externa (chave secreta e decifragem) e do opt-out no navegador: não feitos.
 
 ## 12. Páginas longas e plurais (issues #21 e #23)
 
 - `/about`, `/faq`, `/privacy` e `/docs` têm um template por idioma: `server_ui/templates/<nome>.pt-BR.html`. Motivo: são textos longos, e marcar com `{% trans %}` geraria conflito de merge com o Ben. O `server_ui/view_utils.py` (`render_template`) procura `<nome>.<idioma>.html` e, se não achar, usa o original. Em inglês nada muda.
-- Os links dentro desses textos (manual, artigos, imprensa) seguem apontando para as páginas originais, em inglês.
+- Cada página traduzida mostra o aviso "Tradução não oficial" (`server_ui/templates/aviso_traducao.html`), com link para o fork, para o Helios de Ben Adida e para a versão original em inglês (`vote.heliosvoting.org/<página>`).
+- `/docs` aponta para a tradução do manual e de "Como o Helios funciona" (`docs/pt-BR/manual-do-usuario.md` e `docs/pt-BR/como-o-helios-funciona.md`), cada uma com link para o original em inglês. A arquitetura segue só em inglês. As imagens do manual estão na interface em inglês.
+- Separador de milhar: decidido manter sem separador (2603).
 - A tradução de `/privacy` precisa de revisão de quem responde pela política de privacidade da instituição.
 - Plurais: 8 textos que mostravam "1 voters" ou "voter(s)" passaram a usar `{% blocktranslate count %}` com singular e plural (bboard, stats, lista de pessoas eleitoras, confirmação de remoção). No pt-BR, 0 e 1 usam o singular. Em inglês só muda o caso n = 1 ("1 voter").
 - Testes: `helios/test_ptbr.py` (páginas fixas em pt-BR e em inglês, plurais).
