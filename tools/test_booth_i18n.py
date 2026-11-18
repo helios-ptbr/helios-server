@@ -117,7 +117,7 @@ class GenPagesTest(unittest.TestCase):
 
     def test_translation_keeps_tags_and_template_code(self):
         table = gen_booth_pages.load_table("pt_BR")
-        files = [BOOTH_DIR / "vote.html"] + sorted((BOOTH_DIR / "templates").glob("*.html"))
+        files = [BOOTH_DIR / "vote.html", BOOTH_DIR / "single-ballot-verify.html"] + sorted((BOOTH_DIR / "templates").glob("*.html"))
         for f in files:
             src = f.read_text(encoding="utf-8")
             out = gen_booth_pages.translate_html(src, table)
@@ -127,7 +127,7 @@ class GenPagesTest(unittest.TestCase):
     def test_every_text_has_a_translation_entry(self):
         table = gen_booth_pages.load_table("pt_BR")
         missing = set()
-        for f in [BOOTH_DIR / "vote.html"] + sorted((BOOTH_DIR / "templates").glob("*.html")):
+        for f in [BOOTH_DIR / "vote.html", BOOTH_DIR / "single-ballot-verify.html"] + sorted((BOOTH_DIR / "templates").glob("*.html")):
             for _, _, t in gen_booth_pages.segments(f.read_text(encoding="utf-8")):
                 if t not in table:
                     missing.add("%s: %s" % (f.name, t))
@@ -136,9 +136,33 @@ class GenPagesTest(unittest.TestCase):
     def test_no_obsolete_entries(self):
         table = gen_booth_pages.load_table("pt_BR")
         seen = set()
-        for f in [BOOTH_DIR / "vote.html"] + sorted((BOOTH_DIR / "templates").glob("*.html")):
+        for f in [BOOTH_DIR / "vote.html", BOOTH_DIR / "single-ballot-verify.html"] + sorted((BOOTH_DIR / "templates").glob("*.html")):
             seen |= {t for _, _, t in gen_booth_pages.segments(f.read_text(encoding="utf-8"))}
+            seen |= set(gen_booth_pages.submit_values(f.read_text(encoding="utf-8")))
         self.assertEqual(sorted(set(table) - seen), [], "entradas que não existem mais no original")
+
+    def test_verifier_page_changes_only_lang_and_strings(self):
+        src = (BOOTH_DIR / "single-ballot-verify.html").read_text(encoding="utf-8")
+        out = gen_booth_pages.generate_verify(src, "pt_BR", {})
+        a, b = src.splitlines(), out.splitlines()
+        self.assertEqual(len(b), len(a) + 1)
+        added = [l.strip() for l in b if l not in a]
+        self.assertEqual(sorted(added), sorted(['<script src="js/strings.pt-BR.js"></script>',
+                                                '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">']))
+        i = [out.index(x) for x in ("strings.pt-BR.js", "js/i18n.js")]
+        self.assertEqual(i, sorted(i))
+
+    def test_submit_button_text_is_translated(self):
+        table = gen_booth_pages.load_table("pt_BR")
+        src = (BOOTH_DIR / "single-ballot-verify.html").read_text(encoding="utf-8")
+        for v in gen_booth_pages.submit_values(src):
+            self.assertIn(v, table, "botão sem tradução: %s" % v)
+        self.assertIn('value="Verificar"', gen_booth_pages.translate_submit_values(src, table))
+
+    def test_audit_page_links_to_translated_verifier(self):
+        out = (BOOTH_DIR / "templates" / "pt-BR" / "audit.html").read_text(encoding="utf-8")
+        self.assertIn("single-ballot-verify.pt-BR.html", out)
+        self.assertNotIn("single-ballot-verify.html", out)
 
     def test_translation_cannot_inject_markup(self):
         with self.assertRaises(ValueError):
@@ -173,7 +197,8 @@ class RepoFilesTest(unittest.TestCase):
     PO = ROOT / "locale" / "pt_BR" / "LC_MESSAGES" / "booth.po"
 
     def test_T_calls_in_vote_html_match_po(self):
-        src = (ROOT / "heliosbooth" / "vote.html").read_text(encoding="utf-8")
+        src = "\n".join((ROOT / "heliosbooth" / n).read_text(encoding="utf-8")
+                        for n in ("vote.html", "single-ballot-verify.html", "verifier.js"))
         ids = set()
         for m in re.finditer(r"""\bT\((?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")""", src):
             t = m.group(1) if m.group(1) is not None else m.group(2)

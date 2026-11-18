@@ -15,7 +15,7 @@
 </p>
 
 <p>
-  {% url "election@home" election.uuid as home_path %}{% blocktranslate with path=home_path %}To verify an audited ballot, copy its entire content and paste it in the <a target="_new" href="/booth/single-ballot-verify.html?election_url={{ path }}">single ballot verifier</a>.{% endblocktranslate %}
+  {% url "election@home" election.uuid as home_path %}{% blocktranslate with path=home_path verify=verify_page %}To verify an audited ballot, copy its entire content and paste it in the <a target="_new" href="/booth/{{ verify }}?election_url={{ path }}">single ballot verifier</a>.{% endblocktranslate %}
 </p>
 
 {% if audited_ballots %}

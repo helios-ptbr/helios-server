@@ -4,6 +4,7 @@
 
 // import needed resources
 importScripts("js/underscore-min.js");
+importScripts("js/i18n.js");
 
 importScripts("js/jscrypto/jsbn.js",
 	      "js/jscrypto/jsbn2.js",
@@ -34,6 +35,9 @@ function do_verify(message) {
     console.log("verifying!");
 
     // json string
+    // texts for T(): plain data sent by the page, never loaded from a URL
+    if (message.strings) BOOTH_STRINGS = message.strings;
+
     ELECTION = message.election;
 
     // json object

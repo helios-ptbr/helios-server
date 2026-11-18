@@ -12,7 +12,7 @@ class BoothLangTest(unittest.TestCase):
     def setUp(self):
         self.d = tempfile.TemporaryDirectory()
         self.addCleanup(self.d.cleanup)
-        for n in ("vote.html", "vote.pt-BR.html", "vote.es.html"):
+        for n in ("vote.html", "vote.pt-BR.html", "vote.es.html", "single-ballot-verify.html", "single-ballot-verify.pt-BR.html"):
             (Path(self.d.name) / n).write_text("x")
 
     def page(self, lang):
@@ -35,6 +35,13 @@ class BoothLangTest(unittest.TestCase):
 
     def test_real_booth_has_the_page(self):
         self.assertEqual(booth_lang.page_for_language("pt-br"), "vote.pt-BR.html")
+
+
+    def test_verifier_page_follows_language(self):
+        f = lambda lang: booth_lang.page_for_language(lang, self.d.name, base="single-ballot-verify")
+        self.assertEqual(f("pt-br"), "single-ballot-verify.pt-BR.html")
+        self.assertEqual(f("en"), "single-ballot-verify.html")
+        self.assertEqual(f("es"), "single-ballot-verify.html")  # no es verifier page here
 
 
 if __name__ == "__main__":

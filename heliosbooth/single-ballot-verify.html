@@ -15,6 +15,7 @@
   <script language="javascript" src="js/jquery-jtemplates.js"></script>
   <script language="javascript" src="js/jquery.json.min.js"></script>
   <script language="javascript" src="js/jquery.query-2.1.5.js"></script>
+  <script src="js/i18n.js"></script>
 
   <script language="javascript">
     // required for jscrypto library
@@ -56,11 +57,11 @@ function result_append(str) {
 function verify_single_ballot(election_url, audit_trail) {
   var encrypted_vote_json = jQuery.secureEvalJSON(audit_trail);
   
-  result_append("loading election...");
+  result_append(T("loading election..."));
 
   // quick and dirty detection of cast ballot
   if (encrypted_vote_json['cast_at']) {
-    result_append("\n\nIt looks like you are trying to verify a cast ballot. That can't be done, only audited ballots can be verified.");
+    result_append(T("\n\nIt looks like you are trying to verify a cast ballot. That can't be done, only audited ballots can be verified."));
     return;
   }
   
@@ -72,9 +73,9 @@ function verify_single_ballot(election_url, audit_trail) {
     $('#loading').hide();
     
     if (overall_result) {
-       result_append('SUCCESSFUL VERIFICATION, DONE!');
+       result_append(T('SUCCESSFUL VERIFICATION, DONE!'));
     } else {
-       result_append('PROBLEM - THIS BALLOT DOES NOT VERIFY.');        
+       result_append(T('PROBLEM - THIS BALLOT DOES NOT VERIFY.'));
     }
   };
 
@@ -93,17 +94,17 @@ function verify_single_ballot(election_url, audit_trail) {
           return after_computation(event.data.result);
       };
 
-      verifier_worker.postMessage({'type':'verify', 'election':raw_json, 'vote':encrypted_vote_json});
+      verifier_worker.postMessage({'type':'verify', 'election':raw_json, 'vote':encrypted_vote_json, 'strings':BOOTH_STRINGS});
     } else {
       var overall_result = verify_ballot(raw_json, encrypted_vote_json, result_append);
       after_computation(overall_result);
     }
   }, error: function() {
-      result_append('PROBLEM LOADING election. Are you sure you have the right election URL?<br />');
+      result_append(T('PROBLEM LOADING election. Are you sure you have the right election URL?<br />'));
 
       $('#loading').hide();
       
-      result_append('PROBLEM - THIS BALLOT DOES NOT VERIFY.');        
+      result_append(T('PROBLEM - THIS BALLOT DOES NOT VERIFY.'));
   }
   });
 }

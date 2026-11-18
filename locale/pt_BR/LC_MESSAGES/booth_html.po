@@ -299,3 +299,43 @@ msgstr "Segundo o arquivo de definição da eleição, esta cédula será enviad
 #: heliosbooth/templates/submit.html
 msgid "where you will log in to validate your eligibility to vote."
 msgstr "onde você fará login para validar sua elegibilidade para votar."
+
+#: heliosbooth/single-ballot-verify.html
+msgid "Helios Voting System"
+msgstr "Sistema de Votação Helios"
+
+#: heliosbooth/single-ballot-verify.html
+msgid "Helios Single-Ballot Verifier"
+msgstr "Verificador de Cédula Helios"
+
+#: heliosbooth/single-ballot-verify.html
+msgid "Loading verifier..."
+msgstr "Carregando o verificador..."
+
+#: heliosbooth/single-ballot-verify.html
+msgid "Your browser does not have the Java plugin installed."
+msgstr "Seu navegador não tem o plugin do Java instalado."
+
+#: heliosbooth/single-ballot-verify.html
+msgid "At this time, the Java plugin is required for browser-based ballot auditing, although it is not required for ballot preparation."
+msgstr "Por enquanto, o plugin do Java é necessário para auditar cédulas no navegador, mas não para preparar a cédula."
+
+#: heliosbooth/single-ballot-verify.html
+msgid "This single-ballot verifier lets you enter an audited ballot"
+msgstr "Este verificador de cédula única permite digitar uma cédula auditada"
+
+#: heliosbooth/single-ballot-verify.html
+msgid "and verify that it was prepared correctly."
+msgstr "e conferir se ela foi preparada corretamente."
+
+#: heliosbooth/single-ballot-verify.html
+msgid "Enter the Election URL:"
+msgstr "Digite o endereço (URL) da eleição:"
+
+#: heliosbooth/single-ballot-verify.html
+msgid "Your Ballot:"
+msgstr "Sua cédula:"
+
+#: heliosbooth/single-ballot-verify.html
+msgid "Verify"
+msgstr "Verificar"

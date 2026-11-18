@@ -20,7 +20,7 @@ from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.decorators.http import require_http_methods
 
-from booth_lang import booth_page
+from booth_lang import booth_page, verify_page
 import helios_auth.url_names as helios_auth_urls
 from helios import utils, VOTERS_EMAIL, VOTERS_UPLOAD, url_names
 from helios_auth import views as auth_views
@@ -1101,7 +1101,7 @@ def one_election_audited_ballots(request, election):
   else:
     next_after = None
     
-  return render_template(request, 'election_audited_ballots', {'election': election, 'audited_ballots': audited_ballots, 'next_after': next_after,
+  return render_template(request, 'election_audited_ballots', {'election': election, 'verify_page': verify_page(), 'audited_ballots': audited_ballots, 'next_after': next_after,
                 'offset': offset, 'limit': limit, 'offset_plus_one': offset+1, 'offset_plus_limit': offset+limit})
 
 @election_admin()

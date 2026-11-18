@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 06:42-0800\n"
+"POT-Creation-Date: 2026-11-18 06:45-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -221,7 +221,9 @@ msgstr "A apuração já começou"
 msgid ""
 "invalid voter type '%(voter_type)s' for voter id '%(voter_id)s', available "
 "voter types are %(types)s"
-msgstr "tipo de pessoa eleitora inválido '%(voter_type)s' para o login '%(voter_id)s'. Os tipos disponíveis são %(types)s"
+msgstr ""
+"tipo de pessoa eleitora inválido '%(voter_type)s' para o login "
+"'%(voter_id)s'. Os tipos disponíveis são %(types)s"
 
 #: helios/models.py:862
 #, python-format
@@ -568,14 +570,15 @@ msgstr ""
 
 #: helios/templates/election_audited_ballots.html:18
 #, python-format
+#| msgid ""
+#| "To verify an audited ballot, copy its entire content and paste it in the "
+#| "<a target=\"_new\" href=\"/booth/single-ballot-verify.html?"
+#| "election_url=%(path)s\">single ballot verifier</a>."
 msgid ""
 "To verify an audited ballot, copy its entire content and paste it in the <a "
-"target=\"_new\" href=\"/booth/single-ballot-verify.html?"
-"election_url=%(path)s\">single ballot verifier</a>."
-msgstr ""
-"Para verificar uma cédula auditada, copie todo o conteúdo dela e cole no <a "
-"target=\"_new\" href=\"/booth/single-ballot-verify.html?"
-"election_url=%(path)s\">verificador de cédula única</a>."
+"target=\"_new\" href=\"/booth/%(verify)s?election_url=%(path)s\">single "
+"ballot verifier</a>."
+msgstr "Para verificar uma cédula auditada, copie todo o conteúdo dela e cole no <a target=\"_new\" href=\"/booth/%(verify)s?election_url=%(path)s\">verificador de cédula única</a>."
 
 #: helios/templates/election_audited_ballots.html:23
 #, python-format
@@ -2720,14 +2723,12 @@ msgid "no, let me upload a different file"
 msgstr "não, quero enviar outro arquivo"
 
 #: helios/views.py:168 helios/views.py:634 helios/views.py:652
-#| msgid ""
-#| "Once an election is frozen, the questions, options, and trustees can no "
-#| "longer be modified."
 msgid "the election is frozen, so trustee keys can no longer be changed"
-msgstr "a eleição está congelada, então as chaves das pessoas curadoras não podem mais ser alteradas"
+msgstr ""
+"a eleição está congelada, então as chaves das pessoas curadoras não podem "
+"mais ser alteradas"
 
 #: helios/views.py:177
-#| msgid "No additional administrators have been added."
 msgid "only an administrator has elections to administer"
 msgstr "só pessoas administradoras têm eleições para administrar"
 
@@ -2772,12 +2773,10 @@ msgid "Email sending is not enabled on this server."
 msgstr "O envio de e-mail não está ligado neste servidor."
 
 #: helios/views.py:828
-#| msgid "Please enter an email address."
 msgid "Please enter a valid voter ID."
 msgstr "Digite um login válido."
 
 #: helios/views.py:1293
-#| msgid "You are currently registered for this election."
 msgid "registration is closed for this election"
 msgstr "o cadastro está fechado nesta eleição"
 

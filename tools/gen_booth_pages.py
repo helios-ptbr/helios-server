@@ -5,6 +5,7 @@ Usage: python3 tools/gen_booth_pages.py <lang> [--check]
 
 For <lang> (e.g. pt_BR) it writes:
   heliosbooth/vote.<lang>.html          from heliosbooth/vote.html
+  heliosbooth/single-ballot-verify.<lang>.html  from heliosbooth/single-ballot-verify.html
   heliosbooth/templates/<lang>/*.html   from heliosbooth/templates/*.html
 
 The original files are never changed. In each page, the text between tags and
@@ -27,6 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BOOTH = ROOT / "heliosbooth"
 LANG_RE = re.compile(r'^[A-Za-z]{2,3}([_-][A-Za-z0-9]{2,8})?$')
 I18N_RE = re.compile(r'^(?P<ind>[ \t]*)<script[^>]*src="js/i18n\.js"[^>]*></script>[ \t]*$', re.M)
+I18N_RE_ANY = re.compile(r'^(?P<ind>[ \t]*)<script[^>]*src="js/i18n\.js"[^>]*></script>[ \t]*$', re.M)
 HTML_LANG_RE = re.compile(r'<html lang="en">')
 TEMPLATE_URL = 'setTemplateURL("templates/'
 # script/style/comments are kept whole; tags and jTemplates {...} split the text.
@@ -74,8 +76,43 @@ def translate_html(html, table):
     return "".join(parts)
 
 
-def generate_template(source, table):
-    return translate_html(source, table)
+VERIFY_LINK = "single-ballot-verify.html"
+HTML_TAG_RE = re.compile(r"<html\b[^>]*>")
+
+
+def generate_template(source, table, lang=None):
+    out = translate_html(source, table)
+    if lang:
+        # the audit page links to the verifier: send the voter to the verifier in the same language
+        out = out.replace(VERIFY_LINK, "single-ballot-verify.%s.html" % lang.replace("_", "-"))
+    return out
+
+
+SUBMIT_RE = re.compile(r'(<input\b[^>]*\btype="submit"[^>]*\bvalue=")([^"{}<>]*)(")')
+
+
+def submit_values(html):
+    """Texts of the value="..." attribute of submit buttons (the text splitter skips attributes)."""
+    return [m.group(2) for m in SUBMIT_RE.finditer(html)]
+
+
+def translate_submit_values(html, table):
+    return SUBMIT_RE.sub(lambda m: m.group(1) + table.get(norm(m.group(2)), m.group(2)) + m.group(3), html)
+
+
+def generate_verify(source, lang, table):
+    """single-ballot-verify.<lang>.html: translated text, <html lang> and the strings file."""
+    web = lang.replace("_", "-")
+    if len(I18N_RE_ANY.findall(source)) != 1:
+        raise ValueError("expected exactly one js/i18n.js <script> in single-ballot-verify.html")
+    tags = HTML_TAG_RE.findall(source)
+    if len(tags) != 1 or 'lang="en"' not in tags[0]:
+        raise ValueError('expected one <html ... lang="en"> in single-ballot-verify.html')
+    out = translate_html(source, table)
+    out = translate_submit_values(out, table)
+    out = I18N_RE_ANY.sub(lambda m: '%s<script src="js/strings.%s.js"></script>\n%s' % (m.group("ind"), web, m.group(0)),
+                          out, count=1)
+    return HTML_TAG_RE.sub(lambda m: m.group(0).replace('lang="en"', 'lang="%s"' % web), out, count=1)
 
 
 def generate_vote(source, lang, table):
@@ -110,8 +147,10 @@ def outputs(lang):
     table = load_table(lang)
     out = {BOOTH / ("vote.%s.html" % web):
            generate_vote((BOOTH / "vote.html").read_text(encoding="utf-8"), lang, table)}
+    out[BOOTH / ("single-ballot-verify.%s.html" % web)] = generate_verify(
+        (BOOTH / "single-ballot-verify.html").read_text(encoding="utf-8"), lang, table)
     for t in sorted((BOOTH / "templates").glob("*.html")):
-        out[BOOTH / "templates" / web / t.name] = generate_template(t.read_text(encoding="utf-8"), table)
+        out[BOOTH / "templates" / web / t.name] = generate_template(t.read_text(encoding="utf-8"), table, lang)
     return out
 
 
