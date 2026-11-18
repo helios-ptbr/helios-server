@@ -83,6 +83,7 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 ## 9. CI
 
 - `.github/workflows/ci.yml` roda também na `ptbr`, instala `gettext`, roda `compilemessages` e os testes de `tools/`.
+- **CI só manual** durante o trabalho pesado, para poupar minutos do Actions (a execução leva cerca de 3 min). Disparo: `gh workflow run CI -R helios-ptbr/helios-server --ref ptbr`. **Antes do Release**, devolver os gatilhos `push` e `pull_request` (estão comentados no `ci.yml`).
 - Previsto: o CI falhar se o `.po` estiver desatualizado ou com `msgid` sem tradução ou `fuzzy` (issues #18 a #21).
 
 ## 10. Achados no código do Ben (não alterados)

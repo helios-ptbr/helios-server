@@ -1,11 +1,13 @@
 name: CI
 
+# Só manual durante o trabalho pesado de tradução (poupa minutos do Actions).
+# Antes do Release, devolver os gatilhos abaixo:
+#   push:
+#     branches: [main, master, ptbr]
+#   pull_request:
+#     branches: [main, master, ptbr]
 on:
   workflow_dispatch:
-  push:
-    branches: [main, master, ptbr]
-  pull_request:
-    branches: [main, master, ptbr]
 
 jobs:
   test:
