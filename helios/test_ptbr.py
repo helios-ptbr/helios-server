@@ -133,3 +133,43 @@ class PtBrAdminPagesTests(WebTest):
         self.assertEqual(r.status_code, 200)
         self.assertContains(r, 'Cookies são necessários no Helios')
         self.assertNotContains(r, 'Cookies are Required for Helios')
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrEmailTests(WebTest):
+    """Os e-mails saem do worker, sem requisição: o idioma vem de LANGUAGE_CODE."""
+
+    def render(self, template, lang):
+        from django.template import Context, loader
+        from django.utils import translation
+
+        class Obj:
+            pass
+
+        voter = Obj()
+        voter.name, voter.voter_type, voter.voter_login_id = 'Maria', 'password', 'maria'
+        voter.voter_password, voter.vote_hash, voter.alias = 'abc', 'HASH', 'V12'
+        election = Obj()
+        election.name, election.use_voter_aliases, election.hash = 'Eleição "X"', True, 'FP'
+        voter.election = election
+        ctx = dict(voter=voter, election=election, custom_message='Oi', custom_subject='Assunto',
+                   election_vote_url='http://x/vote', election_url='http://x/e',
+                   unsubscribe_url='http://x/out')
+        with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
+            return loader.get_template(template).template.render(Context(ctx, autoescape=False))
+
+    def test_vote_email_in_portuguese(self):
+        body = self.render('email/vote_body.txt', 'pt-br')
+        self.assertIn('Olá, Maria,', body)
+        self.assertIn('Seu nome de acesso: maria', body)
+        self.assertIn('Para deixar de receber todos os e-mails do Helios', body)
+        self.assertNotIn('Dear ', body)
+
+    def test_vote_email_in_english_is_unchanged(self):
+        body = self.render('email/vote_body.txt', 'en')
+        self.assertIn('Dear Maria,', body)
+        self.assertIn('Your voter ID: maria', body)
+
+    def test_email_subjects_keep_quotes_unescaped(self):
+        subj = self.render('email/password_resend_subject.txt', 'pt-br')
+        self.assertEqual(subj.strip(), 'Suas credenciais de votação para Eleição "X"')
