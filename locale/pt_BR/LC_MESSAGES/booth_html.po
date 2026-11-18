@@ -270,7 +270,7 @@ msgstr "Se quiser, você pode anular esta cédula e revelar como suas escolhas f
 
 #: heliosbooth/templates/seal.html
 msgid "You will then be guided to re-encrypt your choices for final casting."
-msgstr "Em seguida, você será orientado a cifrar suas escolhas de novo para o envio final."
+msgstr "Em seguida, o sistema vai orientar você a cifrar suas escolhas de novo para o envio final."
 
 #: heliosbooth/templates/seal.html
 msgid "Spoil &amp; Audit"

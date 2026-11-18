@@ -321,7 +321,7 @@ Anyone can vote in this election.
 {% if not election.voting_has_started %}
 <p style="font-size: 1.2em;">
   <br>
-  <a href="{{SECURE_URL_HOST}}/booth/vote.html?election_url={% url "election@home" election.uuid %}">preview booth</a>
+  <a href="{{vote_url}}">preview booth</a>
 </p>
 {% endif %}  
 

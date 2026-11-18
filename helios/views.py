@@ -19,6 +19,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpRespons
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 
+from booth_lang import booth_page
 import helios_auth.url_names as helios_auth_urls
 from helios import utils, VOTERS_EMAIL, VOTERS_UPLOAD, url_names
 from helios_auth import views as auth_views
@@ -120,7 +121,7 @@ def election_shortcut(request, election_short_name):
 # a hidden view behind the shortcut that performs the actual perm check
 @election_view()
 def _election_vote_shortcut(request, election):
-  vote_url = "%s/booth/vote.html?%s" % (settings.SECURE_URL_HOST, urlencode({'election_url' : reverse(url_names.election.ELECTION_HOME, args=[election.uuid])}))
+  vote_url = "%s/booth/%s?%s" % (settings.SECURE_URL_HOST, booth_page(), urlencode({'election_url' : reverse(url_names.election.ELECTION_HOME, args=[election.uuid])}))
   
   test_cookie_url = "%s?%s" % (reverse(url_names.COOKIE_TEST), urlencode({'continue_url' : vote_url}))
 
@@ -315,7 +316,7 @@ def one_election_view(request, election):
   election_badge_url = get_election_badge_url(election)
   status_update_message = None
 
-  vote_url = "%s/booth/vote.html?%s" % (settings.SECURE_URL_HOST, urlencode({'election_url' : reverse(url_names.election.ELECTION_HOME, args=[election.uuid])}))
+  vote_url = "%s/booth/%s?%s" % (settings.SECURE_URL_HOST, booth_page(), urlencode({'election_url' : reverse(url_names.election.ELECTION_HOME, args=[election.uuid])}))
 
   test_cookie_url = "%s?%s" % (reverse(url_names.COOKIE_TEST), urlencode({'continue_url' : vote_url}))
   
