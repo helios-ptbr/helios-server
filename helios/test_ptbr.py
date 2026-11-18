@@ -127,3 +127,9 @@ class PtBrAdminPagesTests(WebTest):
                                  {'email': '', 'csrf_token': self.client.session['csrf_token']},
                                  HTTP_ACCEPT_LANGUAGE='pt-br')
         self.assertContains(r, 'Digite um endereço de e-mail.')
+
+    def test_nocookies_page(self):
+        r = self.get(reverse('cookie@no') + '?continue_url=/helios/elections/x')
+        self.assertEqual(r.status_code, 200)
+        self.assertContains(r, 'Cookies são necessários no Helios')
+        self.assertNotContains(r, 'Cookies are Required for Helios')
