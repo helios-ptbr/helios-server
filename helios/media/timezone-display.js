@@ -23,7 +23,10 @@ var HeliosTimezone = (function() {
   var TEXTS = {
     utcTitle: 'Universal Coordinated Time',
     localTitle: 'Your local timezone',
-    thisTimeIs: 'This time is:'
+    thisTimeIs: 'This time is:',
+    // %(tz)s is the browser's time zone, e.g. "BRT (UTC-03:00)"
+    inputHelp: 'Enter the date and time in your browser time zone (%(tz)s). Helios stores it in UTC.',
+    balloon: 'Your browser time zone is %(tz)s. Anyone in another time zone, for example one hour or two hours behind, types the time shown by their own browser: Helios converts it to UTC. If this zone is wrong, fix the time zone of your computer.'
   };
   var fromPage = window.HELIOS_TZ_TEXTS || {};
   for (var key in TEXTS) {
@@ -178,6 +181,109 @@ var HeliosTimezone = (function() {
            '<strong>' + localFormatted + ' ' + localTz + '</strong></small>';
   }
 
+  // ---- datetime-local fields -------------------------------------------------
+  // The server keeps and expects UTC. The person types in the browser's time zone:
+  // on load the UTC value is shown as local time, and on submit the local value
+  // goes back to the server as UTC. The server code does not change.
+
+  function pad(n) {
+    return (n < 10 ? '0' : '') + n;
+  }
+
+  function formatInputValue(date, utc) {
+    var y = utc ? date.getUTCFullYear() : date.getFullYear();
+    var mo = (utc ? date.getUTCMonth() : date.getMonth()) + 1;
+    var d = utc ? date.getUTCDate() : date.getDate();
+    var h = utc ? date.getUTCHours() : date.getHours();
+    var mi = utc ? date.getUTCMinutes() : date.getMinutes();
+    return y + '-' + pad(mo) + '-' + pad(d) + 'T' + pad(h) + ':' + pad(mi);
+  }
+
+  // "2026-12-01T09:00" typed as local time -> Date
+  function localInputToDate(value) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(value || '');
+    if (!m) { return null; }
+    var date = new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]);
+    return isNaN(date.getTime()) ? null : date;
+  }
+
+  // "2026-12-01T12:00" sent by the server as UTC -> Date
+  function utcInputToDate(value) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(value || '');
+    if (!m) { return null; }
+    var date = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]));
+    return isNaN(date.getTime()) ? null : date;
+  }
+
+  function offsetLabel(date) {
+    var off = -date.getTimezoneOffset();
+    var sign = off < 0 ? '-' : '+';
+    off = Math.abs(off);
+    return 'UTC' + sign + pad(Math.floor(off / 60)) + ':' + pad(off % 60);
+  }
+
+  function zoneLabel() {
+    var now = new Date();
+    return getLocalTimezoneName() + ' (' + offsetLabel(now) + ')';
+  }
+
+  function helpTextFor(input) {
+    var text = TEXTS.inputHelp.replace('%(tz)s', zoneLabel());
+    var id = (input.getAttribute('aria-describedby') || '').split(' ')[0];
+    var el = id ? document.getElementById(id) : null;
+    if (el) { el.textContent = text; }
+  }
+
+  // Balloon with the browser's time zone, next to the field (hover, focus or tap)
+  function addBalloon(input) {
+    var next = input.nextElementSibling;
+    if (next && next.classList.contains('tz-balloon')) { return; }
+    var balloon = document.createElement('span');
+    balloon.className = 'tz-balloon';
+    balloon.tabIndex = 0;
+    balloon.setAttribute('role', 'note');
+    balloon.setAttribute('aria-label', TEXTS.balloon.replace('%(tz)s', zoneLabel()));
+    balloon.setAttribute('data-balloon', TEXTS.balloon.replace('%(tz)s', zoneLabel()));
+    balloon.textContent = '\u24D8';
+    input.parentNode.insertBefore(balloon, input.nextSibling);
+  }
+
+  function convertInputToLocal(input) {
+    if (input.getAttribute('data-tz-local')) { return; }
+    var date = utcInputToDate(input.value);
+    if (date) { input.value = formatInputValue(date, false); }
+    input.setAttribute('data-tz-local', '1');
+    helpTextFor(input);
+    addBalloon(input);
+  }
+
+  function submitAsUtc(form) {
+    Array.prototype.forEach.call(form.querySelectorAll('input[type="datetime-local"][data-tz-local]'), function(input) {
+      var name = input.getAttribute('name');
+      if (!name) { return; }
+      var hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = name;
+      var date = localInputToDate(input.value);
+      hidden.value = date ? formatInputValue(date, true) : input.value;
+      hidden.setAttribute('data-tz-utc-copy', '1');
+      input.setAttribute('data-orig-name', name);
+      input.removeAttribute('name');
+      form.appendChild(hidden);
+    });
+  }
+
+  // back button: the page comes back from cache with the names swapped, put them back
+  function restoreAfterSubmit() {
+    Array.prototype.forEach.call(document.querySelectorAll('input[data-tz-utc-copy]'), function(h) {
+      h.parentNode.removeChild(h);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('input[data-orig-name]'), function(input) {
+      input.setAttribute('name', input.getAttribute('data-orig-name'));
+      input.removeAttribute('data-orig-name');
+    });
+  }
+
   /**
    * Update datetime-local input helper text
    * @param {HTMLInputElement} input - Input element to update
@@ -187,10 +293,10 @@ var HeliosTimezone = (function() {
       return;
     }
 
-    // Parse the datetime-local value (format: YYYY-MM-DDTHH:MM)
-    var date = new Date(input.value + ':00Z'); // Add seconds and Z for UTC
+    // The field holds the browser's local time (format: YYYY-MM-DDTHH:MM)
+    var date = localInputToDate(input.value);
 
-    if (isNaN(date.getTime())) {
+    if (!date) {
       return;
     }
 
@@ -220,6 +326,8 @@ var HeliosTimezone = (function() {
     var datetimeInputs = document.querySelectorAll('input[type="datetime-local"]');
 
     Array.prototype.forEach.call(datetimeInputs, function(input) {
+      convertInputToLocal(input);
+
       // Update helper on input change
       input.addEventListener('change', function() {
         updateDateTimeInputHelper(this);
@@ -229,6 +337,17 @@ var HeliosTimezone = (function() {
       if (input.value) {
         updateDateTimeInputHelper(input);
       }
+    });
+
+    var forms = [];
+    Array.prototype.forEach.call(datetimeInputs, function(input) {
+      if (input.form && forms.indexOf(input.form) === -1) { forms.push(input.form); }
+    });
+    forms.forEach(function(form) {
+      form.addEventListener('submit', function() { submitAsUtc(form); });
+    });
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) { restoreAfterSubmit(); }
     });
   }
 

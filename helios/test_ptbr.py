@@ -281,6 +281,11 @@ class PtBrTimezoneTextsTests(WebTest):
         self.assertContains(r, 'Tempo Universal Coordenado')
         self.assertContains(r, 'lang="pt-br"')
 
+    def test_timezone_balloon_text_in_portuguese(self):
+        r = self.get('pt-br')
+        self.assertContains(r, 'Mato Grosso')
+        self.assertContains(r, 'ajuste o fuso do seu computador')
+
     def test_timezone_script_texts_in_english(self):
         r = self.get('en')
         self.assertContains(r, 'Universal Coordinated Time')

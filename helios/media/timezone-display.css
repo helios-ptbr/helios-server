@@ -46,3 +46,37 @@
   color: #333;
   font-weight: 600;
 }
+
+/* Balloon with the browser time zone, next to datetime fields */
+.tz-balloon {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+  color: #0066cc;
+  font-size: 18px;
+  cursor: help;
+}
+
+.tz-balloon::after {
+  content: attr(data-balloon);
+  position: absolute;
+  left: 0;
+  bottom: 130%;
+  width: 280px;
+  padding: 8px 10px;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.tz-balloon:hover::after,
+.tz-balloon:focus::after {
+  opacity: 1;
+}

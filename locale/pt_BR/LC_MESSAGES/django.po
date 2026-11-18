@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 08:29-0800\n"
+"POT-Creation-Date: 2026-11-18 08:35-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -304,7 +304,7 @@ msgid "Cast as many ballots as you wish: only the last one counts."
 msgstr "Envie quantas cédulas quiser: só a última conta."
 
 #: helios/templates/_castconfirm_password.html:24
-#: server_ui/templates/base.html:115
+#: server_ui/templates/base.html:117
 msgid "log in"
 msgstr "entrar"
 
@@ -2033,7 +2033,7 @@ msgstr "liberar o resultado!"
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: helios/templates/stats.html:6 server_ui/templates/base.html:58
+#: helios/templates/stats.html:6 server_ui/templates/base.html:60
 msgid "Admin"
 msgstr "Administração"
 
@@ -2183,12 +2183,10 @@ msgstr "%(n)s cédulas enviadas há pouco"
 
 #: helios/templates/stats_user_search.html:3
 #: helios/templates/stats_user_search.html:6
-#| msgid "user search"
 msgid "User Search"
 msgstr "Busca de usuários"
 
 #: helios/templates/stats_user_search.html:10
-#| msgid "Search Voters for '%(term)s'"
 msgid "Search for user"
 msgstr "Buscar usuário"
 
@@ -2202,23 +2200,19 @@ msgid "Found %(n)s user(s)"
 msgstr "%(n)s usuário(s) encontrado(s)"
 
 #: helios/templates/stats_user_search.html:23
-#| msgid "Voter ID"
 msgid "User ID:"
 msgstr "ID do usuário:"
 
 #: helios/templates/stats_user_search.html:24
-#| msgid "Voter Type"
 msgid "User Type:"
 msgstr "Tipo de usuário:"
 
 #: helios/templates/stats_user_search.html:25
-#| msgid "Admin"
 msgid "Site Admin:"
 msgstr "Administração do site:"
 
 #: helios/templates/stats_user_search.html:28
 #, python-format
-#| msgid "Elections you Administer"
 msgid "Elections as Administrator (%(n)s)"
 msgstr "Eleições como pessoa administradora (%(n)s)"
 
@@ -2236,13 +2230,11 @@ msgstr "Nenhuma"
 
 #: helios/templates/stats_user_search.html:44
 #, python-format
-#| msgid "questions (%(n)s)"
 msgid "Elections as Voter (%(n)s)"
 msgstr "Eleições como pessoa eleitora (%(n)s)"
 
 #: helios/templates/stats_user_search.html:60
 #, python-format
-#| msgid "trustees (%(n)s)"
 msgid "Elections as Trustee (%(n)s)"
 msgstr "Eleições como pessoa curadora (%(n)s)"
 
@@ -3063,7 +3055,7 @@ msgstr ""
 "Você está com a sessão iniciada como<br /><b>%(user_id)s</b> via "
 "<b>%(user_type)s</b>."
 
-#: helios_auth/templates/index.html:12 server_ui/templates/base.html:109
+#: helios_auth/templates/index.html:12 server_ui/templates/base.html:111
 msgid "logout"
 msgstr "sair"
 
@@ -3153,43 +3145,59 @@ msgstr "Seu fuso horário local"
 msgid "This time is:"
 msgstr "Este horário é:"
 
-#: server_ui/templates/base.html:50
+#: server_ui/templates/base.html:33
+#, python-format
+msgid ""
+"Enter the date and time in your browser time zone (%%(tz)s). Helios stores "
+"it in UTC."
+msgstr "Digite a data e a hora no fuso horário do seu navegador (%%(tz)s). O Helios guarda em UTC."
+
+#: server_ui/templates/base.html:34
+#, python-format
+msgid ""
+"Your browser time zone is %%(tz)s. Anyone in another time zone, for example "
+"one hour or two hours behind, types the time shown by their own browser: "
+"Helios converts it to UTC. If this zone is wrong, fix the time zone of your "
+"computer."
+msgstr "Seu fuso horário é %%(tz)s. Quem está em outro fuso, como Mato Grosso (UTC-04:00) ou Acre (UTC-05:00), digita o horário do próprio navegador: o Helios converte para UTC. Se este fuso estiver errado, ajuste o fuso do seu computador."
+
+#: server_ui/templates/base.html:52
 msgid "Menu"
 msgstr "Menu"
 
-#: server_ui/templates/base.html:62
+#: server_ui/templates/base.html:64
 msgid "About Helios"
 msgstr "Sobre o Helios"
 
-#: server_ui/templates/base.html:70
+#: server_ui/templates/base.html:72
 msgid "About"
 msgstr "Sobre"
 
-#: server_ui/templates/base.html:72
+#: server_ui/templates/base.html:74
 msgid "Code"
 msgstr "Código"
 
-#: server_ui/templates/base.html:74
+#: server_ui/templates/base.html:76
 msgid "Docs"
 msgstr "Documentação"
 
-#: server_ui/templates/base.html:76
+#: server_ui/templates/base.html:78
 msgid "FAQ"
 msgstr "Perguntas frequentes"
 
-#: server_ui/templates/base.html:78
+#: server_ui/templates/base.html:80
 msgid "Privacy"
 msgstr "Privacidade"
 
-#: server_ui/templates/base.html:81
+#: server_ui/templates/base.html:83
 msgid "Help!"
 msgstr "Ajuda!"
 
-#: server_ui/templates/base.html:108
+#: server_ui/templates/base.html:110
 msgid "logged in as"
 msgstr "sessão iniciada como"
 
-#: server_ui/templates/base.html:112
+#: server_ui/templates/base.html:114
 #, python-format
 msgid ""
 "You are signed in as voter <u>%(voter_name)s</u> in election "
@@ -3200,11 +3208,11 @@ msgstr ""
 "<u>%(election_name)s</u>. [<a href=\"%(host)s%(logout_path)s?"
 "return_url=%(return_url)s\">sair</a>]"
 
-#: server_ui/templates/base.html:115
+#: server_ui/templates/base.html:117
 msgid "not logged in."
 msgstr "sem sessão iniciada."
 
-#: server_ui/templates/base.html:117
+#: server_ui/templates/base.html:119
 msgid "powered by <a href=\"http://heliosvoting.org\">Helios Voting</a>."
 msgstr "feito com <a href=\"http://heliosvoting.org\">Helios Voting</a>."
 
