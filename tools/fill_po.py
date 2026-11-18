@@ -3,7 +3,8 @@
 
 Uso: python3 tools/fill_po.py locale/pt_BR/LC_MESSAGES/django.po traducoes.json
 O JSON e um objeto {"msgid": "msgstr"}. So preenche entradas com msgstr vazio.
-Entradas 'fuzzy' que recebem traducao perdem a marca. Falha se faltar ou sobrar placeholder.
+Entradas 'fuzzy' que recebem traducao perdem a marca. Falha se a traducao tiver placeholder que nao existe no original.
+Placeholder do original que a traducao nao usa vira aviso (permitido).
 """
 import json
 import re
@@ -34,8 +35,13 @@ def main(po_path, json_path):
         if len(entries) == 1 and entries[0][0] and entries[0][0] in tr and (not entries[0][1] or entries[0][2]):
             msgid = entries[0][0]
             new = tr[msgid]
-            if sorted(po2js.PLACEHOLDER_RE.findall(msgid)) != sorted(po2js.PLACEHOLDER_RE.findall(new)):
-                raise SystemExit("placeholder diferente: %r" % msgid)
+            src_ph = po2js.PLACEHOLDER_RE.findall(msgid)
+            dst_ph = po2js.PLACEHOLDER_RE.findall(new)
+            extra = [x for x in dst_ph if x not in src_ph]
+            if extra:
+                raise SystemExit("placeholder que nao existe no original %s: %r" % (extra, msgid))
+            for x in set(src_ph) - set(dst_ph):
+                print("aviso: %s nao usado na traducao de %r" % (x, msgid[:60]))
             lines = b.split("\n")
             comments = []
             for l in lines:

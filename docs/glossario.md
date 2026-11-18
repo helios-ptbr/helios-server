@@ -20,7 +20,7 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 
 | Inglês | pt-BR | Situação | Observação |
 |---|---|---|---|
-| election | eleição | em uso | |
+| election | eleição | em uso | Tipo "referendum" (campo `election_type`): **consulta**. Os dois são femininos, então "esta %(etype)s" e "%(etype)s privada" concordam. |
 | question | pergunta | em uso | |
 | answer, choice, option | opção | proposta | Em "selections out of possible", usamos "seleções". |
 | ballot | cédula | em uso | |
@@ -34,7 +34,8 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 | eligibility | elegibilidade | em uso | |
 | to tally | apurar | em uso | "tally" (noun): apuração. |
 | result | resultado | proposta | |
-| freeze (ballot, election) | congelar | decidir | Pode ser "fechar a configuração" ou "travar". |
+| freeze ballot | congelar a urna | em uso | Texto: "congelar a urna e abrir a eleição". Aqui "ballot" é o conjunto da votação (perguntas e lista de pessoas eleitoras), não uma cédula. |
+| ballot box | urna | proposta | O lugar onde ficam as cédulas cifradas. |
 | opt out (of emails) | deixar de receber e-mails | proposta | Botão: "Não quero receber e-mails". |
 
 ## Criptografia e auditoria
