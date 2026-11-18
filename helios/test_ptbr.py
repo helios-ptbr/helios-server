@@ -90,3 +90,13 @@ class PtBrAdminPagesTests(WebTest):
         self.assertEqual(r.status_code, 200)
         self.assertNotContains(r, 'Freeze Ballot')
         self.assertContains(r, 'Congelar a urna')
+
+    def test_trustees_page(self):
+        r = self.get(reverse('election@trustees@view', args=[self.election.uuid]))
+        self.assertEqual(r.status_code, 200)
+        self.assertContains(r, 'Pessoas curadoras')
+        self.assertNotContains(r, 'Trustees are responsible')
+
+    def test_trustees_page_in_english(self):
+        r = self.get(reverse('election@trustees@view', args=[self.election.uuid]), lang='en')
+        self.assertContains(r, 'Trustees are responsible')
