@@ -1,8 +1,9 @@
 {% extends "helios/templates/cryptobase.html" %}
+{% load i18n %}
 
-{% block title %}Questions for {{election.name}}{% endblock %}
+{% block title %}{% blocktranslate with name=election.name %}Questions for {{ name }}{% endblocktranslate %}{% endblock %}
 {% block content %}
-  <h3 class="title">{{election.name}} &mdash; Questions <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">back to election</a>]</span></h3>
+  <h3 class="title">{{election.name}} &mdash; {% translate "Questions" %} <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">{% translate "back to election" %}</a>]</span></h3>
 
   <script language="javascript">
 {% if election.questions %}
@@ -17,6 +18,45 @@
 {% endif %}
 
   CSRF_TOKEN = '{{csrf_token}}';
+
+  // Texts of this page and of static_templates/question.html, translated by Django.
+  var I18N = {
+    edit: "{% translate "edit" as s %}{{ s|escapejs }}",
+    confirm_remove: "{% translate "Are you sure you want to remove this question?" as s %}{{ s|escapejs }}",
+    selection: "{% translate "Selection:" as s %}{{ s|escapejs }}",
+    to: "{% translate "to" as s %}{{ s|escapejs }}",
+    unlimited: "{% translate "unlimited" as s %}{{ s|escapejs }}",
+    result_type: "{% translate "Result type:" as s %}{{ s|escapejs }}",
+    absolute: "{% translate "absolute" as s %}{{ s|escapejs }}",
+    relative: "{% translate "relative" as s %}{{ s|escapejs }}",
+    order: "{% translate "Order:" as s %}{{ s|escapejs }}",
+    randomized: "{% translate "randomized" as s %}{{ s|escapejs }}",
+    more_info: "{% translate "More information" as s %}{{ s|escapejs }}",
+    edit_question: "{% translate "Edit Question" as s %}{{ s|escapejs }}",
+    question_text: "{% translate "Question Text" as s %}{{ s|escapejs }}",
+    enter_question: "{% translate "Enter your question here" as s %}{{ s|escapejs }}",
+    select_between: "{% translate "Select between" as s %}{{ s|escapejs }}",
+    and: "{% translate "and" as s %}{{ s|escapejs }}",
+    answers_dot: "{% translate "answers." as s %}{{ s|escapejs }}",
+    random_order: "{% translate "Random order:" as s %}{{ s|escapejs }}",
+    no: "{% translate "No" as s %}{{ s|escapejs }}",
+    yes: "{% translate "Yes" as s %}{{ s|escapejs }}",
+    answer_options: "{% translate "Answer Options" as s %}{{ s|escapejs }}",
+    add_5_more: "{% translate "Add 5 More Answers" as s %}{{ s|escapejs }}",
+    update_question: "{% translate "Update Question" as s %}{{ s|escapejs }}",
+    cancel: "{% translate "Cancel" as s %}{{ s|escapejs }}",
+    no_questions: "{% translate "No questions have been added yet." as s %}{{ s|escapejs }}",
+    add_new_question: "{% translate "Add a New Question" as s %}{{ s|escapejs }}",
+    add_question: "{% translate "Add Question" as s %}{{ s|escapejs }}",
+    enter_answer: "{% translate "Enter answer option" as s %}{{ s|escapejs }}",
+    enter_answer_optional: "{% translate "Enter answer option (optional)" as s %}{{ s|escapejs }}",
+    answer: "{% translate "Answer" as s %}{{ s|escapejs }}",
+    add_link: "{% translate "Add link" as s %}{{ s|escapejs }}",
+    hide_link: "{% translate "Hide link" as s %}{{ s|escapejs }}",
+    save_failed: "{% translate "The questions could not be saved. Please check that the URLs you entered are either http:// or https://" as s %}{{ s|escapejs }}",
+    fill_all: "{% translate "Please fill in all answer fields up to answer #%(last)s. You cannot skip answer #%(skipped)s." as s %}{{ s|escapejs }}",
+    need_one: "{% translate "Please enter at least one answer option." as s %}{{ s|escapejs }}"
+  };
 
   // Utility function for escaping HTML attribute values
   function escapeAttr(text) {
@@ -33,15 +73,15 @@
     answer_url = answer_url || '';
     
     var required_attr = answer_num === 1 ? 'required' : '';
-    var placeholder = answer_num === 1 ? 'Enter answer option' : 'Enter answer option (optional)';
+    var placeholder = answer_num === 1 ? I18N.enter_answer : I18N.enter_answer_optional;
     var escaped_answer = escapeAttr(answer_text);
     var escaped_url = escapeAttr(answer_url);
     var has_url = answer_url.length > 0;
     var url_display = has_url ? 'flex' : 'none';
-    var toggle_text = has_url ? '- Hide link' : '+ Add link';
+    var toggle_text = has_url ? '- ' + I18N.hide_link : '+ ' + I18N.add_link;
     
     return '<div class="answer-row">' +
-      '<div class="answer-number">Answer #' + answer_num + 
+      '<div class="answer-number">' + I18N.answer + ' #' + answer_num + 
         '<span class="url-toggle" onclick="toggle_url(this, ' + answer_num + ')">' +
           '<span>' + toggle_text + '</span>' +
         '</span>' +
@@ -56,7 +96,7 @@
   }
 
   function refresh() {
-      $('#questions').processTemplate({'questions' : QUESTIONS, 'admin_p' : ADMIN_P}); 
+      $('#questions').processTemplate({'questions' : QUESTIONS, 'admin_p' : ADMIN_P, 'i18n' : I18N}); 
 
       add_answers($('#answer_table'),DEFAULT_NUM_ANSWERS);
  }
@@ -64,7 +104,7 @@
   function save_questions(callback) {
       $.post('./save_questions', {'questions_json' : $.toJSON(QUESTIONS), 'csrf_token': CSRF_TOKEN}, function(result) {
           if (result == "FAILURE") {
-            alert("The questions could not be saved. Please check that the URLs you entered are either http:// or https://");
+            alert(I18N.save_failed);
           } else {
             callback();
           }
@@ -100,7 +140,7 @@
       // Check for gaps in answers (empty answers before the last valid one)
       for (var k = 0; k <= last_valid_index; k++) {
           if (all_answers[k] === '') {
-              alert('Please fill in all answer fields up to answer #' + (last_valid_index + 1) + '. You cannot skip answer #' + (k + 1) + '.');
+              alert(I18N.fill_all.replace('%(last)s', last_valid_index + 1).replace('%(skipped)s', k + 1));
               return null;
           }
       }
@@ -112,7 +152,7 @@
       }
       
       if (new_q.answers.length == 0) {
-        alert('Please enter at least one answer option.');
+        alert(I18N.need_one);
         return null;
       }
       
@@ -187,10 +227,10 @@
     var wrapper = $('#url_wrapper_' + num);
     if (wrapper.is(':visible')) {
       wrapper.hide();
-      $(element).find('span').text('+ Add link');
+      $(element).find('span').text('+ ' + I18N.add_link);
     } else {
       wrapper.show();
-      $(element).find('span').text('- Hide link');
+      $(element).find('span').text('- ' + I18N.hide_link);
     }
   }
 

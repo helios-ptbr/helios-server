@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 06:26-0800\n"
+"POT-Creation-Date: 2026-11-18 06:29-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -450,6 +450,7 @@ msgid "They will no longer be able to manage this election."
 msgstr "Essa pessoa deixará de poder gerenciar esta eleição."
 
 #: helios/templates/election_admin_remove.html:24
+#: helios/templates/election_questions.html:47
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -468,6 +469,7 @@ msgstr "Pessoas administradoras"
 #: helios/templates/election_build.html:5
 #: helios/templates/election_compute_tally.html:20
 #: helios/templates/election_compute_tally.html:40
+#: helios/templates/election_questions.html:6
 #: helios/templates/list_trustees.html:7 helios/templates/voters_email.html:13
 #: helios/templates/voters_list.html:7 helios/templates/voters_manage.html:5
 #: helios/templates/voters_search.html:5 helios/templates/voters_upload.html:5
@@ -640,6 +642,7 @@ msgid "Smart Ballot Tracker"
 msgstr "Código de rastreamento da cédula"
 
 #: helios/templates/election_build.html:5
+#: helios/templates/election_questions.html:6
 msgid "Questions"
 msgstr "Perguntas"
 
@@ -917,6 +920,166 @@ msgstr "A votação termina em %(t)s"
 msgid "back to the election"
 msgstr "voltar à eleição"
 
+#: helios/templates/election_questions.html:4
+#, python-format
+#| msgid "Trustees for %(name)s"
+msgid "Questions for %(name)s"
+msgstr "Perguntas de %(name)s"
+
+#: helios/templates/election_questions.html:24
+#: helios/templates/election_view.html:11
+msgid "edit"
+msgstr "editar"
+
+#: helios/templates/election_questions.html:25
+#| msgid "Are you sure you want to remove this Trustee?"
+msgid "Are you sure you want to remove this question?"
+msgstr "Tem certeza de que quer remover esta pergunta?"
+
+#: helios/templates/election_questions.html:26
+#| msgid "election"
+msgid "Selection:"
+msgstr "Seleção:"
+
+#: helios/templates/election_questions.html:27
+msgid "to"
+msgstr "a"
+
+#: helios/templates/election_questions.html:28
+msgid "unlimited"
+msgstr "sem limite"
+
+#: helios/templates/election_questions.html:29
+msgid "Result type:"
+msgstr "Tipo de resultado:"
+
+#: helios/templates/election_questions.html:30
+msgid "absolute"
+msgstr "absoluto"
+
+#: helios/templates/election_questions.html:31
+msgid "relative"
+msgstr "relativo"
+
+#: helios/templates/election_questions.html:32
+msgid "Order:"
+msgstr "Ordem:"
+
+#: helios/templates/election_questions.html:33
+msgid "randomized"
+msgstr "aleatória"
+
+#: helios/templates/election_questions.html:34
+#| msgid "Why we need your information"
+msgid "More information"
+msgstr "Mais informações"
+
+#: helios/templates/election_questions.html:35
+#| msgid "Questions"
+msgid "Edit Question"
+msgstr "Editar a pergunta"
+
+#: helios/templates/election_questions.html:36
+#| msgid "Questions"
+msgid "Question Text"
+msgstr "Texto da pergunta"
+
+#: helios/templates/election_questions.html:37
+msgid "Enter your question here"
+msgstr "Digite a sua pergunta aqui"
+
+#: helios/templates/election_questions.html:38
+msgid "Select between"
+msgstr "Escolha entre"
+
+#: helios/templates/election_questions.html:39
+#| msgid ", and"
+msgid "and"
+msgstr "e"
+
+#: helios/templates/election_questions.html:40
+msgid "answers."
+msgstr "opções."
+
+#: helios/templates/election_questions.html:41
+#| msgid "Randomize answer order"
+msgid "Random order:"
+msgstr "Ordem aleatória:"
+
+#: helios/templates/election_questions.html:42
+msgid "No"
+msgstr "Não"
+
+#: helios/templates/election_questions.html:43
+msgid "Yes"
+msgstr "Sim"
+
+#: helios/templates/election_questions.html:44
+msgid "Answer Options"
+msgstr "Opções de resposta"
+
+#: helios/templates/election_questions.html:45
+msgid "Add 5 More Answers"
+msgstr "Adicionar mais 5 opções"
+
+#: helios/templates/election_questions.html:46
+#| msgid "Questions"
+msgid "Update Question"
+msgstr "Atualizar a pergunta"
+
+#: helios/templates/election_questions.html:48
+#| msgid "No additional administrators have been added."
+msgid "No questions have been added yet."
+msgstr "Nenhuma pergunta foi adicionada ainda."
+
+#: helios/templates/election_questions.html:49
+#| msgid "Create a New Election"
+msgid "Add a New Question"
+msgstr "Adicionar uma nova pergunta"
+
+#: helios/templates/election_questions.html:50
+#| msgid "Questions"
+msgid "Add Question"
+msgstr "Adicionar a pergunta"
+
+#: helios/templates/election_questions.html:51
+msgid "Enter answer option"
+msgstr "Digite uma opção de resposta"
+
+#: helios/templates/election_questions.html:52
+msgid "Enter answer option (optional)"
+msgstr "Digite uma opção de resposta (opcional)"
+
+#: helios/templates/election_questions.html:53
+msgid "Answer"
+msgstr "Opção"
+
+#: helios/templates/election_questions.html:54
+msgid "Add link"
+msgstr "Adicionar link"
+
+#: helios/templates/election_questions.html:55
+msgid "Hide link"
+msgstr "Ocultar link"
+
+#: helios/templates/election_questions.html:56
+msgid ""
+"The questions could not be saved. Please check that the URLs you entered are "
+"either http:// or https://"
+msgstr "Não foi possível salvar as perguntas. Confira se os endereços digitados começam com http:// ou https://"
+
+#: helios/templates/election_questions.html:57
+#, python-format
+msgid ""
+"Please fill in all answer fields up to answer #%%(last)s. You cannot skip "
+"answer #%%(skipped)s."
+msgstr "Preencha todas as opções até a opção #%%(last)s. Não dá para pular a opção #%%(skipped)s."
+
+#: helios/templates/election_questions.html:58
+#| msgid "Please enter an email address."
+msgid "Please enter at least one answer option."
+msgstr "Digite pelo menos uma opção de resposta."
+
 #: helios/templates/election_register.html:5
 msgid "Register"
 msgstr "Cadastro"
@@ -958,10 +1121,6 @@ msgstr "eleição"
 #: helios/templates/election_view.html:6
 msgid "referendum"
 msgstr "consulta"
-
-#: helios/templates/election_view.html:11
-msgid "edit"
-msgstr "editar"
 
 #: helios/templates/election_view.html:18
 #, python-format
@@ -1323,7 +1482,6 @@ msgid "Elections you Administer"
 msgstr "Eleições que você administra"
 
 #: helios/templates/elections_administered.html:5
-#| msgid "back to voters"
 msgid "back to home"
 msgstr "voltar ao início"
 
@@ -1599,7 +1757,6 @@ msgstr ""
 "foram ativados direito."
 
 #: helios/templates/optout_confirm_form.html:17
-#| msgid "Email Address"
 msgid "Email address:"
 msgstr "Endereço de e-mail:"
 
@@ -1610,21 +1767,20 @@ msgstr "O que vai acontecer:"
 
 #: helios/templates/optout_confirm_form.html:25
 #: helios/templates/optout_confirmed.html:23
-#| msgid "To stop receiving all emails from Helios, click here:"
 msgid "You will not receive any emails from Helios voting system"
 msgstr "Você não receberá nenhum e-mail do sistema de votação Helios"
 
 #: helios/templates/optout_confirm_form.html:26
 #: helios/templates/optout_confirmed.html:24
 msgid "You cannot be added to new elections until you opt back in"
-msgstr "Você não poderá ser incluída em novas eleições até voltar a receber e-mails"
+msgstr ""
+"Você não poderá ser incluída em novas eleições até voltar a receber e-mails"
 
 #: helios/templates/optout_confirm_form.html:27
 msgid "You can opt back in at any time"
 msgstr "Você pode voltar a receber e-mails quando quiser"
 
 #: helios/templates/optout_confirm_form.html:34
-#| msgid "To stop receiving all emails from Helios, click here:"
 msgid "You will resume receiving emails from Helios voting system"
 msgstr "Você voltará a receber e-mails do sistema de votação Helios"
 
@@ -1638,12 +1794,10 @@ msgid "You can opt out again at any time"
 msgstr "Você pode deixar de receber e-mails de novo quando quiser"
 
 #: helios/templates/optout_confirm_form.html:44 helios/views.py:2073
-#| msgid "Confirm Vote"
 msgid "Confirm Opt-Out"
 msgstr "Confirmar a saída da lista de e-mails"
 
 #: helios/templates/optout_confirm_form.html:44 helios/views.py:2189
-#| msgid "Confirm Vote"
 msgid "Confirm Opt-In"
 msgstr "Confirmar a volta à lista de e-mails"
 
@@ -1661,27 +1815,28 @@ msgstr "O que isso significa:"
 msgid ""
 "You can opt back in at any time by visiting <a href=\"%(optin_url)s\">the "
 "opt-in page</a>"
-msgstr "Você pode voltar a receber e-mails quando quiser, pela <a href=\"%(optin_url)s\">página de volta à lista</a>"
+msgstr ""
+"Você pode voltar a receber e-mails quando quiser, pela <a "
+"href=\"%(optin_url)s\">página de volta à lista</a>"
 
 #: helios/templates/optout_confirmed.html:32
-#| msgid "To stop receiving all emails from Helios, click here:"
 msgid "You will now receive emails from Helios voting system"
 msgstr "Agora você receberá e-mails do sistema de votação Helios"
 
 #: helios/templates/optout_confirmed.html:34
 msgid ""
 "You can opt out again at any time using the unsubscribe link in any email"
-msgstr "Você pode deixar de receber e-mails de novo, pelo link de cancelamento que vem em qualquer e-mail"
+msgstr ""
+"Você pode deixar de receber e-mails de novo, pelo link de cancelamento que "
+"vem em qualquer e-mail"
 
 #: helios/templates/optout_confirmed.html:40
 #: helios/templates/optout_not_opted_out.html:26
 #: helios/templates/optout_success.html:26
-#| msgid "return to election info"
 msgid "Return to Helios"
 msgstr "Voltar ao Helios"
 
 #: helios/templates/optout_form.html:23
-#| msgid "Email Address"
 msgid "Email Address:"
 msgstr "Endereço de e-mail:"
 
@@ -1694,26 +1849,30 @@ msgid "Send Opt-In Confirmation"
 msgstr "Enviar a confirmação de volta"
 
 #: helios/templates/optout_form.html:34 helios/templates/optout_success.html:20
-#| msgid "Next Step:"
 msgid "Next Steps:"
 msgstr "Próximos passos:"
 
 #: helios/templates/optout_form.html:35
 msgid ""
 "You will receive a confirmation email with a link to complete your request."
-msgstr "Você receberá um e-mail de confirmação, com um link para concluir o pedido."
+msgstr ""
+"Você receberá um e-mail de confirmação, com um link para concluir o pedido."
 
 #: helios/templates/optout_form.html:37
 msgid ""
 "Once opted out, you will not receive any emails from Helios until you opt "
 "back in."
-msgstr "Depois de sair da lista, você não receberá e-mails do Helios até pedir a volta."
+msgstr ""
+"Depois de sair da lista, você não receberá e-mails do Helios até pedir a "
+"volta."
 
 #: helios/templates/optout_form.html:39
 msgid ""
 "Once opted back in, you will resume receiving emails from Helios voting "
 "system."
-msgstr "Depois de voltar à lista, você receberá de novo os e-mails do sistema de votação Helios."
+msgstr ""
+"Depois de voltar à lista, você receberá de novo os e-mails do sistema de "
+"votação Helios."
 
 #: helios/templates/optout_not_opted_out.html:4
 msgid "Already Receiving Emails"
@@ -1728,7 +1887,8 @@ msgstr "Boa notícia!"
 msgid ""
 "The email address <strong>%(email)s</strong> is already receiving emails "
 "from Helios."
-msgstr "O endereço de e-mail <strong>%(email)s</strong> já recebe e-mails do Helios."
+msgstr ""
+"O endereço de e-mail <strong>%(email)s</strong> já recebe e-mails do Helios."
 
 #: helios/templates/optout_not_opted_out.html:21
 msgid "No action is needed - you're all set!"
@@ -1738,13 +1898,16 @@ msgstr "Não precisa fazer nada: está tudo certo!"
 msgid ""
 "If you want to stop receiving emails in the future, you can use the "
 "unsubscribe link in any Helios email."
-msgstr "Se quiser deixar de receber e-mails no futuro, use o link de cancelamento que vem em qualquer e-mail do Helios."
+msgstr ""
+"Se quiser deixar de receber e-mails no futuro, use o link de cancelamento "
+"que vem em qualquer e-mail do Helios."
 
 #: helios/templates/optout_success.html:21
 msgid ""
 "Please check your email and click the confirmation link to complete your "
 "request."
-msgstr "Confira o seu e-mail e clique no link de confirmação para concluir o pedido."
+msgstr ""
+"Confira o seu e-mail e clique no link de confirmação para concluir o pedido."
 
 #: helios/templates/optout_success.html:22
 msgid "If you don't see the email, please check your spam folder."
@@ -1862,38 +2025,31 @@ msgid "Admin"
 msgstr "Administração"
 
 #: helios/templates/stats.html:9
-#| msgid "election"
 msgid "elections"
 msgstr "eleições"
 
 #: helios/templates/stats.html:10
-#| msgid "create election"
 msgid "deleted elections"
 msgstr "eleições apagadas"
 
 #: helios/templates/stats.html:11
-#| msgid "clear search"
 msgid "user search"
 msgstr "busca de usuários"
 
 #: helios/templates/stats.html:12
-#| msgid "Recent Votes"
 msgid "recent votes"
 msgstr "votos recentes"
 
 #: helios/templates/stats.html:13
-#| msgid "create election"
 msgid "recent problem elections"
 msgstr "eleições com problema recentes"
 
 #: helios/templates/stats.html:16
 #, python-format
-#| msgid "<b>%(n)s</b> cast votes."
 msgid "<b>%(n)s</b> votes in queue."
 msgstr "<b>%(n)s</b> votos na fila."
 
 #: helios/templates/stats.html:16
-#| msgid "archive it"
 msgid "force it"
 msgstr "forçar"
 
@@ -1903,7 +2059,10 @@ msgid ""
 "Background tasks: <b>%(ready)s</b> waiting, <b>%(running)s</b> running "
 "(%(stuck)s for over %(minutes)s minutes, see <tt>manage.py "
 "requeue_stuck_tasks</tt>), <b>%(failed)s</b> failed in the last day."
-msgstr "Tarefas em segundo plano: <b>%(ready)s</b> esperando, <b>%(running)s</b> rodando (%(stuck)s há mais de %(minutes)s minutos, veja <tt>manage.py requeue_stuck_tasks</tt>), <b>%(failed)s</b> com falha no último dia."
+msgstr ""
+"Tarefas em segundo plano: <b>%(ready)s</b> esperando, <b>%(running)s</b> "
+"rodando (%(stuck)s há mais de %(minutes)s minutos, veja <tt>manage.py "
+"requeue_stuck_tasks</tt>), <b>%(failed)s</b> com falha no último dia."
 
 #: helios/templates/stats.html:24
 msgid "Announcement banner shown on every page (leave empty for none):"
@@ -1915,7 +2074,6 @@ msgstr "Salvar"
 
 #: helios/templates/stats_deleted_elections.html:4
 #: helios/templates/stats_deleted_elections.html:7
-#| msgid "Generate Election Keys"
 msgid "Deleted Elections"
 msgstr "Eleições apagadas"
 
@@ -1936,21 +2094,18 @@ msgstr "limpar a busca"
 #: helios/templates/stats_deleted_elections.html:19
 #: helios/templates/stats_elections.html:18
 #, python-format
-#| msgid "previous %(n)s"
 msgid "previous %(limit)s"
 msgstr "%(limit)s anteriores"
 
 #: helios/templates/stats_deleted_elections.html:22
 #: helios/templates/stats_elections.html:21
 #, python-format
-#| msgid "Voters %(a)s - %(b)s (of %(total)s)"
 msgid "Elections %(start)s - %(end)s (of %(total)s)"
 msgstr "Eleições %(start)s - %(end)s (de %(total)s)"
 
 #: helios/templates/stats_deleted_elections.html:25
 #: helios/templates/stats_elections.html:24
 #, python-format
-#| msgid "next %(n)s"
 msgid "next %(limit)s"
 msgstr "%(limit)s seguintes"
 
@@ -1966,31 +2121,26 @@ msgid "Deleted at: %(when)s"
 msgstr "Apagada em: %(when)s"
 
 #: helios/templates/stats_deleted_elections.html:35
-#| msgid ""
-#| "Are you sure you want to delete this election? Once deleted, only site "
-#| "administrators can restore it."
 msgid ""
 "Are you sure you want to restore this election? It will become visible to "
 "its administrators again."
-msgstr "Tem certeza de que quer restaurar esta eleição? Ela voltará a aparecer para as pessoas administradoras."
+msgstr ""
+"Tem certeza de que quer restaurar esta eleição? Ela voltará a aparecer para "
+"as pessoas administradoras."
 
 #: helios/templates/stats_deleted_elections.html:37
-#| msgid "delete it"
 msgid "undelete"
 msgstr "restaurar"
 
 #: helios/templates/stats_deleted_elections.html:42
-#| msgid "no featured elections at the moment"
 msgid "No deleted elections found."
 msgstr "Nenhuma eleição apagada."
 
 #: helios/templates/stats_elections.html:6
-#| msgid "Election"
 msgid "Elections"
 msgstr "Eleições"
 
 #: helios/templates/stats_problem_elections.html:6
-#| msgid "create election"
 msgid "Problematic Elections"
 msgstr "Eleições com problema"
 
@@ -2000,8 +2150,6 @@ msgstr "Sem congelar há mais de um dia."
 
 #: helios/templates/stats_problem_elections.html:12
 #, python-format
-#| msgid "%(n)s cast vote"
-#| msgid_plural "%(n)s cast votes"
 msgid "%(n)s voters"
 msgstr "%(n)s pessoas eleitoras"
 
@@ -2015,8 +2163,6 @@ msgstr "Últimas 24 horas"
 
 #: helios/templates/stats_recent_votes.html:12
 #, python-format
-#| msgid "%(n)s cast vote"
-#| msgid_plural "%(n)s cast votes"
 msgid "%(n)s recently cast votes"
 msgstr "%(n)s cédulas enviadas há pouco"
 
@@ -2470,19 +2616,18 @@ msgstr "Deixar de receber e-mails do Helios"
 
 #: helios/views.py:1994 helios/views.py:2004 helios/views.py:2012
 #: helios/views.py:2048
-#| msgid "To stop receiving all emails from Helios, click here:"
 msgid ""
 "Enter your email address to stop receiving all emails from Helios voting "
 "system."
-msgstr "Digite o seu endereço de e-mail para deixar de receber todos os e-mails do sistema de votação Helios."
+msgstr ""
+"Digite o seu endereço de e-mail para deixar de receber todos os e-mails do "
+"sistema de votação Helios."
 
 #: helios/views.py:2005 helios/views.py:2113
-#| msgid "Email Address"
 msgid "Email address is required"
 msgstr "O endereço de e-mail é obrigatório"
 
 #: helios/views.py:2013 helios/views.py:2121
-#| msgid "Help Email Address"
 msgid "Invalid email address"
 msgstr "Endereço de e-mail inválido"
 
@@ -2504,7 +2649,8 @@ msgid ""
 "Helios Voting System\n"
 msgstr ""
 "\n"
-"Confirme que você quer deixar de receber todos os e-mails do sistema de votação Helios.\n"
+"Confirme que você quer deixar de receber todos os e-mails do sistema de "
+"votação Helios.\n"
 "\n"
 "Clique neste link para confirmar: %(url)s\n"
 "\n"
@@ -2526,15 +2672,18 @@ msgstr "Confirmação de saída enviada"
 msgid ""
 "We have sent you a confirmation email. Please click the link in the email to "
 "complete your opt-out request."
-msgstr "Enviamos um e-mail de confirmação. Clique no link do e-mail para concluir o seu pedido de saída."
+msgstr ""
+"Enviamos um e-mail de confirmação. Clique no link do e-mail para concluir o "
+"seu pedido de saída."
 
 #: helios/views.py:2074
 msgid ""
 "Please confirm that you want to opt out of all Helios voting system emails."
-msgstr "Confirme que você quer deixar de receber todos os e-mails do sistema de votação Helios."
+msgstr ""
+"Confirme que você quer deixar de receber todos os e-mails do sistema de "
+"votação Helios."
 
 #: helios/views.py:2089
-#| msgid "Vote Successfully Cast!"
 msgid "Successfully Opted Out"
 msgstr "Saída da lista concluída"
 
@@ -2543,7 +2692,8 @@ msgstr "Saída da lista concluída"
 msgid ""
 "The email address %(email)s has been successfully opted out of all Helios "
 "emails."
-msgstr "O endereço de e-mail %(email)s não receberá mais nenhum e-mail do Helios."
+msgstr ""
+"O endereço de e-mail %(email)s não receberá mais nenhum e-mail do Helios."
 
 #: helios/views.py:2101 helios/views.py:2111 helios/views.py:2119
 #: helios/views.py:2159
@@ -2555,7 +2705,9 @@ msgstr "Voltar a receber e-mails do Helios"
 msgid ""
 "Enter your email address to resume receiving emails from Helios voting "
 "system."
-msgstr "Digite o seu endereço de e-mail para voltar a receber e-mails do sistema de votação Helios."
+msgstr ""
+"Digite o seu endereço de e-mail para voltar a receber e-mails do sistema de "
+"votação Helios."
 
 #: helios/views.py:2132
 msgid "Confirm your opt-in to Helios emails"
@@ -2575,7 +2727,8 @@ msgid ""
 "Helios Voting System\n"
 msgstr ""
 "\n"
-"Confirme que você quer voltar a receber os e-mails do sistema de votação Helios.\n"
+"Confirme que você quer voltar a receber os e-mails do sistema de votação "
+"Helios.\n"
 "\n"
 "Clique neste link para confirmar: %(url)s\n"
 "\n"
@@ -2592,13 +2745,16 @@ msgstr "Confirmação de volta enviada"
 msgid ""
 "We have sent you a confirmation email. Please click the link in the email to "
 "complete your opt-in request."
-msgstr "Enviamos um e-mail de confirmação. Clique no link do e-mail para concluir o seu pedido de volta."
+msgstr ""
+"Enviamos um e-mail de confirmação. Clique no link do e-mail para concluir o "
+"seu pedido de volta."
 
 #: helios/views.py:2190
 msgid ""
 "Please confirm that you want to resume receiving emails from Helios voting "
 "system."
-msgstr "Confirme que você quer voltar a receber e-mails do sistema de votação Helios."
+msgstr ""
+"Confirme que você quer voltar a receber e-mails do sistema de votação Helios."
 
 #: helios/views.py:2205
 msgid "Successfully Opted Back In"
