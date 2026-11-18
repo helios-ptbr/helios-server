@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 06:29-0800\n"
+"POT-Creation-Date: 2026-11-18 06:38-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -922,7 +922,6 @@ msgstr "voltar à eleição"
 
 #: helios/templates/election_questions.html:4
 #, python-format
-#| msgid "Trustees for %(name)s"
 msgid "Questions for %(name)s"
 msgstr "Perguntas de %(name)s"
 
@@ -932,12 +931,10 @@ msgid "edit"
 msgstr "editar"
 
 #: helios/templates/election_questions.html:25
-#| msgid "Are you sure you want to remove this Trustee?"
 msgid "Are you sure you want to remove this question?"
 msgstr "Tem certeza de que quer remover esta pergunta?"
 
 #: helios/templates/election_questions.html:26
-#| msgid "election"
 msgid "Selection:"
 msgstr "Seleção:"
 
@@ -970,17 +967,14 @@ msgid "randomized"
 msgstr "aleatória"
 
 #: helios/templates/election_questions.html:34
-#| msgid "Why we need your information"
 msgid "More information"
 msgstr "Mais informações"
 
 #: helios/templates/election_questions.html:35
-#| msgid "Questions"
 msgid "Edit Question"
 msgstr "Editar a pergunta"
 
 #: helios/templates/election_questions.html:36
-#| msgid "Questions"
 msgid "Question Text"
 msgstr "Texto da pergunta"
 
@@ -993,7 +987,6 @@ msgid "Select between"
 msgstr "Escolha entre"
 
 #: helios/templates/election_questions.html:39
-#| msgid ", and"
 msgid "and"
 msgstr "e"
 
@@ -1002,7 +995,6 @@ msgid "answers."
 msgstr "opções."
 
 #: helios/templates/election_questions.html:41
-#| msgid "Randomize answer order"
 msgid "Random order:"
 msgstr "Ordem aleatória:"
 
@@ -1023,22 +1015,18 @@ msgid "Add 5 More Answers"
 msgstr "Adicionar mais 5 opções"
 
 #: helios/templates/election_questions.html:46
-#| msgid "Questions"
 msgid "Update Question"
 msgstr "Atualizar a pergunta"
 
 #: helios/templates/election_questions.html:48
-#| msgid "No additional administrators have been added."
 msgid "No questions have been added yet."
 msgstr "Nenhuma pergunta foi adicionada ainda."
 
 #: helios/templates/election_questions.html:49
-#| msgid "Create a New Election"
 msgid "Add a New Question"
 msgstr "Adicionar uma nova pergunta"
 
 #: helios/templates/election_questions.html:50
-#| msgid "Questions"
 msgid "Add Question"
 msgstr "Adicionar a pergunta"
 
@@ -1066,17 +1054,20 @@ msgstr "Ocultar link"
 msgid ""
 "The questions could not be saved. Please check that the URLs you entered are "
 "either http:// or https://"
-msgstr "Não foi possível salvar as perguntas. Confira se os endereços digitados começam com http:// ou https://"
+msgstr ""
+"Não foi possível salvar as perguntas. Confira se os endereços digitados "
+"começam com http:// ou https://"
 
 #: helios/templates/election_questions.html:57
 #, python-format
 msgid ""
 "Please fill in all answer fields up to answer #%%(last)s. You cannot skip "
 "answer #%%(skipped)s."
-msgstr "Preencha todas as opções até a opção #%%(last)s. Não dá para pular a opção #%%(skipped)s."
+msgstr ""
+"Preencha todas as opções até a opção #%%(last)s. Não dá para pular a opção "
+"#%%(skipped)s."
 
 #: helios/templates/election_questions.html:58
-#| msgid "Please enter an email address."
 msgid "Please enter at least one answer option."
 msgstr "Digite pelo menos uma opção de resposta."
 
@@ -1700,6 +1691,7 @@ msgid "send login"
 msgstr "enviar o acesso"
 
 #: helios/templates/list_trustees.html:60
+#: helios/templates/trustee_decrypt_and_prove.html:139
 msgid "Public Key Fingerprint:"
 msgstr "Impressão digital da chave pública:"
 
@@ -1774,7 +1766,7 @@ msgstr "Você não receberá nenhum e-mail do sistema de votação Helios"
 #: helios/templates/optout_confirmed.html:24
 msgid "You cannot be added to new elections until you opt back in"
 msgstr ""
-"Você não poderá ser incluída em novas eleições até voltar a receber e-mails"
+"Você não entrará em novas eleições até voltar a receber e-mails"
 
 #: helios/templates/optout_confirm_form.html:27
 msgid "You can opt back in at any time"
@@ -1787,7 +1779,7 @@ msgstr "Você voltará a receber e-mails do sistema de votação Helios"
 #: helios/templates/optout_confirm_form.html:35
 #: helios/templates/optout_confirmed.html:33
 msgid "You can be added to elections and receive voting notifications"
-msgstr "Você poderá ser incluída em eleições e receber avisos de votação"
+msgstr "Você poderá entrar em eleições e receber avisos de votação"
 
 #: helios/templates/optout_confirm_form.html:36
 msgid "You can opt out again at any time"
@@ -2165,6 +2157,150 @@ msgstr "Últimas 24 horas"
 #, python-format
 msgid "%(n)s recently cast votes"
 msgstr "%(n)s cédulas enviadas há pouco"
+
+#: helios/templates/trustee_check_sk.html:47
+msgid "try again"
+msgstr "tentar de novo"
+
+#: helios/templates/trustee_check_sk.html:49
+msgid "your secret key matches!"
+msgstr "a sua chave secreta confere!"
+
+#: helios/templates/trustee_check_sk.html:51
+msgid "OH OH, your key is bad."
+msgstr "Ops, a sua chave está errada."
+
+#: helios/templates/trustee_check_sk.html:55
+#, python-format
+msgid ""
+"%(election_name)s &mdash; Trustee %(trustee_name)s &mdash; Check Secret Key"
+msgstr "%(election_name)s &mdash; Pessoa curadora %(trustee_name)s &mdash; Conferir a chave secreta"
+
+#: helios/templates/trustee_check_sk.html:55
+#| msgid "back to home"
+msgid "back to trustee home"
+msgstr "voltar ao início da pessoa curadora"
+
+#: helios/templates/trustee_check_sk.html:58
+#, python-format
+msgid "Your public key fingerprint is: <b>%(hash)s</b>"
+msgstr "A impressão digital da sua chave pública é: <b>%(hash)s</b>"
+
+#: helios/templates/trustee_check_sk.html:62
+msgid "loading crypto functions..."
+msgstr "carregando as funções de criptografia..."
+
+#: helios/templates/trustee_check_sk.html:67
+msgid "To verify that you have the right secret key, paste it here:"
+msgstr "Para conferir se você tem a chave secreta certa, cole-a aqui:"
+
+#: helios/templates/trustee_check_sk.html:74
+msgid "check"
+msgstr "conferir"
+
+#: helios/templates/trustee_check_sk.html:79
+msgid "checking your secret key..."
+msgstr "conferindo a sua chave secreta..."
+
+#: helios/templates/trustee_decrypt_and_prove.html:108
+msgid "verification failed, you probably used the wrong key."
+msgstr "a verificação falhou. Você provavelmente usou a chave errada."
+
+#: helios/templates/trustee_decrypt_and_prove.html:135
+#, python-format
+msgid "Trustee %(trustee_name)s &mdash; Decrypt Result for %(election_name)s"
+msgstr "Pessoa curadora %(trustee_name)s &mdash; Decifrar o resultado de %(election_name)s"
+
+#: helios/templates/trustee_decrypt_and_prove.html:138
+#| msgid "Trustees"
+msgid "Trustee:"
+msgstr "Pessoa curadora:"
+
+#: helios/templates/trustee_decrypt_and_prove.html:140
+#| msgid "Election Fingerprint:"
+msgid "Encrypted Tally Fingerprint:"
+msgstr "Impressão digital da apuração cifrada:"
+
+#: helios/templates/trustee_decrypt_and_prove.html:144
+msgid ""
+"The encrypted tally for your election has been computed.<br /> Now it's time "
+"to compute and submit your partial decryption."
+msgstr "A apuração cifrada da sua eleição foi calculada.<br /> Agora é hora de calcular e enviar a sua decifragem parcial."
+
+#: helios/templates/trustee_decrypt_and_prove.html:149
+msgid ""
+"This process is performed in two steps.<br /><br /> <u>First</u>, your "
+"secret key is used to decrypt the tally <em>inside</em> your browser, "
+"without connecting to the network.<br /> You can choose to take your browser "
+"\"offline\" for this step, if you'd like.<br /><br /> <u>Second</u>, once "
+"your decryption factors have been computed, your browser will need to be "
+"\"online\" to submit them to the server.<br /> If you'd like, you can "
+"compute your decryption factors, copy them to your clipboard, restart your "
+"browser, and<br /> skip to the second step so that your browser is never "
+"online when you enter your secret key."
+msgstr "Este processo tem dois passos.<br /><br /> No <u>primeiro</u>, a sua chave secreta decifra a apuração <em>dentro</em> do seu navegador, sem usar a rede.<br /> Se quiser, deixe o navegador “offline” neste passo.<br /><br /> No <u>segundo</u>, depois que os fatores de decifragem estiverem calculados, o navegador precisa estar “online” para enviá-los ao servidor.<br /> Se preferir, calcule os fatores, copie-os para a área de transferência, reinicie o navegador e<br /> vá direto ao segundo passo. Assim o navegador nunca fica online quando você digita a chave secreta."
+
+#: helios/templates/trustee_decrypt_and_prove.html:160
+msgid "FIRST STEP: enter your secret key"
+msgstr "PRIMEIRO PASSO: digite a sua chave secreta"
+
+#: helios/templates/trustee_decrypt_and_prove.html:164
+#| msgid "Generate Election Keys"
+msgid "Generate partial decryption"
+msgstr "Gerar a decifragem parcial"
+
+#: helios/templates/trustee_decrypt_and_prove.html:168
+#| msgid "back to the election"
+msgid "skip to the second step"
+msgstr "ir direto ao segundo passo"
+
+#: helios/templates/trustee_decrypt_and_prove.html:169
+msgid "you need to have already computed your decryption factors."
+msgstr "você precisa já ter calculado os seus fatores de decifragem."
+
+#: helios/templates/trustee_decrypt_and_prove.html:174
+msgid "Generating partial decryption factors and proofs..."
+msgstr "Gerando os fatores e as provas da decifragem parcial..."
+
+#: helios/templates/trustee_decrypt_and_prove.html:179
+msgid "Submitting and checking your decryption factors and proofs..."
+msgstr "Enviando e conferindo os seus fatores e provas de decifragem..."
+
+#: helios/templates/trustee_decrypt_and_prove.html:184
+msgid "SECOND STEP: upload your partial decryption"
+msgstr "SEGUNDO PASSO: envie a sua decifragem parcial"
+
+#: helios/templates/trustee_decrypt_and_prove.html:186
+msgid ""
+"Your partial decryption factors and proofs have been generated below.<br /> "
+"Your secret key has been cleared from memory.<br /> When you're ready, you "
+"can submit this result to the server."
+msgstr "Os fatores e as provas da sua decifragem parcial foram gerados abaixo.<br /> A sua chave secreta foi apagada da memória.<br /> Quando for a hora, envie este resultado ao servidor."
+
+#: helios/templates/trustee_decrypt_and_prove.html:190
+msgid "Your partial decryption:"
+msgstr "A sua decifragem parcial:"
+
+#: helios/templates/trustee_decrypt_and_prove.html:193
+msgid "Upload decryption factors to server"
+msgstr "Enviar os fatores de decifragem ao servidor"
+
+#: helios/templates/trustee_decrypt_and_prove.html:195
+msgid "reset and restart decryption process"
+msgstr "zerar e recomeçar a decifragem"
+
+#: helios/templates/trustee_decrypt_and_prove.html:199
+msgid "Done!"
+msgstr "Pronto!"
+
+#: helios/templates/trustee_decrypt_and_prove.html:199
+#| msgid "back to election"
+msgid "Back to election"
+msgstr "Voltar à eleição"
+
+#: helios/templates/trustee_decrypt_and_prove.html:203
+msgid "Error: your secret key was likely incorrect."
+msgstr "Erro: a sua chave secreta provavelmente está errada."
 
 #: helios/templates/trustee_home.html:5
 #, python-format

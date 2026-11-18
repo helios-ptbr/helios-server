@@ -194,3 +194,36 @@ class PtBrOptOutTests(WebTest):
     def test_optout_form_in_english_is_unchanged(self):
         r = self.get(reverse('optout_form'), 'en')
         self.assertContains(r, 'Opt Out of Helios Emails')
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrTrusteePagesTests(WebTest):
+    """As telas da pessoa curadora têm JavaScript com textos: o Django traduz tudo no servidor."""
+    fixtures = ['users.json', 'election.json']
+    allow_database_queries = True
+
+    def render(self, name, lang):
+        from django.test import RequestFactory
+        from django.contrib.sessions.backends.db import SessionStore
+        from django.utils import translation
+        from helios.view_utils import render_template
+
+        election = models.Election.objects.all()[0]
+        trustee, _ = models.Trustee.objects.get_or_create(
+            election=election, email='fulana@example.com',
+            defaults={'uuid': 'trustee-teste', 'name': 'Fulana', 'public_key_hash': 'HASH'})
+        request = RequestFactory().get('/x')
+        request.session = SessionStore()
+        request.session['csrf_token'] = 'tok'
+        with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
+            return render_template(request, name, {'election': election, 'trustee': trustee}).content.decode()
+
+    def test_check_sk_page_in_portuguese(self):
+        html = self.render('trustee_check_sk', 'pt-br')
+        self.assertIn('a sua chave secreta confere!', html)
+        self.assertIn('Ops, a sua chave está errada.', html)
+        self.assertNotIn('your secret key matches!', html)
+
+    def test_decrypt_page_in_portuguese_and_english(self):
+        self.assertIn('PRIMEIRO PASSO: digite a sua chave secreta', self.render('trustee_decrypt_and_prove', 'pt-br'))
+        self.assertIn('FIRST STEP: enter your secret key', self.render('trustee_decrypt_and_prove', 'en'))
