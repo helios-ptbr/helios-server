@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8">
-  <title>Helios Voting Booth</title>
+  <title>Cabine de Votação Helios</title>
   <link rel="stylesheet" type="text/css" href="css/booth.css" />
   <link rel="stylesheet" type="text/css" href="css/forms.css" />
 
@@ -33,8 +33,8 @@
 <body>
 <div id="wrapper">
 <div id="banner" class="edge">
-  <div style="text-align:center; width: 100%;">Helios Voting Booth
-      <div style="float: right; margin-right: 10px; font-size: 0.8em;"><span><a href="javascript:BOOTH.exit();">exit</a></span></div>
+  <div style="text-align:center; width: 100%;">Cabine de Votação Helios
+      <div style="float: right; margin-right: 10px; font-size: 0.8em;"><span><a href="javascript:BOOTH.exit();">sair</a></span></div>
   </div>
 </div>
 <div id="content">
@@ -52,12 +52,12 @@ BOOTH.setup_templates = function() {
 
     var cache_bust = "?cb=" + new Date().getTime();
 
-    $('#header').setTemplateURL("templates/header.html" + cache_bust);
-    $('#election_div').setTemplateURL("templates/election.html" + cache_bust);
-    $('#question_div').setTemplateURL("templates/question.html" + cache_bust);
-    $('#seal_div').setTemplateURL("templates/seal.html" + cache_bust);
-    $('#audit_div').setTemplateURL("templates/audit.html" + cache_bust);
-    $('#footer').setTemplateURL("templates/footer.html" + cache_bust);
+    $('#header').setTemplateURL("templates/pt-BR/header.html" + cache_bust);
+    $('#election_div').setTemplateURL("templates/pt-BR/election.html" + cache_bust);
+    $('#question_div').setTemplateURL("templates/pt-BR/question.html" + cache_bust);
+    $('#seal_div').setTemplateURL("templates/pt-BR/seal.html" + cache_bust);
+    $('#audit_div').setTemplateURL("templates/pt-BR/audit.html" + cache_bust);
+    $('#footer').setTemplateURL("templates/pt-BR/footer.html" + cache_bust);
 
     BOOTH.templates_setup_p = true;
 };
@@ -570,24 +570,24 @@ BOOTH.do_done = function() {
   <div id="progress_div" style="display:none">
       <table>
           <tr>
-              <td id="progress_1">(1) Select</td>
-              <td id="progress_2">(2) Review</td>
-              <td id="progress_3">(3) Submit</td>
+              <td id="progress_1">(1) Selecionar</td>
+              <td id="progress_2">(2) Revisar</td>
+              <td id="progress_3">(3) Enviar</td>
           </tr>
       </table>
   </div>
   <div id="election_div" class="panel">
-    <h3>Checking capabilities and loading election booth...</h3>
-    <div align="center"><img src="loading.gif" /><br />This may take up to 10 seconds</div>
+    <h3>Verificando recursos e carregando a cabine da eleição...</h3>
+    <div align="center"><img src="loading.gif" /><br />Isso pode levar até 10 segundos</div>
   </div>
 
   <div id="error_div" class="panel" style="display: none;">
-    <h3>There's a problem</h3>
+    <h3>Há um problema</h3>
     <p>
-      It appears that your browser does not have Java enabled. Helios needs Java to perform encryption within the browser.
+      Parece que seu navegador não tem o Java ativado. O Helios precisa do Java para cifrar dentro do navegador.
     </p>
     <p>
-      You may be able to install Java by visiting <a target="_new" href="http://java.com">java.com</a>.
+      Você pode instalar o Java visitando <a target="_new" href="http://java.com">java.com</a>.
     </p>
   </div>
 
@@ -595,14 +595,14 @@ BOOTH.do_done = function() {
   </div>
 
   <div id="processing_div" class="panel" style="display:none;">
-      <h3 align="center">Processing....</h3>
+      <h3 align="center">Processando....</h3>
   </div>
 
   <div id="encrypting_div" class="panel" style="display:none;">
-      <h3 align="center">Helios is now encrypting your ballot<br />
+      <h3 align="center">O Helios está cifrando sua cédula<br />
           <img src="encrypting.gif" /> <span style="font-size:0.7em; display:none;" id="percent_done_container">(<span id="percent_done">0</span>%)</span></h3>
 
-      <p align="center"><b>This may take up to two minutes.</b>
+      <p align="center"><b>Isso pode levar até dois minutos.</b>
   </div>
 
   <div id="seal_div" class="panel">

@@ -11,6 +11,7 @@ import gen_booth_pages
 import po2js
 
 ROOT = Path(__file__).resolve().parent.parent
+BOOTH_DIR = ROOT / "heliosbooth"
 
 PO = r'''
 msgid ""
@@ -100,26 +101,53 @@ class GenPagesTest(unittest.TestCase):
     def setUp(self):
         self.src = (ROOT / "heliosbooth" / "vote.html").read_text(encoding="utf-8")
 
-    def test_only_expected_lines_change(self):
-        out = gen_booth_pages.generate(self.src, "pt_BR")
+    def test_vote_page_only_expected_lines_change(self):
+        out = gen_booth_pages.generate_vote(self.src, "pt_BR", {})
         a, b = self.src.splitlines(), out.splitlines()
-        added = [l.strip() for l in b if l not in a]
-        self.assertEqual(sorted(added), sorted([
-            '<html lang="pt-BR">',
-            '<script src="js/strings.pt-BR.js"></script>',
-        ]))
         self.assertEqual(len(b), len(a) + 1)
+        added = [l.strip() for l in b if l not in a]
+        self.assertEqual(sum(1 for l in added if l.startswith("$") and "templates/pt-BR/" in l), 6, added)
+        rest = [l for l in added if "templates/pt-BR/" not in l]
+        self.assertEqual(sorted(rest), sorted(['<html lang="pt-BR">', '<script src="js/strings.pt-BR.js"></script>']))
 
     def test_strings_loaded_before_i18n_before_bundle(self):
-        out = gen_booth_pages.generate(self.src, "pt_BR")
+        out = gen_booth_pages.generate_vote(self.src, "pt_BR", {})
         i = [out.index(x) for x in ("strings.pt-BR.js", "js/i18n.js", "helios-booth-compressed.js")]
         self.assertEqual(i, sorted(i))
 
-    def test_committed_page_is_up_to_date(self):
-        page = ROOT / "heliosbooth" / "vote.pt-BR.html"
-        if page.exists():
-            self.assertEqual(page.read_text(encoding="utf-8"),
-                             gen_booth_pages.generate(self.src, "pt_BR"))
+    def test_translation_keeps_tags_and_template_code(self):
+        table = gen_booth_pages.load_table("pt_BR")
+        files = [BOOTH_DIR / "vote.html"] + sorted((BOOTH_DIR / "templates").glob("*.html"))
+        for f in files:
+            src = f.read_text(encoding="utf-8")
+            out = gen_booth_pages.translate_html(src, table)
+            tok = gen_booth_pages.TOKEN_RE
+            self.assertEqual(tok.findall(src), tok.findall(out), f.name)
+
+    def test_every_text_has_a_translation_entry(self):
+        table = gen_booth_pages.load_table("pt_BR")
+        missing = set()
+        for f in [BOOTH_DIR / "vote.html"] + sorted((BOOTH_DIR / "templates").glob("*.html")):
+            for _, _, t in gen_booth_pages.segments(f.read_text(encoding="utf-8")):
+                if t not in table:
+                    missing.add("%s: %s" % (f.name, t))
+        self.assertEqual(sorted(missing), [], "textos sem tradução em booth_html.po")
+
+    def test_no_obsolete_entries(self):
+        table = gen_booth_pages.load_table("pt_BR")
+        seen = set()
+        for f in [BOOTH_DIR / "vote.html"] + sorted((BOOTH_DIR / "templates").glob("*.html")):
+            seen |= {t for _, _, t in gen_booth_pages.segments(f.read_text(encoding="utf-8"))}
+        self.assertEqual(sorted(set(table) - seen), [], "entradas que não existem mais no original")
+
+    def test_translation_cannot_inject_markup(self):
+        with self.assertRaises(ValueError):
+            gen_booth_pages.build_table([("Hi", "<script>x</script>", False)])
+        with self.assertRaises(ValueError):
+            gen_booth_pages.build_table([("Hi", "{$T.x}", False)])
+
+    def test_generated_files_are_up_to_date(self):
+        self.assertEqual(gen_booth_pages.main(["pt_BR", "--check"]), 0)
 
 
 class I18nJsTest(unittest.TestCase):

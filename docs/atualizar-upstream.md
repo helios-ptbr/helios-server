@@ -48,11 +48,20 @@ git merge master
    Use `merge`, não `rebase`: várias pessoas usam o `ptbr`, e o `rebase`
    reescreve o histórico.
 
-4. Confira as traduções (ferramentas em `tools/`):
+4. Confira as traduções da cabine (ferramentas em `tools/`):
 
 ```
 python3 -m unittest tools.test_booth_i18n
 ```
+
+   Se o Ben mudou ou criou um texto na cabine, o teste falha e lista o texto
+   em inglês que falta. Então:
+   - Textos `T("...")` do `vote.html`: edite `locale/pt_BR/LC_MESSAGES/booth.po`
+     e rode `python3 tools/po2js.py pt_BR`.
+   - Textos em HTML (`vote.html` e `templates/*.html`): edite
+     `locale/pt_BR/LC_MESSAGES/booth_html.po` e rode
+     `python3 tools/gen_booth_pages.py pt_BR`.
+   - Rode os testes de novo e faça commit dos arquivos gerados.
 
 5. Envie:
 

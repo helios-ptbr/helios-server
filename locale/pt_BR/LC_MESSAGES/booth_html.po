@@ -1,0 +1,301 @@
+# Textos fixos em HTML da cabine (vote.html e templates/*.html).
+# Cada msgid é um trecho de texto entre tags. Veja tools/gen_booth_pages.py.
+msgid ""
+msgstr ""
+"Project-Id-Version: helios-ptbr\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: heliosbooth/vote.html
+msgid "Helios Voting Booth"
+msgstr "Cabine de Votação Helios"
+
+#: heliosbooth/vote.html
+msgid "exit"
+msgstr "sair"
+
+#: heliosbooth/vote.html
+msgid "(1) Select"
+msgstr "(1) Selecionar"
+
+#: heliosbooth/vote.html
+msgid "(2) Review"
+msgstr "(2) Revisar"
+
+#: heliosbooth/vote.html
+msgid "(3) Submit"
+msgstr "(3) Enviar"
+
+#: heliosbooth/vote.html
+msgid "Checking capabilities and loading election booth..."
+msgstr "Verificando recursos e carregando a cabine da eleição..."
+
+#: heliosbooth/vote.html
+msgid "This may take up to 10 seconds"
+msgstr "Isso pode levar até 10 segundos"
+
+#: heliosbooth/vote.html
+msgid "There's a problem"
+msgstr "Há um problema"
+
+#: heliosbooth/vote.html
+msgid "It appears that your browser does not have Java enabled. Helios needs Java to perform encryption within the browser."
+msgstr "Parece que seu navegador não tem o Java ativado. O Helios precisa do Java para cifrar dentro do navegador."
+
+#: heliosbooth/vote.html
+msgid "You may be able to install Java by visiting"
+msgstr "Você pode instalar o Java visitando"
+
+#: heliosbooth/vote.html
+msgid "Processing...."
+msgstr "Processando...."
+
+#: heliosbooth/vote.html
+msgid "Helios is now encrypting your ballot"
+msgstr "O Helios está cifrando sua cédula"
+
+#: heliosbooth/vote.html
+msgid "This may take up to two minutes."
+msgstr "Isso pode levar até dois minutos."
+
+#: heliosbooth/templates/audit.html
+msgid "Your audited ballot"
+msgstr "Sua cédula auditada"
+
+#: heliosbooth/templates/audit.html
+msgid "IMPORTANT"
+msgstr "IMPORTANTE"
+
+#: heliosbooth/templates/audit.html
+msgid ": this ballot, now that it has been audited,"
+msgstr ": esta cédula, agora que foi auditada,"
+
+#: heliosbooth/templates/audit.html
+msgid "will not be tallied"
+msgstr "não será apurada"
+
+#: heliosbooth/templates/audit.html
+msgid "To cast a ballot, you must click the \"Back to Voting\" button below, re-encrypt it, and choose \"cast\" instead of \"audit.\""
+msgstr "Para enviar uma cédula, é preciso clicar no botão \"Voltar à votação\" abaixo, cifrá-la de novo e escolher \"enviar\" em vez de \"auditar.\""
+
+#: heliosbooth/templates/audit.html
+msgid "Why?"
+msgstr "Por quê?"
+
+#: heliosbooth/templates/audit.html
+msgid "Helios prevents you from auditing and casting the same ballot to provide you with some protection against coercion."
+msgstr "O Helios impede que a mesma cédula seja auditada e enviada, para dar alguma proteção contra coerção."
+
+#: heliosbooth/templates/audit.html
+msgid "Now what?"
+msgstr "E agora?"
+
+#: heliosbooth/templates/audit.html
+msgid "Select your ballot audit info"
+msgstr "Selecione as informações de auditoria da sua cédula"
+
+#: heliosbooth/templates/audit.html
+msgid ", copy it to your clipboard, then use the"
+msgstr ", copie para a área de transferência e use o"
+
+#: heliosbooth/templates/audit.html
+msgid "ballot verifier"
+msgstr "verificador de cédulas"
+
+#: heliosbooth/templates/audit.html
+msgid "to verify it."
+msgstr "para verificá-la."
+
+#: heliosbooth/templates/audit.html
+msgid "Once you're satisfied, click the \"back to voting\" button to re-encrypt and cast your ballot."
+msgstr "Quando tudo estiver certo, clique no botão \"voltar à votação\" para cifrar de novo e enviar sua cédula."
+
+#: heliosbooth/templates/audit.html
+msgid "Before going back to voting,"
+msgstr "Antes de voltar à votação,"
+
+#: heliosbooth/templates/audit.html
+msgid "you can post this audited ballot to the Helios tracking center so that others might double-check the verification of this ballot."
+msgstr "você pode publicar esta cédula auditada no centro de rastreamento do Helios, para que outras pessoas possam conferir a verificação desta cédula."
+
+#: heliosbooth/templates/audit.html
+msgid "Even if you post your audited ballot, you must go back to voting and choose \"cast\" if you want your vote to count."
+msgstr "Mesmo que você publique sua cédula auditada, é preciso voltar à votação e escolher \"enviar\" para que seu voto conte."
+
+#: heliosbooth/templates/audit.html
+msgid "back to voting"
+msgstr "voltar à votação"
+
+#: heliosbooth/templates/audit.html
+msgid "post audited ballot to tracking center"
+msgstr "publicar cédula auditada no centro de rastreamento"
+
+#: heliosbooth/templates/done.html
+msgid "Your Vote is Being Submitted"
+msgstr "Seu voto está sendo enviado"
+
+#: heliosbooth/templates/done.html
+msgid "Please wait a few seconds while your vote is submitted to the casting server...."
+msgstr "Aguarde alguns segundos enquanto seu voto é enviado ao servidor de votação...."
+
+#: heliosbooth/templates/election.html
+msgid "To vote, follow these steps:"
+msgstr "Para votar, siga estes passos:"
+
+#: heliosbooth/templates/election.html
+msgid "Select"
+msgstr "Selecione"
+
+#: heliosbooth/templates/election.html
+msgid "your preferred options."
+msgstr "suas opções preferidas."
+
+#: heliosbooth/templates/election.html
+msgid "Review"
+msgstr "Revise"
+
+#: heliosbooth/templates/election.html
+msgid "your choices, which are then encrypted."
+msgstr "suas escolhas, que são então cifradas."
+
+#: heliosbooth/templates/election.html
+msgid "Submit"
+msgstr "Envie"
+
+#: heliosbooth/templates/election.html
+msgid "your encrypted ballot and authenticate to verify your eligibility."
+msgstr "sua cédula cifrada e se autentique para verificar sua elegibilidade."
+
+#: heliosbooth/templates/election.html
+msgid "Start"
+msgstr "Iniciar"
+
+#: heliosbooth/templates/election.html
+msgid "You can"
+msgstr "Você pode"
+
+#: heliosbooth/templates/election.html
+msgid "email for help"
+msgstr "pedir ajuda por e-mail"
+
+#: heliosbooth/templates/footer.html
+msgid "The public key for this election is not yet ready. This election is in preview mode only."
+msgstr "A chave pública desta eleição ainda não está pronta. Esta eleição está apenas em modo de prévia."
+
+#: heliosbooth/templates/footer.html
+msgid "Election Fingerprint:"
+msgstr "Impressão digital da eleição:"
+
+#: heliosbooth/templates/question.html
+msgid "of"
+msgstr "de"
+
+#: heliosbooth/templates/question.html
+msgid "&mdash; vote for"
+msgstr "&mdash; escolha"
+
+#: heliosbooth/templates/question.html
+msgid "to"
+msgstr "a"
+
+#: heliosbooth/templates/question.html
+msgid "at least"
+msgstr "pelo menos"
+
+#: heliosbooth/templates/question.html
+msgid "up to"
+msgstr "até"
+
+#: heliosbooth/templates/question.html
+msgid "as many as you approve of"
+msgstr "quantas aprovar"
+
+#: heliosbooth/templates/question.html
+msgid "more info"
+msgstr "mais informações"
+
+#: heliosbooth/templates/question.html
+msgid "Proceed"
+msgstr "Prosseguir"
+
+#: heliosbooth/templates/question.html
+msgid "Previous"
+msgstr "Anterior"
+
+#: heliosbooth/templates/question.html
+msgid "Next"
+msgstr "Próximo"
+
+#: heliosbooth/templates/seal.html
+msgid "Review your Ballot"
+msgstr "Revise sua cédula"
+
+#: heliosbooth/templates/seal.html
+msgid "Question #"
+msgstr "Pergunta #"
+
+#: heliosbooth/templates/seal.html
+msgid "No choice selected"
+msgstr "Nenhuma opção selecionada"
+
+#: heliosbooth/templates/seal.html
+msgid "selections out of possible"
+msgstr "seleções de um total possível de"
+
+#: heliosbooth/templates/seal.html
+msgid "change"
+msgstr "alterar"
+
+#: heliosbooth/templates/seal.html
+msgid "Your ballot tracker is"
+msgstr "O código de rastreamento da sua cédula é"
+
+#: heliosbooth/templates/seal.html
+msgid "Proceed to Login"
+msgstr "Prosseguir para o login"
+
+#: heliosbooth/templates/seal.html
+msgid "Spoil & Audit"
+msgstr "Anular e auditar"
+
+#: heliosbooth/templates/seal.html
+msgid "[optional]"
+msgstr "[opcional]"
+
+#: heliosbooth/templates/seal.html
+msgid "If you choose, you can spoil this ballot and reveal how your choices were encrypted. This is an optional auditing process."
+msgstr "Se quiser, você pode anular esta cédula e revelar como suas escolhas foram cifradas. Este é um processo de auditoria opcional."
+
+#: heliosbooth/templates/seal.html
+msgid "You will then be guided to re-encrypt your choices for final casting."
+msgstr "Em seguida, você será orientado a cifrar suas escolhas de novo para o envio final."
+
+#: heliosbooth/templates/seal.html
+msgid "Spoil &amp; Audit"
+msgstr "Anular e auditar"
+
+#: heliosbooth/templates/submit.html
+msgid "Submit Your Encrypted Ballot"
+msgstr "Envie sua cédula cifrada"
+
+#: heliosbooth/templates/submit.html
+msgid "All information, other than your encrypted ballot,"
+msgstr "Todas as informações, exceto a sua cédula cifrada,"
+
+#: heliosbooth/templates/submit.html
+msgid "has been removed from memory."
+msgstr "foram removidas da memória."
+
+#: heliosbooth/templates/submit.html
+msgid "As a reminder, your ballot tracking number is:"
+msgstr "Lembrete: o número de rastreamento da sua cédula é:"
+
+#: heliosbooth/templates/submit.html
+msgid "According to the election definition file, this ballot will be submitted to:"
+msgstr "Segundo o arquivo de definição da eleição, esta cédula será enviada para:"
+
+#: heliosbooth/templates/submit.html
+msgid "where you will log in to validate your eligibility to vote."
+msgstr "onde você fará login para validar sua elegibilidade para votar."
