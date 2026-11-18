@@ -75,10 +75,15 @@ class PtBrAdminPagesTests(WebTest):
         r = self.get(reverse('elections@new'))
         self.assertContains(r, 'Criar uma nova eleição')
         self.assertNotContains(r, 'Create a New Election')
+        self.assertContains(r, 'Nome curto')
+        self.assertContains(r, 'Início da votação')
+        self.assertContains(r, '>Consulta<')
+        self.assertNotContains(r, 'Short name')
 
     def test_new_election_page_in_english(self):
         r = self.get(reverse('elections@new'), lang='en')
         self.assertContains(r, 'Create a New Election')
+        self.assertContains(r, 'Short name')
 
     def test_freeze_page(self):
         r = self.get(reverse('election@freeze', args=[self.election.uuid]))
