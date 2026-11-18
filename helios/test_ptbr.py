@@ -100,3 +100,14 @@ class PtBrAdminPagesTests(WebTest):
     def test_trustees_page_in_english(self):
         r = self.get(reverse('election@trustees@view', args=[self.election.uuid]), lang='en')
         self.assertContains(r, 'Trustees are responsible')
+
+    def test_voters_list_page(self):
+        r = self.get(reverse('election@voters@list-pretty', args=[self.election.uuid]))
+        self.assertEqual(r.status_code, 200)
+        self.assertContains(r, 'Pessoas eleitoras e centro de rastreamento de cédulas')
+        self.assertContains(r, 'Quem pode votar?')
+        self.assertNotContains(r, 'Who can vote?')
+
+    def test_voters_list_page_in_english(self):
+        r = self.get(reverse('election@voters@list-pretty', args=[self.election.uuid]), lang='en')
+        self.assertContains(r, 'Who can vote?')

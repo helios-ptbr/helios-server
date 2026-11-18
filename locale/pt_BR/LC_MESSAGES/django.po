@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 05:14-0800\n"
+"POT-Creation-Date: 2026-11-18 05:18-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -22,7 +22,9 @@ msgstr "Nome curto"
 msgid "no spaces, will be part of the URL for your election, e.g. my-club-2010"
 msgstr "sem espaços; fará parte da URL da sua eleição, por exemplo clube-2026"
 
-#: helios/forms.py:15 helios/templates/voters_manage.html:28
+#: helios/forms.py:15 helios/templates/voters_list.html:144
+#: helios/templates/voters_manage.html:28
+#: helios/templates/voters_upload_confirm.html:12
 msgid "Name"
 msgstr "Nome"
 
@@ -199,6 +201,21 @@ msgid "enter your voter list (or open registration to the public)"
 msgstr ""
 "informar a sua lista de pessoas eleitoras (ou abrir o cadastro ao público)"
 
+#: helios/models.py:485
+#, python-format
+msgid "Election was tallied more than %(weeks)d week ago"
+msgid_plural "Election was tallied more than %(weeks)d weeks ago"
+msgstr[0] "A eleição foi apurada há mais de %(weeks)d semana"
+msgstr[1] "A eleição foi apurada há mais de %(weeks)d semanas"
+
+#: helios/models.py:500
+msgid "Election has been tallied"
+msgstr "A eleição já foi apurada"
+
+#: helios/models.py:503
+msgid "Tallying has started"
+msgstr "A apuração já começou"
+
 #: helios/templates/combine_decryptions.html:4
 #, python-format
 msgid "Compute Tally &mdash; %(name)s"
@@ -244,8 +261,10 @@ msgstr "Perguntas"
 #: helios/templates/election_build.html:5
 #: helios/templates/election_compute_tally.html:20
 #: helios/templates/election_compute_tally.html:40
-#: helios/templates/list_trustees.html:7 helios/templates/voters_manage.html:5
-#: helios/templates/voters_search.html:5
+#: helios/templates/list_trustees.html:7 helios/templates/voters_email.html:13
+#: helios/templates/voters_list.html:7 helios/templates/voters_manage.html:5
+#: helios/templates/voters_search.html:5 helios/templates/voters_upload.html:5
+#: helios/templates/voters_upload_confirm.html:5
 msgid "back to election"
 msgstr "voltar à eleição"
 
@@ -1084,47 +1103,240 @@ msgstr "(sem restrição)"
 msgid "set eligibility"
 msgstr "definir a elegibilidade"
 
-#: helios/templates/voters_manage.html:5
-msgid "Manage Voters"
-msgstr "Gerenciar pessoas eleitoras"
+#: helios/templates/voters_email.html:4
+#, python-format
+msgid "Contact Voters for %(name)s"
+msgstr "Contato com as pessoas eleitoras de %(name)s"
 
-#: helios/templates/voters_manage.html:7
+#: helios/templates/voters_email.html:13
+msgid "Contact Voters"
+msgstr "Contatar as pessoas eleitoras"
+
+#: helios/templates/voters_email.html:17
+#, python-format
+msgid ""
+"You are sending this email to a specific user: <b>%(name)s (%(voter_id)s)</b>"
+msgstr "Você está enviando este e-mail a uma pessoa específica: <b>%(name)s (%(voter_id)s)</b>"
+
+#: helios/templates/voters_email.html:22
+msgid "Templates"
+msgstr "Modelos"
+
+#: helios/templates/voters_email.html:34
+msgid ""
+"<b>Preview</b>: each voter receives this email, with the fields in angle "
+"brackets filled in for them."
+msgstr "<b>Prévia</b>: cada pessoa eleitora recebe este e-mail, com os campos entre os sinais de menor e maior preenchidos para ela."
+
+#: helios/templates/voters_email.html:44
+msgid ""
+"You may tweak the subject and add a custom message using the form below. "
+"Your message appears where <tt>&lt;BODY&gt;</tt> is shown above. Don't paste "
+"the preview into it."
+msgstr "Você pode ajustar o assunto e adicionar uma mensagem sua no formulário abaixo. A sua mensagem aparece onde <tt>&lt;BODY&gt;</tt> é mostrado acima. Não cole a prévia nela."
+
+#: helios/templates/voters_email.html:55
+msgid "Send"
+msgstr "Enviar"
+
+#: helios/templates/voters_email.html:63
+#, python-format
+msgid "Done, go <a href=\"%(path)s\">back to election</a>."
+msgstr "Pronto, volte <a href=\"%(path)s\">à eleição</a>."
+
+#: helios/templates/voters_email.html:67
+msgid ""
+"Error emailing participants. Check server settings, make sure there's an "
+"SMTP server."
+msgstr "Erro ao enviar e-mails às pessoas participantes. Confira as configurações do servidor e veja se existe um servidor SMTP."
+
+#: helios/templates/voters_list.html:5
+#, python-format
+msgid "Voters &amp; Ballot Tracking Center for %(name)s"
+msgstr "Pessoas eleitoras e centro de rastreamento de cédulas de %(name)s"
+
+#: helios/templates/voters_list.html:7
+msgid "Voters and Ballot Tracking Center"
+msgstr "Pessoas eleitoras e centro de rastreamento de cédulas"
+
+#: helios/templates/voters_list.html:10
+msgid "Who can vote?"
+msgstr "Quem pode votar?"
+
+#: helios/templates/voters_list.html:14
+msgid "Only the voters listed here"
+msgstr "Só as pessoas eleitoras listadas aqui"
+
+#: helios/templates/voters_list.html:20
+msgid ""
+"Your election is marked private, which means you cannot open registration up "
+"more widely"
+msgstr "Sua eleição está marcada como privada, então você não pode abrir o cadastro para mais gente"
+
+#: helios/templates/voters_list.html:24
+msgid "anyone can vote"
+msgstr "qualquer pessoa pode votar"
+
+#: helios/templates/voters_list.html:25
+msgid "only voters listed explicitly below can vote"
+msgstr "só as pessoas eleitoras listadas abaixo podem votar"
+
+#: helios/templates/voters_list.html:27
+msgid "only voters who are members of"
+msgstr "só as pessoas eleitoras que são membros de"
+
+#: helios/templates/voters_list.html:35
+msgid "update"
+msgstr "atualizar"
+
+#: helios/templates/voters_list.html:43
+msgid "email voters"
+msgstr "enviar e-mail às pessoas eleitoras"
+
+#: helios/templates/voters_list.html:45
+#, python-format
+msgid "email voters (disabled: %(reason)s)"
+msgstr "enviar e-mail às pessoas eleitoras (desativado: %(reason)s)"
+
+#: helios/templates/voters_list.html:53
+#, python-format
+msgid "searching for <u>%(term)s</u>."
+msgstr "buscando por <u>%(term)s</u>."
+
+#: helios/templates/voters_list.html:53
+msgid "clear search"
+msgstr "limpar a busca"
+
+#: helios/templates/voters_list.html:55 helios/templates/voters_manage.html:7
 msgid "search"
 msgstr "buscar"
 
-#: helios/templates/voters_manage.html:10
+#: helios/templates/voters_list.html:61
+msgid "Download Voters as CSV"
+msgstr "Baixar as pessoas eleitoras em CSV"
+
+#: helios/templates/voters_list.html:69 helios/templates/voters_manage.html:10
 msgid "bulk upload voters"
 msgstr "enviar pessoas eleitoras em lote"
+
+#: helios/templates/voters_list.html:71
+#, python-format
+msgid "bulk upload voters (disabled: %(reason)s)"
+msgstr "enviar pessoas eleitoras em lote (desativado: %(reason)s)"
+
+#: helios/templates/voters_list.html:76
+msgid "Prior Bulk Uploads:"
+msgstr "Envios em lote anteriores:"
+
+#: helios/templates/voters_list.html:81 helios/templates/voters_list.html:83
+#, python-format
+msgid "%(size)s bytes, at %(t)s:"
+msgstr "%(size)s bytes, em %(t)s:"
+
+#: helios/templates/voters_list.html:86
+#, python-format
+msgid "done processing: %(n)s voters loaded"
+msgstr "processamento concluído: %(n)s pessoas eleitoras carregadas"
+
+#: helios/templates/voters_list.html:90
+msgid "currently processing"
+msgstr "processando agora"
+
+#: helios/templates/voters_list.html:92
+msgid "not yet processed"
+msgstr "ainda não processado"
+
+#: helios/templates/voters_list.html:104
+#, python-format
+msgid ""
+"Are you sure you want to remove ALL %(n)s voter(s)? This action cannot be "
+"undone."
+msgstr "Tem certeza de que quer remover TODAS as %(n)s pessoas eleitoras? Esta ação não pode ser desfeita."
+
+#: helios/templates/voters_list.html:106
+msgid "clear all voters"
+msgstr "remover todas as pessoas eleitoras"
+
+#: helios/templates/voters_list.html:118
+#, python-format
+msgid "%(n)s cast vote"
+msgid_plural "%(n)s cast votes"
+msgstr[0] "%(n)s voto enviado"
+msgstr[1] "%(n)s votos enviados"
+
+#: helios/templates/voters_list.html:120
+msgid "no votes yet"
+msgstr "nenhum voto ainda"
+
+#: helios/templates/voters_list.html:126
+#, python-format
+msgid "previous %(n)s"
+msgstr "%(n)s anteriores"
+
+#: helios/templates/voters_list.html:130
+#, python-format
+msgid "Voters %(a)s - %(b)s (of %(total)s)"
+msgstr "Pessoas eleitoras %(a)s - %(b)s (de %(total)s)"
+
+#: helios/templates/voters_list.html:133 helios/templates/voters_manage.html:16
+#: helios/templates/voters_manage.html:24
+#, python-format
+msgid "next %(n)s"
+msgstr "próximas %(n)s"
+
+#: helios/templates/voters_list.html:140
+msgid "Actions"
+msgstr "Ações"
+
+#: helios/templates/voters_list.html:141
+msgctxt "coluna da tabela de pessoas eleitoras"
+msgid "Login"
+msgstr "Nome de acesso"
+
+#: helios/templates/voters_list.html:142
+#: helios/templates/voters_upload_confirm.html:12
+msgid "Email Address"
+msgstr "Endereço de e-mail"
+
+#: helios/templates/voters_list.html:148 helios/templates/voters_manage.html:28
+msgid "Alias"
+msgstr "Apelido"
+
+#: helios/templates/voters_list.html:150
+msgid "Smart Ballot Tracker"
+msgstr "Código de rastreamento da cédula"
+
+#: helios/templates/voters_list.html:159 helios/templates/voters_list.html:161
+msgid "email"
+msgstr "e-mail"
+
+#: helios/templates/voters_list.html:164 helios/templates/voters_manage.html:33
+#, python-format
+msgid "are you sure you want to remove %(name)s ?"
+msgstr "Tem certeza de que quer remover %(name)s?"
+
+#: helios/templates/voters_list.html:181
+msgid "no voters."
+msgstr "nenhuma pessoa eleitora."
+
+#: helios/templates/voters_manage.html:5
+msgid "Manage Voters"
+msgstr "Gerenciar pessoas eleitoras"
 
 #: helios/templates/voters_manage.html:13
 #, python-format
 msgid "Voters %(a)s - %(b)s"
 msgstr "Pessoas eleitoras %(a)s - %(b)s"
 
-#: helios/templates/voters_manage.html:16
-#: helios/templates/voters_manage.html:24
-#, python-format
-msgid "next %(n)s"
-msgstr "próximas %(n)s"
-
 #: helios/templates/voters_manage.html:21
 msgid "back to start"
 msgstr "voltar ao início"
-
-#: helios/templates/voters_manage.html:28
-msgid "Alias"
-msgstr "Apelido"
 
 #: helios/templates/voters_manage.html:28
 #: helios_auth/templates/ldapauth/login.html:11
 #: helios_auth/templates/ldapauth/login.html:12
 msgid "Username"
 msgstr "Nome de acesso"
-
-#: helios/templates/voters_manage.html:33
-#, python-format
-msgid "are you sure you want to remove %(name)s ?"
-msgstr "Tem certeza de que quer remover %(name)s?"
 
 #: helios/templates/voters_search.html:5
 #, python-format
@@ -1150,9 +1362,98 @@ msgstr ""
 msgid "no such voter found"
 msgstr "nenhuma pessoa eleitora encontrada"
 
+#: helios/templates/voters_upload.html:5
+#: helios/templates/voters_upload_confirm.html:5
+msgid "Bulk Upload Voters"
+msgstr "Envio de pessoas eleitoras em lote"
+
+#: helios/templates/voters_upload.html:9
+msgid ""
+"If you would like to specify your list of voters by name and email address,"
+"<br /> you can bulk upload a list of such voters here.<br /><br /> Please "
+"prepare a text file of comma-separated values with the fields:"
+msgstr "Se você quiser indicar a sua lista de pessoas eleitoras por nome e e-mail,<br /> pode enviar a lista em lote aqui.<br /><br /> Prepare um arquivo de texto com valores separados por vírgula, com os campos:"
+
+#: helios/templates/voters_upload.html:18
+msgid "or"
+msgstr "ou"
+
+#: helios/templates/voters_upload.html:25
+msgid "For example:"
+msgstr "Por exemplo:"
+
+#: helios/templates/voters_upload.html:34
+msgid ""
+"The easiest way to prepare such a file is to use a spreadsheet program and "
+"to export as \"CSV\"."
+msgstr "O jeito mais fácil de preparar esse arquivo é usar uma planilha e exportar como \"CSV\"."
+
+#: helios/templates/voters_upload.html:42
+msgid "go"
+msgstr "enviar"
+
+#: helios/templates/voters_upload.html:49
+msgid ""
+"OK, done uploading.<br /> You can now <a href=\"./manage\">view the list of "
+"voters</a>."
+msgstr "Pronto, o envio terminou.<br /> Agora você pode <a href=\"./manage\">ver a lista de pessoas eleitoras</a>."
+
+#: helios/templates/voters_upload_confirm.html:5
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: helios/templates/voters_upload_confirm.html:8
+msgid ""
+"You have uploaded a file of voters. The first few rows of this file are:"
+msgstr "Você enviou um arquivo de pessoas eleitoras. As primeiras linhas dele são:"
+
+#: helios/templates/voters_upload_confirm.html:12
+msgid "Voter Type"
+msgstr "Tipo"
+
+#: helios/templates/voters_upload_confirm.html:12
+msgid "Voter Login"
+msgstr "Nome de acesso"
+
+#: helios/templates/voters_upload_confirm.html:20
+msgid "HOLD ON:"
+msgstr "ESPERE:"
+
+#: helios/templates/voters_upload_confirm.html:29
+msgid "never mind, upload a different file"
+msgstr "desistir e enviar outro arquivo"
+
+#: helios/templates/voters_upload_confirm.html:35
+msgid "Does this look right to you?"
+msgstr "Isto parece certo para você?"
+
+#: helios/templates/voters_upload_confirm.html:38
+msgid "Yes, let's go"
+msgstr "Sim, pode seguir"
+
+#: helios/templates/voters_upload_confirm.html:43
+msgid "no, let me upload a different file"
+msgstr "não, quero enviar outro arquivo"
+
 #: helios/views.py:428
 msgid "There is already a trustee with that email address for this election."
 msgstr "Já existe uma pessoa curadora com esse e-mail nesta eleição."
+
+#: helios/views.py:1795
+msgid "Time to Vote"
+msgstr "Hora de votar"
+
+#: helios/views.py:1796
+msgid "Simple"
+msgstr "Simples"
+
+#: helios/views.py:1797
+msgid "Additional Info"
+msgstr "Informações adicionais"
+
+#: helios/views.py:1798
+msgid "Election Result"
+msgstr "Resultado da eleição"
 
 #: helios_auth/auth_systems/ldapauth.py:23
 msgid "Log in with my LDAP Account"

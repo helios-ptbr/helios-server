@@ -14,7 +14,7 @@ import uuid
 import nh3
 from django.conf import settings
 from django.db import models, transaction
-from django.utils.translation import gettext
+from django.utils.translation import gettext, ngettext
 from django.utils.html import format_html, format_html_join
 from validate_email import validate_email
 
@@ -482,7 +482,7 @@ class Election(HeliosModel):
       cutoff_date = datetime.datetime.utcnow() - datetime.timedelta(weeks=settings.HELIOS_VOTER_EMAIL_CUTOFF_WEEKS)
       if self.tallying_finished_at < cutoff_date:
         weeks = settings.HELIOS_VOTER_EMAIL_CUTOFF_WEEKS
-        return (False, f"Election was tallied more than {weeks} week{'s' if weeks != 1 else ''} ago")
+        return (False, ngettext("Election was tallied more than %(weeks)d week ago", "Election was tallied more than %(weeks)d weeks ago", weeks) % {'weeks': weeks})
 
     # Add more reasons here in the future
 
@@ -497,10 +497,10 @@ class Election(HeliosModel):
     as changing voters after vote counting would compromise election integrity.
     """
     if self.encrypted_tally:
-      return (False, "Election has been tallied")
+      return (False, gettext("Election has been tallied"))
 
     if self.tallying_started_at:
-      return (False, "Tallying has started")
+      return (False, gettext("Tallying has started"))
 
     return (True, None)
 
