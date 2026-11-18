@@ -8,3 +8,5 @@ venv*
 env.sh
 .cache
 .idea/
+# traducoes compiladas (geradas por compilemessages)
+*.mo
