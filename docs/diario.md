@@ -71,6 +71,7 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 | Arquivo | O que cobre |
 |---|---|
 | `helios/test_ptbr.py` | renderização em pt-BR e em inglês, e-mails, telas da curadoria, varredura que procura inglês nas telas da eleição |
+| `helios/test_po.py` | os 5 arquivos `.po`: sem entrada vazia ou "fuzzy" (#19), marcadores `%(x)s` e `%d` iguais no original e na tradução (#20), `django.po` em dia com o código via `makemessages` (#18), `msgfmt --check` |
 | `helios/test_datas.py` | início, fim e limites da votação em 16 fusos do Brasil, prorrogação, formulário, Aragarças x Barra do Garças |
 | `tools/test_fusos_navegador.py` | `timezone-display.js` no Chromium com cada fuso (variável `TZ`), pares criador x leitor |
 | `tools/test_booth_*.py`, `tools/test_settings_ptbr.py` | geração das páginas da cabine e do verificador, `settings_ptbr` |
@@ -84,7 +85,8 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 
 - `.github/workflows/ci.yml` roda também na `ptbr`, instala `gettext`, roda `compilemessages` e os testes de `tools/`.
 - **CI só manual** durante o trabalho pesado, para poupar minutos do Actions (a execução leva cerca de 3 min). Disparo: `gh workflow run CI -R helios-ptbr/helios-server --ref ptbr`. **Antes do Release**, devolver os gatilhos `push` e `pull_request` (estão comentados no `ci.yml`).
-- Previsto: o CI falhar se o `.po` estiver desatualizado ou com `msgid` sem tradução ou `fuzzy` (issues #18 a #21).
+- `helios/test_po.py` faz o papel do CI do `.po` (issues #18 a #20): falha se o `.po` estiver desatualizado, com `msgid` sem tradução ou `fuzzy`, ou com marcadores diferentes. Ele roda o `makemessages` num subprocesso e devolve o `django.po` original no fim. Precisa do pacote `gettext` (sem ele, esses testes são pulados).
+- Previsto: #21 (varredura de todas as rotas em busca de inglês).
 
 ## 10. Achados no código do Ben (não alterados)
 
@@ -94,7 +96,7 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 ## 11. Pendências (issues abertas)
 
 - #17 idioma do e-mail por eleição (hoje vem do `LANGUAGE_CODE`).
-- #18 a #21 CI do `.po`, placeholders e varredura de todas as telas.
+- #21 varredura de todas as telas em busca de inglês (parcial).
 - #23 resto da rodada de localização (números, plurais, ordenação).
 - #25 Dockerfile multi-stage e `docker-compose`.
 - Teste real da pessoa curadora externa (chave secreta e decifragem) e do opt-out no navegador: não feitos.
