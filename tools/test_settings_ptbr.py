@@ -53,5 +53,18 @@ class SettingsPtbrTest(unittest.TestCase):
             self.assertIn(item, m)
 
 
+    def test_welcome_message_in_portuguese_unless_set_in_environment(self):
+        import os
+        old = os.environ.pop("WELCOME_MESSAGE", None)
+        try:
+            self.assertIn("mensagem padrão", self.load(self.BASE).WELCOME_MESSAGE)
+            os.environ["WELCOME_MESSAGE"] = "Bem-vindas"
+            self.assertFalse(hasattr(self.load(self.BASE), "WELCOME_MESSAGE"))  # o do ambiente vale, vindo do settings.py
+        finally:
+            os.environ.pop("WELCOME_MESSAGE", None)
+            if old is not None:
+                os.environ["WELCOME_MESSAGE"] = old
+
+
 if __name__ == "__main__":
     unittest.main()

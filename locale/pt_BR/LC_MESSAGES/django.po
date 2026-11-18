@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 08:25-0800\n"
+"POT-Creation-Date: 2026-11-18 08:29-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -1013,10 +1013,12 @@ msgid "Random order:"
 msgstr "Ordem aleatória:"
 
 #: helios/templates/election_questions.html:42
+#: helios/templates/stats_user_search.html:25
 msgid "No"
 msgstr "Não"
 
 #: helios/templates/election_questions.html:43
+#: helios/templates/stats_user_search.html:25
 msgid "Yes"
 msgstr "Sim"
 
@@ -1143,6 +1145,9 @@ msgid "created by <u><b>%(admin)s</b></u>"
 msgstr "criada por <u><b>%(admin)s</b></u>"
 
 #: helios/templates/election_view.html:20
+#: helios/templates/stats_user_search.html:36
+#: helios/templates/stats_user_search.html:52
+#: helios/templates/stats_user_search.html:68
 msgid "archived"
 msgstr "arquivada"
 
@@ -1493,6 +1498,9 @@ msgstr "voltar ao início"
 #: helios/templates/elections_administered.html:9
 #: helios/templates/stats_deleted_elections.html:34
 #: helios/templates/stats_elections.html:30
+#: helios/templates/stats_user_search.html:34
+#: helios/templates/stats_user_search.html:50
+#: helios/templates/stats_user_search.html:66
 #, python-format
 msgid "%(num_voters)s voters / %(num_cast)s cast votes"
 msgstr "%(num_voters)s pessoas eleitoras / %(num_cast)s cédulas enviadas"
@@ -2086,12 +2094,14 @@ msgstr "Eleições apagadas"
 #: helios/templates/stats_deleted_elections.html:12
 #: helios/templates/stats_elections.html:10
 #: helios/templates/stats_elections.html:11
+#: helios/templates/stats_user_search.html:11
 #: helios/templates/voters_list.html:55 helios/templates/voters_manage.html:7
 msgid "search"
 msgstr "buscar"
 
 #: helios/templates/stats_deleted_elections.html:12
 #: helios/templates/stats_elections.html:11
+#: helios/templates/stats_user_search.html:11
 #: helios/templates/voters_list.html:53
 msgid "clear search"
 msgstr "limpar a busca"
@@ -2170,6 +2180,80 @@ msgstr "Últimas 24 horas"
 #, python-format
 msgid "%(n)s recently cast votes"
 msgstr "%(n)s cédulas enviadas há pouco"
+
+#: helios/templates/stats_user_search.html:3
+#: helios/templates/stats_user_search.html:6
+#| msgid "user search"
+msgid "User Search"
+msgstr "Busca de usuários"
+
+#: helios/templates/stats_user_search.html:10
+#| msgid "Search Voters for '%(term)s'"
+msgid "Search for user"
+msgstr "Buscar usuário"
+
+#: helios/templates/stats_user_search.html:10
+msgid "Name or user ID"
+msgstr "Nome ou ID do usuário"
+
+#: helios/templates/stats_user_search.html:17
+#, python-format
+msgid "Found %(n)s user(s)"
+msgstr "%(n)s usuário(s) encontrado(s)"
+
+#: helios/templates/stats_user_search.html:23
+#| msgid "Voter ID"
+msgid "User ID:"
+msgstr "ID do usuário:"
+
+#: helios/templates/stats_user_search.html:24
+#| msgid "Voter Type"
+msgid "User Type:"
+msgstr "Tipo de usuário:"
+
+#: helios/templates/stats_user_search.html:25
+#| msgid "Admin"
+msgid "Site Admin:"
+msgstr "Administração do site:"
+
+#: helios/templates/stats_user_search.html:28
+#, python-format
+#| msgid "Elections you Administer"
+msgid "Elections as Administrator (%(n)s)"
+msgstr "Eleições como pessoa administradora (%(n)s)"
+
+#: helios/templates/stats_user_search.html:35
+#: helios/templates/stats_user_search.html:51
+#: helios/templates/stats_user_search.html:67
+msgid "frozen"
+msgstr "congelada"
+
+#: helios/templates/stats_user_search.html:41
+#: helios/templates/stats_user_search.html:57
+#: helios/templates/stats_user_search.html:73
+msgid "None"
+msgstr "Nenhuma"
+
+#: helios/templates/stats_user_search.html:44
+#, python-format
+#| msgid "questions (%(n)s)"
+msgid "Elections as Voter (%(n)s)"
+msgstr "Eleições como pessoa eleitora (%(n)s)"
+
+#: helios/templates/stats_user_search.html:60
+#, python-format
+#| msgid "trustees (%(n)s)"
+msgid "Elections as Trustee (%(n)s)"
+msgstr "Eleições como pessoa curadora (%(n)s)"
+
+#: helios/templates/stats_user_search.html:78
+#, python-format
+msgid "No users found matching \"%(q)s\""
+msgstr "Nenhum usuário encontrado para \"%(q)s\""
+
+#: helios/templates/stats_user_search.html:81
+msgid "Enter a search term to find users"
+msgstr "Digite um termo para buscar usuários"
 
 #: helios/templates/trustee_check_sk.html:47
 msgid "try again"

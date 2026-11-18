@@ -71,6 +71,34 @@ class PtBrAdminPagesTests(WebTest):
         with override_settings(MIDDLEWARE=ptbr_middleware(), LOCALE_PATHS=[os.path.join(ROOT, 'locale')]):
             return self.client.get(url, HTTP_ACCEPT_LANGUAGE=lang)
 
+    def test_no_english_catalog_text_in_election_pages(self):
+        """Varre as telas da eleição em pt-BR: nenhum texto original (msgid) do catálogo pode aparecer."""
+        import re
+        from html import unescape
+        po = open(os.path.join(ROOT, 'locale', 'pt_BR', 'LC_MESSAGES', 'django.po'), encoding='utf-8').read()
+        english = set()
+        for block in po.split('\n\n')[1:]:
+            parts = block.split('\nmsgid', 1)
+            if len(parts) < 2 or 'msgctxt' in block:
+                continue
+            text = ''.join(re.findall(r'"(.*)"', parts[1].split('\nmsgstr')[0]))
+            text = re.sub(r'<[^>]+>', '', text.replace('\\"', '"').replace('\\n', ' ')).strip()
+            # só frases longas e sem variáveis: curtas como "Login" são iguais em inglês e português
+            if len(text) >= 20 and '%(' not in text:
+                english.add(' '.join(text.split()))
+        paths = ['view', 'edit', 'extend', 'questions', 'voters/list', 'voters/email', 'voters/upload',
+                 'trustees/view', 'admins/', 'audited-ballots/', 'freeze']
+        seen = 0
+        for path in paths:
+            r = self.get('/helios/elections/%s/%s' % (self.election.uuid, path))
+            if r.status_code != 200:
+                continue
+            seen += 1
+            page = ' '.join(unescape(re.sub(r'<script.*?</script>|<style.*?</style>|<[^>]+>', ' ', r.content.decode(), flags=re.S)).split())
+            leaked = sorted(t for t in english if t in page)
+            self.assertEqual(leaked, [], 'texto em inglês na tela %s' % path)
+        self.assertGreaterEqual(seen, 6)
+
     def test_new_election_page(self):
         r = self.get(reverse('elections@new'))
         self.assertContains(r, 'Criar uma nova eleição')

@@ -27,3 +27,8 @@ _session = 'django.contrib.sessions.middleware.SessionMiddleware'
 _locale = 'django.middleware.locale.LocaleMiddleware'
 MIDDLEWARE = [m for m in MIDDLEWARE if m != _locale]
 MIDDLEWARE.insert(MIDDLEWARE.index(_session) + 1, _locale)
+
+# Mensagem da página inicial. Quem define WELCOME_MESSAGE no ambiente continua mandando;
+# sem ela, o texto padrão do Ben ("This is the default message") sai em português.
+if not os.environ.get('WELCOME_MESSAGE'):
+    WELCOME_MESSAGE = 'Esta é a mensagem padrão. Defina a variável de ambiente WELCOME_MESSAGE para trocá-la.'
