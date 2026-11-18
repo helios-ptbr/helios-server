@@ -17,7 +17,6 @@ msgid "Are you sure you want to exit the booth and lose all information about yo
 msgstr "Tem certeza de que quer sair da cabine e perder todas as informações da sua cédula atual?"
 
 #: heliosbooth/vote.html
-#, python-format
 msgid "You need to select at least %(min)s answer(s)."
 msgstr "Você precisa selecionar pelo menos %(min)s resposta(s)."
 
@@ -26,12 +25,10 @@ msgid "Maximum number of options selected.<br />To change your selection, please
 msgstr "Número máximo de opções selecionadas.<br />Para mudar sua seleção, desmarque primeiro uma seleção atual."
 
 #: heliosbooth/vote.html
-#, python-format
 msgid "You may select up to %(max)s choices total."
 msgstr "Você pode selecionar até %(max)s opções no total."
 
 #: heliosbooth/vote.html
-#, python-format
 msgid ""
 "there appears to be a problem with the encryption process.\n"
 "Please email help@heliosvoting.org and indicate that your encryption process froze at %(percent)s%"
