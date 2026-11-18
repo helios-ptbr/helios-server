@@ -47,7 +47,12 @@
   font-weight: 600;
 }
 
-/* Balloon with the browser time zone, next to datetime fields */
+/* The field is a block, so the help text and the balloon go on the next line */
+input[type="datetime-local"][data-tz-local] {
+  display: block;
+}
+
+/* Balloon with the browser time zone, at the end of the help text; the box opens to the left */
 .tz-balloon {
   position: relative;
   display: inline-block;
@@ -60,7 +65,7 @@
 .tz-balloon::after {
   content: attr(data-balloon);
   position: absolute;
-  left: 0;
+  right: 0;
   bottom: 130%;
   width: 280px;
   padding: 8px 10px;

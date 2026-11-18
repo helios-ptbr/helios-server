@@ -234,10 +234,17 @@ var HeliosTimezone = (function() {
     if (el) { el.textContent = text; }
   }
 
-  // Balloon with the browser's time zone, next to the field (hover, focus or tap)
+  // Balloon with the browser's time zone, at the end of the help text line (hover, focus or tap)
   function addBalloon(input) {
-    var next = input.nextElementSibling;
+    var id = (input.getAttribute('aria-describedby') || '').split(' ')[0];
+    var help = id ? document.getElementById(id) : null;
+    var anchor = help || input;
+    var next = anchor.nextElementSibling;
     if (next && next.classList.contains('tz-balloon')) { return; }
+    // the <br> between the field and its help text is not needed: the field is a block
+    if (help && help.previousElementSibling && help.previousElementSibling.tagName === 'BR') {
+      help.parentNode.removeChild(help.previousElementSibling);
+    }
     var balloon = document.createElement('span');
     balloon.className = 'tz-balloon';
     balloon.tabIndex = 0;
@@ -245,7 +252,7 @@ var HeliosTimezone = (function() {
     balloon.setAttribute('aria-label', TEXTS.balloon.replace('%(tz)s', zoneLabel()));
     balloon.setAttribute('data-balloon', TEXTS.balloon.replace('%(tz)s', zoneLabel()));
     balloon.textContent = '\u24D8';
-    input.parentNode.insertBefore(balloon, input.nextSibling);
+    anchor.parentNode.insertBefore(balloon, anchor.nextSibling);
   }
 
   function convertInputToLocal(input) {

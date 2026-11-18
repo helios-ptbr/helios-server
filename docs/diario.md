@@ -60,6 +60,7 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 - **Decisão (issue #24)**: a pessoa digita a data no fuso do navegador. O navegador converte para UTC ao enviar. Foi escolhida a opção B (navegador) e rejeitada a A (servidor) porque a B só mexe em arquivos nossos e não gera conflito de merge com o Python do Ben.
 - Implementação: `helios/media/timezone-display.js` (UTC para local ao abrir, local para UTC ao enviar, com campo escondido no envio), `timezone-display.css` (balão ⓘ ao lado de cada campo), e textos novos em `server_ui/templates/base.html` e no `.po`.
 - Não existe fuso fixo no código e não há build. `compilemessages` só é preciso quando um texto muda.
+- Balão ⓘ: fica no fim da linha do texto de ajuda (sem o `<br>` antes dele), e a caixa abre para a esquerda (`right: 0` no CSS), para não sair da tela. O campo vira bloco (`display: block`) para o texto de ajuda continuar na linha de baixo.
 - O formato das datas segue o idioma da página (`<html lang>`).
 - Sem JavaScript, o campo é lido como UTC.
 - Se o fuso do computador estiver errado, o horário digitado fica errado. A linha "Este horário é: ... UTC / ... BRT" mostra isso antes do envio.
