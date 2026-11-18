@@ -3,8 +3,9 @@
 
 Usage: python3 tools/gen_booth_pages.py <lang> [--check]
 
-The page is a copy of vote.html with two fixed <script src> tags inserted
-before the booth bundle, and the <html lang> changed. Nothing else changes.
+The page is a copy of vote.html with one fixed <script src> tag (the strings
+file) inserted before js/i18n.js, and the <html lang> changed. Nothing else
+changes. vote.html itself already loads js/i18n.js.
 """
 import argparse
 import re
@@ -14,23 +15,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BOOTH = ROOT / "heliosbooth"
 LANG_RE = re.compile(r'^[A-Za-z]{2,3}([_-][A-Za-z0-9]{2,8})?$')
-BUNDLE_RE = re.compile(r'^(?P<ind>[ \t]*)<script[^>]*src="js/\d+-helios-booth-compressed\.js"[^>]*></script>[ \t]*$', re.M)
+I18N_RE = re.compile(r'^(?P<ind>[ \t]*)<script[^>]*src="js/i18n\.js"[^>]*></script>[ \t]*$', re.M)
 HTML_LANG_RE = re.compile(r'<html lang="en">')
 
 
 def generate(source, lang):
     web = lang.replace("_", "-")
-    if len(BUNDLE_RE.findall(source)) != 1:
-        raise ValueError("expected exactly one booth bundle <script> in vote.html")
+    if len(I18N_RE.findall(source)) != 1:
+        raise ValueError("expected exactly one js/i18n.js <script> in vote.html")
     if len(HTML_LANG_RE.findall(source)) != 1:
         raise ValueError('expected exactly one <html lang="en"> in vote.html')
-    tags = ('{ind}<script src="js/strings.%s.js"></script>\n'
-            '{ind}<script src="js/i18n.js"></script>\n') % web
+    tags = '{ind}<script src="js/strings.%s.js"></script>\n' % web
 
     def add(m):
         return tags.format(ind=m.group("ind")) + m.group(0)
 
-    out = BUNDLE_RE.sub(add, source, count=1)
+    out = I18N_RE.sub(add, source, count=1)
     return HTML_LANG_RE.sub('<html lang="%s">' % web, out, count=1)
 
 

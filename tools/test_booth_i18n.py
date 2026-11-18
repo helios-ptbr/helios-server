@@ -107,9 +107,8 @@ class GenPagesTest(unittest.TestCase):
         self.assertEqual(sorted(added), sorted([
             '<html lang="pt-BR">',
             '<script src="js/strings.pt-BR.js"></script>',
-            '<script src="js/i18n.js"></script>',
         ]))
-        self.assertEqual(len(b), len(a) + 2)
+        self.assertEqual(len(b), len(a) + 1)
 
     def test_strings_loaded_before_i18n_before_bundle(self):
         out = gen_booth_pages.generate(self.src, "pt_BR")
@@ -140,6 +139,29 @@ class I18nJsTest(unittest.TestCase):
                   "console.log([T('Next'),T('Missing'),T('hasOwnProperty'),T('__proto__')].join('|'))") % json.dumps(str(js))
         r = subprocess.run([node, "-e", script], capture_output=True, text=True)
         self.assertEqual(r.stdout.strip(), "Próximo|Missing|hasOwnProperty|__proto__", r.stderr)
+
+
+class RepoFilesTest(unittest.TestCase):
+    PO = ROOT / "locale" / "pt_BR" / "LC_MESSAGES" / "booth.po"
+
+    def test_T_calls_in_vote_html_match_po(self):
+        src = (ROOT / "heliosbooth" / "vote.html").read_text(encoding="utf-8")
+        ids = set()
+        for m in re.finditer(r"""\bT\((?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")""", src):
+            t = m.group(1) if m.group(1) is not None else m.group(2)
+            ids.add(t.encode().decode("unicode_escape"))
+        po = {e[0] for e in po2js.parse_po(self.PO.read_text(encoding="utf-8"))} - {""}
+        self.assertEqual(ids, po)
+
+    def test_all_po_entries_translated_and_valid(self):
+        entries = po2js.parse_po(self.PO.read_text(encoding="utf-8"))
+        for msgid, msgstr, fuzzy in entries:
+            if msgid:
+                self.assertTrue(msgstr and not fuzzy, msgid)
+        po2js.build_strings(entries)  # raises on placeholder mismatch
+
+    def test_strings_file_is_up_to_date(self):
+        self.assertEqual(po2js.main(["pt_BR", "--check"]), 0)
 
 
 if __name__ == "__main__":

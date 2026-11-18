@@ -1,0 +1,50 @@
+# Textos da cabine de votação (heliosbooth/vote.html).
+# Gerado a partir dos T("...") do código. Veja tools/po2js.py.
+msgid ""
+msgstr ""
+"Project-Id-Version: helios-ptbr\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: heliosbooth/vote.html
+msgid "If you leave this page with an in-progress ballot, your ballot will be lost."
+msgstr "Se você sair desta página com uma cédula em andamento, a cédula será perdida."
+
+#: heliosbooth/vote.html
+msgid "Are you sure you want to exit the booth and lose all information about your current ballot?"
+msgstr "Tem certeza de que quer sair da cabine e perder todas as informações da sua cédula atual?"
+
+#: heliosbooth/vote.html
+#, python-format
+msgid "You need to select at least %(min)s answer(s)."
+msgstr "Você precisa selecionar pelo menos %(min)s resposta(s)."
+
+#: heliosbooth/vote.html
+msgid "Maximum number of options selected.<br />To change your selection, please de-select a current selection first."
+msgstr "Número máximo de opções selecionadas.<br />Para mudar sua seleção, desmarque primeiro uma seleção atual."
+
+#: heliosbooth/vote.html
+#, python-format
+msgid "You may select up to %(max)s choices total."
+msgstr "Você pode selecionar até %(max)s opções no total."
+
+#: heliosbooth/vote.html
+#, python-format
+msgid ""
+"there appears to be a problem with the encryption process.\n"
+"Please email help@heliosvoting.org and indicate that your encryption process froze at %(percent)s%"
+msgstr ""
+"parece haver um problema no processo de cifragem.\n"
+"Envie um e-mail para help@heliosvoting.org e informe que a cifragem travou em %(percent)s%"
+
+#: heliosbooth/vote.html
+msgid ""
+"This audited ballot has been posted.\n"
+"Remember, this vote will only be used for auditing and will not be tallied.\n"
+"Click \"back to voting\" and cast a new ballot to make sure your vote counts."
+msgstr ""
+"Esta cédula auditada foi publicada.\n"
+"Lembre-se: este voto será usado apenas para auditoria e não será apurado.\n"
+"Clique em \"voltar à votação\" e envie uma nova cédula para garantir que seu voto conte."
