@@ -161,7 +161,7 @@ class PtBrEmailTests(WebTest):
     def test_vote_email_in_portuguese(self):
         body = self.render('email/vote_body.txt', 'pt-br')
         self.assertIn('Olá, Maria,', body)
-        self.assertIn('Seu nome de acesso: maria', body)
+        self.assertIn('Seu login: maria', body)
         self.assertIn('Para deixar de receber todos os e-mails do Helios', body)
         self.assertNotIn('Dear ', body)
 
@@ -173,3 +173,24 @@ class PtBrEmailTests(WebTest):
     def test_email_subjects_keep_quotes_unescaped(self):
         subj = self.render('email/password_resend_subject.txt', 'pt-br')
         self.assertEqual(subj.strip(), 'Suas credenciais de votação para Eleição "X"')
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrOptOutTests(WebTest):
+    def get(self, url, lang):
+        with override_settings(MIDDLEWARE=ptbr_middleware(), LOCALE_PATHS=[os.path.join(ROOT, 'locale')]):
+            return self.client.get(url, HTTP_ACCEPT_LANGUAGE=lang)
+
+    def test_optout_form_in_portuguese(self):
+        r = self.get(reverse('optout_form'), 'pt-br')
+        self.assertContains(r, 'Deixar de receber e-mails do Helios')
+        self.assertContains(r, 'Endereço de e-mail:')
+        self.assertNotContains(r, 'Opt Out of Helios Emails')
+
+    def test_optin_form_in_portuguese(self):
+        r = self.get(reverse('optin_form'), 'pt-br')
+        self.assertContains(r, 'Voltar a receber e-mails do Helios')
+
+    def test_optout_form_in_english_is_unchanged(self):
+        r = self.get(reverse('optout_form'), 'en')
+        self.assertContains(r, 'Opt Out of Helios Emails')

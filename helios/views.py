@@ -1990,8 +1990,8 @@ def optout_form(request):
     if request.method == "GET":
         return render_template(request, 'optout_form', {
             'action': 'optout',
-            'title': 'Opt Out of Helios Emails',
-            'description': 'Enter your email address to stop receiving all emails from Helios voting system.'
+            'title': gettext('Opt Out of Helios Emails'),
+            'description': gettext('Enter your email address to stop receiving all emails from Helios voting system.')
         })
     
     # POST: Process opt-out request
@@ -2000,37 +2000,37 @@ def optout_form(request):
     if not email:
         return render_template(request, 'optout_form', {
             'action': 'optout',
-            'title': 'Opt Out of Helios Emails',
-            'description': 'Enter your email address to stop receiving all emails from Helios voting system.',
-            'error': 'Email address is required'
+            'title': gettext('Opt Out of Helios Emails'),
+            'description': gettext('Enter your email address to stop receiving all emails from Helios voting system.'),
+            'error': gettext('Email address is required')
         })
     
     if not validate_email(email):
         return render_template(request, 'optout_form', {
             'action': 'optout',
-            'title': 'Opt Out of Helios Emails',
-            'description': 'Enter your email address to stop receiving all emails from Helios voting system.',
-            'error': 'Invalid email address'
+            'title': gettext('Opt Out of Helios Emails'),
+            'description': gettext('Enter your email address to stop receiving all emails from Helios voting system.'),
+            'error': gettext('Invalid email address')
         })
     
     # Generate confirmation code
     confirmation_code = utils.generate_email_confirmation_code(email, 'optout')
     
     # Send confirmation email
-    subject = "Confirm your opt-out from Helios emails"
+    subject = gettext("Confirm your opt-out from Helios emails")
     confirmation_path = reverse('optout_confirm', kwargs={'email': email, 'code': confirmation_code})
     confirmation_url = request.build_absolute_uri(confirmation_path)
     
-    body = f"""
+    body = gettext("""
 Please confirm that you want to opt out of all Helios voting system emails.
 
-Click this link to confirm: {confirmation_url}
+Click this link to confirm: %(url)s
 
 If you did not request this, please ignore this email.
 
 --
 Helios Voting System
-"""
+""") % {'url': confirmation_url}
     
     try:
         send_mail(
@@ -2044,9 +2044,9 @@ Helios Voting System
     except Exception as e:
         return render_template(request, 'optout_form', {
             'action': 'optout',
-            'title': 'Opt Out of Helios Emails',
-            'description': 'Enter your email address to stop receiving all emails from Helios voting system.',
-            'error': f'Failed to send confirmation email: {str(e)}'
+            'title': gettext('Opt Out of Helios Emails'),
+            'description': gettext('Enter your email address to stop receiving all emails from Helios voting system.'),
+            'error': gettext('Failed to send confirmation email: %(error)s') % {'error': str(e)}
         })
 
 
@@ -2055,8 +2055,8 @@ def optout_success(request):
     """Show opt-out success page"""
     return render_template(request, 'optout_success', {
         'action': 'optout',
-        'title': 'Opt-Out Confirmation Sent',
-        'message': 'We have sent you a confirmation email. Please click the link in the email to complete your opt-out request.'
+        'title': gettext('Opt-Out Confirmation Sent'),
+        'message': gettext('We have sent you a confirmation email. Please click the link in the email to complete your opt-out request.')
     })
 
 
@@ -2070,8 +2070,8 @@ def optout_confirm(request, email, code):
         # Show confirmation form
         return render_template(request, 'optout_confirm_form', {
             'action': 'optout',
-            'title': 'Confirm Opt-Out',
-            'description': 'Please confirm that you want to opt out of all Helios voting system emails.',
+            'title': gettext('Confirm Opt-Out'),
+            'description': gettext('Please confirm that you want to opt out of all Helios voting system emails.'),
             'email': email
         })
 
@@ -2086,8 +2086,8 @@ def optout_confirm(request, email, code):
 
     return render_template(request, 'optout_confirmed', {
         'action': 'optout',
-        'title': 'Successfully Opted Out',
-        'message': f'The email address {email} has been successfully opted out of all Helios emails.',
+        'title': gettext('Successfully Opted Out'),
+        'message': gettext('The email address %(email)s has been successfully opted out of all Helios emails.') % {'email': email},
         'email': email
     })
 
@@ -2098,8 +2098,8 @@ def optin_form(request):
     if request.method == "GET":
         return render_template(request, 'optout_form', {
             'action': 'optin',
-            'title': 'Opt Back Into Helios Emails',
-            'description': 'Enter your email address to resume receiving emails from Helios voting system.'
+            'title': gettext('Opt Back Into Helios Emails'),
+            'description': gettext('Enter your email address to resume receiving emails from Helios voting system.')
         })
     
     # POST: Process opt-in request
@@ -2108,17 +2108,17 @@ def optin_form(request):
     if not email:
         return render_template(request, 'optout_form', {
             'action': 'optin',
-            'title': 'Opt Back Into Helios Emails',
-            'description': 'Enter your email address to resume receiving emails from Helios voting system.',
-            'error': 'Email address is required'
+            'title': gettext('Opt Back Into Helios Emails'),
+            'description': gettext('Enter your email address to resume receiving emails from Helios voting system.'),
+            'error': gettext('Email address is required')
         })
     
     if not validate_email(email):
         return render_template(request, 'optout_form', {
             'action': 'optin',
-            'title': 'Opt Back Into Helios Emails',
-            'description': 'Enter your email address to resume receiving emails from Helios voting system.',
-            'error': 'Invalid email address'
+            'title': gettext('Opt Back Into Helios Emails'),
+            'description': gettext('Enter your email address to resume receiving emails from Helios voting system.'),
+            'error': gettext('Invalid email address')
         })
     
     # Check if email is actually opted out
@@ -2129,20 +2129,20 @@ def optin_form(request):
     confirmation_code = utils.generate_email_confirmation_code(email, 'optin')
     
     # Send confirmation email
-    subject = "Confirm your opt-in to Helios emails"
+    subject = gettext("Confirm your opt-in to Helios emails")
     confirmation_path = reverse('optin_confirm', kwargs={'email': email, 'code': confirmation_code})
     confirmation_url = request.build_absolute_uri(confirmation_path)
     
-    body = f"""
+    body = gettext("""
 Please confirm that you want to opt back in to Helios voting system emails.
 
-Click this link to confirm: {confirmation_url}
+Click this link to confirm: %(url)s
 
 If you did not request this, please ignore this email.
 
 --
 Helios Voting System
-"""
+""") % {'url': confirmation_url}
     
     try:
         send_mail(
@@ -2156,9 +2156,9 @@ Helios Voting System
     except Exception as e:
         return render_template(request, 'optout_form', {
             'action': 'optin',
-            'title': 'Opt Back Into Helios Emails',
-            'description': 'Enter your email address to resume receiving emails from Helios voting system.',
-            'error': f'Failed to send confirmation email: {str(e)}'
+            'title': gettext('Opt Back Into Helios Emails'),
+            'description': gettext('Enter your email address to resume receiving emails from Helios voting system.'),
+            'error': gettext('Failed to send confirmation email: %(error)s') % {'error': str(e)}
         })
 
 
@@ -2167,8 +2167,8 @@ def optin_success(request):
     """Show opt-in success page"""
     return render_template(request, 'optout_success', {
         'action': 'optin',
-        'title': 'Opt-In Confirmation Sent',
-        'message': 'We have sent you a confirmation email. Please click the link in the email to complete your opt-in request.'
+        'title': gettext('Opt-In Confirmation Sent'),
+        'message': gettext('We have sent you a confirmation email. Please click the link in the email to complete your opt-in request.')
     })
 
 
@@ -2186,8 +2186,8 @@ def optin_confirm(request, email, code):
         # Show confirmation form
         return render_template(request, 'optout_confirm_form', {
             'action': 'optin',
-            'title': 'Confirm Opt-In',
-            'description': 'Please confirm that you want to resume receiving emails from Helios voting system.',
+            'title': gettext('Confirm Opt-In'),
+            'description': gettext('Please confirm that you want to resume receiving emails from Helios voting system.'),
             'email': email
         })
 
@@ -2202,8 +2202,8 @@ def optin_confirm(request, email, code):
 
     return render_template(request, 'optout_confirmed', {
         'action': 'optin',
-        'title': 'Successfully Opted Back In',
-        'message': f'The email address {email} has been successfully opted back in to Helios emails.',
+        'title': gettext('Successfully Opted Back In'),
+        'message': gettext('The email address %(email)s has been successfully opted back in to Helios emails.') % {'email': email},
         'email': email
     })
 

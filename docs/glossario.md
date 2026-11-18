@@ -12,7 +12,7 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 | voter | pessoa eleitora | proposta | Plural: pessoas eleitoras. Em frase curta, "quem vota". |
 | voter list | lista de pessoas eleitoras | proposta | |
 | election administrator, admin | pessoa administradora | proposta | |
-| trustee | pessoa curadora | decidir | Quem guarda parte da chave secreta. Outras opções: pessoa fiduciária, pessoa guardiã. |
+| trustee | pessoa curadora | em uso | Quem guarda parte da chave secreta e ajuda a abrir a apuração. Decidido em 2026-11-18. Descartado: "fiscal", porque no Brasil é quem observa a votação (fiscal de partido) e não guarda chave, e porque se confundiria com "auditar" e "cédulas auditadas". Outras opções vistas: custodiante da chave, pessoa fiduciária, pessoa guardiã. |
 | candidate | pessoa candidata | proposta | O Helios chama a opção de "answer"; veja abaixo. |
 | user | pessoa usuária | proposta | |
 
@@ -62,6 +62,8 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 | Previous / Next | Anterior / Próximo | em uso | |
 | back to voting | voltar à votação | em uso | |
 | login, log in | login, fazer login | em uso | |
+| voter ID, username | login | em uso | Decidido em 2026-11-18, no lugar de "nome de acesso". Vale nos e-mails, na lista de pessoas eleitoras e nos formulários. |
+| password | senha | em uso | |
 | email | e-mail | em uso | Com hífen. |
 
 ## Não traduzir
