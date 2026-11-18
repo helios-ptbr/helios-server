@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 05:18-0800\n"
+"POT-Creation-Date: 2026-11-18 05:20-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -22,8 +22,8 @@ msgstr "Nome curto"
 msgid "no spaces, will be part of the URL for your election, e.g. my-club-2010"
 msgstr "sem espaços; fará parte da URL da sua eleição, por exemplo clube-2026"
 
-#: helios/forms.py:15 helios/templates/voters_list.html:144
-#: helios/templates/voters_manage.html:28
+#: helios/forms.py:15 helios/templates/election_bboard.html:41
+#: helios/templates/voters_list.html:144 helios/templates/voters_manage.html:28
 #: helios/templates/voters_upload_confirm.html:12
 msgid "Name"
 msgstr "Nome"
@@ -226,6 +226,8 @@ msgid "Compute Tally"
 msgstr "Calcular a apuração"
 
 #: helios/templates/combine_decryptions.html:6
+#: helios/templates/election_admin_add.html:7
+#: helios/templates/election_admin_remove.html:7
 #: helios/templates/election_edit.html:6
 #: helios/templates/election_extend.html:6 helios/templates/new_trustee.html:5
 #: helios/templates/release_result.html:6
@@ -254,10 +256,82 @@ msgstr ""
 msgid "compute the tally!"
 msgstr "calcular a apuração!"
 
-#: helios/templates/election_build.html:5
-msgid "Questions"
-msgstr "Perguntas"
+#: helios/templates/election_admin_add.html:4
+#, python-format
+msgid "Add Administrator - %(name)s"
+msgstr "Adicionar pessoa administradora - %(name)s"
 
+#: helios/templates/election_admin_add.html:7
+#: helios/templates/election_admin_add.html:52
+msgid "Add Administrator"
+msgstr "Adicionar pessoa administradora"
+
+#: helios/templates/election_admin_add.html:11
+#, python-format
+msgid ""
+"Multiple users were found with the email <strong>%(email)s</strong>. Please "
+"select which one to add:"
+msgstr "Foram encontradas várias pessoas usuárias com o e-mail <strong>%(email)s</strong>. Escolha qual delas adicionar:"
+
+#: helios/templates/election_admin_add.html:28
+msgid "Add Selected Administrator"
+msgstr "Adicionar a pessoa selecionada"
+
+#: helios/templates/election_admin_add.html:34
+msgid ""
+"Add another administrator to this election. The new administrator will have "
+"the same privileges as you, including the ability to manage voters, "
+"questions, trustees, and other settings."
+msgstr "Adicione outra pessoa administradora a esta eleição. Ela terá os mesmos privilégios que você, incluindo gerenciar pessoas eleitoras, perguntas, pessoas curadoras e outras configurações."
+
+#: helios/templates/election_admin_add.html:39
+msgid ""
+"Note: The user must have logged in to Helios at least once before they can "
+"be added as an administrator."
+msgstr "Observação: a pessoa usuária precisa ter entrado no Helios ao menos uma vez antes de poder ser adicionada como administradora."
+
+#: helios/templates/election_admin_add.html:50
+#: helios/templates/new_trustee.html:14
+msgid "Email:"
+msgstr "E-mail:"
+
+#: helios/templates/election_admin_remove.html:4
+#, python-format
+msgid "Remove Administrator - %(name)s"
+msgstr "Remover pessoa administradora - %(name)s"
+
+#: helios/templates/election_admin_remove.html:7
+#: helios/templates/election_admin_remove.html:22
+msgid "Remove Administrator"
+msgstr "Remover pessoa administradora"
+
+#: helios/templates/election_admin_remove.html:10
+#, python-format
+msgid ""
+"Are you sure you want to remove <strong>%(admin)s</strong> (%(user_id)s) as "
+"an administrator of this election?"
+msgstr "Tem certeza de que quer remover <strong>%(admin)s</strong> (%(user_id)s) como pessoa administradora desta eleição?"
+
+#: helios/templates/election_admin_remove.html:14
+msgid "They will no longer be able to manage this election."
+msgstr "Essa pessoa deixará de poder gerenciar esta eleição."
+
+#: helios/templates/election_admin_remove.html:24
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: helios/templates/election_admins.html:4
+#, python-format
+msgid "Administrators for %(name)s"
+msgstr "Pessoas administradoras de %(name)s"
+
+#: helios/templates/election_admins.html:7
+msgid "Administrators"
+msgstr "Pessoas administradoras"
+
+#: helios/templates/election_admins.html:7
+#: helios/templates/election_audited_ballots.html:7
+#: helios/templates/election_bboard.html:7
 #: helios/templates/election_build.html:5
 #: helios/templates/election_compute_tally.html:20
 #: helios/templates/election_compute_tally.html:40
@@ -267,6 +341,156 @@ msgstr "Perguntas"
 #: helios/templates/voters_upload_confirm.html:5
 msgid "back to election"
 msgstr "voltar à eleição"
+
+#: helios/templates/election_admins.html:10
+msgid ""
+"Administrators have full control over this election, including managing "
+"voters, questions, trustees, and settings."
+msgstr "As pessoas administradoras têm controle total desta eleição, incluindo gerenciar pessoas eleitoras, perguntas, pessoas curadoras e configurações."
+
+#: helios/templates/election_admins.html:14
+msgid "add an administrator"
+msgstr "adicionar uma pessoa administradora"
+
+#: helios/templates/election_admins.html:17
+msgid "Election Creator"
+msgstr "Pessoa que criou a eleição"
+
+#: helios/templates/election_admins.html:20
+msgid "The election creator cannot be removed."
+msgstr "A pessoa que criou a eleição não pode ser removida."
+
+#: helios/templates/election_admins.html:24
+msgid "Additional Administrators"
+msgstr "Outras pessoas administradoras"
+
+#: helios/templates/election_admins.html:30
+msgid "remove"
+msgstr "remover"
+
+#: helios/templates/election_admins.html:32
+msgid "(you)"
+msgstr "(você)"
+
+#: helios/templates/election_admins.html:39
+msgid "No additional administrators have been added."
+msgstr "Nenhuma outra pessoa administradora foi adicionada."
+
+#: helios/templates/election_audited_ballots.html:4
+#, python-format
+msgid "Audited Ballots for %(name)s"
+msgstr "Cédulas auditadas de %(name)s"
+
+#: helios/templates/election_audited_ballots.html:7
+#: helios/templates/election_view.html:315
+msgid "Audited Ballots"
+msgstr "Cédulas auditadas"
+
+#: helios/templates/election_audited_ballots.html:10
+msgid ""
+"When you prepare a ballot with Helios, you immediately receive a ballot "
+"tracker. Before you choose to cast that ballot, you have the option to ask "
+"Helios to \"break open\" that encrypted ballot and verify that Helios "
+"encrypted your ballot correctly. Once that's done, you can post that opened "
+"ballot here, on the audited ballots' list, for everyone to verify (your "
+"identity is not included). Once you've done this, you have to re-encrypt "
+"your choices and obtain a different ballot tracker. This helps reduce the "
+"chance that someone might coerce you to vote differently from your true "
+"choice."
+msgstr "Quando você prepara uma cédula no Helios, recebe na hora um código de rastreamento. Antes de escolher enviar essa cédula, você pode pedir ao Helios que \"abra\" a cédula cifrada e verifique se ele a cifrou corretamente. Feito isso, você pode publicar a cédula aberta aqui, na lista de cédulas auditadas, para que qualquer pessoa a verifique (a sua identidade não aparece). Depois, é preciso cifrar de novo as suas escolhas e obter outro código de rastreamento. Isso ajuda a reduzir o risco de alguém coagir você a votar diferente da sua escolha verdadeira."
+
+#: helios/templates/election_audited_ballots.html:14
+msgid ""
+"These ballots are <em>not cast</em>, and they will not be counted. They are "
+"just here for auditing purposes, to spot-check that Helios is properly "
+"encrypting voter's choices."
+msgstr "Estas cédulas <em>não são enviadas</em> e não serão contadas. Elas estão aqui só para auditoria, para conferir por amostragem se o Helios cifra direito as escolhas das pessoas eleitoras."
+
+#: helios/templates/election_audited_ballots.html:18
+#, python-format
+msgid ""
+"To verify an audited ballot, copy its entire content and paste it in the <a "
+"target=\"_new\" href=\"/booth/single-ballot-verify.html?"
+"election_url=%(path)s\">single ballot verifier</a>."
+msgstr "Para verificar uma cédula auditada, copie todo o conteúdo dela e cole no <a target=\"_new\" href=\"/booth/single-ballot-verify.html?election_url=%(path)s\">verificador de cédula única</a>."
+
+#: helios/templates/election_audited_ballots.html:23
+#, python-format
+msgid "Audited Ballots %(a)s - %(b)s"
+msgstr "Cédulas auditadas %(a)s - %(b)s"
+
+#: helios/templates/election_audited_ballots.html:27
+#: helios/templates/election_audited_ballots.html:35
+#: helios/templates/election_bboard.html:20
+#: helios/templates/voters_list.html:133 helios/templates/voters_manage.html:16
+#: helios/templates/voters_manage.html:24
+#, python-format
+msgid "next %(n)s"
+msgstr "próximas %(n)s"
+
+#: helios/templates/election_audited_ballots.html:32
+#: helios/templates/election_bboard.html:25
+#: helios/templates/voters_manage.html:21
+msgid "back to start"
+msgstr "voltar ao início"
+
+#: helios/templates/election_audited_ballots.html:39
+#: helios/templates/election_bboard.html:50
+msgid "view"
+msgstr "ver"
+
+#: helios/templates/election_audited_ballots.html:43
+msgid "no audited ballots yet"
+msgstr "nenhuma cédula auditada ainda"
+
+#: helios/templates/election_bboard.html:4
+#, python-format
+msgid "Ballot Tracking Center for %(name)s"
+msgstr "Centro de rastreamento de cédulas de %(name)s"
+
+#: helios/templates/election_bboard.html:7
+#: helios/templates/election_view.html:314
+msgid "Ballot Tracking Center"
+msgstr "Centro de rastreamento de cédulas"
+
+#: helios/templates/election_bboard.html:10
+msgid ""
+"This is the ballot tracking center, which displays the tracking numbers of "
+"all cast ballots in this election."
+msgstr "Este é o centro de rastreamento de cédulas, que mostra os códigos de rastreamento de todas as cédulas enviadas nesta eleição."
+
+#: helios/templates/election_bboard.html:14
+#, python-format
+msgid "<b>%(n)s</b> cast votes."
+msgstr "<b>%(n)s</b> votos enviados."
+
+#: helios/templates/election_bboard.html:17
+#: helios/templates/voters_manage.html:13
+#, python-format
+msgid "Voters %(a)s - %(b)s"
+msgstr "Pessoas eleitoras %(a)s - %(b)s"
+
+#: helios/templates/election_bboard.html:29
+msgid "Show:"
+msgstr "Mostrar:"
+
+#: helios/templates/election_bboard.html:34
+msgid "per page"
+msgstr "por página"
+
+#: helios/templates/election_bboard.html:39
+#: helios/templates/voters_list.html:148 helios/templates/voters_manage.html:28
+msgid "Alias"
+msgstr "Apelido"
+
+#: helios/templates/election_bboard.html:43
+#: helios/templates/voters_list.html:150
+msgid "Smart Ballot Tracker"
+msgstr "Código de rastreamento da cédula"
+
+#: helios/templates/election_build.html:5
+msgid "Questions"
+msgstr "Perguntas"
 
 #: helios/templates/election_compute_tally.html:4
 #, python-format
@@ -859,14 +1083,6 @@ msgstr "Impressão digital da eleição:"
 msgid "Your ballot tracker:"
 msgstr "O código de rastreamento da sua cédula:"
 
-#: helios/templates/election_view.html:314
-msgid "Ballot Tracking Center"
-msgstr "Centro de rastreamento de cédulas"
-
-#: helios/templates/election_view.html:315
-msgid "Audited Ballots"
-msgstr "Cédulas auditadas"
-
 #: helios/templates/election_view.html:317
 msgid "Download Election Log (CSV)"
 msgstr "Baixar o registro da eleição (CSV)"
@@ -1001,10 +1217,6 @@ msgstr "Nova pessoa curadora"
 msgid "Name:"
 msgstr "Nome:"
 
-#: helios/templates/new_trustee.html:14
-msgid "Email:"
-msgstr "E-mail:"
-
 #: helios/templates/new_trustee.html:16
 msgid "Add Trustee"
 msgstr "Adicionar pessoa curadora"
@@ -1116,7 +1328,9 @@ msgstr "Contatar as pessoas eleitoras"
 #, python-format
 msgid ""
 "You are sending this email to a specific user: <b>%(name)s (%(voter_id)s)</b>"
-msgstr "Você está enviando este e-mail a uma pessoa específica: <b>%(name)s (%(voter_id)s)</b>"
+msgstr ""
+"Você está enviando este e-mail a uma pessoa específica: <b>%(name)s "
+"(%(voter_id)s)</b>"
 
 #: helios/templates/voters_email.html:22
 msgid "Templates"
@@ -1126,14 +1340,19 @@ msgstr "Modelos"
 msgid ""
 "<b>Preview</b>: each voter receives this email, with the fields in angle "
 "brackets filled in for them."
-msgstr "<b>Prévia</b>: cada pessoa eleitora recebe este e-mail, com os campos entre os sinais de menor e maior preenchidos para ela."
+msgstr ""
+"<b>Prévia</b>: cada pessoa eleitora recebe este e-mail, com os campos entre "
+"os sinais de menor e maior preenchidos para ela."
 
 #: helios/templates/voters_email.html:44
 msgid ""
 "You may tweak the subject and add a custom message using the form below. "
 "Your message appears where <tt>&lt;BODY&gt;</tt> is shown above. Don't paste "
 "the preview into it."
-msgstr "Você pode ajustar o assunto e adicionar uma mensagem sua no formulário abaixo. A sua mensagem aparece onde <tt>&lt;BODY&gt;</tt> é mostrado acima. Não cole a prévia nela."
+msgstr ""
+"Você pode ajustar o assunto e adicionar uma mensagem sua no formulário "
+"abaixo. A sua mensagem aparece onde <tt>&lt;BODY&gt;</tt> é mostrado acima. "
+"Não cole a prévia nela."
 
 #: helios/templates/voters_email.html:55
 msgid "Send"
@@ -1148,7 +1367,9 @@ msgstr "Pronto, volte <a href=\"%(path)s\">à eleição</a>."
 msgid ""
 "Error emailing participants. Check server settings, make sure there's an "
 "SMTP server."
-msgstr "Erro ao enviar e-mails às pessoas participantes. Confira as configurações do servidor e veja se existe um servidor SMTP."
+msgstr ""
+"Erro ao enviar e-mails às pessoas participantes. Confira as configurações do "
+"servidor e veja se existe um servidor SMTP."
 
 #: helios/templates/voters_list.html:5
 #, python-format
@@ -1171,7 +1392,9 @@ msgstr "Só as pessoas eleitoras listadas aqui"
 msgid ""
 "Your election is marked private, which means you cannot open registration up "
 "more widely"
-msgstr "Sua eleição está marcada como privada, então você não pode abrir o cadastro para mais gente"
+msgstr ""
+"Sua eleição está marcada como privada, então você não pode abrir o cadastro "
+"para mais gente"
 
 #: helios/templates/voters_list.html:24
 msgid "anyone can vote"
@@ -1251,7 +1474,9 @@ msgstr "ainda não processado"
 msgid ""
 "Are you sure you want to remove ALL %(n)s voter(s)? This action cannot be "
 "undone."
-msgstr "Tem certeza de que quer remover TODAS as %(n)s pessoas eleitoras? Esta ação não pode ser desfeita."
+msgstr ""
+"Tem certeza de que quer remover TODAS as %(n)s pessoas eleitoras? Esta ação "
+"não pode ser desfeita."
 
 #: helios/templates/voters_list.html:106
 msgid "clear all voters"
@@ -1278,12 +1503,6 @@ msgstr "%(n)s anteriores"
 msgid "Voters %(a)s - %(b)s (of %(total)s)"
 msgstr "Pessoas eleitoras %(a)s - %(b)s (de %(total)s)"
 
-#: helios/templates/voters_list.html:133 helios/templates/voters_manage.html:16
-#: helios/templates/voters_manage.html:24
-#, python-format
-msgid "next %(n)s"
-msgstr "próximas %(n)s"
-
 #: helios/templates/voters_list.html:140
 msgid "Actions"
 msgstr "Ações"
@@ -1297,14 +1516,6 @@ msgstr "Nome de acesso"
 #: helios/templates/voters_upload_confirm.html:12
 msgid "Email Address"
 msgstr "Endereço de e-mail"
-
-#: helios/templates/voters_list.html:148 helios/templates/voters_manage.html:28
-msgid "Alias"
-msgstr "Apelido"
-
-#: helios/templates/voters_list.html:150
-msgid "Smart Ballot Tracker"
-msgstr "Código de rastreamento da cédula"
 
 #: helios/templates/voters_list.html:159 helios/templates/voters_list.html:161
 msgid "email"
@@ -1322,15 +1533,6 @@ msgstr "nenhuma pessoa eleitora."
 #: helios/templates/voters_manage.html:5
 msgid "Manage Voters"
 msgstr "Gerenciar pessoas eleitoras"
-
-#: helios/templates/voters_manage.html:13
-#, python-format
-msgid "Voters %(a)s - %(b)s"
-msgstr "Pessoas eleitoras %(a)s - %(b)s"
-
-#: helios/templates/voters_manage.html:21
-msgid "back to start"
-msgstr "voltar ao início"
 
 #: helios/templates/voters_manage.html:28
 #: helios_auth/templates/ldapauth/login.html:11
@@ -1372,7 +1574,10 @@ msgid ""
 "If you would like to specify your list of voters by name and email address,"
 "<br /> you can bulk upload a list of such voters here.<br /><br /> Please "
 "prepare a text file of comma-separated values with the fields:"
-msgstr "Se você quiser indicar a sua lista de pessoas eleitoras por nome e e-mail,<br /> pode enviar a lista em lote aqui.<br /><br /> Prepare um arquivo de texto com valores separados por vírgula, com os campos:"
+msgstr ""
+"Se você quiser indicar a sua lista de pessoas eleitoras por nome e e-mail,"
+"<br /> pode enviar a lista em lote aqui.<br /><br /> Prepare um arquivo de "
+"texto com valores separados por vírgula, com os campos:"
 
 #: helios/templates/voters_upload.html:18
 msgid "or"
@@ -1386,7 +1591,9 @@ msgstr "Por exemplo:"
 msgid ""
 "The easiest way to prepare such a file is to use a spreadsheet program and "
 "to export as \"CSV\"."
-msgstr "O jeito mais fácil de preparar esse arquivo é usar uma planilha e exportar como \"CSV\"."
+msgstr ""
+"O jeito mais fácil de preparar esse arquivo é usar uma planilha e exportar "
+"como \"CSV\"."
 
 #: helios/templates/voters_upload.html:42
 msgid "go"
@@ -1396,7 +1603,9 @@ msgstr "enviar"
 msgid ""
 "OK, done uploading.<br /> You can now <a href=\"./manage\">view the list of "
 "voters</a>."
-msgstr "Pronto, o envio terminou.<br /> Agora você pode <a href=\"./manage\">ver a lista de pessoas eleitoras</a>."
+msgstr ""
+"Pronto, o envio terminou.<br /> Agora você pode <a href=\"./manage\">ver a "
+"lista de pessoas eleitoras</a>."
 
 #: helios/templates/voters_upload_confirm.html:5
 msgid "Confirm"
@@ -1405,7 +1614,8 @@ msgstr "Confirmar"
 #: helios/templates/voters_upload_confirm.html:8
 msgid ""
 "You have uploaded a file of voters. The first few rows of this file are:"
-msgstr "Você enviou um arquivo de pessoas eleitoras. As primeiras linhas dele são:"
+msgstr ""
+"Você enviou um arquivo de pessoas eleitoras. As primeiras linhas dele são:"
 
 #: helios/templates/voters_upload_confirm.html:12
 msgid "Voter Type"
@@ -1438,6 +1648,32 @@ msgstr "não, quero enviar outro arquivo"
 #: helios/views.py:428
 msgid "There is already a trustee with that email address for this election."
 msgstr "Já existe uma pessoa curadora com esse e-mail nesta eleição."
+
+#: helios/views.py:488
+msgid "Please enter an email address."
+msgstr "Digite um endereço de e-mail."
+
+#: helios/views.py:506
+msgid ""
+"No user found with that email. They must log in to Helios at least once "
+"before being added as an administrator."
+msgstr "Nenhuma pessoa usuária encontrada com esse e-mail. Ela precisa entrar no Helios ao menos uma vez antes de ser adicionada como pessoa administradora."
+
+#: helios/views.py:523
+msgid "This user is already the election creator."
+msgstr "Esta pessoa usuária já criou a eleição."
+
+#: helios/views.py:530
+msgid "This user is already an administrator."
+msgstr "Esta pessoa usuária já é administradora."
+
+#: helios/views.py:560
+msgid "Cannot remove the election creator."
+msgstr "Não é possível remover a pessoa que criou a eleição."
+
+#: helios/views.py:564
+msgid "You cannot remove yourself as an administrator."
+msgstr "Você não pode remover o seu próprio acesso de administração."
 
 #: helios/views.py:1795
 msgid "Time to Vote"

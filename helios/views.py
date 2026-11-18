@@ -485,7 +485,7 @@ def election_admin_add(request, election):
     if not email:
       return render_template(request, 'election_admin_add', {
         'election': election,
-        'error': 'Please enter an email address.'
+        'error': gettext('Please enter an email address.')
       })
 
     # Check if a specific auth type was selected (when multiple users have same email)
@@ -503,7 +503,7 @@ def election_admin_add(request, election):
       if not matching_users:
         return render_template(request, 'election_admin_add', {
           'election': election,
-          'error': 'No user found with that email. They must log in to Helios at least once before being added as an administrator.'
+          'error': gettext('No user found with that email. They must log in to Helios at least once before being added as an administrator.')
         })
 
       if len(matching_users) > 1:
@@ -520,14 +520,14 @@ def election_admin_add(request, election):
     if new_admin == election.admin:
       return render_template(request, 'election_admin_add', {
         'election': election,
-        'error': 'This user is already the election creator.'
+        'error': gettext('This user is already the election creator.')
       })
 
     # Check if already an admin
     if election.admins.filter(pk=new_admin.pk).exists():
       return render_template(request, 'election_admin_add', {
         'election': election,
-        'error': 'This user is already an administrator.'
+        'error': gettext('This user is already an administrator.')
       })
 
     # Add the new admin
@@ -557,11 +557,11 @@ def election_admin_remove(request, election):
 
   # Cannot remove the original creator
   if admin_to_remove == election.admin:
-    return HttpResponseForbidden("Cannot remove the election creator.")
+    return HttpResponseForbidden(gettext("Cannot remove the election creator."))
 
   # Cannot remove yourself
   if admin_to_remove == current_user:
-    return HttpResponseForbidden("You cannot remove yourself as an administrator.")
+    return HttpResponseForbidden(gettext("You cannot remove yourself as an administrator."))
 
   # Check if this user is actually an admin
   if not election.admins.filter(pk=admin_to_remove.pk).exists():

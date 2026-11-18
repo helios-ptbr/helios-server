@@ -111,3 +111,19 @@ class PtBrAdminPagesTests(WebTest):
     def test_voters_list_page_in_english(self):
         r = self.get(reverse('election@voters@list-pretty', args=[self.election.uuid]), lang='en')
         self.assertContains(r, 'Who can vote?')
+
+    def test_admins_page(self):
+        r = self.get(reverse('election@admins', args=[self.election.uuid]))
+        self.assertEqual(r.status_code, 200)
+        self.assertContains(r, 'Pessoas administradoras')
+        self.assertContains(r, 'adicionar uma pessoa administradora')
+        self.assertNotContains(r, 'add an administrator')
+
+    def test_admin_add_error_in_portuguese(self):
+        url = reverse('election@admins@add', args=[self.election.uuid])
+        with override_settings(MIDDLEWARE=ptbr_middleware(), LOCALE_PATHS=[os.path.join(ROOT, 'locale')]):
+            self.client.get(url, HTTP_ACCEPT_LANGUAGE='pt-br')  # cria o csrf_token na sessão
+            r = self.client.post(url,
+                                 {'email': '', 'csrf_token': self.client.session['csrf_token']},
+                                 HTTP_ACCEPT_LANGUAGE='pt-br')
+        self.assertContains(r, 'Digite um endereço de e-mail.')
