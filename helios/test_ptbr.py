@@ -71,10 +71,9 @@ class PtBrAdminPagesTests(WebTest):
         with override_settings(MIDDLEWARE=ptbr_middleware(), LOCALE_PATHS=[os.path.join(ROOT, 'locale')]):
             return self.client.get(url, HTTP_ACCEPT_LANGUAGE=lang)
 
-    def test_no_english_catalog_text_in_election_pages(self):
-        """Varre as telas da eleição em pt-BR: nenhum texto original (msgid) do catálogo pode aparecer."""
+    def english_msgids(self):
+        """Frases longas e sem variáveis do catálogo (msgid): não podem aparecer em pt-BR."""
         import re
-        from html import unescape
         po = open(os.path.join(ROOT, 'locale', 'pt_BR', 'LC_MESSAGES', 'django.po'), encoding='utf-8').read()
         english = set()
         for block in po.split('\n\n')[1:]:
@@ -86,18 +85,44 @@ class PtBrAdminPagesTests(WebTest):
             # só frases longas e sem variáveis: curtas como "Login" são iguais em inglês e português
             if len(text) >= 20 and '%(' not in text:
                 english.add(' '.join(text.split()))
-        paths = ['view', 'edit', 'extend', 'questions', 'voters/list', 'voters/email', 'voters/upload',
-                 'trustees/view', 'admins/', 'audited-ballots/', 'freeze']
+        return english
+
+    def scan(self, urls):
+        """Pede cada URL em pt-BR e confere que nenhum msgid em inglês aparece. Devolve quantas deram 200."""
+        import re
+        from html import unescape
+        english = self.english_msgids()
         seen = 0
-        for path in paths:
-            r = self.get('/helios/elections/%s/%s' % (self.election.uuid, path))
+        for url in urls:
+            r = self.get(url)
             if r.status_code != 200:
                 continue
             seen += 1
             page = ' '.join(unescape(re.sub(r'<script.*?</script>|<style.*?</style>|<[^>]+>', ' ', r.content.decode(), flags=re.S)).split())
             leaked = sorted(t for t in english if t in page)
-            self.assertEqual(leaked, [], 'texto em inglês na tela %s' % path)
-        self.assertGreaterEqual(seen, 6)
+            self.assertEqual(leaked, [], 'texto em inglês na tela %s' % url)
+        return seen
+
+    def test_no_english_catalog_text_in_election_pages(self):
+        """Varre as telas da eleição em pt-BR: nenhum texto original (msgid) do catálogo pode aparecer."""
+        paths = ['view', 'edit', 'extend', 'questions', 'voters/list', 'voters/email', 'voters/upload',
+                 'trustees/view', 'admins/', 'audited-ballots/', 'freeze']
+        base = '/helios/elections/%s/' % self.election.uuid
+        self.assertGreaterEqual(self.scan([base + p for p in paths]), 6)
+
+    def test_no_english_catalog_text_in_site_pages(self):
+        """Varre as telas fora da eleição (início, páginas fixas, login, opt-out, estatísticas, listas)."""
+        # /about, /docs, /faq e /privacy ainda são páginas longas só em inglês (sem {% trans %}):
+        # ficam de fora até serem traduzidas, uma por idioma.
+        auth_models.User.objects.filter(user_id='ben@adida.net').update(admin_p=True)  # telas de estatísticas
+        urls = ['/', '/auth/', '/auth/why',
+                '/optout/', '/optout/success/', '/optin/', '/optin/success/',
+                '/helios/elections/new', '/helios/elections/administered', '/helios/elections/voted',
+                '/helios/stats/', '/helios/stats/elections', '/helios/stats/problem-elections',
+                '/helios/stats/recent-votes', '/helios/stats/deleted-elections', '/helios/stats/user-search',
+                '/helios/elections/%s/' % self.election.uuid + 'trustees/view',
+                '/helios/elections/%s/' % self.election.uuid + 'voters/']
+        self.assertGreaterEqual(self.scan(urls), 17)
 
     def test_new_election_page(self):
         r = self.get(reverse('elections@new'))

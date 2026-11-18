@@ -70,7 +70,7 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 
 | Arquivo | O que cobre |
 |---|---|
-| `helios/test_ptbr.py` | renderização em pt-BR e em inglês, e-mails, telas da curadoria, varredura que procura inglês nas telas da eleição |
+| `helios/test_ptbr.py` | renderização em pt-BR e em inglês, e-mails, telas da curadoria, duas varreduras que procuram inglês: 11 telas da eleição e 17 telas do site (início, login, opt-out, estatísticas, listas) |
 | `helios/test_po.py` | os 5 arquivos `.po`: sem entrada vazia ou "fuzzy" (#19), marcadores `%(x)s` e `%d` iguais no original e na tradução (#20), `django.po` em dia com o código via `makemessages` (#18), `msgfmt --check` |
 | `helios/test_datas.py` | início, fim e limites da votação em 16 fusos do Brasil, prorrogação, formulário, Aragarças x Barra do Garças |
 | `tools/test_fusos_navegador.py` | `timezone-display.js` no Chromium com cada fuso (variável `TZ`), pares criador x leitor |
@@ -110,6 +110,6 @@ Guia: `docs/docker.md`. Decisões:
 ## 11. Pendências (issues abertas)
 
 - #17 idioma do e-mail por eleição (hoje vem do `LANGUAGE_CODE`).
-- #21 varredura de todas as telas em busca de inglês (parcial).
+- #21 varredura de telas: feita para eleição e site. Faltam traduzir as páginas longas `/about`, `/faq`, `/privacy` e `/docs` (`server_ui/templates`), hoje só em inglês e fora da varredura.
 - #23 resto da rodada de localização (números, plurais, ordenação).
 - Teste real da pessoa curadora externa (chave secreta e decifragem) e do opt-out no navegador: não feitos.
