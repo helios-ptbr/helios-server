@@ -172,7 +172,7 @@ msgstr "ninguém -- você tem certeza disso?"
 
 #: helios/forms.py:59 helios/forms.py:63
 msgid "Voter ID"
-msgstr "ID da pessoa eleitora"
+msgstr "Login"
 
 #: helios/forms.py:60 helios_auth/templates/ldapauth/login.html:17
 #: helios_auth/templates/ldapauth/login.html:18
@@ -181,7 +181,7 @@ msgstr "Senha"
 
 #: helios/forms.py:63
 msgid "Enter the voter ID you were assigned for this election"
-msgstr "Digite o ID que você recebeu para esta eleição"
+msgstr "Digite o login que você recebeu para esta eleição"
 
 #: helios/models.py:447
 msgid "add questions to the ballot"
@@ -276,7 +276,7 @@ msgstr "a votação ainda não começou, desculpe."
 
 #: helios/templates/_castconfirm_password.html:10
 msgid "bad voter ID or password, please try again."
-msgstr "ID ou senha incorretos, tente de novo."
+msgstr "Login ou senha incorretos, tente de novo."
 
 #: helios/templates/_castconfirm_password.html:14
 msgid "authenticate &amp; cast ballot"
@@ -284,7 +284,7 @@ msgstr "autenticar &amp; enviar a cédula"
 
 #: helios/templates/_castconfirm_password.html:16
 msgid "Your voter ID and password can be found in the email you received."
-msgstr "O seu ID e a sua senha estão no e-mail que você recebeu."
+msgstr "O seu login e a sua senha estão no e-mail que você recebeu."
 
 #: helios/templates/_castconfirm_password.html:17
 msgid "Forgot your password? Click here to resend it."
@@ -1971,7 +1971,7 @@ msgid ""
 "If a voter with that ID exists in this election, an email with your voting "
 "credentials has been sent."
 msgstr ""
-"Se existir uma pessoa eleitora com esse ID nesta eleição, um e-mail com as "
+"Se existir uma pessoa eleitora com esse login nesta eleição, um e-mail com as "
 "suas credenciais de votação foi enviado."
 
 #: helios/templates/password_voter_resend.html:24
@@ -1979,7 +1979,7 @@ msgid ""
 "Please check your email inbox (and spam folder) for your voter ID and "
 "password."
 msgstr ""
-"Confira a sua caixa de entrada (e a de spam) para achar o seu ID e a sua "
+"Confira a sua caixa de entrada (e a de spam) para achar o seu login e a sua "
 "senha."
 
 #: helios/templates/password_voter_resend.html:27
@@ -1991,7 +1991,7 @@ msgid ""
 "Forgot your password? Enter your voter ID below and we'll email your voting "
 "credentials to you."
 msgstr ""
-"Esqueceu a senha? Digite o seu ID abaixo e enviaremos as suas credenciais de "
+"Esqueceu a senha? Digite o seu login abaixo e enviaremos as suas credenciais de "
 "votação por e-mail."
 
 #: helios/templates/password_voter_resend.html:39
@@ -3320,3 +3320,43 @@ msgstr "Erro no servidor"
 #: templates/500.html:6
 msgid "There was an error while handling your request."
 msgstr "Houve um erro ao processar o seu pedido."
+
+#: server_ui/glue.py
+#, python-format
+msgid "%(election)s - vote cast"
+msgstr "%(election)s - voto registrado"
+
+#: server_ui/templates/email/cast_vote_body.txt
+#, python-format
+msgid "You have successfully cast a vote in %(election_name)s."
+msgstr "Seu voto em %(election_name)s foi registrado."
+
+#: server_ui/templates/email/cast_vote_body.txt
+msgid "And your full encrypted ballot is archived at:"
+msgstr "A sua cédula cifrada completa está arquivada em:"
+
+#: server_ui/templates/email/cast_vote_body.txt
+msgid "This election uses voter aliases to protect your privacy."
+msgstr "Esta eleição usa apelidos para proteger a sua privacidade."
+
+#: server_ui/templates/email/cast_vote_body.txt
+#, python-format
+msgid "Your voter alias is: %(alias)s."
+msgstr "O seu apelido é: %(alias)s."
+
+#: helios/views.py
+msgid "the voter file is empty"
+msgstr "o arquivo está vazio"
+
+#: helios/views.py
+#, python-format
+msgid "An election with short name %(short_name)s already exists"
+msgstr "Já existe uma eleição com o nome curto %(short_name)s"
+
+#: helios_auth/auth_systems/password.py
+msgid "Bad Username or Password"
+msgstr "Login ou senha incorretos."
+
+#: helios_auth/auth_systems/password.py
+msgid "no such username"
+msgstr "Não existe esse login."

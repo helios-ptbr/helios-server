@@ -358,3 +358,42 @@ class PtBrPluralTests(WebTest):
         t = '{% blocktranslate count n=N %}<b>{{ n }}</b> cast vote.{% plural %}<b>{{ n }}</b> cast votes.{% endblocktranslate %}'
         self.assertEqual(self.render(t.replace('N', '1')), '<b>1</b> voto enviado.')
         self.assertEqual(self.render(t.replace('N', '3')), '<b>3</b> votos enviados.')
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrBateriaDockerTests(WebTest):
+    """Regressões achadas na bateria de testes do Docker (2026-11-18)."""
+
+    def trad(self, texto, lang='pt-br'):
+        from django.utils import translation
+        with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
+            return translation.gettext(texto)
+
+    def test_textos_de_login_dizem_login_e_nao_id(self):
+        self.assertEqual(self.trad('Voter ID'), 'Login')
+        self.assertEqual(self.trad('Bad Username or Password'), 'Login ou senha incorretos.')
+        self.assertIn('login', self.trad('Enter the voter ID you were assigned for this election'))
+
+    def test_mensagens_novas_em_portugues_e_ingles_intacto(self):
+        self.assertEqual(self.trad('the voter file is empty'), 'o arquivo está vazio')
+        self.assertEqual(self.trad('the voter file is empty', 'en'), 'the voter file is empty')
+        msgid = 'An election with short name %(short_name)s already exists'
+        self.assertEqual(self.trad(msgid) % {'short_name': 'x'}, 'Já existe uma eleição com o nome curto x')
+
+    def test_email_de_voto_registrado(self):
+        from django.template import Context, loader
+        from django.utils import translation
+
+        class Obj:
+            pass
+
+        voter, election, cast = Obj(), Obj(), Obj()
+        voter.name, voter.alias = 'Maria', 'V12'
+        election.name, election.use_voter_aliases = 'Eleição X', True
+        cast.vote_hash = 'HASH'
+        ctx = dict(voter=voter, election=election, cast_vote=cast, cast_vote_url='http://x/v/HASH')
+        for lang, esperado in (('pt-br', 'Seu voto em Eleição X foi registrado.'),
+                               ('en', 'You have successfully cast a vote in Eleição X.')):
+            with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
+                corpo = loader.get_template('email/cast_vote_body.txt').template.render(Context(ctx, autoescape=False))
+            self.assertIn(esperado, corpo)

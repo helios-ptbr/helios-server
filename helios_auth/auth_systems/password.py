@@ -6,6 +6,7 @@ from django.urls import reverse
 from django import forms
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils.translation import gettext, gettext_lazy
 from django.http import HttpResponseRedirect
 from django.urls import re_path
 
@@ -34,8 +35,8 @@ def create_user(username, password, name = None):
   user.save()
 
 class LoginForm(forms.Form):
-  username = forms.CharField(max_length=50)
-  password = forms.CharField(widget=forms.PasswordInput(), max_length=100)
+  username = forms.CharField(max_length=50, label=gettext_lazy('Username'))
+  password = forms.CharField(widget=forms.PasswordInput(), max_length=100, label=gettext_lazy('Password'))
 
 def password_check(user, password):
   return (user and user.info['password'] == password)
@@ -72,7 +73,7 @@ def password_login_view(request):
           return HttpResponseRedirect(reverse(url_names.AUTH_AFTER))
       except User.DoesNotExist:
         pass
-      error = 'Bad Username or Password'
+      error = gettext('Bad Username or Password')
   
   return render_template(request, 'password/login', {'form': form, 'error': error})
     
@@ -96,7 +97,7 @@ def password_forgotten_view(request):
     try:
       user = User.get_by_type_and_id('password', username)
     except User.DoesNotExist:
-      return render_template(request, 'password/forgot', {'return_url': request.GET.get('return_url', ''), 'error': 'no such username'})
+      return render_template(request, 'password/forgot', {'return_url': request.GET.get('return_url', ''), 'error': gettext('no such username')})
     
     body = """
 

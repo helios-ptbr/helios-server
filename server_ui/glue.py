@@ -4,6 +4,7 @@ Glue some events together
 
 import helios.signals
 import helios.views
+from django.utils.translation import gettext as _
 from helios.view_utils import render_text_template
 
 
@@ -18,7 +19,7 @@ def vote_cast_send_message(user, voter, election, cast_vote, **kwargs):
         'voter': voter,
         'cast_vote': cast_vote,
         'cast_vote_url': helios.views.get_castvote_url(cast_vote),
-        'custom_subject': "%s - vote cast" % election.name
+        'custom_subject': _("%(election)s - vote cast") % {'election': election.name}
     }
     subject = render_text_template(subject_template, extra_vars)
     body = render_text_template(body_template, extra_vars)

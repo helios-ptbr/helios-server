@@ -242,7 +242,7 @@ msgstr "Nenhuma opção selecionada"
 
 #: heliosbooth/templates/seal.html
 msgid "selections out of possible"
-msgstr "seleções de um total possível de"
+msgstr "seleção(ões) de um total possível de"
 
 #: heliosbooth/templates/seal.html
 msgid "change"
