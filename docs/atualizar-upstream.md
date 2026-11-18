@@ -20,28 +20,28 @@ git remote add upstream git@github.com:benadida/helios-server.git
 
 | Branch | O que tem | Quem mexe |
 |---|---|---|
-| `master` | Cópia exata do `upstream/master` | Só `fetch` e `merge --ff-only` |
-| `ptbr` | `master` + as traduções | Nós |
+| `ben-master` | Cópia exata do `upstream/master` | Só `fetch` e `merge --ff-only` |
+| `ptbr` | `ben-master` + as traduções | Nós |
 | `tr/<assunto>` | Trabalho pequeno, volta para `ptbr` por PR | Nós |
 
-Nunca faça commit direto no `master`.
+Nunca faça commit direto no `ben-master`.
 
 ## Passo a passo
 
-1. Atualize o `master`:
+1. Atualize o `ben-master`:
 
 ```
 git fetch upstream
-git switch master
+git switch ben-master
 git merge --ff-only upstream/master
-git push origin master
+git push origin ben-master
 ```
 
 2. Traga as mudanças para o `ptbr`:
 
 ```
 git switch ptbr
-git merge master
+git merge ben-master
 ```
 
 3. Se houver conflito, resolva à mão, depois `git add` e `git commit`.
@@ -71,5 +71,5 @@ git push origin ptbr
 
 ## Se o `--ff-only` falhar
 
-Alguém fez commit no `master`. Ele deve ser igual ao `upstream/master`.
+Alguém fez commit no `ben-master`. Ele deve ser igual ao `upstream/master`.
 Pare e avise o grupo antes de mexer.

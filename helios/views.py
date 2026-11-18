@@ -17,6 +17,7 @@ from django.core.paginator import Paginator
 from django.db import transaction, IntegrityError
 from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpResponseForbidden, HttpResponseBadRequest
 from django.urls import reverse
+from django.utils.translation import gettext
 from django.views.decorators.http import require_http_methods
 
 from booth_lang import booth_page
@@ -418,7 +419,14 @@ def new_trustee(request, election):
     # get the public key and the hash, and add it
     name = request.POST['name']
     email = request.POST['email']
-    
+
+    # an election has at most one trustee per email address (unique_together),
+    # so tell the admin rather than failing on the database constraint
+    if Trustee.objects.filter(election = election, email = email).exists():
+      return render_template(request, 'new_trustee', {
+          'election' : election, 'name' : name, 'email' : email,
+          'error' : gettext('There is already a trustee with that email address for this election.')})
+
     trustee = Trustee(uuid = str(uuid.uuid4()), election = election, name=name, email=email)
     trustee.save()
     return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_TRUSTEES_VIEW, args=[election.uuid]))
@@ -1806,6 +1814,9 @@ def voters_email(request, election):
   election_url = get_election_url(election)
   election_vote_url = get_election_govote_url(election)
 
+  # the preview shows how a voter logs in; the election may have no voters yet
+  sample_voter = voter or election.voter_set.first()
+
   default_subject = render_text_template('email/%s_subject.txt' % template, {
       'custom_subject': "<SUBJECT>"
 })
@@ -1819,7 +1830,7 @@ def voters_email(request, election):
                 'name': '<VOTER_NAME>',
                 'voter_login_id': '<VOTER_LOGIN_ID>',
                 'voter_password': '<VOTER_PASSWORD>',
-                'voter_type' : election.voter_set.all()[0].voter_type,
+                'voter_type' : sample_voter.voter_type if sample_voter else None,
                 'election' : election}
       })
 

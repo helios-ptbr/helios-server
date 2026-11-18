@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 05:06-0800\n"
+"POT-Creation-Date: 2026-11-18 05:14-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -220,13 +220,18 @@ msgid ""
 "The trustees' partial decryptions don't decrypt the tally, so no result was "
 "saved. Check that every trustee's partial decryption is for the current "
 "tally."
-msgstr "As decifragens parciais das pessoas curadoras não decifram a apuração, então nenhum resultado foi salvo. Confira se a decifragem parcial de cada pessoa curadora é da apuração atual."
+msgstr ""
+"As decifragens parciais das pessoas curadoras não decifram a apuração, então "
+"nenhum resultado foi salvo. Confira se a decifragem parcial de cada pessoa "
+"curadora é da apuração atual."
 
 #: helios/templates/combine_decryptions.html:16
 msgid ""
 "You are about to compute the tally for this election. You only will then see "
 "the results."
-msgstr "Você está prestes a calcular a apuração desta eleição. Só você verá os resultados."
+msgstr ""
+"Você está prestes a calcular a apuração desta eleição. Só você verá os "
+"resultados."
 
 #: helios/templates/combine_decryptions.html:21
 msgid "compute the tally!"
@@ -267,7 +272,10 @@ msgid ""
 "All votes must be verified before computing the tally. Please wait and try "
 "again shortly. If this persists, contact <a href=\"mailto:"
 "%(email)s\">%(email)s</a>."
-msgstr "Todos os votos precisam ser verificados antes de calcular a apuração. Espere um pouco e tente de novo. Se continuar assim, entre em contato com <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Todos os votos precisam ser verificados antes de calcular a apuração. Espere "
+"um pouco e tente de novo. Se continuar assim, entre em contato com <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: helios/templates/election_compute_tally.html:19
 msgid "Refresh this page"
@@ -277,7 +285,8 @@ msgstr "Atualizar esta página"
 #, python-format
 msgid ""
 "You are about to compute the encrypted tally for election <b>%(name)s</b>."
-msgstr "Você está prestes a calcular a apuração cifrada da eleição <b>%(name)s</b>."
+msgstr ""
+"Você está prestes a calcular a apuração cifrada da eleição <b>%(name)s</b>."
 
 #: helios/templates/election_compute_tally.html:28
 msgid "Once you do this, voters will no longer be able to cast a ballot."
@@ -299,7 +308,9 @@ msgstr "desistir"
 msgid ""
 "No votes have been cast in this election. At least one vote must be cast "
 "before you compute the tally."
-msgstr "Nenhum voto foi enviado nesta eleição. É preciso pelo menos um voto antes de calcular a apuração."
+msgstr ""
+"Nenhum voto foi enviado nesta eleição. É preciso pelo menos um voto antes de "
+"calcular a apuração."
 
 #: helios/templates/election_edit.html:6 helios/templates/election_edit.html:20
 msgid "Update"
@@ -873,7 +884,11 @@ msgid ""
 "Trustees are responsible for decrypting the election result.<br /> Each "
 "trustee generates a keypair and submits the public portion to Helios.<br /> "
 "When it's time to decrypt, each trustee needs to provide their secret key."
-msgstr "As pessoas curadoras são responsáveis por decifrar o resultado da eleição.<br /> Cada pessoa curadora gera um par de chaves e envia a parte pública ao Helios.<br /> Na hora de decifrar, cada pessoa curadora precisa informar a sua chave secreta."
+msgstr ""
+"As pessoas curadoras são responsáveis por decifrar o resultado da eleição."
+"<br /> Cada pessoa curadora gera um par de chaves e envia a parte pública ao "
+"Helios.<br /> Na hora de decifrar, cada pessoa curadora precisa informar a "
+"sua chave secreta."
 
 #: helios/templates/list_trustees.html:18
 msgid ""
@@ -882,24 +897,35 @@ msgid ""
 "trustees if you want, and you can even remove the Helios trustee.<br /> "
 "However, we recommend you do this only if you have a solid understanding of "
 "the trustee's role."
-msgstr "O Helios é automaticamente a sua primeira pessoa curadora e cuida sozinho da geração do par de chaves e da decifragem.<br /> Você pode adicionar outras pessoas curadoras se quiser, e pode até remover o Helios.<br /> Mesmo assim, recomendamos fazer isso só se você entende bem o papel de uma pessoa curadora."
+msgstr ""
+"O Helios é automaticamente a sua primeira pessoa curadora e cuida sozinho da "
+"geração do par de chaves e da decifragem.<br /> Você pode adicionar outras "
+"pessoas curadoras se quiser, e pode até remover o Helios.<br /> Mesmo assim, "
+"recomendamos fazer isso só se você entende bem o papel de uma pessoa "
+"curadora."
 
 #: helios/templates/list_trustees.html:25
 msgid ""
 "Adding your own trustee requires a good bit more work to tally the election."
-msgstr "Adicionar uma pessoa curadora própria dá bem mais trabalho para apurar a eleição."
+msgstr ""
+"Adicionar uma pessoa curadora própria dá bem mais trabalho para apurar a "
+"eleição."
 
 #: helios/templates/list_trustees.html:25
 msgid ""
 "You will need to have trustees generate keypairs and safeguard their secret "
 "key."
-msgstr "Você precisará pedir que as pessoas curadoras gerem pares de chaves e guardem a chave secreta com segurança."
+msgstr ""
+"Você precisará pedir que as pessoas curadoras gerem pares de chaves e "
+"guardem a chave secreta com segurança."
 
 #: helios/templates/list_trustees.html:25
 msgid ""
 "If you are not sure what that means, we strongly recommend clicking Cancel "
 "and letting Helios tally the election for you."
-msgstr "Se você não tem certeza do que isso significa, recomendamos fortemente clicar em Cancelar e deixar o Helios apurar a eleição para você."
+msgstr ""
+"Se você não tem certeza do que isso significa, recomendamos fortemente "
+"clicar em Cancelar e deixar o Helios apurar a eleição para você."
 
 #: helios/templates/list_trustees.html:25
 msgid "add a trustee"
@@ -924,7 +950,9 @@ msgstr "Tem certeza de que quer remover esta pessoa curadora?"
 
 #: helios/templates/list_trustees.html:53
 msgid "Are you sure you want to send this trustee his/her admin URL?"
-msgstr "Tem certeza de que quer enviar a esta pessoa curadora o endereço de acesso dela?"
+msgstr ""
+"Tem certeza de que quer enviar a esta pessoa curadora o endereço de acesso "
+"dela?"
 
 #: helios/templates/list_trustees.html:53
 msgid "send login"
@@ -950,15 +978,15 @@ msgstr "aguardando a apuração desta pessoa curadora"
 msgid "New Trustee"
 msgstr "Nova pessoa curadora"
 
-#: helios/templates/new_trustee.html:9
+#: helios/templates/new_trustee.html:13
 msgid "Name:"
 msgstr "Nome:"
 
-#: helios/templates/new_trustee.html:10
+#: helios/templates/new_trustee.html:14
 msgid "Email:"
 msgstr "E-mail:"
 
-#: helios/templates/new_trustee.html:12
+#: helios/templates/new_trustee.html:16
 msgid "Add Trustee"
 msgstr "Adicionar pessoa curadora"
 
@@ -994,7 +1022,10 @@ msgid ""
 "You have successfully uploaded your public key.<br /> Your public key "
 "fingerprint is: <b>%(fingerprint)s</b>.<br /> You can <a "
 "href=\"%(path)s\">verify that you have the right secret key</a>."
-msgstr "Você enviou a sua chave pública com sucesso.<br /> A impressão digital da sua chave pública é: <b>%(fingerprint)s</b>.<br /> Você pode <a href=\"%(path)s\">verificar se tem a chave secreta certa</a>."
+msgstr ""
+"Você enviou a sua chave pública com sucesso.<br /> A impressão digital da "
+"sua chave pública é: <b>%(fingerprint)s</b>.<br /> Você pode <a "
+"href=\"%(path)s\">verificar se tem a chave secreta certa</a>."
 
 #: helios/templates/trustee_home.html:13
 msgid "setup your key"
@@ -1009,14 +1040,19 @@ msgstr "Você enviou a sua decifragem com sucesso."
 msgid ""
 "The encrypted tally for this election is ready.<br /> <a "
 "href=\"%(path)s\">decrypt with your key</a>"
-msgstr "A apuração cifrada desta eleição está pronta.<br /> <a href=\"%(path)s\">decifrar com a sua chave</a>"
+msgstr ""
+"A apuração cifrada desta eleição está pronta.<br /> <a "
+"href=\"%(path)s\">decifrar com a sua chave</a>"
 
 #: helios/templates/trustee_home.html:26
 msgid ""
 "Once the tally is computed, come back here to provide your secret key for "
 "decryption purposes.<br /> You should keep the email with your trustee "
 "homepage link, which contains the credentials needed to get back here."
-msgstr "Depois que a apuração for calculada, volte aqui para informar a sua chave secreta e fazer a decifragem.<br /> Guarde o e-mail com o link da sua página de pessoa curadora: ele traz as credenciais necessárias para voltar aqui."
+msgstr ""
+"Depois que a apuração for calculada, volte aqui para informar a sua chave "
+"secreta e fazer a decifragem.<br /> Guarde o e-mail com o link da sua página "
+"de pessoa curadora: ele traz as credenciais necessárias para voltar aqui."
 
 #: helios/templates/voters_eligibility.html:4
 #, python-format
@@ -1036,7 +1072,9 @@ msgstr "voltar às pessoas eleitoras"
 msgid ""
 "You may limit eligibility of voters to one of these categories, as defined "
 "by %(user_type)s:"
-msgstr "Você pode limitar a elegibilidade das pessoas eleitoras a uma destas categorias, definidas por %(user_type)s:"
+msgstr ""
+"Você pode limitar a elegibilidade das pessoas eleitoras a uma destas "
+"categorias, definidas por %(user_type)s:"
 
 #: helios/templates/voters_eligibility.html:19
 msgid "(no constraint)"
@@ -1104,11 +1142,17 @@ msgstr "enviar e-mail a esta pessoa eleitora"
 
 #: helios/templates/voters_search.html:12
 msgid "once this election is frozen, you'll be able to email this voter."
-msgstr "depois que a urna for congelada, você poderá enviar e-mail a esta pessoa eleitora."
+msgstr ""
+"depois que a urna for congelada, você poderá enviar e-mail a esta pessoa "
+"eleitora."
 
 #: helios/templates/voters_search.html:15
 msgid "no such voter found"
 msgstr "nenhuma pessoa eleitora encontrada"
+
+#: helios/views.py:428
+msgid "There is already a trustee with that email address for this election."
+msgstr "Já existe uma pessoa curadora com esse e-mail nesta eleição."
 
 #: helios_auth/auth_systems/ldapauth.py:23
 msgid "Log in with my LDAP Account"
