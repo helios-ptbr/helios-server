@@ -79,6 +79,21 @@ A logo do rodapé funciona igual, com `FOOTER_LOGO_URL`. Esses arquivos não ent
 - Produção: preencha `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `EMAIL_USE_TLS`, `DEFAULT_FROM_EMAIL` e `DEFAULT_FROM_NAME`.
 - Sem o `worker` no ar, nenhum e-mail sai.
 
+## Criar pessoas administradoras
+
+O Helios não tem `/admin` do Django. Quem cria eleições entra pelo login por senha (`/auth/password/login`), e a conta nasce por este comando:
+
+```
+docker compose exec web python manage.py criar_administrador maria --nome "Maria Silva" --email maria@exemplo.br
+```
+
+- A senha é pedida no terminal (mínimo de 8 caracteres).
+- Em script, passe a senha por variável, sem deixá-la no histórico: `docker compose exec -e HELIOS_SENHA='...' web python manage.py criar_administrador maria`.
+- `--redefinir-senha` troca a senha de um login que já existe.
+- `--site` marca a pessoa como administradora do site (páginas de estatísticas e busca de usuários).
+- Em produção (`DEBUG=0`) com só o login por senha ligado, `/auth/` já leva direto a essa tela.
+- O Helios guarda a senha desse login em texto no banco. Use uma senha que não seja usada em outro lugar.
+
 ## Operação
 
 | Tarefa | Comando |
