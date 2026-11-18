@@ -1,0 +1,980 @@
+arquivo,linha,tipo,dificuldade,texto
+helios/datatypes/__init__.py,57,python-erro-interno,C,no module for %s
+helios/datatypes/__init__.py,66,python-erro-interno,C,no module for %s
+helios/datatypes/__init__.py,131,python-erro-interno,B,no datatype found
+helios/datatypes/__init__.py,233,python-erro-interno,C,cannot instantiate wrapped object for %s
+helios/datatypes/legacy.py,179,python-erro-interno,B,problem with dict
+helios/forms.py,13,python,B,"no spaces, will be part of the URL for your election, e.g. my-club-2010"
+helios/forms.py,14,python,B,"the pretty name for your election, e.g. My Club 2010 Election"
+helios/forms.py,17,python,B,"If selected, voter identities will be replaced with aliases, e.g. ""V12"", in the ballot tracking center"
+helios/forms.py,19,python,B,enable this if you want the answers to questions to appear in random order for each voter
+helios/forms.py,20,python,B,A private election is only visible to registered voters.
+helios/forms.py,21,python,B,Help Email Address
+helios/forms.py,21,python,B,An email address voters should contact if they need help.
+helios/forms.py,24,python,B,Election Info Download URL
+helios/forms.py,24,python,B,"the URL of a PDF document that contains extra election information, e.g. candidate bios and statements"
+helios/forms.py,27,python,B,UTC date and time when voting begins
+helios/forms.py,29,python,B,UTC date and time when voting ends
+helios/forms.py,33,python,B,UTC date and time voting extended to
+helios/forms.py,39,python,B,Send To
+helios/forms.py,39,python,B,all voters
+helios/forms.py,39,python,B,voters who have cast a ballot
+helios/forms.py,39,python,B,voters who have not yet cast a ballot
+helios/forms.py,55,python,B,Send To
+helios/forms.py,55,python,B,all voters
+helios/forms.py,55,python,B,only voters who cast a ballot
+helios/forms.py,55,python,B,no one -- are you sure about this?
+helios/forms.py,58,python,B,Voter ID
+helios/forms.py,62,python,B,Voter ID
+helios/forms.py,62,python,B,Enter the voter ID you were assigned for this election
+helios/media/static_templates/question.html,8,template,A,[ edit ]
+helios/media/static_templates/question.html,25,template,A,Order: randomized
+helios/media/static_templates/question.html,35,template-atributo,B,More information
+helios/media/static_templates/question.html,53,template,A,Question Text
+helios/media/static_templates/question.html,54,template-atributo,B,Enter your question here
+helios/media/static_templates/question.html,58,template,A,Select between
+helios/media/static_templates/question.html,75,template,A,Result type:
+helios/media/static_templates/question.html,80,template,A,Random order:
+helios/media/static_templates/question.html,88,template,A,Answer Options
+helios/media/static_templates/question.html,93,template,A,+ Add 5 More Answers
+helios/media/static_templates/question.html,98,template,A,Update Question
+helios/media/static_templates/question.html,99,template,A,Cancel
+helios/media/static_templates/question.html,105,template,A,No questions have been added yet.
+helios/media/static_templates/question.html,111,template,A,Add a New Question
+helios/media/static_templates/question.html,116,template,A,Question Text
+helios/media/static_templates/question.html,117,template-atributo,B,Enter your question here
+helios/media/static_templates/question.html,121,template,A,Select between
+helios/media/static_templates/question.html,138,template,A,Result type:
+helios/media/static_templates/question.html,143,template,A,Random order:
+helios/media/static_templates/question.html,151,template,A,Answer Options
+helios/media/static_templates/question.html,156,template,A,+ Add 5 More Answers
+helios/media/static_templates/question.html,161,template,A,Add Question
+helios/models.py,612,python-erro-interno,B,cannot freeze an election that has issues
+helios/models.py,853,python-erro-interno,C,"invalid voter type '%s' for voter id '%s', available voter types are %s"
+helios/models.py,861,python-erro-interno,C,invalid voter email '%s' for voter id '%s'
+helios/models.py,992,python-erro-interno,C,Cannot register user - email has opted out of Helios emails {…}
+helios/models.py,1134,python-erro-interno,B,password already exists
+helios/models.py,1235,python-erro-interno,B,"cast vote is quarantined, verification and storage is delayed."
+helios/models.py,1374,python,B,SHA-256 hash of lowercase email
+helios/models.py,1376,python,B,User agent when opt-out was requested
+helios/models.py,1377,python,B,IP address when opt-out was requested
+helios/security.py,99,python-erro-interno,B,no election ID
+helios/tasks.py,37,python,C,Failed to verify and store %d
+helios/tasks.py,75,python,C,Skipping email to opted-out voter {…}
+helios/templates/_castconfirm_docast.html,19,template,B,You are logged in as
+helios/templates/_castconfirm_docast.html,21,template,A,CAST this ballot
+helios/templates/_castconfirm_docast.html,22,template,B,You can cast as many ballots as you want. Only the last one counts.
+helios/templates/_castconfirm_docast.html,27,template,B,"If you cancel now, your ballot will NOT be recorded."
+helios/templates/_castconfirm_docast.html,28,template,A,"You can start the voting process over again, of course."
+helios/templates/_castconfirm_docast.html,37,template,A,"voting has stopped, sorry."
+helios/templates/_castconfirm_docast.html,42,template,A,"voting has not yet begun, sorry."
+helios/templates/_castconfirm_password.html,10,template,A,"bad voter ID or password, please try again."
+helios/templates/_castconfirm_password.html,14,template-atributo,B,authenticate &amp; cast ballot
+helios/templates/_castconfirm_password.html,16,template,A,Your voter ID and password can be found in the email you received.
+helios/templates/_castconfirm_password.html,17,template,A,Forgot your password? Click here to resend it.
+helios/templates/_castconfirm_password.html,18,template,B,"If you still cannot find your login information, contact your election administrator at ."
+helios/templates/_castconfirm_password.html,21,template,A,Cast as many ballots as you wish: only the last one counts.
+helios/templates/_castconfirm_password.html,24,template-atributo,B,log in
+helios/templates/base.html,1,template,A,<!DOCTYPE html
+helios/templates/base.html,2,template,A,"PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"""
+helios/templates/base.html,3,template,A,"""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">"
+helios/templates/base.html,5,template,A,"<html xmlns=""http://www.w3.org/1999/xhtml"""
+helios/templates/base.html,6,template,A,"dir="" rtl ltr """
+helios/templates/base.html,7,template,A,"xml:lang="" """
+helios/templates/base.html,8,template,A,"lang="" "">"
+helios/templates/base.html,10,template,A,- Helios
+helios/templates/cast_done.html,2,template,A,Confirm Vote
+helios/templates/cast_done.html,5,template,B,&mdash; Vote Successfully Cast!
+helios/templates/cast_done.html,9,template,B,Your ballot tracker is:
+helios/templates/cast_done.html,13,template,B,"This ballot tracker mathematically ensures that your ballot is counted. You can check all ballot trackers by viewing the voter list , where your ballot tracker should appear within a few minutes."
+helios/templates/cast_done.html,18,template,A,"For your safety, we have logged you out."
+helios/templates/cast_done.html,24,template,A,[ return to election info ]
+helios/templates/castvote.html,3,template,B,&mdash;
+helios/templates/castvote.html,5,template,B,Cast Vote
+helios/templates/castvote.html,6,template,B,cast in
+helios/templates/combine_decryptions.html,3,template,B,Compute Tally &mdash;
+helios/templates/combine_decryptions.html,5,template,B,&mdash; Compute Tally [ cancel ]
+helios/templates/combine_decryptions.html,9,template,A,"The trustees' partial decryptions don't decrypt the tally, so no result was saved."
+helios/templates/combine_decryptions.html,10,template,A,Check that every trustee's partial decryption is for the current tally.
+helios/templates/combine_decryptions.html,15,template,A,You are about to compute the tally for this election. You only will then see the results.
+helios/templates/combine_decryptions.html,20,template-atributo,B,compute the tally!
+helios/templates/election_admin_add.html,3,template,B,Add Administrator -
+helios/templates/election_admin_add.html,6,template,B,&mdash; Add Administrator [ cancel ]
+helios/templates/election_admin_add.html,10,template,B,Multiple users were found with the email . Please select which one to add:
+helios/templates/election_admin_add.html,27,template-atributo,B,Add Selected Administrator
+helios/templates/election_admin_add.html,33,template,A,"Add another administrator to this election. The new administrator will have the same privileges as you,"
+helios/templates/election_admin_add.html,34,template,A,"including the ability to manage voters, questions, trustees, and other settings."
+helios/templates/election_admin_add.html,38,template,A,Note: The user must have logged in to Helios at least once before they can be added as an administrator.
+helios/templates/election_admin_add.html,51,template-atributo,B,Add Administrator
+helios/templates/election_admin_remove.html,3,template,B,Remove Administrator -
+helios/templates/election_admin_remove.html,6,template,B,&mdash; Remove Administrator [ cancel ]
+helios/templates/election_admin_remove.html,9,template,B,Are you sure you want to remove ( ) as an administrator of this election?
+helios/templates/election_admin_remove.html,13,template,A,They will no longer be able to manage this election.
+helios/templates/election_admin_remove.html,21,template-atributo,B,Remove Administrator
+helios/templates/election_admin_remove.html,23,template,A,Cancel
+helios/templates/election_admins.html,3,template,B,Administrators for
+helios/templates/election_admins.html,6,template,B,&mdash; Administrators [ back to election ]
+helios/templates/election_admins.html,9,template,A,"Administrators have full control over this election, including managing voters, questions, trustees, and settings."
+helios/templates/election_admins.html,13,template,A,[ add an administrator ]
+helios/templates/election_admins.html,16,template,A,Election Creator
+helios/templates/election_admins.html,19,template,A,The election creator cannot be removed.
+helios/templates/election_admins.html,23,template,A,Additional Administrators
+helios/templates/election_admins.html,29,template,B,[ remove ]
+helios/templates/election_admins.html,31,template,A,(you)
+helios/templates/election_admins.html,38,template,A,No additional administrators have been added.
+helios/templates/election_audited_ballots.html,3,template,B,Audited Ballots for
+helios/templates/election_audited_ballots.html,6,template,B,&mdash; Audited Ballots [ back to election ]
+helios/templates/election_audited_ballots.html,9,template,A,"When you prepare a ballot with Helios, you immediately receive a ballot tracker. Before you choose to cast that ballot, you have the option to ask Helios to ""break open"" that encrypted ballot and verify that Helios encrypted your ballot correctly. Once that's done, you can post that opened ballot here, on the audited ballots' list, for everyone to verify (your identity is not included). Once you've done this, you have to re-encrypt your choices and obtain a different ballot tracker. This helps reduce the chance that someone might coerce you to vote differently from your true choice."
+helios/templates/election_audited_ballots.html,13,template,B,"These ballots are not cast , and they will not be counted. They are just here for auditing purposes, to spot-check that Helios is properly encrypting voter's choices."
+helios/templates/election_audited_ballots.html,17,template,B,"To verify an audited ballot, copy its entire content and paste it in the single ballot verifier ."
+helios/templates/election_audited_ballots.html,22,template,B,Audited Ballots -
+helios/templates/election_audited_ballots.html,31,template,A,back to start
+helios/templates/election_audited_ballots.html,38,template,B,[ view ]
+helios/templates/election_audited_ballots.html,42,template,A,no audited ballots yet
+helios/templates/election_badge.html,2,template,B,cast votes. [ vote! ]
+helios/templates/election_badge.html,3,template,B,powered by Helios Voting
+helios/templates/election_bboard.html,3,template,B,Ballot Tracking Center for
+helios/templates/election_bboard.html,6,template,B,&mdash; Ballot Tracking Center [ back to election ]
+helios/templates/election_bboard.html,9,template,A,"This is the ballot tracking center, which displays the tracking numbers of all cast ballots in this election."
+helios/templates/election_bboard.html,13,template,B,cast votes.
+helios/templates/election_bboard.html,16,template,B,Voters -
+helios/templates/election_bboard.html,24,template,B,back to start
+helios/templates/election_bboard.html,33,template,A,per page
+helios/templates/election_bboard.html,38,template,A,Alias
+helios/templates/election_bboard.html,40,template,A,Name
+helios/templates/election_bboard.html,42,template,A,Smart Ballot Tracker
+helios/templates/election_bboard.html,49,template,B,[ view ] &mdash;
+helios/templates/election_build.html,4,template,B,&mdash; Questions [ back to election ]
+helios/templates/election_build.html,36,js,C,": parseInt(form.min.value),"
+helios/templates/election_build.html,36,js,C,": max,"
+helios/templates/election_build.html,36,js,C,": form.question.value,"
+helios/templates/election_build.html,36,js,C,": form.choice_type.value,"
+helios/templates/election_cast_confirm.html,2,template,A,Confirm Vote
+helios/templates/election_cast_confirm.html,27,js,C,You have not yet cast your ballot! Make sure to complete the voting process if you want your vote to count.
+helios/templates/election_cast_confirm.html,37,template,B,Don't go yet! Your ballot has not yet been cast.
+helios/templates/election_cast_confirm.html,40,template,B,Verifying and Casting your ballot
+helios/templates/election_cast_confirm.html,45,template,B,Your ballot tracker is:
+helios/templates/election_cast_confirm.html,67,template,A,Sorry!
+helios/templates/election_cast_confirm.html,68,template,B,"Sorry, you are"
+helios/templates/election_cast_confirm.html,70,template,A,not eligible for this election.
+helios/templates/election_cast_confirm.html,72,template,A,"not registered for this election, and registration is closed."
+helios/templates/election_cast_confirm.html,76,template,A,[ return to the main election page ]
+helios/templates/election_cast_confirm.html,85,template,B,"This election is open to anyone , so log in with your preferred account."
+helios/templates/election_cast_confirm.html,89,template,B,"Or, if you were invited to vote with an account, log in with it. This election is only open to registered voters , so log in with"
+helios/templates/election_cast_confirm.html,90,template,A,the same account you registered with.
+helios/templates/election_cast_confirm.html,97,template,A,"Don't worry, we'll remember your ballot while you log in."
+helios/templates/election_compute_tally.html,3,template,B,Compute Encryted Tally for
+helios/templates/election_compute_tally.html,6,template,B,Compute Tally for Election:
+helios/templates/election_compute_tally.html,11,template,B,vote still being processed.
+helios/templates/election_compute_tally.html,14,template,A,All votes must be verified before computing the tally. Please wait and try again shortly.
+helios/templates/election_compute_tally.html,15,template,B,"If this persists, contact ."
+helios/templates/election_compute_tally.html,18,template,A,Refresh this page |
+helios/templates/election_compute_tally.html,19,template,A,back to election
+helios/templates/election_compute_tally.html,23,template,B,You are about to compute the encrypted tally for election .
+helios/templates/election_compute_tally.html,27,template,A,"Once you do this, voters will no longer be able to cast a ballot."
+helios/templates/election_compute_tally.html,33,template-atributo,B,compute encrypted tally!
+helios/templates/election_compute_tally.html,34,template,A,never mind
+helios/templates/election_compute_tally.html,38,template,B,No votes have been cast in this election. At least one vote must be cast before you compute the tally.
+helios/templates/election_compute_tally.html,39,template,A,back to election
+helios/templates/election_edit.html,5,template,B,&mdash; Update [ cancel ]
+helios/templates/election_extend.html,5,template,B,&mdash; Extend Voting [ cancel ]
+helios/templates/election_extend.html,13,template-atributo,B,Extend Voting
+helios/templates/election_freeze.html,4,template,B,&mdash; Freeze Ballot
+helios/templates/election_freeze.html,6,template,B,"Once an election is frozen, the questions, options, and trustees can no longer be modified."
+helios/templates/election_freeze.html,11,template,B,"Registration for your election is currently open , which means anyone can vote, even after you freeze the ballot."
+helios/templates/election_freeze.html,13,template,B,"Registration for your election is currently closed , which means only the voters you designate will be able to cast a ballot. As the administrator, you will still be able to modify that voter list as the election progresses."
+helios/templates/election_freeze.html,19,template,A,You must freeze the ballot before you can contact voters.
+helios/templates/election_freeze.html,25,template,A,"Before you can freeze the election, you will need to:"
+helios/templates/election_freeze.html,31,template,A,go back to the election
+helios/templates/election_freeze.html,37,template-atributo,B,Freeze the ballot
+helios/templates/election_freeze.html,38,template,A,do NOT freeze yet
+helios/templates/election_keygenerator.html,102,template,B,&mdash; Trustee &mdash; Key Setup
+helios/templates/election_keygenerator.html,105,template,A,"As a trustee, it's time to set up your key for this election."
+helios/templates/election_keygenerator.html,109,template,A,Please wait for the generator to load...
+helios/templates/election_keygenerator.html,114,template,A,Generate Election Keys
+helios/templates/election_keygenerator.html,117,template,B,"If you've already generated a keypair, you can reuse it ."
+helios/templates/election_keygenerator.html,121,template,A,Reusing a Key
+helios/templates/election_keygenerator.html,124,template,A,Enter your complete secret key below:
+helios/templates/election_keygenerator.html,135,template,A,Your Secret Key
+helios/templates/election_keygenerator.html,137,template,B,"Your key has been generated, but you may choose to clear it from memory and start from scratch if you prefer."
+helios/templates/election_keygenerator.html,141,template,A,Show my secret key
+helios/templates/election_keygenerator.html,146,template,B,Bellow is your trustee secret key content. Please copy its content and save it securely.
+helios/templates/election_keygenerator.html,147,template,A,You can also click to dowload it to a file.
+helios/templates/election_keygenerator.html,148,template,B,And please don't lose it! Otherwise it will not be possible to decrypt the election tally.
+helios/templates/election_keygenerator.html,155,template,B,download private key to a file
+helios/templates/election_keygenerator.html,158,template,A,"ok, I've saved the key, let's move on"
+helios/templates/election_keygenerator.html,164,template,A,Your Public Key
+helios/templates/election_keygenerator.html,166,template,A,It's time to upload the public key to the server.
+helios/templates/election_keygenerator.html,169,template,A,The fingerprint of your public key is: .
+helios/templates/election_keygenerator.html,170,template,B,You may want to save this to confirm that your public key was properly stored by the server.
+helios/templates/election_keygenerator.html,171,template,A,"(Your public key is not currently being displayed because you do not need to save it, the fingerprint is sufficient.)"
+helios/templates/election_keygenerator.html,175,template-atributo,B,Upload your public key
+helios/templates/election_new.html,5,template,A,Create a New Election
+helios/templates/election_new.html,19,template-atributo,B,Next &gt;&gt;
+helios/templates/election_new_2.html,10,js,C,"Have you made sure to copy the private key to a safe place?\n\nOnce you click OK, Helios will not be able to recover the secret key without your help!"
+helios/templates/election_new_2.html,49,template,B,Create a New Election:
+helios/templates/election_new_2.html,51,template,A,An election managed by Helios .
+helios/templates/election_new_2.html,54,template,A,"An election managed by you, the single administrator ."
+helios/templates/election_new_2.html,56,template,A,An election managed by multiple trustees .
+helios/templates/election_new_2.html,66,template,A,Generate Election Keys
+helios/templates/election_new_2.html,69,template,A,Trustees (up to 5)
+helios/templates/election_new_2.html,84,template,B,Your Election's Secret Key:
+helios/templates/election_new_2.html,88,template,B,"(You need to copy and paste this key and keep it safe,"
+helios/templates/election_new_2.html,89,template,A,otherwise you won't be able to tally your election.)
+helios/templates/election_not_started.html,6,template,B,Election Not Yet Open
+helios/templates/election_not_started.html,9,template,A,This election is not yet open.
+helios/templates/election_not_started.html,13,template,B,Voting start at
+helios/templates/election_not_started.html,14,template,B,Voting end at
+helios/templates/election_not_started.html,18,template,A,back to the election
+helios/templates/election_questions.html,3,template,B,Questions for
+helios/templates/election_questions.html,5,template,B,&mdash; Questions [ back to election ]
+helios/templates/election_questions.html,67,js,C,The questions could not be saved. Please check that the URLs you entered are either http:// or https://
+helios/templates/election_questions.html,79,js,C,": parseInt(form.min.value),"
+helios/templates/election_questions.html,79,js,C,": max,"
+helios/templates/election_questions.html,79,js,C,": form.question.value,"
+helios/templates/election_questions.html,79,js,C,": form.choice_type.value,"
+helios/templates/election_questions.html,103,js,C,Please fill in all answer fields up to answer #
+helios/templates/election_questions.html,115,js,C,Please enter at least one answer option.
+helios/templates/election_register.html,4,template,B,– Register
+helios/templates/election_register.html,8,template,B,You are currently logged in as [ ]
+helios/templates/election_register.html,12,template,A,You are currently registered for this election.
+helios/templates/election_register.html,16,template,B,You are not registered for this election.
+helios/templates/election_tallied.html,6,template,B,Election Already Tallied
+helios/templates/election_tallied.html,9,template,A,"This election has already been tallied, you can no longer cast a vote."
+helios/templates/election_tallied.html,13,template,B,Voting start at
+helios/templates/election_tallied.html,14,template,B,Voting end at
+helios/templates/election_tallied.html,18,template,A,view the election tally
+helios/templates/election_view.html,16,template,B,private public created by
+helios/templates/election_view.html,18,template,A,[archived]
+helios/templates/election_view.html,25,template,A,unarchive it
+helios/templates/election_view.html,28,template,A,archive it
+helios/templates/election_view.html,35,template,A,delete it
+helios/templates/election_view.html,47,template,B,this is featured on the front page.
+helios/templates/election_view.html,49,template,B,[ unfeature it ]
+helios/templates/election_view.html,52,template,B,this is not featured on the front page.
+helios/templates/election_view.html,54,template,B,[ feature it ]
+helios/templates/election_view.html,73,template,B,Help Email Address:
+helios/templates/election_view.html,74,template,B,Voting start at
+helios/templates/election_view.html,75,template,B,Voting end at
+helios/templates/election_view.html,79,template,B,[ download candidate bios &amp; statements ]
+helios/templates/election_view.html,83,template,B,questions ( 0 )
+helios/templates/election_view.html,85,template,A,voters &amp; ballots
+helios/templates/election_view.html,87,template,B,trustees ( )
+helios/templates/election_view.html,97,template,A,Embed an Election Badge
+helios/templates/election_view.html,101,template,B,"&lt;iframe src="" "" frameborder=""0"" style=""border: 1px solid black"" height=""75"" width=""200""&gt;"
+helios/templates/election_view.html,102,template,A,&lt;/iframe&gt;
+helios/templates/election_view.html,103,template,A,adding this HTML to your site displays a thin banner with direct links to voting.
+helios/templates/election_view.html,115,template,A,Next Step:
+helios/templates/election_view.html,120,template,B,", and"
+helios/templates/election_view.html,123,template,A,freeze ballot and open election.
+helios/templates/election_view.html,126,template,B,"once you do this, the election will be ready for voting and will open automatically"
+helios/templates/election_view.html,127,template,B,"at , as per your settings."
+helios/templates/election_view.html,129,template,A,"once you do this, the election will be immediately open for voting."
+helios/templates/election_view.html,137,template,B,Tally computation is under way.
+helios/templates/election_view.html,138,template,A,Reload this page in a couple of minutes.
+helios/templates/election_view.html,140,template,A,compute encrypted tally
+helios/templates/election_view.html,141,template,B,"The encrypted votes will be combined into an encrypted tally. Once this is done,"
+helios/templates/election_view.html,142,template,A,trustees will be asked to provide their share of the decryption.
+helios/templates/election_view.html,147,template,A,release result
+helios/templates/election_view.html,148,template,B,The result displayed below is visible only to you.
+helios/templates/election_view.html,149,template,A,"Once you release the result, it will be visible to everyone."
+helios/templates/election_view.html,155,template,A,compute results
+helios/templates/election_view.html,157,template,A,combine trustee decryptions and compute results
+helios/templates/election_view.html,161,template,A,"The result will be computed and shown to you, the administrator, only."
+helios/templates/election_view.html,163,template,B,The decryption shares from the trustees will be combined and the tally computed.
+helios/templates/election_view.html,164,template,A,"Once you do this, the tally will visible to you, the administrator, only."
+helios/templates/election_view.html,167,template,A,trustees (for decryption)
+helios/templates/election_view.html,188,template,A,This election is complete.
+helios/templates/election_view.html,192,template,A,Tally
+helios/templates/election_view.html,194,template,B,Question #
+helios/templates/election_view.html,197,template,B,(tied)
+helios/templates/election_view.html,201,template,B,"Tie: the answers marked (tied) received the same number of votes, so seat left unfilled."
+helios/templates/election_view.html,204,template,A,"The tally could not be decrypted, so there is no result to show."
+helios/templates/election_view.html,211,template,A,Election closed. Results will be released soon.
+helios/templates/election_view.html,216,template,B,Vote in this
+helios/templates/election_view.html,220,template,B,"This was initially scheduled to end at ,"
+helios/templates/election_view.html,221,template,B,but has been extended until .
+helios/templates/election_view.html,225,template,B,This is scheduled to end at .
+helios/templates/election_view.html,227,template,B,This ends at the administrator's discretion.
+helios/templates/election_view.html,234,template,B,This election is private . You are signed in as eligible voter .
+helios/templates/election_view.html,238,template,B,"You do not have Java installed in your browser. At this time, Helios requires Java."
+helios/templates/election_view.html,239,template,B,Visit java.sun.com to install it.
+helios/templates/election_view.html,244,template,A,voting is not yet open
+helios/templates/election_view.html,251,template,B,You are registered to vote in this .
+helios/templates/election_view.html,253,template,B,Your voter alias is .
+helios/templates/election_view.html,262,template,A,You are eligible to vote in this election.
+helios/templates/election_view.html,264,template,B,You are not eligible to vote in this .
+helios/templates/election_view.html,267,template,B,You are not eligible to vote in this .
+helios/templates/election_view.html,276,template,B,This election is open to:
+helios/templates/election_view.html,277,template,B,Log in to check your eligibility.
+helios/templates/election_view.html,279,template,A,Anyone can vote in this election.
+helios/templates/election_view.html,290,template,A,extend voting
+helios/templates/election_view.html,294,template,A,Audit Info
+helios/templates/election_view.html,296,template,B,Election URL:
+helios/templates/election_view.html,301,template,B,Election Fingerprint:
+helios/templates/election_view.html,306,template,B,Your ballot tracker:
+helios/templates/election_view.html,312,template,A,Ballot Tracking Center |
+helios/templates/election_view.html,313,template,A,Audited Ballots
+helios/templates/election_view.html,315,template,A,Download Election Log (CSV)
+helios/templates/election_view.html,324,template,B,preview booth
+helios/templates/election_view.html,331,template,B,verify election tally .
+helios/templates/election_view.html,334,template,B,review the voting booth .
+helios/templates/elections_administered.html,4,template,B,Elections you Administer [ back to home ]
+helios/templates/elections_administered.html,8,template,B,- voters / cast votes
+helios/templates/elections_voted.html,4,template,B,Elections where you voted [ back to home ]
+helios/templates/email/info_body.txt,1,email,C,"Dear ,"
+helios/templates/email/info_body.txt,6,email,C,Helios
+helios/templates/email/info_body.txt,9,email,C,"To stop receiving all emails from Helios, click here:"
+helios/templates/email/password_resend_body.txt,1,email,C,"Dear ,"
+helios/templates/email/password_resend_body.txt,3,email,C,"You requested your voting credentials for the election "" ""."
+helios/templates/email/password_resend_body.txt,5,email,C,Your voter ID:
+helios/templates/email/password_resend_body.txt,6,email,C,Your password:
+helios/templates/email/password_resend_body.txt,8,email,C,Use this election URL to prepare a new ballot if needed:
+helios/templates/email/password_resend_body.txt,12,email,C,Helios
+helios/templates/email/password_resend_body.txt,15,email,C,"To stop receiving all emails from Helios, click here:"
+helios/templates/email/password_resend_subject.txt,1,email,C,Your voting credentials for
+helios/templates/email/result_body.txt,1,email,C,"Dear ,"
+helios/templates/email/result_body.txt,3,email,C,The tally for has been computed and released:
+helios/templates/email/result_body.txt,9,email,C,Your ballot tracker in this election was:
+helios/templates/email/result_body.txt,13,email,C,"If you believe this tracker to be in error, please contact us."
+helios/templates/email/result_body.txt,15,email,C,It appears you did not cast a vote in this election.
+helios/templates/email/result_body.txt,16,email,C,Please contact us if you believe you did.
+helios/templates/email/result_body.txt,19,email,C,Helios
+helios/templates/email/result_body.txt,22,email,C,"To stop receiving all emails from Helios, click here:"
+helios/templates/email/result_subject.txt,1,email,C,Tally Released -
+helios/templates/email/simple_body.txt,1,email,C,"Dear ,"
+helios/templates/email/simple_body.txt,6,email,C,How to Vote
+helios/templates/email/simple_body.txt,8,email,C,Election URL:
+helios/templates/email/simple_body.txt,10,email,C,Your voter ID:
+helios/templates/email/simple_body.txt,11,email,C,Your password:
+helios/templates/email/simple_body.txt,13,email,C,Log in with your account.
+helios/templates/email/simple_body.txt,17,email,C,Helios
+helios/templates/email/simple_body.txt,20,email,C,"To stop receiving all emails from Helios, click here:"
+helios/templates/email/vote_body.txt,1,email,C,"Dear ,"
+helios/templates/email/vote_body.txt,5,email,C,Election URL (click to begin voting):
+helios/templates/email/vote_body.txt,9,email,C,Your voter ID:
+helios/templates/email/vote_body.txt,10,email,C,Your password:
+helios/templates/email/vote_body.txt,12,email,C,Log in with your account.
+helios/templates/email/vote_body.txt,14,email,C,We have recorded your vote with ballot tracker:
+helios/templates/email/vote_body.txt,18,email,C,You may re-vote if you wish: only your last vote counts.
+helios/templates/email/vote_body.txt,20,email,C,"In order to protect your privacy, this election is configured"
+helios/templates/email/vote_body.txt,21,email,C,"to never display your voter login ID, name, or email address to the public."
+helios/templates/email/vote_body.txt,22,email,C,"Instead, the ballot tracking center will only display your alias."
+helios/templates/email/vote_body.txt,24,email,C,Your voter alias is .
+helios/templates/email/vote_body.txt,26,email,C,"IMPORTANTLY, when you are prompted to log in to vote,"
+helios/templates/email/vote_body.txt,27,email,C,"please use your *voter ID*, not your alias."
+helios/templates/email/vote_body.txt,30,email,C,You may wish to verify the election fingerprint at the bottom of
+helios/templates/email/vote_body.txt,31,email,C,the screen when you vote:
+helios/templates/email/vote_body.txt,34,email,C,Helios
+helios/templates/email/vote_body.txt,37,email,C,"To stop receiving all emails from Helios, click here:"
+helios/templates/list_trustees.html,3,template,B,Trustees for
+helios/templates/list_trustees.html,6,template,B,&mdash; Trustees [ back to election ]
+helios/templates/list_trustees.html,9,template,B,Trustees are responsible for decrypting the election result.
+helios/templates/list_trustees.html,10,template,B,Each trustee generates a keypair and submits the public portion to Helios.
+helios/templates/list_trustees.html,11,template,A,"When it's time to decrypt, each trustee needs to provide their secret key."
+helios/templates/list_trustees.html,17,template,B,Helios is automatically your first trustee and will handle its keypair generation and decryption automatically.
+helios/templates/list_trustees.html,18,template,B,"You may add additional trustees if you want, and you can even remove the Helios trustee."
+helios/templates/list_trustees.html,19,template,A,"However, we recommend you do this only if you have a solid understanding of the trustee's role."
+helios/templates/list_trustees.html,24,template,A,[ add a trustee ]
+helios/templates/list_trustees.html,30,template,A,add Helios as a trustee
+helios/templates/list_trustees.html,45,template,B,Trustee # :
+helios/templates/list_trustees.html,52,template,B,[ send login ]
+helios/templates/list_trustees.html,59,template,B,Public Key Fingerprint:
+helios/templates/list_trustees.html,61,template,A,No public key uploaded yet.
+helios/templates/list_trustees.html,67,template,A,tally recorded for this trustee.
+helios/templates/list_trustees.html,69,template,A,waiting for this trustee's tally
+helios/templates/new_trustee.html,4,template,B,&mdash; New Trustee [ cancel ]
+helios/templates/new_trustee.html,11,template-atributo,B,Add Trustee
+helios/templates/nocookies.html,3,template,A,Cookies are required for Helios use
+helios/templates/nocookies.html,6,template,A,Cookies are Required for Helios
+helios/templates/nocookies.html,9,template,B,"It appears your browser does not support cookies or is set up to block cookies from this site. Helios needs to set a session cookie so that it can save your vote, let you log in, etc. Enable cookies and then proceed to preparing your ballot"
+helios/templates/nocookies.html,12,template,A,"If you keep getting sent back to this page, it's probably because you haven't enabled cookies successfully."
+helios/templates/notification/result.txt,1,email,C,Tally computed for :
+helios/templates/optout_confirm_form.html,6,template,A,Helios Voting
+helios/templates/optout_confirm_form.html,16,template,B,Email address:
+helios/templates/optout_confirm_form.html,22,template,A,What will happen:
+helios/templates/optout_confirm_form.html,24,template,A,You will not receive any emails from Helios voting system
+helios/templates/optout_confirm_form.html,25,template,A,You cannot be added to new elections until you opt back in
+helios/templates/optout_confirm_form.html,26,template,A,You can opt back in at any time
+helios/templates/optout_confirm_form.html,31,template,A,What will happen:
+helios/templates/optout_confirm_form.html,33,template,A,You will resume receiving emails from Helios voting system
+helios/templates/optout_confirm_form.html,34,template,A,You can be added to elections and receive voting notifications
+helios/templates/optout_confirm_form.html,35,template,A,You can opt out again at any time
+helios/templates/optout_confirm_form.html,48,template,A,Cancel and return to Helios
+helios/templates/optout_confirmed.html,6,template,A,Helios Voting
+helios/templates/optout_confirmed.html,20,template,A,What this means:
+helios/templates/optout_confirmed.html,22,template,A,You will not receive any emails from Helios voting system
+helios/templates/optout_confirmed.html,23,template,A,You cannot be added to new elections until you opt back in
+helios/templates/optout_confirmed.html,24,template,B,You can opt back in at any time by visiting the opt-in page
+helios/templates/optout_confirmed.html,29,template,A,What this means:
+helios/templates/optout_confirmed.html,31,template,A,You will now receive emails from Helios voting system
+helios/templates/optout_confirmed.html,32,template,A,You can be added to elections and receive voting notifications
+helios/templates/optout_confirmed.html,33,template,A,You can opt out again at any time using the unsubscribe link in any email
+helios/templates/optout_confirmed.html,39,template,A,← Return to Helios
+helios/templates/optout_form.html,6,template,A,Helios Voting
+helios/templates/optout_form.html,22,template,A,Email Address:
+helios/templates/optout_form.html,33,template,A,Next Steps:
+helios/templates/optout_form.html,34,template,A,You will receive a confirmation email with a link to complete your request.
+helios/templates/optout_form.html,36,template,A,"Once opted out, you will not receive any emails from Helios until you opt back in."
+helios/templates/optout_form.html,38,template,A,"Once opted back in, you will resume receiving emails from Helios voting system."
+helios/templates/optout_not_opted_out.html,3,template,A,Already Receiving Emails
+helios/templates/optout_not_opted_out.html,6,template,A,Helios Voting
+helios/templates/optout_not_opted_out.html,11,template,A,Good News!
+helios/templates/optout_not_opted_out.html,15,template,B,The email address is already receiving emails from Helios.
+helios/templates/optout_not_opted_out.html,20,template,A,No action is needed - you're all set!
+helios/templates/optout_not_opted_out.html,21,template,A,"If you want to stop receiving emails in the future, you can use the unsubscribe link in any Helios email."
+helios/templates/optout_not_opted_out.html,25,template,A,← Return to Helios
+helios/templates/optout_success.html,6,template,A,Helios Voting
+helios/templates/optout_success.html,19,template,A,Next Steps:
+helios/templates/optout_success.html,20,template,A,Please check your email and click the confirmation link to complete your request.
+helios/templates/optout_success.html,21,template,A,"If you don't see the email, please check your spam folder."
+helios/templates/optout_success.html,25,template,A,← Return to Helios
+helios/templates/password_voter_login.html,3,template,A,Log In to View Election
+helios/templates/password_voter_login.html,5,template,A,Private Election - Please Log In
+helios/templates/password_voter_login.html,8,template,B,"This election, with fingerprint , is private, and can only be viewed by eligible voters."
+helios/templates/password_voter_login.html,13,template,B,"You are logged in as ( ), which is not a voter in this election."
+helios/templates/password_voter_login.html,25,template,A,"Or, if you were invited to vote with an account, log in with it: Log in with the account you were invited to vote with:"
+helios/templates/password_voter_resend.html,3,template,B,Resend Password -
+helios/templates/password_voter_resend.html,6,template,A,Resend Voting Credentials
+helios/templates/password_voter_resend.html,20,template,A,"If a voter with that ID exists in this election, an email with your voting credentials has been sent."
+helios/templates/password_voter_resend.html,23,template,A,Please check your email inbox (and spam folder) for your voter ID and password.
+helios/templates/password_voter_resend.html,26,template,A,You can now close this window and return to the voting booth.
+helios/templates/password_voter_resend.html,30,template,A,Forgot your password? Enter your voter ID below and we'll email your voting credentials to you.
+helios/templates/password_voter_resend.html,38,template-atributo,B,Resend Credentials
+helios/templates/release_result.html,3,template,B,Release Result &mdash;
+helios/templates/release_result.html,5,template,B,&mdash; Release Result [ cancel ]
+helios/templates/release_result.html,8,template,A,You are about to release the result for this election.
+helios/templates/release_result.html,14,template,A,Send email to voters reporting release of result.
+helios/templates/release_result.html,16,template-atributo,B,release result!
+helios/templates/stats.html,2,template,A,Statistics
+helios/templates/stats.html,5,template,A,Admin
+helios/templates/stats.html,9,template,A,deleted elections
+helios/templates/stats.html,10,template,A,user search
+helios/templates/stats.html,11,template,A,recent votes
+helios/templates/stats.html,12,template,A,recent problem elections
+helios/templates/stats.html,15,template,B,votes in queue. [ force it ]
+helios/templates/stats.html,17,template,B,"Background tasks: waiting, running"
+helios/templates/stats.html,18,template,B,"( for over minutes, see manage.py requeue_stuck_tasks ),"
+helios/templates/stats.html,19,template,B,failed in the last day.
+helios/templates/stats.html,23,template,A,Announcement banner shown on every page (leave empty for none):
+helios/templates/stats.html,26,template,A,Save
+helios/templates/stats_deleted_elections.html,3,template,A,Deleted Elections
+helios/templates/stats_deleted_elections.html,6,template,A,Deleted Elections
+helios/templates/stats_deleted_elections.html,10,template,B,search :
+helios/templates/stats_deleted_elections.html,11,template,A,clear search
+helios/templates/stats_deleted_elections.html,21,template,B,Elections - (of )
+helios/templates/stats_deleted_elections.html,32,template,B,Deleted at:
+helios/templates/stats_deleted_elections.html,33,template,B,voters / cast votes
+helios/templates/stats_deleted_elections.html,41,template,A,No deleted elections found.
+helios/templates/stats_elections.html,2,template,A,Statistics
+helios/templates/stats_elections.html,5,template,A,Elections
+helios/templates/stats_elections.html,9,template,B,search :
+helios/templates/stats_elections.html,10,template,A,clear search
+helios/templates/stats_elections.html,20,template,B,Elections - (of )
+helios/templates/stats_elections.html,29,template,B,by -- voters / cast votes
+helios/templates/stats_problem_elections.html,2,template,A,Statistics
+helios/templates/stats_problem_elections.html,5,template,A,Problematic Elections
+helios/templates/stats_problem_elections.html,7,template,A,Unfrozen for more than a day.
+helios/templates/stats_problem_elections.html,11,template,B,-- voters
+helios/templates/stats_recent_votes.html,2,template,A,Statistics
+helios/templates/stats_recent_votes.html,5,template,A,Recent Votes
+helios/templates/stats_recent_votes.html,7,template,A,Last 24 hours
+helios/templates/stats_recent_votes.html,11,template,B,-- recently cast votes
+helios/templates/stats_user_search.html,2,template,A,User Search
+helios/templates/stats_user_search.html,5,template,A,User Search
+helios/templates/stats_user_search.html,9,template,B,Search for user :
+helios/templates/stats_user_search.html,9,template-atributo,B,Name or user ID
+helios/templates/stats_user_search.html,10,template,A,clear search
+helios/templates/stats_user_search.html,16,template,B,Found user(s)
+helios/templates/stats_user_search.html,22,template,B,User ID:
+helios/templates/stats_user_search.html,23,template,B,User Type:
+helios/templates/stats_user_search.html,24,template,A,Site Admin: Yes No
+helios/templates/stats_user_search.html,27,template,B,Elections as Administrator ( )
+helios/templates/stats_user_search.html,33,template,B,( voters / cast votes)
+helios/templates/stats_user_search.html,34,template,A,[frozen]
+helios/templates/stats_user_search.html,35,template,A,[archived]
+helios/templates/stats_user_search.html,40,template,A,None
+helios/templates/stats_user_search.html,43,template,B,Elections as Voter ( )
+helios/templates/stats_user_search.html,49,template,B,( voters / cast votes)
+helios/templates/stats_user_search.html,50,template,A,[frozen]
+helios/templates/stats_user_search.html,51,template,A,[archived]
+helios/templates/stats_user_search.html,56,template,A,None
+helios/templates/stats_user_search.html,59,template,B,Elections as Trustee ( )
+helios/templates/stats_user_search.html,65,template,B,( voters / cast votes)
+helios/templates/stats_user_search.html,66,template,A,[frozen]
+helios/templates/stats_user_search.html,67,template,A,[archived]
+helios/templates/stats_user_search.html,72,template,A,None
+helios/templates/stats_user_search.html,77,template,B,"No users found matching "" """
+helios/templates/stats_user_search.html,80,template,A,Enter a search term to find users
+helios/templates/trustee_check_sk.html,48,js,C,your secret key matches!
+helios/templates/trustee_check_sk.html,50,js,C,"OH OH, your key is bad."
+helios/templates/trustee_check_sk.html,54,template,B,&mdash; Trustee &mdash; Check Secret Key [ back to trustee home ]
+helios/templates/trustee_check_sk.html,57,template,B,Your public key fingerprint is:
+helios/templates/trustee_check_sk.html,61,template,A,loading crypto functions...
+helios/templates/trustee_check_sk.html,66,template,A,"To verify that you have the right secret key, paste it here:"
+helios/templates/trustee_check_sk.html,78,template,A,checking your secret key...
+helios/templates/trustee_decrypt_and_prove.html,107,js,C,"verification failed, you probably used the wrong key."
+helios/templates/trustee_decrypt_and_prove.html,134,template,B,Trustee &mdash; Decrypt Result for
+helios/templates/trustee_decrypt_and_prove.html,138,template,B,Public Key Fingerprint:
+helios/templates/trustee_decrypt_and_prove.html,139,template,B,Encrypted Tally Fingerprint:
+helios/templates/trustee_decrypt_and_prove.html,143,template,B,The encrypted tally for your election has been computed.
+helios/templates/trustee_decrypt_and_prove.html,144,template,A,Now it's time to compute and submit your partial decryption.
+helios/templates/trustee_decrypt_and_prove.html,148,template,B,This process is performed in two steps.
+helios/templates/trustee_decrypt_and_prove.html,149,template,B,"First , your secret key is used to decrypt the tally inside your browser, without connecting to the network."
+helios/templates/trustee_decrypt_and_prove.html,150,template,B,"You can choose to take your browser ""offline"" for this step, if you'd like."
+helios/templates/trustee_decrypt_and_prove.html,151,template,B,"Second , once your decryption factors have been computed, your browser will need to be ""online"" to submit them to the server."
+helios/templates/trustee_decrypt_and_prove.html,152,template,B,"If you'd like, you can compute your decryption factors, copy them to your clipboard, restart your browser, and"
+helios/templates/trustee_decrypt_and_prove.html,153,template,A,skip to the second step so that your browser is never online when you enter your secret key.
+helios/templates/trustee_decrypt_and_prove.html,159,template,A,FIRST STEP: enter your secret key
+helios/templates/trustee_decrypt_and_prove.html,163,template,A,Generate partial decryption
+helios/templates/trustee_decrypt_and_prove.html,167,template,A,skip to the second step
+helios/templates/trustee_decrypt_and_prove.html,168,template,A,(you need to have already computed your decryption factors.)
+helios/templates/trustee_decrypt_and_prove.html,173,template,B,Generating partial decryption factors and proofs...
+helios/templates/trustee_decrypt_and_prove.html,178,template,B,Submitting and checking your decryption factors and proofs...
+helios/templates/trustee_decrypt_and_prove.html,183,template,A,SECOND STEP: upload your partial decryption
+helios/templates/trustee_decrypt_and_prove.html,185,template,B,Your partial decryption factors and proofs have been generated below.
+helios/templates/trustee_decrypt_and_prove.html,186,template,B,Your secret key has been cleared from memory.
+helios/templates/trustee_decrypt_and_prove.html,187,template,A,"When you're ready, you can submit this result to the server."
+helios/templates/trustee_decrypt_and_prove.html,189,template,B,Your partial decryption:
+helios/templates/trustee_decrypt_and_prove.html,192,template,A,Upload decryption factors to server
+helios/templates/trustee_decrypt_and_prove.html,194,template,A,reset and restart decryption process
+helios/templates/trustee_decrypt_and_prove.html,198,template,B,Done! Back to election
+helios/templates/trustee_decrypt_and_prove.html,202,template,A,Error: your secret key was likely incorrect.
+helios/templates/trustee_home.html,4,template,B,&mdash; Trustee Home
+helios/templates/trustee_home.html,8,template,B,You have successfully uploaded your public key.
+helios/templates/trustee_home.html,9,template,B,Your public key fingerprint is: .
+helios/templates/trustee_home.html,10,template,B,You can verify that you have the right secret key .
+helios/templates/trustee_home.html,12,template,A,setup your key
+helios/templates/trustee_home.html,19,template,A,You have successfully uploaded your decryption.
+helios/templates/trustee_home.html,21,template,B,The encrypted tally for this election is ready.
+helios/templates/trustee_home.html,22,template,A,decrypt with your key
+helios/templates/trustee_home.html,25,template,B,"Once the tally is computed, come back here to provide your secret key for decryption purposes."
+helios/templates/trustee_home.html,26,template,A,"You should keep the email with your trustee homepage link, which contains the credentials needed to get back here."
+helios/templates/voters_eligibility.html,3,template,B,Voter Eligibility for
+helios/templates/voters_eligibility.html,5,template,B,&mdash; Voter Eligibility [ back to voters ]
+helios/templates/voters_eligibility.html,12,template,B,"You may limit eligibility of voters to one of these categories, as defined by :"
+helios/templates/voters_eligibility.html,18,template,A,(no constraint)
+helios/templates/voters_eligibility.html,23,template-atributo,B,set eligibility
+helios/templates/voters_email.html,3,template,B,Contact Voters for
+helios/templates/voters_email.html,12,template,B,&mdash; Contact Voters [ back to election ]
+helios/templates/voters_email.html,16,template,B,You are sending this email to a specific user: ( )
+helios/templates/voters_email.html,21,template,A,Templates :
+helios/templates/voters_email.html,33,template,A,"Preview : each voter receives this email, with the fields in angle brackets filled in for them."
+helios/templates/voters_email.html,43,template,A,You may tweak the subject and add a custom message using the form below. Your message appears where &lt;BODY&gt; is shown above. Don't paste the preview into it.
+helios/templates/voters_email.html,62,template,B,"Done, go back to election ."
+helios/templates/voters_email.html,66,template,A,"Error emailing participants. Check server settings, make sure there's an SMTP server."
+helios/templates/voters_list.html,4,template,B,Voters &amp; Ballot Tracking Center for
+helios/templates/voters_list.html,6,template,B,&mdash; Voters and Ballot Tracking Center [ back to election ]
+helios/templates/voters_list.html,9,template,A,Who can vote?
+helios/templates/voters_list.html,13,template,A,Only the voters listed here .
+helios/templates/voters_list.html,19,template,A,"Your election is marked private, which means you cannot open registration up more widely ."
+helios/templates/voters_list.html,23,template,B,anyone can vote
+helios/templates/voters_list.html,24,template,B,only voters listed explicitly below can vote
+helios/templates/voters_list.html,26,template,A,only voters who are members of
+helios/templates/voters_list.html,42,template,A,email voters
+helios/templates/voters_list.html,44,template,B,email voters (disabled: )
+helios/templates/voters_list.html,52,template,B,searching for . [ clear search ]
+helios/templates/voters_list.html,54,template,A,search :
+helios/templates/voters_list.html,60,template,B,Download Voters as CSV
+helios/templates/voters_list.html,68,template,A,bulk upload voters
+helios/templates/voters_list.html,70,template,B,bulk upload voters (disabled: )
+helios/templates/voters_list.html,75,template,A,Prior Bulk Uploads:
+helios/templates/voters_list.html,84,template,B,"bytes, at :"
+helios/templates/voters_list.html,86,template,B,done processing: voters loaded
+helios/templates/voters_list.html,90,template,A,currently processing
+helios/templates/voters_list.html,92,template,A,not yet processed
+helios/templates/voters_list.html,106,template-atributo,B,clear all voters
+helios/templates/voters_list.html,118,template,B,cast vote s
+helios/templates/voters_list.html,120,template,A,no votes yet
+helios/templates/voters_list.html,130,template,B,Voters - (of )
+helios/templates/voters_list.html,140,template,A,Actions
+helios/templates/voters_list.html,141,template,A,Login
+helios/templates/voters_list.html,142,template,A,Email Address
+helios/templates/voters_list.html,144,template,A,Name
+helios/templates/voters_list.html,148,template,A,Alias
+helios/templates/voters_list.html,150,template,A,Smart Ballot Tracker
+helios/templates/voters_list.html,159,template,B,[ email ]
+helios/templates/voters_list.html,161,template,B,[ email ]
+helios/templates/voters_list.html,174,template,B,&mdash;
+helios/templates/voters_list.html,181,template,A,no voters.
+helios/templates/voters_manage.html,4,template,B,&mdash; Manage Voters [ back to election ]
+helios/templates/voters_manage.html,6,template,A,search :
+helios/templates/voters_manage.html,9,template,A,bulk upload voters
+helios/templates/voters_manage.html,12,template,B,Voters -
+helios/templates/voters_manage.html,20,template,A,back to start
+helios/templates/voters_manage.html,27,template,A,Alias Name Username
+helios/templates/voters_search.html,4,template,B,&mdash; Search Voters for ' ' [ back to election ]
+helios/templates/voters_search.html,7,template,B,Voter Found: ( )
+helios/templates/voters_search.html,9,template,B,email this voter
+helios/templates/voters_search.html,11,template,A,"once this election is frozen, you'll be able to email this voter."
+helios/templates/voters_search.html,14,template,A,no such voter found
+helios/templates/voters_upload.html,4,template,B,&mdash; Bulk Upload Voters [ back to election ]
+helios/templates/voters_upload.html,8,template,B,"If you would like to specify your list of voters by name and email address,"
+helios/templates/voters_upload.html,9,template,B,you can bulk upload a list of such voters here.
+helios/templates/voters_upload.html,11,template,A,Please prepare a text file of comma-separated values with the fields:
+helios/templates/voters_upload.html,14,template,A,"password,&lt;unique_id&gt;,&lt;email&gt,&lt;full name&gt;"
+helios/templates/voters_upload.html,20,template,A,"github,&lt;username&gt;"
+helios/templates/voters_upload.html,24,template,A,For example:
+helios/templates/voters_upload.html,27,template,A,"password,bobsmith,bob@acme.org,Bob Smith"
+helios/templates/voters_upload.html,28,template,A,"github,benadida"
+helios/templates/voters_upload.html,33,template,A,"The easiest way to prepare such a file is to use a spreadsheet program and to export as ""CSV""."
+helios/templates/voters_upload.html,48,template,B,"OK, done uploading."
+helios/templates/voters_upload.html,49,template,B,You can now view the list of voters .
+helios/templates/voters_upload_confirm.html,4,template,B,&mdash; Bulk Upload Voters &mdash; Confirm [ back to election ]
+helios/templates/voters_upload_confirm.html,7,template,A,You have uploaded a file of voters. The first few rows of this file are:
+helios/templates/voters_upload_confirm.html,11,template,A,Voter Type Voter Login Email Address Name
+helios/templates/voters_upload_confirm.html,19,template,B,HOLD ON:
+helios/templates/voters_upload_confirm.html,28,template,A,"never mind, upload a different file"
+helios/templates/voters_upload_confirm.html,34,template,A,Does this look right to you?
+helios/templates/voters_upload_confirm.html,37,template-atributo,B,"Yes, let's go"
+helios/templates/voters_upload_confirm.html,42,template,A,"no, let me upload a different file"
+helios/utils.py,72,python-erro-interno,B,not implemented yet
+helios/view_utils.py,97,python,C,problem with serialization:
+helios/views.py,90,python,B,no admin users!
+helios/views.py,93,python,B,no users!
+helios/views.py,166,python,B,"the election is frozen, so trustee keys can no longer be changed"
+helios/views.py,175,python,B,only an administrator has elections to administer
+helios/views.py,193,python,B,only an administrator can create an election
+helios/views.py,479,python,B,Please enter an email address.
+helios/views.py,488,python,B,User not found
+helios/views.py,497,python,B,No user found with that email. They must log in to Helios at least once before being added as an administrator.
+helios/views.py,514,python,B,This user is already the election creator.
+helios/views.py,521,python,B,This user is already an administrator.
+helios/views.py,542,python,B,No user specified
+helios/views.py,547,python,B,User not found
+helios/views.py,551,python,B,Cannot remove the election creator.
+helios/views.py,555,python,B,You cannot remove yourself as an administrator.
+helios/views.py,559,python,B,User is not an administrator of this election
+helios/views.py,583,python,B,Trustee not recognized.
+helios/views.py,608,python,C,URL %s
+helios/views.py,625,python,B,"the election is frozen, so trustee keys can no longer be changed"
+helios/views.py,634,python-erro-interno,B,bad pok for this public key
+helios/views.py,643,python,B,"the election is frozen, so trustee keys can no longer be changed"
+helios/views.py,794,python,B,Email sending is not enabled on this server.
+helios/views.py,819,python,B,Please enter a valid voter ID.
+helios/views.py,1284,python,B,registration is closed for this election
+helios/views.py,1399,python,C,malformed decryption upload for trustee %s: %s: %s
+helios/views.py,1451,python,C,decryption factors do not decrypt the tally for election %s
+helios/views.py,1751,python-erro-interno,B,no valid lines found in voter file
+helios/views.py,1794,python-erro-interno,B,bad template
+helios/views.py,1801,python-erro-interno,B,Voter not found
+helios/views.py,1933,python,B,limit must be a non-negative number
+helios/views.py,1945,python,B,after must be a timestamp like 2017-10-17 05:08:27.938681
+helios/views.py,1981,python,B,Opt Out of Helios Emails
+helios/views.py,1982,python,B,Enter your email address to stop receiving all emails from Helios voting system.
+helios/views.py,1991,python,B,Opt Out of Helios Emails
+helios/views.py,1992,python,B,Enter your email address to stop receiving all emails from Helios voting system.
+helios/views.py,1993,python,B,Email address is required
+helios/views.py,1999,python,B,Opt Out of Helios Emails
+helios/views.py,2000,python,B,Enter your email address to stop receiving all emails from Helios voting system.
+helios/views.py,2001,python,B,Invalid email address
+helios/views.py,2035,python,B,Opt Out of Helios Emails
+helios/views.py,2036,python,B,Enter your email address to stop receiving all emails from Helios voting system.
+helios/views.py,2037,python,C,Failed to send confirmation email: {…}
+helios/views.py,2046,python,B,Opt-Out Confirmation Sent
+helios/views.py,2047,python,B,We have sent you a confirmation email. Please click the link in the email to complete your opt-out request.
+helios/views.py,2055,python,B,Invalid confirmation link
+helios/views.py,2061,python,B,Confirm Opt-Out
+helios/views.py,2062,python,B,Please confirm that you want to opt out of all Helios voting system emails.
+helios/views.py,2077,python,B,Successfully Opted Out
+helios/views.py,2078,python,C,The email address has been successfully opted out of all Helios emails. {…}
+helios/views.py,2089,python,B,Opt Back Into Helios Emails
+helios/views.py,2090,python,B,Enter your email address to resume receiving emails from Helios voting system.
+helios/views.py,2099,python,B,Opt Back Into Helios Emails
+helios/views.py,2100,python,B,Enter your email address to resume receiving emails from Helios voting system.
+helios/views.py,2101,python,B,Email address is required
+helios/views.py,2107,python,B,Opt Back Into Helios Emails
+helios/views.py,2108,python,B,Enter your email address to resume receiving emails from Helios voting system.
+helios/views.py,2109,python,B,Invalid email address
+helios/views.py,2147,python,B,Opt Back Into Helios Emails
+helios/views.py,2148,python,B,Enter your email address to resume receiving emails from Helios voting system.
+helios/views.py,2149,python,C,Failed to send confirmation email: {…}
+helios/views.py,2158,python,B,Opt-In Confirmation Sent
+helios/views.py,2159,python,B,We have sent you a confirmation email. Please click the link in the email to complete your opt-in request.
+helios/views.py,2167,python,B,Invalid confirmation link
+helios/views.py,2177,python,B,Confirm Opt-In
+helios/views.py,2178,python,B,Please confirm that you want to resume receiving emails from Helios voting system.
+helios/views.py,2193,python,B,Successfully Opted Back In
+helios/views.py,2194,python,C,The email address has been successfully opted back in to Helios emails. {…}
+helios/workflows/homomorphic.py,161,python-erro-interno,C,Need to select at least %s answer(s)
+helios/workflows/homomorphic.py,207,python,B,Encrypted answers do not match the election questions
+helios/workflows/homomorphic.py,215,python,C,Incorrect election_hash vs {…}
+helios/workflows/homomorphic.py,223,python,C,Incorrect election_uuid vs {…}
+helios/workflows/homomorphic.py,331,python-erro-interno,B,Vote does not match the election questions
+helios/workflows/homomorphic.py,336,python-erro-interno,B,Bad Vote
+helios_auth/auth_systems/devlogin.py,27,python,B,Development login only available on localhost
+helios_auth/auth_systems/devlogin.py,38,python,B,Development login only available on localhost
+helios_auth/auth_systems/devlogin.py,68,python,C,Dev login message to : {…}
+helios_auth/auth_systems/devlogin.py,88,python,B,Development login only available on localhost
+helios_auth/auth_systems/github.py,48,python-erro-interno,B,OAuth state mismatch - possible CSRF attack
+helios_auth/auth_systems/github.py,111,python,B,not emailing GitHub user: no email address on file
+helios_auth/auth_systems/gitlab.py,45,python-erro-interno,B,OAuth state mismatch - possible CSRF attack
+helios_auth/auth_systems/gitlab.py,65,python-erro-interno,B,GitLab user API request failed
+helios_auth/auth_systems/gitlab.py,90,python,B,not emailing GitLab user: no email address on file
+helios_auth/auth_systems/google.py,53,python-erro-interno,B,OAuth state mismatch - possible CSRF attack
+helios_auth/auth_systems/google.py,77,python-erro-interno,B,Failed to retrieve user info from Google.
+helios_auth/auth_systems/google.py,82,python-erro-interno,B,Received invalid user info response from Google.
+helios_auth/auth_systems/google.py,87,python-erro-interno,B,Google did not provide email verification status
+helios_auth/auth_systems/google.py,97,python-erro-interno,B,email address not provided by Google
+helios_auth/auth_systems/linkedin.py,43,python-erro-interno,B,OAuth state mismatch - possible CSRF attack
+helios_auth/auth_systems/linkedin.py,64,python-erro-interno,B,LinkedIn user API request failed
+helios_auth/auth_systems/linkedin.py,72,python-erro-interno,B,Email address not available from LinkedIn
+helios_auth/auth_systems/openid/view_helpers.py,58,python-erro-interno,B,error in openid: OpenID discovery error
+helios_auth/auth_systems/password.py,30,python-erro-interno,C,user '' already exists {…}
+helios_auth/auth_systems/password.py,99,python,B,no such username
+helios_auth/auth_systems/password.py,113,python,B,password reminder
+helios_auth/security/__init__.py,115,python-erro-interno,B,only a POST for this URL
+helios_auth/security/__init__.py,118,python-erro-interno,B,A CSRF problem was detected
+helios_auth/security/oauth.py,487,python,C,built %s
+helios_auth/security/oauth.py,488,python,C,signature %s
+helios_auth/templates/auth/devlogin.html,4,template,A,Dev Login
+helios_auth/templates/auth/devlogin.html,17,template,A,Dev Login
+helios_auth/templates/auth/devlogin.html,18,template,A,user@example.com
+helios_auth/templates/auth/devlogin.html,21,template,A,Log in
+helios_auth/templates/base.html,1,template,A,<!DOCTYPE html
+helios_auth/templates/base.html,2,template,A,"PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"""
+helios_auth/templates/base.html,3,template,A,"""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">"
+helios_auth/templates/base.html,5,template,A,"<html xmlns=""http://www.w3.org/1999/xhtml"""
+helios_auth/templates/base.html,6,template,A,"dir="" rtl ltr """
+helios_auth/templates/base.html,7,template,A,"xml:lang="" """
+helios_auth/templates/base.html,8,template,A,"lang="" "">"
+helios_auth/templates/base.html,10,template,A,Authentication - Helios
+helios_auth/templates/index.html,4,template,A,Authentication
+helios_auth/templates/index.html,8,template,B,You are currently logged in as via .
+helios_auth/templates/login_box.html,3,template,B,Log in
+helios_auth/templates/login_failed.html,4,template,A,Sign-in didn't go through
+helios_auth/templates/login_failed.html,13,template,A,We couldn't finish signing you in. This usually happens when the sign-in
+helios_auth/templates/login_failed.html,14,template,A,page is refreshed or reopened with the back button partway through.
+helios_auth/templates/login_failed.html,15,template,A,It can also happen if the email address on your account isn't verified.
+helios_auth/templates/login_failed.html,20,template,B,Try signing in again
+helios_auth/templates/password/forgot.html,4,template,B,&mdash; Password Forgotten
+helios_auth/templates/password/forgot.html,18,template,A,Your Username :
+helios_auth/templates/password/forgot.html,18,template-atributo,B,Send Reminder
+helios_auth/templates/password/login.html,4,template,B,&mdash; Login
+helios_auth/templates/perms_why.html,4,template,A,Why we need your information
+helios_auth/templates/perms_why.html,7,template,A,It looks like you declined to grant us permission to access your
+helios_auth/templates/perms_why.html,8,template,A,information. We understand and value your privacy. We ask for this
+helios_auth/templates/perms_why.html,9,template,A,information so we can contact you with your voting tracking number and
+helios_auth/templates/perms_why.html,10,template,A,when an election in which you participated has been tallied. We
+helios_auth/templates/perms_why.html,11,template,A,promise not to use this information for any other purpose. Without
+helios_auth/templates/perms_why.html,12,template,A,"this information, we unfortunately cannot help you vote."
+helios_auth/templates/perms_why.html,17,template-atributo,B,"OK, I understand, let's do this login thing."
+helios_auth/templates/perms_why.html,18,template,A,"nope, get me out of here ."
+helios_auth/utils.py,50,python-erro-interno,B,"value is not JSON parseable, that's bad news"
+helios_auth/views.py,158,python,C,an error occurred trying to contact
+helios_auth/views.py,158,python,C,", try again later"
+helios_auth/views.py,205,python,B,login callback rejected for auth system %s: %s
+helios_auth/views.py,208,python,B,login callback failed for auth system %s
+heliosbooth/boothworker-single.js,34,js,C,encrypting answer for question
+heliosbooth/single-ballot-verify.html,7,template,A,Helios Voting System
+heliosbooth/single-ballot-verify.html,115,template,A,Helios Single-Ballot Verifier
+heliosbooth/single-ballot-verify.html,119,template,A,Loading verifier...
+heliosbooth/single-ballot-verify.html,123,template,B,Your browser does not have the Java plugin installed.
+heliosbooth/single-ballot-verify.html,124,template,A,"At this time, the Java plugin is required for browser-based ballot auditing, although it is not required for ballot preparation."
+heliosbooth/single-ballot-verify.html,129,template,B,This single-ballot verifier lets you enter an audited ballot and verify that it was prepared correctly.
+heliosbooth/single-ballot-verify.html,133,template,A,Enter the Election URL:
+heliosbooth/single-ballot-verify.html,137,template,A,Your Ballot:
+heliosbooth/templates/audit.html,2,template,A,Your audited ballot
+heliosbooth/templates/audit.html,5,template,B,"IMPORTANT : this ballot, now that it has been audited, will not be tallied ."
+heliosbooth/templates/audit.html,6,template,A,"To cast a ballot, you must click the ""Back to Voting"" button below, re-encrypt it, and choose ""cast"" instead of ""audit."""
+heliosbooth/templates/audit.html,10,template,A,Why? Helios prevents you from auditing and casting the same ballot to provide you with some protection against coercion.
+heliosbooth/templates/audit.html,14,template,B,"Now what? Select your ballot audit info , copy it to your clipboard, then use the ballot verifier to verify it."
+heliosbooth/templates/audit.html,15,template,A,"Once you're satisfied, click the ""back to voting"" button to re-encrypt and cast your ballot."
+heliosbooth/templates/audit.html,23,template,B,"Before going back to voting,"
+heliosbooth/templates/audit.html,24,template,A,you can post this audited ballot to the Helios tracking center so that others might double-check the verification of this ballot.
+heliosbooth/templates/audit.html,26,template,A,"Even if you post your audited ballot, you must go back to voting and choose ""cast"" if you want your vote to count."
+heliosbooth/templates/audit.html,28,template,A,back to voting
+heliosbooth/templates/audit.html,30,template,A,post audited ballot to tracking center
+heliosbooth/templates/done.html,2,template,A,Your Vote is Being Submitted
+heliosbooth/templates/done.html,5,template,A,Please wait a few seconds while your vote is submitted to the casting server....
+heliosbooth/templates/election.html,4,template,A,"To vote, follow these steps:"
+heliosbooth/templates/election.html,8,template,A,Select your preferred options.
+heliosbooth/templates/election.html,11,template,A,"Review your choices, which are then encrypted."
+heliosbooth/templates/election.html,14,template,A,Submit your encrypted ballot and authenticate to verify your eligibility.
+heliosbooth/templates/election.html,18,template,A,Start
+heliosbooth/templates/election.html,22,template,B,You can email for help .
+heliosbooth/templates/footer.html,5,template,A,The public key for this election is not yet ready. This election is in preview mode only.
+heliosbooth/templates/question.html,10,template,A,vote for
+heliosbooth/templates/question.html,21,template,A,as many as you approve of
+heliosbooth/templates/question.html,37,template,A,[ more info ]
+heliosbooth/templates/question.html,50,template,A,Proceed
+heliosbooth/templates/question.html,55,template,A,Previous
+heliosbooth/templates/question.html,60,template,A,Next
+heliosbooth/templates/seal.html,1,template,A,Review your Ballot
+heliosbooth/templates/seal.html,8,template,B,&#x2610; No choice selected
+heliosbooth/templates/seal.html,16,template,A,[ change ]
+heliosbooth/templates/seal.html,24,template,A,Proceed to Login
+heliosbooth/templates/seal.html,38,template,A,Spoil & Audit [optional]
+heliosbooth/templates/seal.html,41,template,A,"If you choose, you can spoil this ballot and reveal how your choices were encrypted. This is an optional auditing process."
+heliosbooth/templates/seal.html,44,template,A,You will then be guided to re-encrypt your choices for final casting.
+heliosbooth/templates/seal.html,46,template,A,Spoil &amp; Audit
+heliosbooth/templates/submit.html,2,template,A,Submit Your Encrypted Ballot
+heliosbooth/templates/submit.html,5,template,B,"All information, other than your encrypted ballot,"
+heliosbooth/templates/submit.html,6,template,A,has been removed from memory.
+heliosbooth/templates/submit.html,10,template,B,"As a reminder, your ballot tracking number is:"
+heliosbooth/templates/submit.html,15,template,A,"According to the election definition file, this ballot will be submitted to:"
+heliosbooth/templates/submit.html,21,template,A,where you will log in to validate your eligibility to vote.
+heliosbooth/templates/submit.html,32,template-atributo,B,Submit Ballot
+heliosbooth/vote.html,6,template,A,Helios Voting Booth
+heliosbooth/vote.html,34,template,A,Helios Voting Booth
+heliosbooth/vote.html,74,js,C,"If you leave this page with an in-progress ballot, your ballot will be lost."
+heliosbooth/vote.html,84,js,C,Are you sure you want to exit the booth and lose all information about your current ballot?
+heliosbooth/vote.html,232,js,C,You need to select at least
+heliosbooth/vote.html,345,js,C,"Maximum number of options selected.<br />To change your selection, please de-select a current selection first."
+heliosbooth/vote.html,354,js,C,You may select up to
+heliosbooth/vote.html,354,js,C,choices total.
+heliosbooth/vote.html,488,js,C,there appears to be a problem with the encryption process.\nPlease email help@heliosvoting.org and indicate that your encryption process froze at
+heliosbooth/vote.html,530,js,C,"This audited ballot has been posted.\nRemember, this vote will only be used for auditing and will not be tallied.\nClick ""back to voting"" and cast a new ballot to make sure your vote counts."
+heliosbooth/vote.html,571,template,A,(1) Select
+heliosbooth/vote.html,572,template,A,(2) Review
+heliosbooth/vote.html,573,template,A,(3) Submit
+heliosbooth/vote.html,578,template,A,Checking capabilities and loading election booth...
+heliosbooth/vote.html,579,template,A,This may take up to 10 seconds
+heliosbooth/vote.html,583,template,A,There's a problem
+heliosbooth/vote.html,585,template,A,It appears that your browser does not have Java enabled. Helios needs Java to perform encryption within the browser.
+heliosbooth/vote.html,588,template,B,You may be able to install Java by visiting java.com .
+heliosbooth/vote.html,600,template,B,Helios is now encrypting your ballot
+heliosbooth/vote.html,603,template,A,This may take up to two minutes.
+heliosverifier/verify.html,5,template,A,Helios Voting System -- Verifier
+heliosverifier/verify.html,36,js,C,"sorry, in-browser verification requires Java Support at this time."
+heliosverifier/verify.html,212,js,C,: decryption factor does not verify
+heliosverifier/verify.html,250,js,C,""">Log in as the election admin</a>"
+heliosverifier/verify.html,265,template,A,Helios Election Verifier
+heliosverifier/verify.html,270,template,A,loading verifier ...
+heliosverifier/verify.html,274,template,A,Enter the Election URL:
+heliosverifier/verify.html,277,template-atributo,B,start verification
+server_ui/templates/about.html,11,template,A,About Helios Voting
+server_ui/templates/about.html,14,template,B,Helios is a non-partisan organization led by Ben Adida .
+server_ui/templates/about.html,20,template,A,Code Contributors
+server_ui/templates/about.html,22,template,A,"Ben Adida, Olivier de Marneffe, Olivier Pereira"
+server_ui/templates/about.html,26,template,A,Advisors
+server_ui/templates/about.html,29,template,A,Jim Adler
+server_ui/templates/about.html,31,template,A,"Jim is a business executive, entrepreneur, and thought leader on big"
+server_ui/templates/about.html,32,template,A,"data, privacy, security, and voting systems. He’s founded companies,"
+server_ui/templates/about.html,33,template,A,"defined vision and strategy, led teams, developed technology, and"
+server_ui/templates/about.html,34,template,A,built products.
+server_ui/templates/about.html,37,template,A,"Currently, Jim is Vice President of Products at Metanautix, a big data"
+server_ui/templates/about.html,38,template,A,analytics startup. He also serves on the The Department of Homeland
+server_ui/templates/about.html,39,template,A,Security (DHS) Data Privacy and Integrity Advisory Committee (DPIAC)
+server_ui/templates/about.html,40,template,A,providing advice at the request of the Secretary of Homeland Security
+server_ui/templates/about.html,41,template,B,and the DHS Chief Privacy Officer. [ more ]
+server_ui/templates/about.html,47,template,A,Lawrence Lessig
+server_ui/templates/about.html,49,template,B,"Lawrence Lessig is the Director of the Edmond J. Safra Foundation Center for Ethics at Harvard University, and a Professor of Law at Harvard Law School. For much of his academic career, Lessig has focused on law and technology, especially as it affects copyright. His current academic work addresses the question of “institutional corruption” — roughly, influences within an economy of influence that weaken the effectiveness of an institution, or weaken public trust. His current work at the EJ Safra Lab oversees a 5 year research project addressing institutional corruption in a number of institutional contexts. [ more ]"
+server_ui/templates/about.html,55,template,A,Josh Benaloh
+server_ui/templates/about.html,57,template,A,"Dr. Benaloh is Senior Cryptographer at Microsoft Research and an elected director of the International Association for Cryptologic Research. He earned his S.B degree from the Massachusetts Institute of Technology and M.S., M.Phil., and Ph.D. degrees from Yale University where his 1987 doctoral dissertation, Verifiable Secret-Ballot Elections, introduced the use of homomorphic encryption to enable end-to-end verifiable election technologies. Dr. Benaloh’s numerious research publications in cryptography and voting have pioneered new tehnologies including the “cast or cancel” paradigm which brings voters into the verification process with minimal burden. He has served on the program committees of dozens of cryptography and election-related conferences and workshops and is a frequent speaker on the history, development, and mechanisms behind verifiable voting."
+server_ui/templates/about.html,63,template,A,Andy Neff
+server_ui/templates/about.html,65,template,A,"Dr. Neff is the author of several ground-breaking contributions to the study of computer algorithms, specifically as they apply to voting protocols. At VoteHere, where he was CTO, Dr. Neff created the first ballot mixing and anonymization technique efficient enough for practical use, developed a new ballot representation which allows for a reduction in ballot size by several factors with privacy intact, and led the technical vision of the VoteHere election product. Dr. Neff regularly serves on the program committees of top voting conferences and holds a PhD in Mathematics from Princeton University."
+server_ui/templates/about.html,71,template,A,Olivier Pereira
+server_ui/templates/about.html,73,template,A,"Olivier Pereira is a research associate of the Belgian science foundation F.R.S.-FNRS and an associate professor at Université catholique de Louvain. His research interests lie in the area of cryptography and distributed computing, addressing the issue of enabling people to jointly realize tasks in a secure way. He has been leading the development, integration and deployment of Helios in several large scale elections, and gave invited presentations and keynote talks about verifiable elections in a dozen of leading institutions around the world. He is a co-author of the Bevoting study on electronic voting systems produced for the Belgian Federal and Regional Administrations."
+server_ui/templates/about.html,77,template,A,Dan Wallach
+server_ui/templates/about.html,79,template,A,"Dan Wallach is an associate professor in the Department of Computer Science at Rice University in Houston, Texas and is the director of NSF’s ACCURATE (A Center for Correct, Usable, Reliable, Auditable and Transparent Elections). His research involves computer security and the issues of building secure and robust software systems for the Internet. He has testified about voting security issues before government bodies in the U.S., Mexico, and the European Union, has served as an expert witness in a number of voting technology lawsuits, and participated in California’s “top-to-bottom” audit of its voting systems."
+server_ui/templates/base.html,42,template,A,Menu
+server_ui/templates/base.html,50,template,A,Admin
+server_ui/templates/base.html,54,template,A,About Helios
+server_ui/templates/base.html,62,template,A,About
+server_ui/templates/base.html,64,template,A,Code
+server_ui/templates/base.html,66,template,A,Docs
+server_ui/templates/base.html,70,template,A,Privacy
+server_ui/templates/base.html,73,template,B,Help!
+server_ui/templates/base.html,100,template,B,logged in as
+server_ui/templates/base.html,104,template,B,You are signed in as voter in election . [ sign out ]
+server_ui/templates/base.html,107,template,B,not logged in. log in
+server_ui/templates/base.html,109,template,B,powered by Helios Voting .
+server_ui/templates/confirm.html,2,template,A,Confirm Vote
+server_ui/templates/confirm.html,15,template,A,Confirm your Vote
+server_ui/templates/confirm.html,21,template,A,Your Ballot
+server_ui/templates/confirm.html,28,template,A,Cast Your Ballot with your Credentials
+server_ui/templates/confirm.html,37,template-atributo,B,cast this ballot
+server_ui/templates/confirm.html,41,template,B,"Forgot your password? Have it emailed to you . (don't worry, we won't forget your vote)."
+server_ui/templates/confirm.html,46,template,B,Verifying and Casting your ballot
+server_ui/templates/docs.html,11,template,A,Documentation
+server_ui/templates/docs.html,16,template,A,The Helios Voting technology is based on advanced peer-reviewed
+server_ui/templates/docs.html,17,template,A,cryptographic techniques that enable your vote to remain secret while
+server_ui/templates/docs.html,18,template,A,providing an intelligent ballot tracker to let you verify that your
+server_ui/templates/docs.html,19,template,A,ballot was received and counted properly:
+server_ui/templates/docs.html,23,template,A,"user manual , for election administrators and voters"
+server_ui/templates/docs.html,24,template,A,how Helios works
+server_ui/templates/docs.html,25,template,A,"architecture , for developers"
+server_ui/templates/docs.html,26,template,A,original peer-reviewed (Usenix Security 2008)
+server_ui/templates/docs.html,27,template,B,"Pyrios , a Go library by Tom Roeder that verifies Helios elections."
+server_ui/templates/docs.html,28,template,A,"Helios Election Monitor , produced by the Universite catholique de Louvain."
+server_ui/templates/docs.html,32,template,A,Helios has been covered in the press:
+server_ui/templates/docs.html,36,template,A,"KCBS News Interview, May 2010"
+server_ui/templates/docs.html,37,template,A,"Harvard Magazine, April 2010"
+server_ui/templates/docs.html,38,template,A,"Ynet, Israeli Press, June 2009"
+server_ui/templates/done.html,2,template,A,Confirm Vote
+server_ui/templates/done.html,5,template,A,Your Vote was Cast
+server_ui/templates/done.html,8,template,B,"A vote was successfully cast for , with vote fingerprint:"
+server_ui/templates/done.html,14,template,B,Visit the election homepage .
+server_ui/templates/election_tallied.html,5,template,B,Election Already Tallied
+server_ui/templates/election_tallied.html,8,template,A,"This election has already been tallied (or at least the tally has begun), so you can no longer cast a vote."
+server_ui/templates/election_tallied.html,12,template,A,view the election
+server_ui/templates/email/cast_vote_body.txt,1,email,C,"Dear ,"
+server_ui/templates/email/cast_vote_body.txt,3,email,C,You have successfully cast a vote in .
+server_ui/templates/email/cast_vote_body.txt,5,email,C,Your ballot tracker is:
+server_ui/templates/email/cast_vote_body.txt,8,email,C,And your full encrypted ballot is archived at:
+server_ui/templates/email/cast_vote_body.txt,12,email,C,This election uses voter aliases to protect your privacy.
+server_ui/templates/email/cast_vote_body.txt,13,email,C,Your voter alias is: .
+server_ui/templates/email/cast_vote_body.txt,17,email,C,Helios
+server_ui/templates/faq.html,14,template,A,What makes Helios different/better than other voting systems?
+server_ui/templates/faq.html,16,template,A,"Helios is truly verifiable. Each voter obtains a ballot tracker which can be checked against the Ballot Tracking Center to ensure that the ballot was received and tallied appropriately. What this means is that no one, not even the administrators of the Helios Voting system, can alter your vote."
+server_ui/templates/faq.html,23,template,A,"I’ve heard of “voter-verifiable” before, what’s different about Helios?"
+server_ui/templates/faq.html,24,template,A,"Many voting systems claim to be voter-verifiable. We believe voter-verifiability is critically important, and we support the efforts of other organizations to help improve the voting machines used in public-office elections. However, we believe that more extensive verifiability is needed, with voters able to ensure that the tallying process, not just the recording of their ballot, was performed correctly. We call that “true verifiability.” Others have called this concept “end-to-end verifiability” or “open-audit.”"
+server_ui/templates/faq.html,30,template,A,How secret is my vote on Helios?
+server_ui/templates/faq.html,31,template,A,"Helios takes great care to protect the secrecy of your vote. Your vote is encrypted inside your browser before it is even sent to the server. Even on older browsers, your vote is encrypted before you log into Helios. In all cases, your vote is stored in the database only in encrypted form. Helios then uses advanced cryptographic techniques to combine all of the encrypted votes into an encrypted tally, and only the tally is decrypted. This means that your ballot is never individually decrypted. To provide for the highest level of privacy, Helios lets election administrators designate multiple trustees. All trustees must be involved in decryption, which further ensures that only the tally, never the individual votes, are decrypted."
+server_ui/templates/faq.html,37,template,A,What's so special about the Helios Ballot Tracker?
+server_ui/templates/faq.html,38,template,A,"A typical tracking number, say for shipping a package, is more or less a random number: it means nothing other than the label on your package. It’s conceivable that your package gets there, tracking number intact, but its contents destroyed. In the digital world, we’re able to produce a special kind of tracking number that is far from random: it is a fingerprint of the encryption of your vote. So, if your ballot tracker makes it all the way to the tally, you know that not only did your ballot make it into the tally, you also know that it wasn’t tampered with in the process."
+server_ui/templates/faq.html,44,template,A,Is Helios the only system that provides this level of verifiability?
+server_ui/templates/faq.html,45,template,B,"No, there are other systems. Scantegrity , Prêt à Voter, STARVote , Wombat Voting, all provide true verifiability in paper-based voting systems. We like those systems, and we like the people behind those systems. VoteHere, a company that has since folded, was a pioneer in this area, too. The Helios System packs a number of innovations focused on enabling true verifiability for online elections to help everyone get a taste if this groundbreaking technology. But we are not the only game in town."
+server_ui/templates/faq.html,51,template,A,Should we start using Helios for public-office elections? Maybe US President 2016?
+server_ui/templates/faq.html,52,template,A,"No, you should not. Online elections are appropriate when one does not expect a large attempt at defrauding or coercing voters. For some elections, notably US Federal and State elections, the stakes are too high, and we recommend against capturing votes over the Internet. This has nothing to do with Helios itself: we just don’t trust that people’s home computers are secure enough to withstand significant attacks."
+server_ui/templates/faq.html,54,template,A,"If you’d like to use a truly verifiable voting system for your public-office election, we recommend an in-person election. Helios could be adapted to the in-person, precinct voting setting, but we have not done this work yet, and we intend to focus on online elections first."
+server_ui/templates/index.html,14,template,B,Helios offers verifiable online elections .
+server_ui/templates/index.html,16,template,A,"We believe democracy is important, whether it’s your book club, parent-teacher association, student government, workers’ union, or state. So we’ve made truly verifiable elections as easy as everything else on the Web."
+server_ui/templates/index.html,19,template,A,Helios elections are:
+server_ui/templates/index.html,21,template,A,private : no one knows how you voted.
+server_ui/templates/index.html,22,template,A,verifiable : each voter gets a tracking number.
+server_ui/templates/index.html,23,template,A,"proven : Helios is open-source, vetted by top-tier experts, and in use by major organizations."
+server_ui/templates/index.html,27,template,B,"More than 2,000,000 votes have been cast using Helios."
+server_ui/templates/index.html,31,template,A,create an election
+server_ui/templates/index.html,49,template,A,no featured elections at the moment
+server_ui/templates/index.html,61,template,A,create election
+server_ui/templates/index.html,62,template,A,Administration
+server_ui/templates/index.html,70,template,A,none yet
+server_ui/templates/index.html,73,template,A,see all
+server_ui/templates/index.html,78,template,A,Recent Votes
+server_ui/templates/index.html,86,template,A,none yet
+server_ui/templates/index.html,88,template,A,see all
+server_ui/templates/index.html,92,template,A,Log In to Start Voting
+server_ui/templates/index.html,96,template,A,Select an election to start voting. You will be asked for your voting credentials after you complete a ballot.
+server_ui/templates/privacy.html,2,template,B,&mdash; Privacy
+server_ui/templates/privacy.html,11,template,A,Privacy
+server_ui/templates/privacy.html,15,template,A,In General
+server_ui/templates/privacy.html,18,template,B,"Helios is designed with built-in privacy. If you have any questions or concerns about Helios privacy not covered here, send us an email ."
+server_ui/templates/privacy.html,19,template,A,"We collect only the information needed to provide secure, trustworthy elections."
+server_ui/templates/privacy.html,20,template,A,"We make certain information available publicly on our web site as part of the process of auditing elections (details below.) Other than that, we do not give away any information we collect."
+server_ui/templates/privacy.html,21,template,A,We do not sell any information.
+server_ui/templates/privacy.html,22,template,A,"We do not use external trackers or advertising that could leak information about you, except for Facebook and Twitter share buttons. Even for those, we use origin sandboxing to limit how much Facebook and Twitter can determine about you, and we only use those buttons on the election information page."
+server_ui/templates/privacy.html,26,template,A,"If you want to stop reading here, you can: the rest provides detail about the above principles without weakening them."
+server_ui/templates/privacy.html,31,template,A,For Voters
+server_ui/templates/privacy.html,33,template,A,About your vote:
+server_ui/templates/privacy.html,36,template,A,Your vote on Helios is considered extremely private.
+server_ui/templates/privacy.html,37,template,A,Helios uses SSL to transmit data between your browser and our servers.
+server_ui/templates/privacy.html,38,template,B,"In addition, Helios uses end-to-end encryption so that, even after SSL decryption, your vote is still encrypted with the election key. Helios servers never see your vote."
+server_ui/templates/privacy.html,39,template,A,"In the normal process of a Helios election, your individual vote is never decrypted: encrypted votes are combined into a tally, using a process called homomorphic encryption, and only the final tally &mdash; never an intermediate tally &mdash; is decrypted."
+server_ui/templates/privacy.html,40,template,A,"The trustees of your election, if they all collude, technically have the power to decrypt your individual vote. This action is strongly discouraged and is against Helios policy. It is why high-security elections should use at least 3 trustees with different allegiances."
+server_ui/templates/privacy.html,41,template,B,"Helios may, at your election administrators' discretion, serve as a trustee of your election. This does not give Helios any power to decrypt your vote. In fact, it is probably preferable, since without Helios's collaboration, the remaining trustees cannot decrypt individual votes. It is our policy that Helios, when acting as a trustee, will only decrypt the election tally, never an individual vote."
+server_ui/templates/privacy.html,42,template,A,"When Helios is not acting as a trustee of your election, Helios has no power to decrypt any individual vote."
+server_ui/templates/privacy.html,45,template,A,About non-vote data:
+server_ui/templates/privacy.html,48,template,A,"To vote, you will need to present credentials to prove your eligibility. Depending on how your election was set up, this may be a username and password that were generated for you, or a Facebook, Google, Yahoo, or Twitter login. Helios uses the appropriate login interfaces to those external services so that it never has access to your credentials at those services."
+server_ui/templates/privacy.html,49,template,A,"For the purposes of election auditing, Helios stores your name, email address, and the minimal eligibility information needed to qualify you, for example the Facebook group that you belong to that was designated as the eligibility requirement for this election."
+server_ui/templates/privacy.html,50,template,A,"The complete metadata of your vote: where you voted from, what time you voted, and how often you vote (only the last vote counts!), are stored in Helios and may be made available to your election administrators as part of the auditing process. This is critical for ensuring a secure and trustworthy election."
+server_ui/templates/privacy.html,51,template,A,"If your election was made public by the administrator, then some core auditing information is made available to the public: the fact that you voted, the time of your vote, and its tracking number. If your administrator chose to use voter aliases, then your name will be replaced by your pseudonymous voter ID in that dataset. In all cases, Helios takes care to mask or fully hide your email address to prevent email harvesting for spam."
+server_ui/templates/privacy.html,52,template,A,"If your election was made private, then this same information is available to only you, your fellow voters, and your election administrators."
+server_ui/templates/privacy.html,55,template,A,For Administrators
+server_ui/templates/privacy.html,59,template,A,"As an administrator, you have the power to designate who can vote, when the election starts, when the election stops, and when the results are released. Other than that, you have no power beyond what voters in your election have. This is by design."
+server_ui/templates/privacy.html,60,template,A,"To create and administer an election, you will need to log in using Google, Facebook, Yahoo, or Twitter. Helios queries and retains only the basic information needed to authenticate you the next time around: your name, email address, and user ID. Helios will use this information to message you when your election requires attention."
+templates/404.html,2,template,A,Page not found
+templates/404.html,5,template,A,The page you requested could not be found.
+templates/500.html,2,template,A,Server error
+templates/500.html,5,template,A,There was an error while handling your request.
