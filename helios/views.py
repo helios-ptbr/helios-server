@@ -226,7 +226,7 @@ def election_new(request):
         except IntegrityError:
           error = gettext("An election with short name %(short_name)s already exists") % {'short_name': election_params['short_name']}
       else:
-        error = "No special characters allowed in the short name."
+        error = gettext("No special characters allowed in the short name.")
     
   return render_template(request, "election_new", {'election_form': election_form, 'error': error})
   
@@ -600,19 +600,19 @@ def trustee_send_url(request, election, trustee_uuid):
 
   url = settings.SECURE_URL_HOST + reverse(url_names.TRUSTEE_LOGIN, args=[election.short_name, trustee.email, trustee.secret])
   
-  body = """
+  body = gettext("""
 
-You are a trustee for %s.
+You are a trustee for %(election)s.
 
 Your trustee dashboard is at
 
-  %s
+  %(url)s
   
 --
 Helios  
-""" % (election.name, url)
+""") % {'election': election.name, 'url': url}
 
-  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'your trustee homepage for %s' % election.name, body)
+  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], gettext('your trustee homepage for %(election)s') % {'election': election.name}, body)
 
   logging.info("URL %s " % url)
   return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_TRUSTEES_VIEW, args = [election.uuid]))
@@ -655,7 +655,7 @@ def trustee_upload_pk(request, election, trustee):
     
     # send a note to admin
     try:
-      election.admin.send_message("%s - trustee pk upload" % election.name, "trustee %s (%s) uploaded a pk." % (trustee.name, trustee.email))
+      election.admin.send_message(gettext("%(election)s - trustee pk upload") % {'election': election.name}, gettext("trustee %(name)s (%(email)s) uploaded a pk.") % {'name': trustee.name, 'email': trustee.email})
     except:
       # oh well, no message sent
       pass
@@ -1123,18 +1123,18 @@ def voter_delete(request, election, voter_uuid):
     if voter.vote_hash:
       # send email to voter
       election_url = get_election_url(election)
-      subject = "Your vote has been removed - %s" % election.name
-      body = """
+      subject = gettext("Your vote has been removed - %(election)s") % {'election': election.name}
+      body = gettext("""
 Your vote has been removed by an election administrator.
 
-Election: %s
-Election URL: %s
+Election: %(election)s
+Election URL: %(url)s
 
 If you believe this was done in error, please contact the election administrator.
 
 --
 Helios
-""" % (election.name, election_url)
+""") % {'election': election.name, 'url': election_url}
       voter.send_message(subject, body)
 
       # log it
@@ -1413,7 +1413,7 @@ def trustee_upload_decryption(request, election, trustee):
     
     try:
       # send a note to admin
-      election.admin.send_message("%s - trustee partial decryption" % election.name, "trustee %s (%s) did their partial decryption." % (trustee.name, trustee.email))
+      election.admin.send_message(gettext("%(election)s - trustee partial decryption") % {'election': election.name}, gettext("trustee %(name)s (%(email)s) did their partial decryption.") % {'name': trustee.name, 'email': trustee.email})
     except:
       # ah well
       pass

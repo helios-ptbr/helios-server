@@ -123,6 +123,25 @@ class PtBrAdminPagesTests(WebTest):
                 '/helios/elections/%s/' % self.election.uuid + 'voters/']
         self.assertGreaterEqual(self.scan(urls), 17)
 
+    def test_no_english_catalog_text_in_login_and_voter_pages(self):
+        """Login por senha, reenvio de credenciais, selo e eleições em que a pessoa votou (issue #21)."""
+        base = '/helios/elections/%s/' % self.election.uuid
+        urls = ['/auth/password/login', '/auth/password/forgot', '/helios/elections/voted',
+                base + 'password_voter_resend', base + 'badge']
+        self.assertGreaterEqual(self.scan(urls), 5)
+
+    def test_no_english_catalog_text_in_trustee_pages(self):
+        """A pessoa curadora entra pelo link do e-mail; varre início, gerador de chave, conferir chave e decifrar."""
+        trustee, _ = models.Trustee.objects.get_or_create(
+            election=self.election, email='fulana@example.com',
+            defaults={'uuid': 'trustee-varredura', 'name': 'Fulana', 'secret': 'segredo', 'public_key_hash': 'HASH'})
+        login = reverse('trustee@login', args=[self.election.short_name, trustee.email, trustee.secret])
+        self.client.logout()
+        self.get(login)  # grava a sessão da pessoa curadora
+        base = '/helios/elections/%s/trustees/%s/' % (self.election.uuid, trustee.uuid)
+        urls = [base + 'home', base + 'keygenerator', base + 'check-sk', base + 'decrypt-and-prove']
+        self.assertGreaterEqual(self.scan(urls), 3)
+
     STATIC_PAGES = {'/about': ('Sobre o Helios Voting', 'About Helios Voting'),
                     '/docs': ('Documentação', 'Documentation'),
                     '/faq': ('Perguntas frequentes', 'What makes Helios different'),
@@ -296,6 +315,30 @@ class PtBrTrusteePagesTests(WebTest):
         self.assertIn('Ops, a sua chave está errada.', html)
         self.assertNotIn('your secret key matches!', html)
 
+    def test_keygenerator_page_in_portuguese_and_english(self):
+        from django.test import RequestFactory
+        from django.contrib.sessions.backends.db import SessionStore
+        from django.utils import translation
+        from helios.view_utils import render_template
+
+        election = models.Election.objects.all()[0]
+        trustee, _ = models.Trustee.objects.get_or_create(
+            election=election, email='fulana@example.com',
+            defaults={'uuid': 'trustee-teste', 'name': 'Fulana', 'public_key_hash': 'HASH'})
+        paginas = {}
+        for lang in ('pt-br', 'en'):
+            request = RequestFactory().get('/x')
+            request.session = SessionStore()
+            request.session['csrf_token'] = 'tok'
+            with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
+                paginas[lang] = render_template(request, 'election_keygenerator',
+                                                {'election': election, 'trustee': trustee, 'eg_params_json': '{}'}).content.decode()
+        self.assertIn('Gerar as chaves da eleição', paginas['pt-br'])
+        self.assertIn('Pessoa curadora Fulana', paginas['pt-br'])
+        self.assertNotIn('Generate Election Keys', paginas['pt-br'])
+        self.assertIn('Generate Election Keys', paginas['en'])
+        self.assertIn('Trustee Fulana', paginas['en'])
+
     def test_decrypt_page_in_portuguese_and_english(self):
         self.assertIn('PRIMEIRO PASSO: digite a sua chave secreta', self.render('trustee_decrypt_and_prove', 'pt-br'))
         self.assertIn('FIRST STEP: enter your secret key', self.render('trustee_decrypt_and_prove', 'en'))
@@ -397,3 +440,30 @@ class PtBrBateriaDockerTests(WebTest):
             with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
                 corpo = loader.get_template('email/cast_vote_body.txt').template.render(Context(ctx, autoescape=False))
             self.assertIn(esperado, corpo)
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrAvisosPorEmailTests(WebTest):
+    """E-mails de aviso para a administração e para a pessoa curadora (tasks.py e views.py)."""
+
+    def trad(self, fn, *args, lang='pt-br'):
+        from django.utils import translation
+        with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
+            return fn(*args)
+
+    def test_avisos_em_portugues_e_ingles_intacto(self):
+        from django.utils.translation import gettext, ngettext
+        corpo = "\nThe encrypted tally for election %(election)s has been computed.\n\n--\nHelios\n"
+        self.assertIn('A apuração cifrada da eleição X foi calculada.',
+                      self.trad(gettext, corpo) % {'election': 'X'})
+        self.assertIn('The encrypted tally for election X has been computed.',
+                      self.trad(gettext, corpo, lang='en') % {'election': 'X'})
+        self.assertEqual(self.trad(gettext, 'your trustee homepage for %(election)s') % {'election': 'X'},
+                         'a sua página de pessoa curadora de X')
+
+    def test_plural_de_pessoas_criadas(self):
+        from django.utils.translation import ngettext
+        um, varias = '1 voter has been created.', '%(n)d voters have been created.'
+        self.assertEqual(self.trad(ngettext, um, varias, 1), '1 pessoa eleitora foi criada.')
+        self.assertEqual(self.trad(ngettext, um, varias, 7) % {'n': 7}, '7 pessoas eleitoras foram criadas.')
+        self.assertEqual(self.trad(ngettext, um, varias, 7, lang='en') % {'n': 7}, '7 voters have been created.')

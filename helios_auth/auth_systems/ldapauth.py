@@ -12,7 +12,7 @@ from django.urls import re_path
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
 
 from helios_auth.utils import format_recipient, same_site_path
 
@@ -62,7 +62,7 @@ def ldap_login_view(request):
                 }
                 return HttpResponseRedirect(reverse(after))
             else:
-                error = 'Bad Username or Password'
+                error = gettext('Bad Username or Password')
 
     return render_template(request, 'ldapauth/login', {
             'form': form,

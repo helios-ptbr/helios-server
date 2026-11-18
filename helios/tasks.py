@@ -7,6 +7,7 @@ ben@adida.net
 import copy
 import logging
 from django.conf import settings
+from django.utils.translation import gettext, ngettext
 from django.urls import reverse
 from django_tasks import task
 from urllib.parse import urlparse
@@ -114,13 +115,13 @@ def election_compute_tally(election_id):
     election.compute_tally()
 
     election_notify_admin.enqueue(election_id=election_id,
-                                subject="encrypted tally computed",
-                                body="""
-The encrypted tally for election %s has been computed.
+                                subject=gettext("encrypted tally computed"),
+                                body=gettext("""
+The encrypted tally for election %(election)s has been computed.
 
 --
 Helios
-""" % election.name)
+""") % {'election': election.name})
 
     if election.has_helios_trustee():
         tally_helios_decrypt.enqueue(election_id=election.id)
@@ -131,14 +132,14 @@ def tally_helios_decrypt(election_id):
     election = Election.objects.get(id=election_id)
     election.helios_trustee_decrypt()
     election_notify_admin.enqueue(election_id=election_id,
-                                subject='Helios Decrypt',
-                                body="""
+                                subject=gettext('Helios Decrypt'),
+                                body=gettext("""
 Helios has decrypted its portion of the tally
-for election %s.
+for election %(election)s.
 
 --
 Helios
-""" % election.name)
+""") % {'election': election.name})
 
 
 @task()
@@ -151,26 +152,28 @@ def voter_file_process(voter_file_id):
 
     skipped = ""
     if voter_file.num_skipped:
-        skipped = """
-%s in the file %s not added, because those voters were already
+        skipped = ngettext("""
+1 row in the file was not added, because those voters were already
 on the voter list (or listed twice in the file), or have opted out of
 Helios emails. Opted-out voters are listed in a separate email.
-""" % ("1 row" if voter_file.num_skipped == 1 else "%d rows" % voter_file.num_skipped,
-       "was" if voter_file.num_skipped == 1 else "were")
+""", """
+%(n)d rows in the file were not added, because those voters were already
+on the voter list (or listed twice in the file), or have opted out of
+Helios emails. Opted-out voters are listed in a separate email.
+""", voter_file.num_skipped) % {'n': voter_file.num_skipped}
 
     election_notify_admin.enqueue(election_id=voter_file.election.id,
-                                subject='voter file processed',
-                                body="""
-Your voter file upload for election %s
+                                subject=gettext('voter file processed'),
+                                body=gettext("""
+Your voter file upload for election %(election)s
 has been processed.
 
-%s been created.
+""") % {'election': voter_file.election.name} + ngettext("1 voter has been created.", "%(n)d voters have been created.",
+                                                       voter_file.num_voters) % {'n': voter_file.num_voters} + """
 %s
 --
 Helios
-""" % (voter_file.election.name,
-       "1 voter has" if voter_file.num_voters == 1 else "%d voters have" % voter_file.num_voters,
-       skipped))
+""" % skipped)
 
 
 @task()
@@ -180,28 +183,29 @@ def notify_admin_opted_out_voters(election_id, opted_out_voters):
     if not opted_out_voters:
         return
     
-    subject = f"Opted-out voters not added to election {election.name}"
+    subject = gettext("Opted-out voters not added to election %(election)s") % {'election': election.name}
     
-    body = f"""
-The following {len(opted_out_voters)} voters could not be added to election "{election.name}" 
+    body = gettext("""
+The following %(n)d voters could not be added to election "%(election)s" 
 because they have opted out of receiving Helios emails:
 
-"""
+""") % {'n': len(opted_out_voters), 'election': election.name}
     
     for voter in opted_out_voters:
-        body += f"- {voter['name']} ({voter['email']}) [ID: {voter['voter_id']}, Type: {voter['voter_type']}]\n"
+        body += gettext("- %(name)s (%(email)s) [ID: %(voter_id)s, Type: %(voter_type)s]") % {
+            'name': voter['name'], 'email': voter['email'], 'voter_id': voter['voter_id'], 'voter_type': voter['voter_type']} + "\n"
     
     optin_path = reverse('optin_form')
     optin_url = f"{settings.URL_HOST}{optin_path}"
     
-    body += f"""
+    body += gettext("""
 
 These voters will need to opt back in before they can be added to elections.
-They can opt back in at: {optin_url}
+They can opt back in at: %(url)s
 
 --
 Helios
-"""
+""") % {'url': optin_url}
     
     election.admin.send_message(subject, body)
 

@@ -3360,3 +3360,197 @@ msgstr "Login ou senha incorretos."
 #: helios_auth/auth_systems/password.py
 msgid "no such username"
 msgstr "Não existe esse login."
+
+#: helios/templates/election_keygenerator.html
+#, python-format
+msgid "%(election_name)s &mdash; Trustee %(trustee_name)s &mdash; Key Setup"
+msgstr "%(election_name)s &mdash; Pessoa curadora %(trustee_name)s &mdash; Configuração da chave"
+
+#: helios/templates/election_keygenerator.html
+msgid "As a trustee, it's time to set up your key for this election."
+msgstr "Como pessoa curadora, chegou a hora de configurar a sua chave para esta eleição."
+
+#: helios/templates/election_keygenerator.html
+msgid "Please wait for the generator to load..."
+msgstr "Aguarde o gerador carregar..."
+
+#: helios/templates/election_keygenerator.html
+msgid "If you've already generated a keypair, you can <a href=\"javascript:show_key_reuse()\">reuse it</a>."
+msgstr "Se você já gerou um par de chaves, pode <a href=\"javascript:show_key_reuse()\">reutilizá-lo</a>."
+
+#: helios/templates/election_keygenerator.html
+msgid "Reusing a Key"
+msgstr "Reutilizar uma chave"
+
+#: helios/templates/election_keygenerator.html
+msgid "Enter your complete secret key below:"
+msgstr "Digite a sua chave secreta completa abaixo:"
+
+#: helios/templates/election_keygenerator.html
+msgid "reuse"
+msgstr "reutilizar"
+
+#: helios/templates/election_keygenerator.html
+msgid "Your Secret Key"
+msgstr "A sua chave secreta"
+
+#: helios/templates/election_keygenerator.html
+msgid "Your key has been generated, but you may choose to<br /><a href=\"javascript:clear_keys();\">clear it from memory and start from scratch</a> if you prefer."
+msgstr "A sua chave foi gerada, mas, se preferir, você pode<br /><a href=\"javascript:clear_keys();\">apagá-la da memória e recomeçar do zero</a>."
+
+#: helios/templates/election_keygenerator.html
+msgid "Show my secret key"
+msgstr "Mostrar a minha chave secreta"
+
+#: helios/templates/election_keygenerator.html
+msgid "Bellow is your trustee secret key content. Please copy its content and save it securely. <br> You can also click to dowload it to a file. And please don't lose it! Otherwise it will not be possible to decrypt the election tally.<br>"
+msgstr "Abaixo está o conteúdo da sua chave secreta de pessoa curadora. Copie esse conteúdo e guarde-o em lugar seguro. <br> Você também pode clicar para baixá-lo em um arquivo. E não perca a chave! Sem ela, não será possível decifrar a apuração da eleição.<br>"
+
+#: helios/templates/election_keygenerator.html
+msgid "download private key to a file"
+msgstr "baixar a chave privada em um arquivo"
+
+#: helios/templates/election_keygenerator.html
+msgid "ok, I've saved the key, let's move on"
+msgstr "ok, já guardei a chave, vamos seguir"
+
+#: helios/templates/election_keygenerator.html
+msgid "Your Public Key"
+msgstr "A sua chave pública"
+
+#: helios/templates/election_keygenerator.html
+msgid "It's time to upload the public key to the server."
+msgstr "Agora é a hora de enviar a chave pública ao servidor."
+
+#: helios/templates/election_keygenerator.html
+msgid "The fingerprint of your public key is:"
+msgstr "A impressão digital da sua chave pública é:"
+
+#: helios/templates/election_keygenerator.html
+msgid "You may want to save this to confirm that your public key was properly stored by the server."
+msgstr "Guarde este código para conferir que o servidor guardou direito a sua chave pública."
+
+#: helios/templates/election_keygenerator.html
+msgid "(Your public key is not currently being displayed because you do not need to save it, the fingerprint is sufficient.)"
+msgstr "(A sua chave pública não aparece aqui porque você não precisa guardá-la: basta a impressão digital.)"
+
+#: helios/templates/election_keygenerator.html
+msgid "Upload your public key"
+msgstr "Enviar a sua chave pública"
+
+#: helios/templates/election_badge.html
+msgid "vote!"
+msgstr "vote!"
+
+#: helios/templates/election_badge.html
+msgid "powered by"
+msgstr "com tecnologia"
+
+#: helios/templates/elections_voted.html
+msgid "Elections where you voted"
+msgstr "Eleições em que você votou"
+
+#: helios/tasks.py helios/views.py
+msgid "encrypted tally computed"
+msgstr "apuração cifrada calculada"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\nThe encrypted tally for election %(election)s has been computed.\n\n--\nHelios\n"
+msgstr "\nA apuração cifrada da eleição %(election)s foi calculada.\n\n--\nHelios\n"
+
+#: helios/tasks.py helios/views.py
+msgid "Helios Decrypt"
+msgstr "Decifragem do Helios"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\nHelios has decrypted its portion of the tally\nfor election %(election)s.\n\n--\nHelios\n"
+msgstr "\nO Helios decifrou a sua parte da apuração\nda eleição %(election)s.\n\n--\nHelios\n"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\n1 row in the file was not added, because those voters were already\non the voter list (or listed twice in the file), or have opted out of\nHelios emails. Opted-out voters are listed in a separate email.\n"
+msgid_plural "\n%(n)d rows in the file were not added, because those voters were already\non the voter list (or listed twice in the file), or have opted out of\nHelios emails. Opted-out voters are listed in a separate email.\n"
+msgstr[0] "\n1 linha do arquivo não foi adicionada, porque essa pessoa eleitora já estava\nna lista de pessoas eleitoras (ou aparecia duas vezes no arquivo), ou saiu da lista\nde e-mails do Helios. As pessoas que saíram da lista vão em outro e-mail.\n"
+msgstr[1] "\n%(n)d linhas do arquivo não foram adicionadas, porque essas pessoas eleitoras já estavam\nna lista de pessoas eleitoras (ou apareciam duas vezes no arquivo), ou saíram da lista\nde e-mails do Helios. As pessoas que saíram da lista vão em outro e-mail.\n"
+
+#: helios/tasks.py helios/views.py
+msgid "voter file processed"
+msgstr "arquivo de pessoas eleitoras processado"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\nYour voter file upload for election %(election)s\nhas been processed.\n\n"
+msgstr "\nO envio do arquivo de pessoas eleitoras da eleição %(election)s\nfoi processado.\n\n"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "1 voter has been created."
+msgid_plural "%(n)d voters have been created."
+msgstr[0] "1 pessoa eleitora foi criada."
+msgstr[1] "%(n)d pessoas eleitoras foram criadas."
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "Opted-out voters not added to election %(election)s"
+msgstr "Pessoas eleitoras que saíram da lista não foram adicionadas à eleição %(election)s"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\nThe following %(n)d voters could not be added to election \"%(election)s\" \nbecause they have opted out of receiving Helios emails:\n\n"
+msgstr "\nAs seguintes %(n)d pessoas eleitoras não puderam ser adicionadas à eleição \"%(election)s\" \nporque saíram da lista de e-mails do Helios:\n\n"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "- %(name)s (%(email)s) [ID: %(voter_id)s, Type: %(voter_type)s]"
+msgstr "- %(name)s (%(email)s) [login: %(voter_id)s, tipo: %(voter_type)s]"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\n\nThese voters will need to opt back in before they can be added to elections.\nThey can opt back in at: %(url)s\n\n--\nHelios\n"
+msgstr "\n\nEssas pessoas precisam pedir a volta à lista de e-mails antes de entrar em eleições.\nElas podem fazer isso em: %(url)s\n\n--\nHelios\n"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\n\nYou are a trustee for %(election)s.\n\nYour trustee dashboard is at\n\n  %(url)s\n  \n--\nHelios  \n"
+msgstr "\n\nVocê é pessoa curadora da eleição %(election)s.\n\nO seu painel de pessoa curadora está em\n\n  %(url)s\n  \n--\nHelios  \n"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "your trustee homepage for %(election)s"
+msgstr "a sua página de pessoa curadora de %(election)s"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "%(election)s - trustee pk upload"
+msgstr "%(election)s - envio da chave pública da pessoa curadora"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "trustee %(name)s (%(email)s) uploaded a pk."
+msgstr "A pessoa curadora %(name)s (%(email)s) enviou a chave pública."
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "Your vote has been removed - %(election)s"
+msgstr "O seu voto foi removido - %(election)s"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "\nYour vote has been removed by an election administrator.\n\nElection: %(election)s\nElection URL: %(url)s\n\nIf you believe this was done in error, please contact the election administrator.\n\n--\nHelios\n"
+msgstr "\nO seu voto foi removido por uma pessoa administradora da eleição.\n\nEleição: %(election)s\nEndereço da eleição: %(url)s\n\nSe você acha que isso foi um engano, fale com a administração da eleição.\n\n--\nHelios\n"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "%(election)s - trustee partial decryption"
+msgstr "%(election)s - decifragem parcial da pessoa curadora"
+
+#: helios/tasks.py helios/views.py
+#, python-format
+msgid "trustee %(name)s (%(email)s) did their partial decryption."
+msgstr "A pessoa curadora %(name)s (%(email)s) fez a sua decifragem parcial."
+
+#: helios/views.py
+msgid "No special characters allowed in the short name."
+msgstr "Não são permitidos caracteres especiais no nome curto."

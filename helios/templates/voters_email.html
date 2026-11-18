@@ -35,7 +35,7 @@ voter_id = '{{voter.voter_id}}';
 </p>
 
 <pre style="margin:10px; border: 1px solid #888; padding:20px">
-Subject: {{default_subject|force_escape}}
+{% translate "Subject" %}: {{default_subject|force_escape}}
 
 {{default_body|force_escape}}
 </pre>

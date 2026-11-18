@@ -110,10 +110,9 @@ Guia: `docs/docker.md`. Decisões:
 ## 11. Pendências (issues abertas)
 
 - #17 idioma do e-mail por eleição (hoje vem do `LANGUAGE_CODE`).
-- #21 varredura de telas: feita para eleição e site, e as páginas longas já estão traduzidas (seção 12). Falta só cobrir login, opt-out e telas da pessoa curadora na varredura.
-- #23 plurais feitos (seção 12). Separador de milhar: mantido sem (decisão do usuário).
-- #23 resto da rodada de localização (números, plurais, ordenação).
-- Teste real da pessoa curadora externa (chave secreta e decifragem) e do opt-out no navegador: não feitos.
+- #21 varredura de telas: feita (seção 13). Cobre eleição, site, login, opt-out, pessoa curadora e uma ferramenta que acha texto fora do catálogo nos templates.
+- #23 feita (seção 13): datas, plurais e números. Separador de milhar: mantido sem (decisão do usuário). Ordenação alfabética: fica como o banco ordena (não é tradução).
+- Pessoa curadora externa: gerar chave e enviar a chave pública já foi testado no navegador (seção 13). Falta testar a decifragem com a chave dela.
 
 ## 12. Páginas longas e plurais (issues #21 e #23)
 
@@ -154,3 +153,50 @@ Guia: `docs/docker.md`. Decisões:
 - **Neutralidade de gênero relaxada (2026-11-18).** "Pessoas eleitoras" deixava rótulos e botões pesados. Nos rótulos, botões, listas e contagens passou a valer o masculino genérico ("Contatar os eleitores", "Baixar a lista de eleitores em CSV", "2 eleitores", "enviar e-mail aos eleitores"): 49 textos do `django.po`. As frases longas e explicativas e os textos do verificador mantêm "pessoa eleitora". Registrado no `docs/glossario.md`. Na cabine, "Envie sua cédula cifrada e se autentique para verificar sua elegibilidade" virou "Envie a sua cédula cifrada e entre com o seu login para confirmar que você pode votar", e "onde você fará login para validar sua elegibilidade para votar" virou "onde você entrará com o seu login para confirmar que pode votar".
 - **Neutralidade de gênero: desfeita (2026-11-18).** Decidido manter "pessoa eleitora" em todo lugar, para o termo ser o mesmo em todas as telas. Voltaram "pessoa eleitora" e "pessoas eleitoras" nos 49 textos do `django.po`, nos testes e no glossário. A única mudança que ficou do commit anterior é a das frases da cabine ("Envie a sua cédula cifrada e entre com o seu login para confirmar que você pode votar"). O rótulo do CSV agora é "Baixar a lista de pessoas eleitoras em CSV".
 - **Comando `criar_administrador` (2026-11-18).** Novo arquivo `helios_auth/management/commands/criar_administrador.py` (sem tocar em código do Ben). Cria a pessoa com login por senha, com nome, e-mail (para o "esqueci a senha" funcionar), `--site` (admin_p) e `--redefinir-senha`. A senha vem do terminal ou da variável `HELIOS_SENHA`; exige 8 caracteres ou mais e rejeita login com espaço. 5 testes novos em `helios_auth/test_criar_administrador.py` (suíte: 407 OK). Testado no Docker: criar, login repetido, senha curta. Documentado em `docs/docker.md`.
+
+## Teste de carga no Docker (2026-11-18, instância `carga`)
+
+Eleição `carga-1`: **10000 pessoas eleitoras** e **11 perguntas com 114 opções** no total (3, 4, 5, 6, 8, 10, 12, 14, 16, 18 e 18 opções; máximo de 1 a 18 seleções). Máquina com 20 CPUs e 31 GB. Sem limites de memória nos contêineres.
+
+| Etapa | Tempo | Memória no pico |
+|---|---|---|
+| CSV de 10000 pessoas (556 KB): envio + processamento no `worker` | 31 s | `worker` 73 MiB, `db` 43 MiB |
+| Congelar a urna | 1 s | sem impacto |
+| Verificar **1 cédula** (11 perguntas, 114 opções) no `worker` | **4,5 s** | `worker` 72 MiB |
+| Gerar 1 cédula (o que o navegador faz) | 2,7 s | |
+| Apuração cifrada (`election_compute_tally`) com 10000 cédulas | **116 s** | **`worker` 15,5 GiB** (ficou em 11,4 GiB depois), `db` 2,3 GiB |
+| Decifragem do Helios (`tally_helios_decrypt`) | 1 s | sem impacto |
+| `combine_decryptions` (na requisição) e `release_result` | 0,2 s e 0,1 s | `web` 261 MiB |
+
+O resultado saiu certo e a eleição foi concluída. As 10000 cédulas gravadas para o teste repetem 20 cédulas distintas (gerar 10000 levaria 7 h); o custo da apuração não depende disso.
+
+**Achado 1, o mais grave: a apuração gasta 15,5 GiB.** `Election.compute_tally` (`helios/models.py`) faz `for voter in self.voter_set.exclude(vote=None)`. O Django carrega **todas** as pessoas eleitoras com as cédulas na memória antes de somar. Com `.iterator(chunk_size=...)` a memória fica quase constante. É uma linha no código do Ben. Com limite de memória de 1 GiB no `worker`, essa apuração seria morta por falta de memória e a tarefa ficaria `RUNNING` para sempre. É compatível com o problema que houve no servidor antigo.
+
+**Achado 2: a verificação é serial e lenta.** Cada cédula leva 4,5 s no `worker`, e há um `worker` só. Dez mil cédulas levam cerca de 12,5 h de fila. A apuração só começa com 0 cédulas pendentes. Se muita gente votar perto do fim, a fila atrasa a apuração. Dá para ter mais de um `worker` com `docker compose up -d --scale worker=N`.
+
+**Achado 3: a memória do `worker` não volta.** Depois da apuração ele ficou com 11,4 GiB. O Python não devolve a memória ao sistema. O `db_worker --max-tasks N` faz o processo sair depois de N tarefas, e o Docker o reinicia.
+
+**Teste da correção (sem alterar o código).** Rodei a mesma soma da apuração dentro do contêiner `web`, na eleição `carga-1` (10000 cédulas), com `.iterator(chunk_size=500)`: 135 s, **pico de 923 MiB** (contra 15,5 GiB do `worker` sem o `iterator`). O resultado é **idêntico** ao `encrypted_tally` já salvo (`igual_ao_salvo=True`). Ou seja, a mudança de uma linha em `Election.compute_tally` corta a memória em cerca de 17 vezes e não muda o resultado. O arquivo `helios/models.py` não foi alterado: a mudança vai por PR, a partir da `ben-master`.
+
+## 13. Varredura de telas e e-mails (issues #21 e #23, 2026-11-18)
+
+Foco só em tradução; nenhuma funcionalidade mudou. O inglês continua igual (os `msgid` são o texto original).
+
+**Como foi feito**
+- `tools/templates_sem_traducao.py` (só biblioteca padrão) acha texto visível nos templates fora de `{% translate %}` e `{% blocktranslate %}`. Tem uma lista de exceções (marca, tela `devlogin`, exemplos de CSV, templates sem uso). `tools/test_templates_sem_traducao.py` falha se um template novo ganhar texto sem tradução.
+- Rastreio no Docker em pt-BR, logado: 94 páginas (eleição nova, com perguntas e eleitores, concluída com 10000 cédulas, estatísticas, login, opt-out, páginas fixas), com dois detectores (palavras em inglês e `msgid` do catálogo que apareceu na tela). Sobraram só nomes próprios nas páginas `about` e `docs`.
+- Testes novos em `helios/test_ptbr.py`: varredura das telas de login, reenvio de credenciais, selo e "eleições em que você votou"; varredura das telas da pessoa curadora (início, gerador de chave, conferir chave, decifrar) entrando pelo link do e-mail; página do gerador de chave em pt-BR e inglês; e-mails de aviso.
+
+**Achados traduzidos**
+- `elections_voted.html` ("Elections where you voted") estava inteira em inglês.
+- `election_keygenerator.html`, a tela em que a pessoa curadora externa gera a chave, estava inteira em inglês (22 textos). Testei no navegador: gerar, mostrar a chave secreta, baixar, enviar a chave pública. Sem erro de JavaScript.
+- `election_badge.html` ("powered by", "vote!").
+- O "Subject:" da prévia do e-mail (`voters_email.html`).
+- E-mails de aviso que estavam fixos em inglês: link da página da pessoa curadora (`trustee_send_url`), "pessoa curadora enviou a chave pública", "fez a decifragem parcial", "o seu voto foi removido", e os avisos para a administração em `tasks.py` (apuração cifrada calculada, Helios decifrou, arquivo de pessoas eleitoras processado, pessoas que saíram da lista). Plurais com `ngettext` ("1 linha ... não foi adicionada" / "N linhas ... não foram adicionadas"). O idioma do e-mail segue `LANGUAGE_CODE` (pt-BR no fork); escolher por eleição fica na #17.
+- Erros de formulário em inglês: "No special characters allowed in the short name." e "Bad Username or Password" do LDAP.
+
+**Deixado em inglês de propósito:** tela `devlogin`, textos que só aparecem com `DEBUG=1` (404 técnico do Django), mensagens de status para redes sociais (`status_update_message`, o Helios não as mostra), respostas `SUCCESS`/`FAILURE` da API, `LOGIN_MESSAGE` dos sistemas de login (nenhuma tela usa) e os templates `confirm.html`, `done.html` e `election_tallied.html` de `server_ui` (sem uso ou sombreados pelos de `helios`).
+
+**#23.** Datas e fusos, plurais e números estão feitos. O separador de milhar fica sem (decisão de 2026-11-18) e a ordenação alfabética é a do banco: não é texto traduzido.
+
+**#17 (idioma do e-mail por eleição) não entra agora.** Seria uma função nova (campo na eleição, migração e escolha na tela), e o foco é tradução.
