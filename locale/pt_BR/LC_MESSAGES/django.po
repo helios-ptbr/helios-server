@@ -4,6 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: helios-ptbr\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 03:53-0800\n"
 "PO-Revision-Date: 2026-11-18 08:00-0300\n"
 "Last-Translator: Equipe helios-ptbr\n"
 "Language-Team: helios-ptbr\n"
@@ -17,6 +18,21 @@ msgstr ""
 msgid "Log in with my LDAP Account"
 msgstr "Entrar com minha conta LDAP"
 
+#: helios_auth/templates/base.html:10 helios_auth/templates/index.html:5
+msgid "Authentication"
+msgstr "Autenticação"
+
+#: helios_auth/templates/index.html:9
+#, python-format
+msgid ""
+"You are currently logged in as<br /><b>%(user_id)s</b> via <b>%(user_type)s</"
+"b>."
+msgstr "Você está com a sessão iniciada como<br /><b>%(user_id)s</b> via <b>%(user_type)s</b>."
+
+#: helios_auth/templates/index.html:12 server_ui/templates/base.html:101
+msgid "logout"
+msgstr "sair"
+
 #: helios_auth/templates/ldapauth/login.html:11
 #: helios_auth/templates/ldapauth/login.html:12
 msgid "Username"
@@ -28,8 +44,63 @@ msgid "Password"
 msgstr "Senha"
 
 #: helios_auth/templates/ldapauth/login.html:21
+#: helios_auth/templates/password/login.html:5
+#: helios_auth/templates/password/login.html:24
 msgid "Login"
 msgstr "Entrar"
+
+#: helios_auth/templates/login_box.html:3
+msgid "Log in"
+msgstr "Entrar"
+
+#: helios_auth/templates/login_failed.html:5
+msgid "Sign-in didn't go through"
+msgstr "Não foi possível entrar"
+
+#: helios_auth/templates/login_failed.html:14
+msgid ""
+"We couldn't finish signing you in. This usually happens when the sign-in "
+"page is refreshed or reopened with the back button partway through. It can "
+"also happen if the email address on your account isn't verified."
+msgstr "Não conseguimos concluir a sua entrada. Isso costuma acontecer quando a página de login é atualizada ou reaberta com o botão Voltar no meio do processo. Também pode acontecer se o endereço de e-mail da sua conta não estiver verificado."
+
+#: helios_auth/templates/login_failed.html:19
+msgid "Try signing in again"
+msgstr "Tentar entrar de novo"
+
+#: helios_auth/templates/password/forgot.html:5
+msgid "Password Forgotten"
+msgstr "Senha esquecida"
+
+#: helios_auth/templates/password/forgot.html:19
+msgid "Your Username :"
+msgstr "Seu nome de acesso:"
+
+#: helios_auth/templates/password/forgot.html:19
+msgid "Send Reminder"
+msgstr "Enviar lembrete"
+
+#: helios_auth/templates/perms_why.html:5
+msgid "Why we need your information"
+msgstr "Por que precisamos das suas informações"
+
+#: helios_auth/templates/perms_why.html:8
+msgid ""
+"It looks like you declined to grant us permission to access your "
+"information. We understand and value your privacy. We ask for this "
+"information so we can contact you with your voting tracking number and when "
+"an election in which you participated has been tallied. We promise not to "
+"use this information for any other purpose. Without this information, we "
+"unfortunately cannot help you vote."
+msgstr "Parece que você não permitiu o acesso às suas informações. Entendemos e valorizamos a sua privacidade. Pedimos essas informações para entrar em contato com você, com o seu número de rastreamento do voto e quando uma eleição da qual você participou for apurada. Prometemos não usar essas informações para nenhum outro fim. Sem elas, infelizmente não podemos ajudar você a votar."
+
+#: helios_auth/templates/perms_why.html:13
+msgid "OK, I understand, let's do this login thing."
+msgstr "Ok, entendi. Vamos fazer o login."
+
+#: helios_auth/templates/perms_why.html:14
+msgid "nope, get me out of here"
+msgstr "não, quero sair daqui"
 
 #: server_ui/templates/base.html:42
 msgid "Menu"
@@ -71,17 +142,16 @@ msgstr "Ajuda!"
 msgid "logged in as"
 msgstr "sessão iniciada como"
 
-#: server_ui/templates/base.html:101
-msgid "logout"
-msgstr "sair"
-
 #: server_ui/templates/base.html:104
 #, python-format
 msgid ""
 "You are signed in as voter <u>%(voter_name)s</u> in election "
 "<u>%(election_name)s</u>. [<a href=\"%(host)s%(logout_path)s?"
 "return_url=%(return_url)s\">sign out</a>]"
-msgstr "Você entrou como pessoa eleitora <u>%(voter_name)s</u> na eleição <u>%(election_name)s</u>. [<a href=\"%(host)s%(logout_path)s?return_url=%(return_url)s\">sair</a>]"
+msgstr ""
+"Você entrou como pessoa eleitora <u>%(voter_name)s</u> na eleição "
+"<u>%(election_name)s</u>. [<a href=\"%(host)s%(logout_path)s?"
+"return_url=%(return_url)s\">sair</a>]"
 
 #: server_ui/templates/base.html:107
 msgid "not logged in."
@@ -104,7 +174,11 @@ msgid ""
 "We believe democracy is important, whether it’s your book club, parent-"
 "teacher association, student government, workers’ union, or state. So we’ve "
 "made truly verifiable elections as easy as everything else on the Web."
-msgstr "Acreditamos que a democracia é importante, seja no seu clube de leitura, na associação de pais e mestres, no grêmio estudantil, no sindicato ou no Estado. Por isso, tornamos as eleições realmente verificáveis tão fáceis quanto todo o resto da Web."
+msgstr ""
+"Acreditamos que a democracia é importante, seja no seu clube de leitura, na "
+"associação de pais e mestres, no grêmio estudantil, no sindicato ou no "
+"Estado. Por isso, tornamos as eleições realmente verificáveis tão fáceis "
+"quanto todo o resto da Web."
 
 #: server_ui/templates/index.html:20
 msgid "Helios elections are:"
@@ -116,13 +190,16 @@ msgstr "<b>secretas</b>: ninguém sabe como você votou."
 
 #: server_ui/templates/index.html:23
 msgid "<b>verifiable</b>: each voter gets a tracking number."
-msgstr "<b>verificáveis</b>: cada pessoa eleitora recebe um número de rastreamento."
+msgstr ""
+"<b>verificáveis</b>: cada pessoa eleitora recebe um número de rastreamento."
 
 #: server_ui/templates/index.html:24
 msgid ""
 "<b>proven</b>: Helios is open-source, vetted by top-tier experts, and in use "
 "by major organizations."
-msgstr "<b>comprovadas</b>: o Helios é de código aberto, avaliado por especialistas de primeira linha e usado por grandes organizações."
+msgstr ""
+"<b>comprovadas</b>: o Helios é de código aberto, avaliado por especialistas "
+"de primeira linha e usado por grandes organizações."
 
 #: server_ui/templates/index.html:28
 msgid "More than <b>2,000,000 votes</b> have been cast using Helios."
@@ -169,4 +246,22 @@ msgstr "Entre para começar a votar"
 msgid ""
 "Select an election to start voting. You will be asked for your voting "
 "credentials after you complete a ballot."
-msgstr "Escolha uma eleição para começar a votar. As credenciais de votação serão pedidas depois que você preencher a cédula."
+msgstr ""
+"Escolha uma eleição para começar a votar. As credenciais de votação serão "
+"pedidas depois que você preencher a cédula."
+
+#: templates/404.html:3
+msgid "Page not found"
+msgstr "Página não encontrada"
+
+#: templates/404.html:6
+msgid "The page you requested could not be found."
+msgstr "Não foi possível encontrar a página que você pediu."
+
+#: templates/500.html:3
+msgid "Server error"
+msgstr "Erro no servidor"
+
+#: templates/500.html:6
+msgid "There was an error while handling your request."
+msgstr "Houve um erro ao processar o seu pedido."

@@ -31,26 +31,29 @@ def main(po_path, json_path):
     out, used = [], set()
     for b in blocks:
         entries = po2js.parse_po(b + "\n")
-        if len(entries) == 1 and entries[0][0] and entries[0][0] in tr and not entries[0][1]:
+        if len(entries) == 1 and entries[0][0] and entries[0][0] in tr and (not entries[0][1] or entries[0][2]):
             msgid = entries[0][0]
             new = tr[msgid]
             if sorted(po2js.PLACEHOLDER_RE.findall(msgid)) != sorted(po2js.PLACEHOLDER_RE.findall(new)):
                 raise SystemExit("placeholder diferente: %r" % msgid)
-            head = [l for l in b.split("\n") if l.startswith("#") and "fuzzy" not in l]
-            if any("fuzzy" in l for l in b.split("\n") if l.startswith("#,")):
-                flags = [l for l in b.split("\n") if l.startswith("#,")]
-                rest = [f.replace(", fuzzy", "").replace("fuzzy", "").strip() for f in flags]
-                head = [l for l in head if not l.startswith("#,")] + [r for r in rest if r not in ("#,", "")]
-            # reconstroi o bloco
-            ctx = [l for l in b.split("\n") if l.startswith("#")]
-            ctx = [l for l in ctx if not (l.startswith("#,") and "fuzzy" in l and l.replace("fuzzy", "").replace(",", "").replace("#", "").strip() == "")]
-            id_start = next(i for i, l in enumerate(b.split("\n")) if l.startswith("msgid"))
+            lines = b.split("\n")
+            comments = []
+            for l in lines:
+                if not l.startswith("#"):
+                    continue
+                if l.startswith("#,"):
+                    flags = [f.strip() for f in l[2:].split(",") if f.strip() and f.strip() != "fuzzy"]
+                    if not flags:
+                        continue
+                    l = "#, " + ", ".join(flags)
+                comments.append(l)
+            id_start = next(i for i, l in enumerate(lines) if l.startswith("msgid"))
             id_lines = []
-            for l in b.split("\n")[id_start:]:
+            for l in lines[id_start:]:
                 if l.startswith("msgstr"):
                     break
                 id_lines.append(l)
-            out.append("\n".join(ctx + id_lines + ["msgstr " + quote(new)]))
+            out.append("\n".join(comments + id_lines + ["msgstr " + quote(new)]))
             used.add(msgid)
         else:
             out.append(b)
