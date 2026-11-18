@@ -33,3 +33,9 @@ reset.sh
 settings_ci.py
 fly.toml
 *.md
+
+# Docker Compose: não entram na imagem (segredos e arquivos da instância)
+certificados/
+personalizacao/
+docker-compose.yml
+docker/

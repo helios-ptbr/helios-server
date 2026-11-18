@@ -1,0 +1,35 @@
+# Proxy reverso do Helios. Faz o HTTPS e entrega a pasta de personalização (logos).
+#
+# O docker/caddy-entrypoint.sh define TLS_DIRECTIVE:
+#   - com certificados/fullchain.pem e certificados/privkey.pem: usa os seus arquivos;
+#   - sem eles: "tls internal" (certificado autoassinado, de uma autoridade interna do Caddy).
+
+{
+	admin off
+	# o redirecionamento de HTTP para HTTPS é feito abaixo, com a porta pública certa
+	auto_https disable_redirects
+}
+
+http:// {
+	redir https://{$SITE_HOST}{$HTTPS_PUBLIC_PORT_SUFFIX}{uri} permanent
+}
+
+https://{$SITE_HOST} {
+	{$TLS_DIRECTIVE}
+
+	encode zstd gzip
+
+	# logos e outros arquivos da instância (pasta ./personalizacao no host)
+	handle /personalizacao/* {
+		root * /srv
+		file_server
+	}
+
+	handle {
+		reverse_proxy web:8080
+	}
+
+	header {
+		-Server
+	}
+}

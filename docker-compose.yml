@@ -1,0 +1,117 @@
+# Helios (fork helios-ptbr) com Docker Compose: uma instância isolada por pasta e por .env.
+#
+# Serviços:
+#   db       Postgres, com volume nomeado (os dados ficam fora da imagem)
+#   migrate  roda as migrações uma vez e sai
+#   web      gunicorn (o Helios)
+#   worker   processa as tarefas em segundo plano (db_worker): sem ele, e-mails e apuração não andam
+#   caddy    HTTPS na frente do web e entrega a pasta personalizacao/
+#   mailpit  só com o perfil "dev": recebe os e-mails em vez de enviá-los
+#
+# Várias instâncias em paralelo: copie a pasta, rode ./docker/gerar-env.sh com outro nome e portas
+# diferentes. O COMPOSE_PROJECT_NAME do .env dá nomes diferentes aos volumes, redes e contêineres.
+#
+# Uso:                 docker compose up -d --build
+# Com Mailpit (dev):   docker compose --profile dev up -d --build
+# Guia completo:       docs/docker.md
+
+x-helios: &helios
+  build: .
+  image: helios-ptbr:local
+  env_file: .env
+  restart: unless-stopped
+  environment: &helios-env
+    DATABASE_URL: postgres://helios:${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}@db:5432/helios
+    # o banco é uma rede interna do projeto: sem TLS entre web e db
+    DATABASE_SSL_REQUIRE: "0"
+    SECRET_KEY: ${SECRET_KEY:?defina SECRET_KEY no .env}
+    EMAIL_OPTOUT_SECRET: ${EMAIL_OPTOUT_SECRET:?defina EMAIL_OPTOUT_SECRET no .env}
+    URL_HOST: ${URL_HOST:?defina URL_HOST no .env, por exemplo https://eleicoes.exemplo.br}
+    ALLOWED_HOSTS: ${ALLOWED_HOSTS:-${SITE_HOST:-localhost}}
+    # o Caddy faz o HTTPS: o Django só precisa saber, pelo cabeçalho X-Forwarded-Proto
+    SSL: "1"
+    DEBUG: ${DEBUG:-0}
+    # em dev (perfil "dev") os e-mails vão para o Mailpit; em produção, defina EMAIL_HOST no .env
+    EMAIL_HOST: ${EMAIL_HOST:-mailpit}
+    EMAIL_PORT: ${EMAIL_PORT:-1025}
+    MAIN_LOGO_URL: ${MAIN_LOGO_URL:-/static/logo.png}
+  depends_on:
+    migrate:
+      condition: service_completed_successfully
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: helios
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+      POSTGRES_DB: helios
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U helios -d helios"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  migrate:
+    <<: *helios
+    restart: "no"
+    command: ["python", "manage.py", "migrate", "--noinput"]
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    <<: *helios
+    command: ["sh", "-c", "exec gunicorn wsgi:application -b 0.0.0.0:8080 -w ${WEB_WORKERS:-4}"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 8080), 3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+
+  worker:
+    <<: *helios
+    command: ["python", "manage.py", "db_worker", "--no-reload"]
+    # o db_worker termina a tarefa em andamento ao receber SIGTERM
+    stop_grace_period: 5m
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+    environment:
+      SITE_HOST: ${SITE_HOST:-localhost}
+      HTTPS_PORT: ${HTTPS_PORT:-443}
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./docker/caddy-entrypoint.sh:/entrypoint.sh:ro
+      # fullchain.pem e privkey.pem aqui: usados se existirem; senão, certificado autoassinado
+      - ./certificados:/certificados:ro
+      # logos e outros arquivos da instância, entregues em /personalizacao/
+      - ./personalizacao:/srv/personalizacao:ro
+      # o Caddy guarda aqui a autoridade interna (certificado autoassinado estável entre reinícios)
+      - caddy_data:/data
+      - caddy_config:/config
+
+  mailpit:
+    profiles: ["dev"]
+    image: axllent/mailpit
+    restart: unless-stopped
+    ports:
+      # só no próprio computador
+      - "127.0.0.1:${MAILPIT_PORT:-8025}:8025"
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

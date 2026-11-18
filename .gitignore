@@ -10,3 +10,10 @@ env.sh
 .idea/
 # traducoes compiladas (geradas por compilemessages)
 *.mo
+
+# Docker Compose: segredos e arquivos de cada instância
+.env
+certificados/*
+!certificados/README.md
+personalizacao/*
+!personalizacao/README.md

@@ -88,6 +88,20 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 - `helios/test_po.py` faz o papel do CI do `.po` (issues #18 a #20): falha se o `.po` estiver desatualizado, com `msgid` sem tradução ou `fuzzy`, ou com marcadores diferentes. Ele roda o `makemessages` num subprocesso e devolve o `django.po` original no fim. Precisa do pacote `gettext` (sem ele, esses testes são pulados).
 - Previsto: #21 (varredura de todas as rotas em busca de inglês).
 
+## 9b. Docker (issue #25)
+
+Guia: `docs/docker.md`. Decisões:
+- **Uma imagem, uma pasta por instância.** Cada instância é uma pasta com o seu `.env`. O `COMPOSE_PROJECT_NAME` isola volumes, rede e contêineres, então várias rodam em paralelo no mesmo computador. Criado por `docker/gerar-env.sh NOME HOST [PORTA_HTTPS] [PORTA_HTTP]`.
+- **Postgres dentro do compose**, com volume nomeado, mesmo em produção, para isolar cada sistema. O banco não é publicado fora da rede da instância.
+- **Caddy** faz o HTTPS. Com `certificados/fullchain.pem` e `privkey.pem`, usa os arquivos. Sem eles, usa `tls internal` (autoassinado). A escolha é feita em `docker/caddy-entrypoint.sh`.
+- **Mailpit** só no perfil `dev`. Em produção, `EMAIL_HOST` e afins vêm do `.env`.
+- **`settings_ptbr` fixo na imagem.** Quem quiser o Helios em inglês usa o repositório do Ben.
+- **O `Dockerfile` do Fly.io foi substituído** (multi-stage). O `fly.toml` não mudou. O merge com o Ben, se der conflito, fica para depois.
+- **Segredos no `.env`** (fora do git). Docker secrets ficam para depois.
+- **Logo trocável sem reconstruir**: a pasta `personalizacao/` é servida pelo Caddy em `/personalizacao/`, e `MAIN_LOGO_URL` aponta para o arquivo. Sem mexer no Python do Ben.
+- O `db_worker` roda com `--no-reload` no contêiner.
+- Testado: imagem de 318 MB, sem `gcc` e sem `msgfmt`, com `ldap` funcionando; HTTPS autoassinado e com certificado próprio; redirecionamento de HTTP; logo própria; app, fila no banco, worker e e-mail no Mailpit; dados mantidos após `down`.
+
 ## 10. Achados no código do Ben (não alterados)
 
 1. `helios/views.py`, perto da linha 344: `election.voting_has_started` sem `()`, então a condição é sempre verdadeira. Só afeta o texto de status ("Vote in" no lugar de "Register to vote in").
@@ -98,5 +112,4 @@ Como atualizar: uma entrada nova por decisão, no fim do arquivo, com data, moti
 - #17 idioma do e-mail por eleição (hoje vem do `LANGUAGE_CODE`).
 - #21 varredura de todas as telas em busca de inglês (parcial).
 - #23 resto da rodada de localização (números, plurais, ordenação).
-- #25 Dockerfile multi-stage e `docker-compose`.
 - Teste real da pessoa curadora externa (chave secreta e decifragem) e do opt-out no navegador: não feitos.
