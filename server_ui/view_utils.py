@@ -6,6 +6,7 @@ Ben Adida (2009-07-18)
 
 from django.conf import settings
 from django.shortcuts import render
+from django.utils.translation import get_language
 
 from helios_auth.security import get_user
 
@@ -23,5 +24,12 @@ def render_template(request, template_name, values = None):
   if 'csrf_token' in request.session:
     vars_with_user['csrf_token'] = request.session['csrf_token']
   
-  return render(request, 'server_ui/templates/%s.html' % template_name, vars_with_user)
+  # fork pt-BR: páginas longas têm um template por idioma (ex.: faq.pt-BR.html). Sem ele, usa o original.
+  names = ['server_ui/templates/%s.html' % template_name]
+  parts = (get_language() or 'en').split('-')
+  if parts[0] != 'en':
+    if len(parts) > 1:
+      parts[1] = parts[1].upper()
+    names.insert(0, 'server_ui/templates/%s.%s.html' % (template_name, '-'.join(parts)))
+  return render(request, names, vars_with_user)
   

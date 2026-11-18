@@ -1,0 +1,67 @@
+{% extends 'server_ui/templates/base.html' %}
+{% block title %}{{ settings.SITE_TITLE }} &mdash; Privacidade{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<div class="large-12-columns">
+
+<div class="row"><h2>Privacidade</h2></div>
+
+<div class="row">
+
+<h3>Em geral</h3>
+
+<ul>
+<li> O Helios foi feito com a privacidade embutida. Se você tiver dúvidas ou preocupações sobre a privacidade no Helios que não estejam aqui, <a href="mailto:help@heliosvoting.org">envie um e-mail para nós</a>.</li>
+<li> Coletamos somente as informações necessárias para fazer eleições seguras e confiáveis.</li>
+<li> Algumas informações ficam públicas no nosso site, como parte do processo de auditoria das eleições (detalhes abaixo). Fora isso, não repassamos nenhuma informação que coletamos.</li>
+<li> Não vendemos nenhuma informação.</li>
+<li> Não usamos rastreadores nem anúncios de terceiros que possam vazar informações sobre você, com exceção dos botões de compartilhar do Facebook e do Twitter. Mesmo nesses, usamos isolamento por origem para limitar o que o Facebook e o Twitter conseguem saber sobre você, e só usamos esses botões na página de informações da eleição.
+</ul>
+
+<p>
+<b>Se quiser parar de ler por aqui, pode: o restante dá detalhes sobre esses princípios, sem enfraquecê-los.</b>
+</p>
+
+<hr>
+
+<h3>Para quem vota</h3>
+
+<p><b>Sobre o seu voto:</b></p>
+
+<ul>
+<li> O seu voto no Helios é considerado extremamente privado.</li>
+<li> O Helios usa SSL para transmitir dados entre o seu navegador e os nossos servidores.</li>
+<li> Além disso, o Helios usa cifragem de ponta a ponta, de modo que, mesmo depois de tirar o SSL, o seu voto <em>continua</em> cifrado com a chave da eleição. Os servidores do Helios nunca veem o seu voto. </li>
+<li> No processo normal de uma eleição no Helios, o seu voto individual nunca é decifrado: os votos cifrados são combinados em uma apuração, por um processo chamado cifragem homomórfica, e só a apuração final, nunca uma apuração parcial, é decifrada.</li>
+<li> As pessoas curadoras da sua eleição, se todas combinarem entre si, têm tecnicamente o poder de decifrar o seu voto individual. Essa ação é fortemente desaconselhada e vai contra a política do Helios. Por isso, eleições de alta segurança devem ter pelo menos 3 pessoas curadoras com interesses diferentes. </li>
+<li> O Helios pode, a critério de quem administra a sua eleição, atuar como curador da eleição. Isso <em>não</em> dá ao Helios nenhum poder de decifrar o seu voto. Na verdade, provavelmente é preferível, porque sem a colaboração do Helios as demais pessoas curadoras não conseguem decifrar votos individuais. É nossa política que o Helios, quando atua como curador, decifre somente a apuração da eleição, nunca um voto individual.</li>
+<li> Quando o Helios não atua como curador da sua eleição, ele não tem nenhum poder de decifrar qualquer voto individual.</li>
+</ul>
+
+<p><b>Sobre os dados que não são o voto:</b></p>
+
+<ul>
+<li> Para votar, você precisa apresentar credenciais que provem que pode votar. Dependendo de como a eleição foi montada, isso pode ser um login e uma senha gerados para você, ou um login do Facebook, do Google, do Yahoo ou do Twitter. O Helios usa as interfaces de login desses serviços externos, de modo que nunca tem acesso às suas credenciais neles. </li>
+<li> Para fins de auditoria da eleição, o Helios guarda o seu nome, o seu e-mail e o mínimo de informação de elegibilidade necessário para qualificar você, por exemplo o grupo do Facebook a que você pertence, que foi definido como requisito de elegibilidade desta eleição.</li>
+<li> Todos os metadados do seu voto, como de onde você votou, a que horas votou e quantas vezes votou (só o último voto conta!), ficam guardados no Helios e podem ser fornecidos a quem administra a sua eleição, como parte do processo de auditoria. Isso é essencial para garantir uma eleição segura e confiável.</li>
+<li> Se a sua eleição foi tornada pública por quem a administra, algumas informações centrais de auditoria ficam disponíveis ao público: o fato de você ter votado, a hora do seu voto e o código de rastreamento. Se quem administra optou por usar apelidos para as pessoas eleitoras, o seu nome é trocado pelo seu identificador pseudônimo nesses dados. Em todos os casos, o Helios mascara ou esconde por completo o seu e-mail, para impedir que ele seja coletado para spam.</li>
+<li> Se a sua eleição foi tornada privada, essas mesmas informações ficam disponíveis somente para você, para as outras pessoas eleitoras e para quem administra a eleição.</li>
+</ul>
+
+<h3>Para quem administra</h3>
+
+
+<ul>
+<li> Como pessoa administradora, você tem o poder de definir quem pode votar, quando a eleição começa, quando termina e quando o resultado é liberado. Fora isso, você não tem nenhum poder além do que as pessoas eleitoras da sua eleição têm. Isso é proposital.</li>
+<li> Para criar e administrar uma eleição, você precisa entrar com Google, Facebook, Yahoo ou Twitter. O Helios consulta e guarda apenas as informações básicas necessárias para identificar você da próxima vez: o seu nome, o seu e-mail e o seu ID de usuário. O Helios usa essas informações para avisar você quando a sua eleição precisar de atenção.</li>
+</ul>
+
+</div>
+
+</div>
+
+{% endblock %}

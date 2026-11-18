@@ -83,7 +83,7 @@
 {% blocktranslate with size=vf.voter_file_content|length t=vf.uploaded_at|utc_time %}{{ size }} bytes, at {{ t }}:{% endblocktranslate %}
 {% endif %}
 {% if vf.processing_finished_at %}
-<em>{% blocktranslate with n=vf.num_voters %}done processing: {{ n }} voters loaded{% endblocktranslate %}</em>
+<em>{% blocktranslate count n=vf.num_voters %}done processing: {{ n }} voter loaded{% plural %}done processing: {{ n }} voters loaded{% endblocktranslate %}</em>
 {% else %}
 
 {% if vf.processing_started_at %}
@@ -101,7 +101,7 @@
 
 {% if admin_p and not election.frozen_at and election.num_voters > 0 %}
 <p>
-<form style="display: inline;" method="post" action="{% url "election@voters@clear" election.uuid %}" onsubmit="{% blocktranslate with n=election.num_voters asvar msg_clear %}Are you sure you want to remove ALL {{ n }} voter(s)? This action cannot be undone.{% endblocktranslate %}return confirm('{{ msg_clear|escapejs }}');">
+<form style="display: inline;" method="post" action="{% url "election@voters@clear" election.uuid %}" onsubmit="{% blocktranslate count n=election.num_voters asvar msg_clear %}Are you sure you want to remove the {{ n }} voter? This action cannot be undone.{% plural %}Are you sure you want to remove ALL {{ n }} voters? This action cannot be undone.{% endblocktranslate %}return confirm('{{ msg_clear|escapejs }}');">
 <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
 <input class="button alert" type="submit" value="{% translate "clear all voters" %}" />
 </form>

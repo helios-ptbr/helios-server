@@ -11,7 +11,7 @@
   </p>
 
 <p>
-  {% blocktranslate with n=election.num_cast_votes %}<b>{{ n }}</b> cast votes.{% endblocktranslate %}
+  {% blocktranslate count n=election.num_cast_votes %}<b>{{ n }}</b> cast vote.{% plural %}<b>{{ n }}</b> cast votes.{% endblocktranslate %}
 </p>
 
 {% blocktranslate with a=offset_plus_one b=offset_plus_limit %}Voters {{ a }} - {{ b }}{% endblocktranslate %} &nbsp;&nbsp;

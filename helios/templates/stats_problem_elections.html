@@ -9,7 +9,7 @@
 
 {% for election in elections %}
 <p>
-<b><a href="{% url "election@view" election.uuid %}">{{election.name}}</a></b> -- {% blocktranslate trimmed with n=election.num_voters %}{{ n }} voters{% endblocktranslate %}
+<b><a href="{% url "election@view" election.uuid %}">{{election.name}}</a></b> -- {% blocktranslate trimmed count n=election.num_voters %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %}
 </p>
 {% endfor %}
 

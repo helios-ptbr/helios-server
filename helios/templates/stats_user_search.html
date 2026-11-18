@@ -14,7 +14,7 @@
 
 {% if q %}
   {% if users_with_elections %}
-    <p><b>{% blocktranslate trimmed with n=users_with_elections|length %}Found {{ n }} user(s){% endblocktranslate %}</b></p>
+    <p><b>{% blocktranslate trimmed count n=users_with_elections|length %}Found {{ n }} user{% plural %}Found {{ n }} users{% endblocktranslate %}</b></p>
 
     {% for item in users_with_elections %}
     <div style="margin-bottom: 2em; padding: 1em; border: 1px solid #ccc;">
@@ -31,7 +31,7 @@
         {% for election in item.elections_as_admin %}
           <li>
             <a href="{% url "election@view" election.uuid %}">{{election.name}}</a>
-            ({% blocktranslate trimmed with num_voters=election.num_voters num_cast=election.num_cast_votes %}{{ num_voters }} voters / {{ num_cast }} cast votes{% endblocktranslate %})
+            ({% blocktranslate trimmed count n=election.num_voters %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %} / {% blocktranslate trimmed count n=election.num_cast_votes %}{{ n }} cast vote{% plural %}{{ n }} cast votes{% endblocktranslate %})
             {% if election.frozen_at %}[{% translate "frozen" %}]{% endif %}
             {% if election.archived_at %}[{% translate "archived" %}]{% endif %}
           </li>
@@ -47,7 +47,7 @@
         {% for election in item.elections_as_voter %}
           <li>
             <a href="{% url "election@view" election.uuid %}">{{election.name}}</a>
-            ({% blocktranslate trimmed with num_voters=election.num_voters num_cast=election.num_cast_votes %}{{ num_voters }} voters / {{ num_cast }} cast votes{% endblocktranslate %})
+            ({% blocktranslate trimmed count n=election.num_voters %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %} / {% blocktranslate trimmed count n=election.num_cast_votes %}{{ n }} cast vote{% plural %}{{ n }} cast votes{% endblocktranslate %})
             {% if election.frozen_at %}[{% translate "frozen" %}]{% endif %}
             {% if election.archived_at %}[{% translate "archived" %}]{% endif %}
           </li>
@@ -63,7 +63,7 @@
         {% for election in item.elections_as_trustee %}
           <li>
             <a href="{% url "election@view" election.uuid %}">{{election.name}}</a>
-            ({% blocktranslate trimmed with num_voters=election.num_voters num_cast=election.num_cast_votes %}{{ num_voters }} voters / {{ num_cast }} cast votes{% endblocktranslate %})
+            ({% blocktranslate trimmed count n=election.num_voters %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %} / {% blocktranslate trimmed count n=election.num_cast_votes %}{{ n }} cast vote{% plural %}{{ n }} cast votes{% endblocktranslate %})
             {% if election.frozen_at %}[{% translate "frozen" %}]{% endif %}
             {% if election.archived_at %}[{% translate "archived" %}]{% endif %}
           </li>

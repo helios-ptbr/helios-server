@@ -31,7 +31,7 @@
 <p>
 <b>{{election.name}}</b> {% translate "by" context "election author" %} <a href="mailto:{{election.admin.info.email}}">{{election.admin.pretty_name}}</a><br />
 {% blocktranslate trimmed with when=election.deleted_at|utc_time %}Deleted at: {{ when }}{% endblocktranslate %}<br />
-{% blocktranslate trimmed with num_voters=election.num_voters num_cast=election.num_cast_votes %}{{ num_voters }} voters / {{ num_cast }} cast votes{% endblocktranslate %}<br />
+{% blocktranslate trimmed count n=election.num_voters %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %} / {% blocktranslate trimmed count n=election.num_cast_votes %}{{ n }} cast vote{% plural %}{{ n }} cast votes{% endblocktranslate %}<br />
 <form method="post" action="{% url "stats@undelete-election" election.uuid %}" style="display:inline;" onsubmit="return confirm('{% translate "Are you sure you want to restore this election? It will become visible to its administrators again." as msg %}{{ msg|escapejs }}');">
 <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
 <button type="submit" class="small button">{% translate "undelete" %}</button>

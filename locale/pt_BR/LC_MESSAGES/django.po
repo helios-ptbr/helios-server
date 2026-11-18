@@ -628,8 +628,10 @@ msgstr ""
 
 #: helios/templates/election_bboard.html:14
 #, python-format
-msgid "<b>%(n)s</b> cast votes."
-msgstr "<b>%(n)s</b> votos enviados."
+msgid "<b>%(n)s</b> cast vote."
+msgid_plural "<b>%(n)s</b> cast votes."
+msgstr[0] "<b>%(n)s</b> voto enviado."
+msgstr[1] "<b>%(n)s</b> votos enviados."
 
 #: helios/templates/election_bboard.html:17
 #: helios/templates/voters_manage.html:13
@@ -1495,16 +1497,6 @@ msgstr "Eleições que você administra"
 msgid "back to home"
 msgstr "voltar ao início"
 
-#: helios/templates/elections_administered.html:9
-#: helios/templates/stats_deleted_elections.html:34
-#: helios/templates/stats_elections.html:30
-#: helios/templates/stats_user_search.html:34
-#: helios/templates/stats_user_search.html:50
-#: helios/templates/stats_user_search.html:66
-#, python-format
-msgid "%(num_voters)s voters / %(num_cast)s cast votes"
-msgstr "%(num_voters)s pessoas eleitoras / %(num_cast)s cédulas enviadas"
-
 #: helios/templates/email/info_body.txt:1
 #: helios/templates/email/password_resend_body.txt:1
 #: helios/templates/email/result_body.txt:1
@@ -2059,8 +2051,10 @@ msgstr "eleições com problema recentes"
 
 #: helios/templates/stats.html:16
 #, python-format
-msgid "<b>%(n)s</b> votes in queue."
-msgstr "<b>%(n)s</b> votos na fila."
+msgid "<b>%(n)s</b> vote in queue."
+msgid_plural "<b>%(n)s</b> votes in queue."
+msgstr[0] "<b>%(n)s</b> voto na fila."
+msgstr[1] "<b>%(n)s</b> votos na fila."
 
 #: helios/templates/stats.html:16
 msgid "force it"
@@ -2165,8 +2159,10 @@ msgstr "Sem congelar há mais de um dia."
 
 #: helios/templates/stats_problem_elections.html:12
 #, python-format
-msgid "%(n)s voters"
-msgstr "%(n)s pessoas eleitoras"
+msgid "%(n)s voter"
+msgid_plural "%(n)s voters"
+msgstr[0] "%(n)s pessoa eleitora"
+msgstr[1] "%(n)s pessoas eleitoras"
 
 #: helios/templates/stats_recent_votes.html:6 server_ui/templates/index.html:79
 msgid "Recent Votes"
@@ -2178,8 +2174,10 @@ msgstr "Últimas 24 horas"
 
 #: helios/templates/stats_recent_votes.html:12
 #, python-format
-msgid "%(n)s recently cast votes"
-msgstr "%(n)s cédulas enviadas há pouco"
+msgid "%(n)s recently cast vote"
+msgid_plural "%(n)s recently cast votes"
+msgstr[0] "%(n)s cédula enviada há pouco"
+msgstr[1] "%(n)s cédulas enviadas há pouco"
 
 #: helios/templates/stats_user_search.html:3
 #: helios/templates/stats_user_search.html:6
@@ -2196,8 +2194,10 @@ msgstr "Nome ou ID do usuário"
 
 #: helios/templates/stats_user_search.html:17
 #, python-format
-msgid "Found %(n)s user(s)"
-msgstr "%(n)s usuário(s) encontrado(s)"
+msgid "Found %(n)s user"
+msgid_plural "Found %(n)s users"
+msgstr[0] "%(n)s pessoa usuária encontrada"
+msgstr[1] "%(n)s pessoas usuárias encontradas"
 
 #: helios/templates/stats_user_search.html:23
 msgid "User ID:"
@@ -2610,8 +2610,10 @@ msgstr "%(size)s bytes, em %(t)s:"
 
 #: helios/templates/voters_list.html:86
 #, python-format
-msgid "done processing: %(n)s voters loaded"
-msgstr "processamento concluído: %(n)s pessoas eleitoras carregadas"
+msgid "done processing: %(n)s voter loaded"
+msgid_plural "done processing: %(n)s voters loaded"
+msgstr[0] "processamento concluído: %(n)s pessoa eleitora carregada"
+msgstr[1] "processamento concluído: %(n)s pessoas eleitoras carregadas"
 
 #: helios/templates/voters_list.html:90
 msgid "currently processing"
@@ -2624,9 +2626,15 @@ msgstr "ainda não processado"
 #: helios/templates/voters_list.html:104
 #, python-format
 msgid ""
-"Are you sure you want to remove ALL %(n)s voter(s)? This action cannot be "
+"Are you sure you want to remove the %(n)s voter? This action cannot be "
 "undone."
-msgstr ""
+msgid_plural ""
+"Are you sure you want to remove ALL %(n)s voters? This action cannot be "
+"undone."
+msgstr[0] ""
+"Tem certeza de que quer remover a %(n)s pessoa eleitora? Esta ação não pode "
+"ser desfeita."
+msgstr[1] ""
 "Tem certeza de que quer remover TODAS as %(n)s pessoas eleitoras? Esta ação "
 "não pode ser desfeita."
 

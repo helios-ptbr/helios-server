@@ -1,0 +1,61 @@
+{% extends 'server_ui/templates/base.html' %}
+{% block title %}{{ settings.SITE_TITLE }}{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<div class="large-12-columns">
+
+<div class="row"><h2>Perguntas frequentes</h2></div>
+
+<div class="row">
+<b>O que torna o Helios diferente (ou melhor) que outros sistemas de votação?</b>
+
+<p>O Helios é realmente verificável. Cada pessoa eleitora recebe um código de rastreamento da sua cédula, que pode ser conferido no centro de rastreamento de cédulas para garantir que a cédula foi recebida e apurada corretamente. Isso quer dizer que ninguém, nem mesmo quem administra o sistema Helios, consegue alterar o seu voto.
+</p>
+</div>
+
+<div class="row">&nbsp;</div>
+
+<div class="row">
+<b>Já ouvi falar em “voto verificável pela pessoa eleitora”. O que o Helios tem de diferente?</b>
+<p>Muitos sistemas de votação dizem ser verificáveis pela pessoa eleitora. Acreditamos que essa verificabilidade é muito importante e apoiamos o trabalho de outras organizações para melhorar as urnas usadas em eleições para cargos públicos. Mas achamos que é preciso uma verificabilidade mais ampla, em que quem vota possa conferir que o processo de apuração, e não só o registro da sua cédula, foi feito corretamente. Chamamos isso de “verificabilidade de verdade”. Outras pessoas chamam esse conceito de “verificabilidade de ponta a ponta” ou de “auditoria aberta”.</p>
+</div>
+
+<div class="row">&nbsp;</div>
+
+<div class="row">
+<b>Quão secreto é o meu voto no Helios?</b>
+<p>O Helios cuida muito do sigilo do seu voto. O seu voto é cifrado dentro do seu navegador, antes mesmo de ser enviado ao servidor. Mesmo em navegadores mais antigos, o voto é cifrado antes de você entrar no Helios. Em todos os casos, o voto fica guardado no banco de dados somente de forma cifrada. Depois, o Helios usa técnicas criptográficas avançadas para combinar todos os votos cifrados em uma apuração cifrada, e só a apuração é decifrada. Isso significa que a sua cédula nunca é decifrada individualmente. Para dar o máximo de privacidade, o Helios permite que quem administra a eleição indique várias pessoas curadoras. Todas elas precisam participar da decifragem, o que garante ainda mais que só a apuração, e nunca os votos individuais, seja decifrada.</p>
+</div>
+
+<div class="row">&nbsp;</div>
+
+<div class="row">
+<b>O que o código de rastreamento do Helios tem de especial?</b>
+<p>Um código de rastreamento comum, como o de uma encomenda, é mais ou menos um número aleatório: não significa nada além da etiqueta do pacote. É possível que o pacote chegue, com o código intacto, mas com o conteúdo destruído. No mundo digital, conseguimos produzir um tipo especial de código, que está longe de ser aleatório: ele é a impressão digital da cifragem do seu voto. Assim, se o código da sua cédula chega até a apuração, você sabe que a cédula entrou na apuração e também que ninguém a alterou no caminho.</p>
+</div>
+
+<div class="row">&nbsp;</div>
+
+<div class="row">
+<b>O Helios é o único sistema com esse nível de verificabilidade?</b>
+  <p>Não, há outros sistemas. <a href="http://scantegrity.com">Scantegrity</a>, Prêt à Voter, <a href="https://www.usenix.org/conference/evtwote13/workshop-program/presentation/bell">STARVote</a> e Wombat Voting oferecem verificabilidade de verdade em sistemas de votação em papel. Gostamos desses sistemas e das pessoas que estão por trás deles. A VoteHere, empresa que já fechou, também foi pioneira nessa área. O sistema Helios reúne várias inovações voltadas a levar a verificabilidade de verdade às eleições online, para que todas as pessoas possam conhecer essa tecnologia inovadora. Mas não somos os únicos.</p>
+</div>
+
+<div class="row">&nbsp;</div>
+
+<div class="row">
+<b>Devemos começar a usar o Helios em eleições para cargos públicos? Talvez para presidente dos EUA em 2016?</b>
+<p>Não, você não deve. Eleições online são adequadas quando não se espera uma tentativa grande de fraudar ou coagir pessoas eleitoras. Em algumas eleições, como as federais e estaduais dos EUA, o que está em jogo é grande demais, e recomendamos não receber votos pela internet. Isso não tem a ver com o Helios em si: não confiamos que os computadores das casas das pessoas sejam seguros o bastante para resistir a ataques significativos.</p>
+
+<p>Se você quer usar um sistema de votação verificável de verdade em uma eleição para cargo público, recomendamos uma eleição presencial. O Helios poderia ser adaptado para a votação presencial, em seções eleitorais, mas ainda não fizemos esse trabalho e pretendemos focar primeiro nas eleições online.</p>
+</div>
+
+
+</div>
+
+
+{% endblock %}

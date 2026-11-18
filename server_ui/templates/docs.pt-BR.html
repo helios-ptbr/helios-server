@@ -1,0 +1,45 @@
+{% extends 'server_ui/templates/base.html' %}
+{% block title %}{{ settings.SITE_TITLE }}{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<div class="large-12-columns">
+
+<div class="row"><h2>Documentação</h2></div>
+
+<div class="row">
+
+<p>
+A tecnologia do Helios Voting se baseia em técnicas criptográficas
+avançadas, revisadas por especialistas, que mantêm o seu voto secreto e
+oferecem um código de rastreamento inteligente para você conferir se a
+sua cédula foi recebida e contada corretamente:
+</p>
+
+<ul>
+<li> <a href="https://github.com/benadida/helios-server/blob/master/docs/user-manual.md">manual do usuário</a> (em inglês), para quem administra eleições e para quem vota</li>
+<li> <a href="https://github.com/benadida/helios-server/blob/master/docs/how-helios-works.md">como o Helios funciona</a> (em inglês)</li>
+<li> <a href="https://github.com/benadida/helios-server/blob/master/docs/architecture.md">arquitetura</a> (em inglês), para quem desenvolve</li>
+<li> <a href="http://www.usenix.org/events/sec08/tech/full_papers/adida/adida.pdf">artigo original, revisado por especialistas (Usenix Security 2008)</a> (em inglês)</li>
+<li> <a href="https://github.com/google/pyrios">Pyrios</a>, uma biblioteca em Go de <a href="http://1.37e2.net/">Tom Roeder</a> que verifica eleições do Helios.
+<li> <a href="http://www.uclouvain.be/crypto/electionmonitor/default/about">Helios Election Monitor</a>, produzido pela Universidade Católica de Louvain.</li>
+</ul>
+
+<p>
+O Helios já apareceu na imprensa:
+</p>
+
+<ul>
+<li> <a href="http://www.kcbs.com/bayareanews/Tracking-Votes-During-Elections/7161136">Entrevista à KCBS News, maio de 2010</a></li>
+<li> <a href="http://harvardmagazine.com/2010/05/secret-ballots-verifiable-votes">Harvard Magazine, abril de 2010</a></li>
+<li> <a href="http://www.ynet.co.il/articles/0,7340,L-3720204,00.html">Ynet, imprensa israelense (em hebraico), junho de 2009</a></li>
+
+
+</div>
+
+</div>
+
+{% endblock %}

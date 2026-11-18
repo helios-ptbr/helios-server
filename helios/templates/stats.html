@@ -13,7 +13,7 @@
 <li> <a href="{% url "stats@elections-problems" %}">{% translate "recent problem elections" %}</a></li>
 </ul>
 
-<div>{% blocktranslate trimmed with n=num_votes_in_queue %}<b>{{ n }}</b> votes in queue.{% endblocktranslate %} {% if num_votes_in_queue %}[<form class="inline-action" method="post" action="{% url "stats@force-queue" %}"><input type="hidden" name="csrf_token" value="{{csrf_token}}" /><button type="submit" class="link-button">{% translate "force it" %}</button></form>]{% endif %}</div>
+<div>{% blocktranslate trimmed count n=num_votes_in_queue %}<b>{{ n }}</b> vote in queue.{% plural %}<b>{{ n }}</b> votes in queue.{% endblocktranslate %} {% if num_votes_in_queue %}[<form class="inline-action" method="post" action="{% url "stats@force-queue" %}"><input type="hidden" name="csrf_token" value="{{csrf_token}}" /><button type="submit" class="link-button">{% translate "force it" %}</button></form>]{% endif %}</div>
 
 <div>{% blocktranslate trimmed with ready=task_counts.ready running=task_counts.running stuck=task_counts.stuck minutes=stuck_after_minutes failed=task_counts.failed_last_day %}Background tasks: <b>{{ ready }}</b> waiting, <b>{{ running }}</b> running
 ({{ stuck }} for over {{ minutes }} minutes, see <tt>manage.py requeue_stuck_tasks</tt>),

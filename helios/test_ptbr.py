@@ -112,8 +112,7 @@ class PtBrAdminPagesTests(WebTest):
 
     def test_no_english_catalog_text_in_site_pages(self):
         """Varre as telas fora da eleição (início, páginas fixas, login, opt-out, estatísticas, listas)."""
-        # /about, /docs, /faq e /privacy ainda são páginas longas só em inglês (sem {% trans %}):
-        # ficam de fora até serem traduzidas, uma por idioma.
+        # /about, /docs, /faq e /privacy não usam {% trans %}: têm um template por idioma (test_static_pages_*).
         auth_models.User.objects.filter(user_id='ben@adida.net').update(admin_p=True)  # telas de estatísticas
         urls = ['/', '/auth/', '/auth/why',
                 '/optout/', '/optout/success/', '/optin/', '/optin/success/',
@@ -123,6 +122,23 @@ class PtBrAdminPagesTests(WebTest):
                 '/helios/elections/%s/' % self.election.uuid + 'trustees/view',
                 '/helios/elections/%s/' % self.election.uuid + 'voters/']
         self.assertGreaterEqual(self.scan(urls), 17)
+
+    STATIC_PAGES = {'/about': ('Sobre o Helios Voting', 'About Helios Voting'),
+                    '/docs': ('Documentação', 'Documentation'),
+                    '/faq': ('Perguntas frequentes', 'What makes Helios different'),
+                    '/privacy': ('Privacidade', 'built-in privacy')}
+
+    def test_static_pages_in_portuguese(self):
+        for url, (pt, en) in self.STATIC_PAGES.items():
+            r = self.get(url)
+            self.assertContains(r, pt, msg_prefix=url)
+            self.assertNotContains(r, en, msg_prefix=url)
+
+    def test_static_pages_in_english_are_unchanged(self):
+        for url, (pt, en) in self.STATIC_PAGES.items():
+            r = self.get(url, 'en')
+            self.assertContains(r, en, msg_prefix=url)
+            self.assertNotContains(r, pt, msg_prefix=url)
 
     def test_new_election_page(self):
         r = self.get(reverse('elections@new'))
@@ -315,3 +331,27 @@ class PtBrTimezoneTextsTests(WebTest):
         r = self.get('en')
         self.assertContains(r, 'Universal Coordinated Time')
         self.assertNotContains(r, 'Tempo Universal Coordenado')
+
+
+@unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
+class PtBrPluralTests(WebTest):
+    """Plurais do pt-BR: 0 e 1 usam o singular; 2 ou mais, o plural."""
+
+    def render(self, template, lang='pt-br'):
+        from django.template import Template, Context
+        from django.utils import translation
+        with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
+            return Template('{% load i18n %}' + template).render(Context({}))
+
+    def test_voters_singular_e_plural(self):
+        t = '{% blocktranslate trimmed count n=N %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %}'
+        self.assertEqual(self.render(t.replace('N', '1')), '1 pessoa eleitora')
+        self.assertEqual(self.render(t.replace('N', '0')), '0 pessoa eleitora')
+        self.assertEqual(self.render(t.replace('N', '2')), '2 pessoas eleitoras')
+        self.assertEqual(self.render(t.replace('N', '1'), 'en'), '1 voter')
+        self.assertEqual(self.render(t.replace('N', '2'), 'en'), '2 voters')
+
+    def test_cast_votes_com_negrito(self):
+        t = '{% blocktranslate count n=N %}<b>{{ n }}</b> cast vote.{% plural %}<b>{{ n }}</b> cast votes.{% endblocktranslate %}'
+        self.assertEqual(self.render(t.replace('N', '1')), '<b>1</b> voto enviado.')
+        self.assertEqual(self.render(t.replace('N', '3')), '<b>3</b> votos enviados.')

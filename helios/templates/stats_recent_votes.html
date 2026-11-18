@@ -9,7 +9,7 @@
 
 {% for election in elections %}
 <p>
-<b><a href="{% url "election@view" election.uuid %}">{{election.name}}</a></b> -- {{election.last_cast_vote}} {% blocktranslate trimmed with n=election.num_recent_cast_votes %}{{ n }} recently cast votes{% endblocktranslate %}
+<b><a href="{% url "election@view" election.uuid %}">{{election.name}}</a></b> -- {{election.last_cast_vote}} {% blocktranslate trimmed count n=election.num_recent_cast_votes %}{{ n }} recently cast vote{% plural %}{{ n }} recently cast votes{% endblocktranslate %}
 </p>
 {% endfor %}
 

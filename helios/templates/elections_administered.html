@@ -6,7 +6,7 @@
 
 <ul>
 {% for election in elections %}
-<li> <a href="{% url "election@view" election.uuid %}">{{election.name}}</a><em> - {% blocktranslate trimmed with num_voters=election.num_voters num_cast=election.num_cast_votes %}{{ num_voters }} voters / {{ num_cast }} cast votes{% endblocktranslate %}</em></li>
+<li> <a href="{% url "election@view" election.uuid %}">{{election.name}}</a><em> - {% blocktranslate trimmed count n=election.num_voters %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %} / {% blocktranslate trimmed count n=election.num_cast_votes %}{{ n }} cast vote{% plural %}{{ n }} cast votes{% endblocktranslate %}</em></li>
 {% endfor %}
 </ul>
 {% endblock %}
