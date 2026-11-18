@@ -166,7 +166,7 @@ msgstr "Envie"
 
 #: heliosbooth/templates/election.html
 msgid "your encrypted ballot and authenticate to verify your eligibility."
-msgstr "sua cédula cifrada e se autentique para verificar sua elegibilidade."
+msgstr "a sua cédula cifrada e entre com o seu login para confirmar que você pode votar."
 
 #: heliosbooth/templates/election.html
 msgid "Start"
@@ -298,7 +298,7 @@ msgstr "Segundo o arquivo de definição da eleição, esta cédula será enviad
 
 #: heliosbooth/templates/submit.html
 msgid "where you will log in to validate your eligibility to vote."
-msgstr "onde você fará login para validar sua elegibilidade para votar."
+msgstr "onde você entrará com o seu login para confirmar que pode votar."
 
 #: heliosbooth/single-ballot-verify.html
 msgid "Helios Voting System"

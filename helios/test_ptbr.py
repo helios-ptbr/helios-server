@@ -176,7 +176,7 @@ class PtBrAdminPagesTests(WebTest):
     def test_voters_list_page(self):
         r = self.get(reverse('election@voters@list-pretty', args=[self.election.uuid]))
         self.assertEqual(r.status_code, 200)
-        self.assertContains(r, 'Pessoas eleitoras e centro de rastreamento de cédulas')
+        self.assertContains(r, 'Eleitores e centro de rastreamento de cédulas')
         self.assertContains(r, 'Quem pode votar?')
         self.assertNotContains(r, 'Who can vote?')
 
@@ -311,7 +311,7 @@ class PtBrVoterFileMessagesTests(WebTest):
             f.voter_file_content = "xyz,maria,maria@example.com,Maria"
             with self.assertRaises(Exception) as ctx:
                 list(f.itervoters())
-        self.assertIn("tipo de pessoa eleitora inválido 'xyz'", str(ctx.exception))
+        self.assertIn("tipo de eleitor inválido 'xyz'", str(ctx.exception))
 
 
 @unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
@@ -348,9 +348,9 @@ class PtBrPluralTests(WebTest):
 
     def test_voters_singular_e_plural(self):
         t = '{% blocktranslate trimmed count n=N %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %}'
-        self.assertEqual(self.render(t.replace('N', '1')), '1 pessoa eleitora')
-        self.assertEqual(self.render(t.replace('N', '0')), '0 pessoa eleitora')
-        self.assertEqual(self.render(t.replace('N', '2')), '2 pessoas eleitoras')
+        self.assertEqual(self.render(t.replace('N', '1')), '1 eleitor')
+        self.assertEqual(self.render(t.replace('N', '0')), '0 eleitor')
+        self.assertEqual(self.render(t.replace('N', '2')), '2 eleitores')
         self.assertEqual(self.render(t.replace('N', '1'), 'en'), '1 voter')
         self.assertEqual(self.render(t.replace('N', '2'), 'en'), '2 voters')
 
