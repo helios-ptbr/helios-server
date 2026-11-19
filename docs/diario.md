@@ -328,8 +328,6 @@ A `/privacy` era a tradução do texto de heliosvoting.org, escrito como se "nó
 
 ## 21. Apuração em lotes (`iterator`) no `ptbr`
 
-Sem PR para o Ben. A mudança entra direto na `ptbr`, em `Election.compute_tally` (`helios/models.py`):
-- O código original do Ben ficou como comentário, logo acima.
-- O nosso código fica entre `HELIOS-PTBR-INICIO` e `HELIOS-PTBR-FIM`, com a referência à Issue (apuração com 15,5 GiB). Esses marcadores ajudam a achar o trecho num merge com o upstream.
-- Teste: `helios/test_apuracao.py` (confere `.iterator(chunk_size=500)` e a soma).
+Decisão final: a correção foi enviada ao Ben como [PR #568](https://github.com/benadida/helios-server/pull/568). A `ptbr` **não** carrega a mudança: `Election.compute_tally` fica igual ao código do Ben (`ben-master`). Quando o PR for aceito, a correção volta pelo merge da `ben-master`, sem conflito. Até lá, a `ptbr` tem o consumo alto de memória na apuração.
+- Os marcadores `HELIOS-PTBR-INICIO/FIM` e o teste `helios/test_apuracao.py` foram removidos.
 - Medições antes e depois: `docs/relatorio-carga.md`. Com 50 mil eleitores o pico caiu de 9,5 GiB para 174 MiB, com resultado idêntico.
