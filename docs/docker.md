@@ -10,7 +10,7 @@ Cada pasta com o seu `.env` é uma instância. Dá para rodar várias ao mesmo t
 | `db` | Postgres 16, com volume nomeado `pgdata` |
 | `migrate` | roda as migrações do banco e sai |
 | `web` | o Helios (gunicorn), em português do Brasil |
-| `worker` | processa as tarefas em segundo plano: e-mails, apuração, envio de listas de pessoas eleitoras |
+| `worker` | processa as tarefas em segundo plano: e-mails, apuração, envio de listas de eleitores |
 | `caddy` | HTTPS na frente do `web`, e entrega a pasta `personalizacao/` |
 | `mailpit` | só no perfil `dev`: recebe os e-mails em vez de enviá-los |
 

@@ -46,6 +46,10 @@ class PtBrRenderTests(WebTest):
         self.assertEqual(r.status_code, 200)
         self.assertContains(r, 'Informações de auditoria')
         self.assertContains(r, 'lang="pt-br"')
+        # menu da página da eleição (decisão de 2026-11-19)
+        self.assertContains(r, 'eleitores e cédulas')
+        self.assertContains(r, 'curadoria (')
+        self.assertNotContains(r, 'pessoas curadoras (')
         self.assertNotContains(r, 'Audit Info')
 
     def test_election_view_stays_in_english_by_default(self):
@@ -155,6 +159,20 @@ class PtBrAdminPagesTests(WebTest):
             self.assertContains(r, 'https://vote.heliosvoting.org' + url, msg_prefix=url)
             self.assertNotContains(r, en, msg_prefix=url)
 
+    def test_pagina_traducao_e_link_no_topo(self):
+        r = self.get('/translation')
+        self.assertEqual(r.status_code, 200)
+        for t in ('<h2>Tradução</h2>', 'github.com/shirlei/helios-server', 'github.com/labsec/helios-server',
+                  'github.com/ifsc/helios-server', 'github.com/ufscar/helios-server', 'github.com/STI-UFMA/helios-server-main',
+                  'eleitor, cédula, depositar, questão e ID do eleitor'):
+            self.assertContains(r, t)
+        self.assertContains(self.get('/'), '<a href="/translation">Tradução</a>')
+
+    def test_pagina_traducao_em_ingles_sem_link_no_topo(self):
+        r = self.get('/translation', lang='en')
+        self.assertContains(r, '<h2>Translation</h2>')
+        self.assertNotContains(self.get('/', lang='en'), 'href="/translation"')
+
     def test_static_pages_in_english_are_unchanged(self):
         for url, (pt, en) in self.STATIC_PAGES.items():
             r = self.get(url, 'en')
@@ -185,7 +203,8 @@ class PtBrAdminPagesTests(WebTest):
     def test_trustees_page(self):
         r = self.get(reverse('election@trustees@view', args=[self.election.uuid]))
         self.assertEqual(r.status_code, 200)
-        self.assertContains(r, 'Pessoas curadoras')
+        self.assertContains(r, '&mdash; Curadoria')
+        self.assertContains(r, 'As pessoas curadoras são responsáveis')
         self.assertNotContains(r, 'Trustees are responsible')
 
     def test_trustees_page_in_english(self):
@@ -195,7 +214,7 @@ class PtBrAdminPagesTests(WebTest):
     def test_voters_list_page(self):
         r = self.get(reverse('election@voters@list-pretty', args=[self.election.uuid]))
         self.assertEqual(r.status_code, 200)
-        self.assertContains(r, 'Pessoas eleitoras e centro de rastreamento de cédulas')
+        self.assertContains(r, 'Eleitores e centro de rastreamento de cédulas')
         self.assertContains(r, 'Quem pode votar?')
         self.assertNotContains(r, 'Who can vote?')
 
@@ -252,7 +271,7 @@ class PtBrEmailTests(WebTest):
     def test_vote_email_in_portuguese(self):
         body = self.render('email/vote_body.txt', 'pt-br')
         self.assertIn('Olá, Maria,', body)
-        self.assertIn('Seu login: maria', body)
+        self.assertIn('ID do eleitor: maria', body)
         self.assertIn('Para deixar de receber todos os e-mails do Helios', body)
         self.assertNotIn('Dear ', body)
 
@@ -354,7 +373,7 @@ class PtBrVoterFileMessagesTests(WebTest):
             f.voter_file_content = "xyz,maria,maria@example.com,Maria"
             with self.assertRaises(Exception) as ctx:
                 list(f.itervoters())
-        self.assertIn("tipo de pessoa eleitora inválido 'xyz'", str(ctx.exception))
+        self.assertIn("tipo de eleitor inválido 'xyz'", str(ctx.exception))
 
 
 @unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
@@ -391,16 +410,16 @@ class PtBrPluralTests(WebTest):
 
     def test_voters_singular_e_plural(self):
         t = '{% blocktranslate trimmed count n=N %}{{ n }} voter{% plural %}{{ n }} voters{% endblocktranslate %}'
-        self.assertEqual(self.render(t.replace('N', '1')), '1 pessoa eleitora')
-        self.assertEqual(self.render(t.replace('N', '0')), '0 pessoa eleitora')
-        self.assertEqual(self.render(t.replace('N', '2')), '2 pessoas eleitoras')
+        self.assertEqual(self.render(t.replace('N', '1')), '1 eleitor')
+        self.assertEqual(self.render(t.replace('N', '0')), '0 eleitor')
+        self.assertEqual(self.render(t.replace('N', '2')), '2 eleitores')
         self.assertEqual(self.render(t.replace('N', '1'), 'en'), '1 voter')
         self.assertEqual(self.render(t.replace('N', '2'), 'en'), '2 voters')
 
     def test_cast_votes_com_negrito(self):
         t = '{% blocktranslate count n=N %}<b>{{ n }}</b> cast vote.{% plural %}<b>{{ n }}</b> cast votes.{% endblocktranslate %}'
-        self.assertEqual(self.render(t.replace('N', '1')), '<b>1</b> voto enviado.')
-        self.assertEqual(self.render(t.replace('N', '3')), '<b>3</b> votos enviados.')
+        self.assertEqual(self.render(t.replace('N', '1')), '<b>1</b> voto depositado.')
+        self.assertEqual(self.render(t.replace('N', '3')), '<b>3</b> votos depositados.')
 
 
 @unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
@@ -412,10 +431,19 @@ class PtBrBateriaDockerTests(WebTest):
         with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
             return translation.gettext(texto)
 
-    def test_textos_de_login_dizem_login_e_nao_id(self):
-        self.assertEqual(self.trad('Voter ID'), 'Login')
+    def test_textos_do_eleitor_dizem_id_do_eleitor(self):
+        self.assertEqual(self.trad('Voter ID'), 'ID do eleitor')
         self.assertEqual(self.trad('Bad Username or Password'), 'Login ou senha incorretos.')
-        self.assertIn('login', self.trad('Enter the voter ID you were assigned for this election'))
+        self.assertIn('ID do eleitor', self.trad('Enter the voter ID you were assigned for this election'))
+
+    def test_termos_decididos_em_2026_11_19(self):
+        """eleitor, depositar a cédula, questão e ID do eleitor (e o resto do vocabulário fica como estava)."""
+        self.assertEqual(self.trad('CAST this ballot'), 'DEPOSITAR esta cédula')
+        self.assertEqual(self.trad('Vote Successfully Cast!'), 'Voto depositado com sucesso!')
+        self.assertEqual(self.trad('Question #%(n)s') % {'n': 2}, 'Questão #2')
+        self.assertEqual(self.trad('Voter ID'), 'ID do eleitor')
+        # "Enviar" continua para o que não é depositar a cédula
+        self.assertEqual(self.trad('Send To'), 'Enviar para')
 
     def test_mensagens_novas_em_portugues_e_ingles_intacto(self):
         self.assertEqual(self.trad('the voter file is empty'), 'o arquivo está vazio')
@@ -435,7 +463,7 @@ class PtBrBateriaDockerTests(WebTest):
         election.name, election.use_voter_aliases = 'Eleição X', True
         cast.vote_hash = 'HASH'
         ctx = dict(voter=voter, election=election, cast_vote=cast, cast_vote_url='http://x/v/HASH')
-        for lang, esperado in (('pt-br', 'Seu voto em Eleição X foi registrado.'),
+        for lang, esperado in (('pt-br', 'Seu voto em Eleição X foi depositado.'),
                                ('en', 'You have successfully cast a vote in Eleição X.')):
             with override_settings(LOCALE_PATHS=[os.path.join(ROOT, 'locale')]), translation.override(lang):
                 corpo = loader.get_template('email/cast_vote_body.txt').template.render(Context(ctx, autoescape=False))
@@ -464,6 +492,6 @@ class PtBrAvisosPorEmailTests(WebTest):
     def test_plural_de_pessoas_criadas(self):
         from django.utils.translation import ngettext
         um, varias = '1 voter has been created.', '%(n)d voters have been created.'
-        self.assertEqual(self.trad(ngettext, um, varias, 1), '1 pessoa eleitora foi criada.')
-        self.assertEqual(self.trad(ngettext, um, varias, 7) % {'n': 7}, '7 pessoas eleitoras foram criadas.')
+        self.assertEqual(self.trad(ngettext, um, varias, 1), '1 eleitor foi criado.')
+        self.assertEqual(self.trad(ngettext, um, varias, 7) % {'n': 7}, '7 eleitores foram criados.')
         self.assertEqual(self.trad(ngettext, um, varias, 7, lang='en') % {'n': 7}, '7 voters have been created.')

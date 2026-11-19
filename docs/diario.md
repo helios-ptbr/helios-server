@@ -225,3 +225,44 @@ As 20 imagens do manual passaram a ser capturas da interface em pt-BR, em `docs/
 - **Cuidado ao refazer:** a página de perguntas tem formulários de edição escondidos; preencher o primeiro campo `question` da página preenche o formulário escondido. Preencha o campo visível.
 - O e-mail de exemplo da Parte 2 passou a ser o texto real em português.
 - Para refazer as imagens, a instância precisa de `WELCOME_MESSAGE=Bem-vindo ao Helios, eleições online seguras.` no `.env` (a mensagem padrão é outra).
+
+## 16. Eleitor, curadoria e administradores (2026-11-19)
+
+Decisão do usuário, ponto a ponto, depois de ver a lista completa do que mudaria. Antes valia "pessoa eleitora" em todo lugar (decisão de 2026-11-18); agora vale a regra abaixo.
+
+| Onde | Termo |
+|---|---|
+| Menu da página da eleição | `perguntas (2) \| eleitores e cédulas \| curadoria (1) \| administradores` |
+| Rótulos, botões, menus, listas, contagens e avisos curtos (45 textos do `django.po`) | eleitor, eleitores ("Contatar os eleitores", "3 eleitores", "enviar e-mail aos eleitores") |
+| Verificador (7 textos do `verifier.po`) | "Eleitor #1", "lista de eleitores". A frase longa do login do verificador continua com "pessoa eleitora" |
+| Frases explicativas do sistema (ajuda dos formulários, avisos, e-mails, 18 textos) | continua "pessoa eleitora" |
+| Página que o link `curadoria` abre | "Curadoria" e "Curadoria de X". O resto das telas da pessoa curadora continua "pessoa curadora" |
+| Documentos e páginas fixas (manual, "Como o Helios funciona", FAQ, privacidade, sobre, `docs/docker.md`, glossário, estilo) | eleitor, eleitores. "Pessoa curadora" e "pessoa administradora" continuam; os nomes de botões e links citados seguem a tela |
+| "Pessoa administradora" | não mudou, fora o item do menu |
+
+- **Junto dos botões:** as duas confirmações de remover eleitores ("Tem certeza de que quer remover TODOS os N eleitores?") mudaram, para combinar com o botão "remover todos os eleitores".
+- **Arquivos gerados:** `heliosverifier/js/strings.pt-BR.js` foi refeito com `python3 tools/po2js.py pt_BR --po locale/pt_BR/LC_MESSAGES/verifier.po --out heliosverifier/js/strings.pt-BR.js`.
+- **Testes:** `helios/test_ptbr.py` confere o menu ("eleitores e cédulas", "curadoria (") e as contagens ("1 eleitor", "2 eleitores").
+- **Imagens do manual:** as 20 imagens foram refeitas com os novos nomes (mesma eleição da seção 15). O manual ganhou "Clique em **curadoria**" no passo 5.
+- **Ficou aberto:** a página que o item `administradores` abre ainda se chama "Pessoas administradoras de X". Se quiser combinar com o menu, vira "Administradores de X".
+
+
+## 17. Vocabulário dos outros projetos e página "Tradução" (2026-11-19)
+
+**Varredura dos projetos em português.** Estudamos cinco repositórios: `shirlei/helios-server`, `labsec/helios-server`, `ifsc/helios-server`, `ufscar/helios-server` e `STI-UFMA/helios-server-main`. Resumo:
+- É uma tradução só. O catálogo `django.po` (cerca de 580 textos) é o mesmo nos cinco, com no máximo 12 linhas diferentes (nomes das instituições e "Voter ID"). O `ufscar` é cópia idêntica do `shirlei`.
+- A cabine, o verificador, os e-mails e as telas de ajuda foram escritos em português direto nos arquivos, sem o inglês original. O catálogo de cada projeto cobre 42% dos textos do nosso (os outros são do Helios mais novo).
+- Todos partem do Helios antigo (Django 1.11, Celery). Trazem manuais em português (`ajuda`, `ajuda-gestor`, em mkdocs).
+- Eles dizem "apuradores" para trustee. Nós mantivemos "pessoa curadora" e "curadoria".
+
+**Termos adotados deles (decisão de 2026-11-19):** eleitor, cédula, depositar (a cédula), questão e ID do eleitor. O resto fica como estava (pessoa curadora, curadoria, administradores, congelar a urna, apuração, consulta e outros). Resumo do que mudou:
+- **Depositar:** "enviar a cédula" virou "depositar a cédula" onde a palavra em inglês é "cast": botão "DEPOSITAR esta cédula", "autenticar & depositar a cédula", "Voto depositado com sucesso!", "voto depositado", "cédulas depositadas", o e-mail de confirmação ("Seu voto em X foi depositado") e a cabine. "Enviar" ficou para o que não é votar: e-mail, arquivo, o passo "(3) Enviar" da cabine.
+- **Questão:** "pergunta" virou "questão" em todo lugar (menu `questões (2)`, "Questão #1", cabine, verificador, documentos). Só o título "Perguntas frequentes" (FAQ) ficou.
+- **ID do eleitor:** o "login" de quem vota virou "ID do eleitor" (formulário de votação, coluna da lista de eleitores, e-mails, avisos, reenvio de credenciais, CSV). O "Login" de quem administra (tela de login por senha) continua "Login".
+- **Eleitor no lugar de "pessoa eleitora":** agora em todos os textos do catálogo, da ajuda dos formulários, dos avisos, e-mails, verificador e documentos. "Pessoa eleitora" só ficou onde o texto fala com quem lê e precisaria de "eleitor(a)": "Você entrou como pessoa eleitora X", "que não é uma pessoa eleitora desta eleição" e, no verificador, "Você pode entrar como pessoa eleitora cadastrada".
+
+**Página "Tradução".** Novo item no topo, ao lado de "Sobre o Helios" (só em português; em inglês o topo fica igual ao original). Endereço `/translation`; arquivos `server_ui/templates/translation.pt-BR.html` e `translation.html` (inglês, curto), rota em `server_ui/urls.py` e view em `server_ui/views.py`. A página conta o nosso trabalho (o que foi traduzido, como, vocabulário) e agradece aos cinco projetos acima, com link para cada um, ao Helios e ao Ben Adida. Testes em `helios/test_ptbr.py`.
+
+**Imagens do manual** refeitas de novo (21 imagens), agora com o menu "questões / eleitores e cédulas / curadoria / administradores", "ID do eleitor", "depositar", a barra de cima com "Tradução" e sem barra de rolagem.
+
+**Ficou aberto:** a página que o item `administradores` abre ainda se chama "Pessoas administradoras de X".

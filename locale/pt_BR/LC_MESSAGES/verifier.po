@@ -22,15 +22,15 @@ msgstr "FALHOU"
 
 #: heliosverifier/verify.html
 msgid "loading ballot for voter #%(num)s"
-msgstr "carregando a cédula da pessoa eleitora #%(num)s"
+msgstr "carregando a cédula do eleitor #%(num)s"
 
 #: heliosverifier/verify.html
 msgid "no ballot for this voter #%(num)s"
-msgstr "nenhuma cédula da pessoa eleitora #%(num)s"
+msgstr "nenhuma cédula do eleitor #%(num)s"
 
 #: heliosverifier/verify.html
 msgid "FOUND a ballot for voter #%(num)s"
-msgstr "ENCONTRADA uma cédula da pessoa eleitora #%(num)s"
+msgstr "ENCONTRADA uma cédula do eleitor #%(num)s"
 
 #: heliosverifier/verify.html
 msgid "Election"
@@ -54,11 +54,11 @@ msgstr "PROBLEMA: esta eleição não usa a apuração homomórfica simples. Por
 
 #: heliosverifier/verify.html
 msgid "loading list of voters..."
-msgstr "carregando a lista de pessoas eleitoras..."
+msgstr "carregando a lista de eleitores..."
 
 #: heliosverifier/verify.html
 msgid "loaded voter list, now loading ballots for each.."
-msgstr "lista de pessoas eleitoras carregada. Carregando a cédula de cada uma.."
+msgstr "lista de eleitores carregada. Carregando a cédula de cada um.."
 
 #: heliosverifier/verify.html
 msgid "Ballots"
@@ -66,7 +66,7 @@ msgstr "Cédulas"
 
 #: heliosverifier/verify.html
 msgid "Voter #%(num)s"
-msgstr "Pessoa eleitora #%(num)s"
+msgstr "Eleitor #%(num)s"
 
 #: heliosverifier/verify.html
 msgid "-- UUID: %(uuid)s"
@@ -78,11 +78,11 @@ msgstr "-- Código de rastreamento da cédula: %(hash)s"
 
 #: heliosverifier/verify.html
 msgid "Question #%(q)s, Option #%(o)s -- %(result)s"
-msgstr "Pergunta #%(q)s, Opção #%(o)s -- %(result)s"
+msgstr "Questão #%(q)s, Opção #%(o)s -- %(result)s"
 
 #: heliosverifier/verify.html
 msgid "Question #%(q)s OVERALL -- %(result)s"
-msgstr "Pergunta #%(q)s, NO TOTAL -- %(result)s"
+msgstr "Questão #%(q)s, NO TOTAL -- %(result)s"
 
 #: heliosverifier/verify.html
 msgid "Trustees"
@@ -114,7 +114,7 @@ msgstr "Apuração"
 
 #: heliosverifier/verify.html
 msgid "Question #%(num)s: %(name)s"
-msgstr "Pergunta #%(num)s: %(name)s"
+msgstr "Questão #%(num)s: %(name)s"
 
 #: heliosverifier/verify.html
 msgid "Answer #%(num)s: %(answer)s - COUNT = %(count)s"
@@ -150,7 +150,7 @@ msgstr "Você pode entrar como pessoa eleitora cadastrada ou como pessoa adminis
 
 #: heliosverifier/verify.html
 msgid "Log in as a valid voter"
-msgstr "Entrar como pessoa eleitora cadastrada"
+msgstr "Entrar como eleitor cadastrado"
 
 #: heliosverifier/verify.html
 msgid "Log in as the election admin"

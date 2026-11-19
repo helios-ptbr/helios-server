@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "Esta cédula auditada foi publicada.\n"
 "Lembre-se: este voto será usado apenas para auditoria e não será apurado.\n"
-"Clique em \"voltar à votação\" e envie uma nova cédula para garantir que seu voto conte."
+"Clique em \"voltar à votação\" e deposite uma nova cédula para garantir que seu voto conte."
 
 #: heliosbooth/single-ballot-verify.html
 msgid "loading election..."
@@ -52,7 +52,10 @@ msgstr "carregando a eleição..."
 
 #: heliosbooth/single-ballot-verify.html
 msgid "\n\nIt looks like you are trying to verify a cast ballot. That can't be done, only audited ballots can be verified."
-msgstr "\n\nParece que você está tentando verificar uma cédula enviada. Isso não é possível: só dá para verificar cédulas auditadas."
+msgstr ""
+"\n"
+"\n"
+"Parece que você está tentando verificar uma cédula depositada. Isso não é possível: só dá para verificar cédulas auditadas."
 
 #: heliosbooth/single-ballot-verify.html
 msgid "SUCCESSFUL VERIFICATION, DONE!"
@@ -88,11 +91,12 @@ msgstr "Conteúdo da cédula:"
 
 #: heliosbooth/verifier.js
 msgid "WARNING: the tally type for this question is not homomorphic. Verification may fail because this verifier is only set up to handle homomorphic ballots."
-msgstr "AVISO: o tipo de apuração desta pergunta não é homomórfico. A verificação pode falhar, porque este verificador só trata cédulas homomórficas."
+msgstr ""
+"AVISO: o tipo de apuração desta questão não é homomórfico. A verificação pode falhar, porque este verificador só trata cédulas homomórficas."
 
 #: heliosbooth/verifier.js
 msgid "Question #%(num)s - %(name)s : %(answers)s"
-msgstr "Pergunta #%(num)s - %(name)s : %(answers)s"
+msgstr "Questão #%(num)s - %(name)s : %(answers)s"
 
 #: heliosbooth/verifier.js
 msgid "Encryption Verified"

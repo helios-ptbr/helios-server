@@ -9,10 +9,10 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 
 | Inglês | pt-BR | Situação | Observação |
 |---|---|---|---|
-| voter | pessoa eleitora | proposta | Plural: pessoas eleitoras. Em frase curta, "quem vota". |
-| voter list | lista de pessoas eleitoras | proposta | |
-| election administrator, admin | pessoa administradora | proposta | |
-| trustee | pessoa curadora | em uso | Quem guarda parte da chave secreta e ajuda a abrir a apuração. Decidido em 2026-11-18. Descartado: "fiscal", porque no Brasil é quem observa a votação (fiscal de partido) e não guarda chave, e porque se confundiria com "auditar" e "cédulas auditadas". Outras opções vistas: custodiante da chave, pessoa fiduciária, pessoa guardiã. |
+| voter | eleitor, eleitores | em uso | Decidido em 2026-11-19. Vale em todo lugar: rótulos, botões, menus, listas, contagens, avisos, ajuda dos formulários, e-mails, verificador e documentos. **"Pessoa eleitora"** fica só onde o texto fala com quem lê e precisaria de "eleitor(a)": "Você entrou como pessoa eleitora X", "que não é uma pessoa eleitora desta eleição" e, no verificador, "Você pode entrar como pessoa eleitora cadastrada". Antes disso valia "pessoa eleitora" em todo lugar. |
+| voter list | lista de eleitores | em uso | |
+| election administrator, admin | pessoa administradora | em uso | Só o item do menu da página da eleição diz "administradores" (decidido em 2026-11-19). |
+| trustee | pessoa curadora | em uso | Quem guarda parte da chave secreta e ajuda a abrir a apuração. Decidido em 2026-11-18. O item do menu da página da eleição e a página que ele abre dizem "curadoria" (2026-11-19); no resto fica "pessoa curadora". Descartado: "fiscal", porque no Brasil é quem observa a votação (fiscal de partido) e não guarda chave, e porque se confundiria com "auditar" e "cédulas auditadas". Outras opções vistas: custodiante da chave, pessoa fiduciária, pessoa guardiã. |
 | candidate | pessoa candidata | proposta | O Helios chama a opção de "answer"; veja abaixo. |
 | user | pessoa usuária | proposta | |
 
@@ -21,12 +21,12 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 | Inglês | pt-BR | Situação | Observação |
 |---|---|---|---|
 | election | eleição | em uso | Tipo "referendum" (campo `election_type`): **consulta**. Os dois são femininos, então "esta %(etype)s" e "%(etype)s privada" concordam. |
-| question | pergunta | em uso | |
+| question | questão | em uso | Decidido em 2026-11-19, como nos outros projetos em português do Helios. Só o título "Perguntas frequentes" (FAQ) fica como está. |
 | answer, choice, option | opção | proposta | Em "selections out of possible", usamos "seleções". |
 | ballot | cédula | em uso | |
 | vote (noun) | voto | em uso | |
 | to vote | votar | em uso | |
-| to cast a ballot | enviar a cédula | em uso | O botão e o texto que o cita usam a mesma palavra. |
+| to cast a ballot | depositar a cédula | em uso | Decidido em 2026-11-19, como nos outros projetos em português do Helios. O botão e os textos que o citam usam a mesma palavra ("DEPOSITAR esta cédula", "voto depositado", "cédulas depositadas"). "Enviar" fica para o que não é votar: enviar e-mail, enviar arquivo, "(3) Enviar" da cabine. |
 | voting booth | cabine de votação | em uso | |
 | ballot tracker, tracking number | código de rastreamento | em uso | Texto: "código de rastreamento da sua cédula". |
 | tracking center | centro de rastreamento | em uso | |
@@ -34,7 +34,7 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 | eligibility | elegibilidade | em uso | |
 | to tally | apurar | em uso | "tally" (noun): apuração. |
 | result | resultado | proposta | |
-| freeze ballot | congelar a urna | em uso | Texto: "congelar a urna e abrir a eleição". Aqui "ballot" é o conjunto da votação (perguntas e lista de pessoas eleitoras), não uma cédula. |
+| freeze ballot | congelar a urna | em uso | Texto: "congelar a urna e abrir a eleição". Aqui "ballot" é o conjunto da votação (perguntas e lista de eleitores), não uma cédula. |
 | ballot box | urna | proposta | O lugar onde ficam as cédulas cifradas. |
 | opt out (of emails) | deixar de receber e-mails | proposta | Botão: "Não quero receber e-mails". |
 
@@ -62,7 +62,8 @@ Situação: **em uso** (já aparece nas traduções), **proposta** (sugestão pa
 | Previous / Next | Anterior / Próximo | em uso | |
 | back to voting | voltar à votação | em uso | |
 | login, log in | login, fazer login | em uso | |
-| voter ID, username | login | em uso | Decidido em 2026-11-18, no lugar de "nome de acesso". Vale nos e-mails, na lista de pessoas eleitoras e nos formulários. |
+| voter ID | ID do eleitor | em uso | Decidido em 2026-11-19 (antes era "login"). Vale nos e-mails, na coluna da lista de eleitores, no formulário de votação e nos avisos. |
+| username (administração) | login | em uso | Só a tela de login por senha de quem administra. |
 | password | senha | em uso | |
 | email | e-mail | em uso | Com hífen. |
 

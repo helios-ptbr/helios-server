@@ -60,4 +60,8 @@ def faq(request):
 
 def privacy(request):
   return render_template(request, "privacy")
+
+def translation_page(request):
+  # fork pt-BR: página sobre a tradução (translation.pt-BR.html)
+  return render_template(request, "translation")
     

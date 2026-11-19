@@ -1,0 +1,93 @@
+{% extends 'server_ui/templates/base.html' %}
+{% block title %}{{ settings.SITE_TITLE }}{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<div class="large-12-columns">
+
+<div class="row"><h2>Tradução</h2></div>
+
+<div class="row">
+<p>O Helios que você está usando fala português do Brasil graças ao projeto
+<a href="https://github.com/helios-ptbr/helios-server">helios-ptbr</a>, um fork do
+<a href="https://github.com/benadida/helios-server">Helios de Ben Adida</a>. Esta
+é uma tradução <b>não oficial</b>: Ben Adida não a escreveu nem a revisou. O
+sistema de votação, a criptografia, a contagem dos votos e as regras da
+eleição são os do Helios.</p>
+</div>
+
+<div class="row">
+<h4>O que está traduzido</h4>
+<ul>
+<li>As telas de quem administra eleições e de quem vota, os formulários e as mensagens de erro.</li>
+<li>A cabine de votação e os dois verificadores (de uma cédula e da eleição inteira).</li>
+<li>Os e-mails enviados aos eleitores, às pessoas curadoras e a quem administra.</li>
+<li>As páginas <a href="/about">Sobre</a>, <a href="/faq">Perguntas frequentes</a>, <a href="/privacy">Privacidade</a> e <a href="/docs">Documentação</a>, com o aviso de tradução não oficial e o link para o original em inglês.</li>
+<li>O <a href="https://github.com/helios-ptbr/helios-server/blob/ptbr/docs/pt-BR/manual-do-usuario.md">manual do usuário</a>, com imagens da interface em português, e o guia <a href="https://github.com/helios-ptbr/helios-server/blob/ptbr/docs/pt-BR/como-o-helios-funciona.md">Como o Helios funciona</a>.</li>
+</ul>
+</div>
+
+<div class="row">
+<h4>Como a tradução é feita</h4>
+<ul>
+<li>O texto original em inglês continua no código. As traduções ficam em catálogos separados (arquivos <tt>.po</tt> na pasta <tt>locale</tt>). Em inglês, o Helios continua igual ao original.</li>
+<li>A cabine e os verificadores não escolhem o idioma pelo endereço. Cada idioma tem a sua página, gerada a partir do catálogo, com as mesmas peças de JavaScript do original.</li>
+<li>Testes automáticos procuram texto em inglês nas telas, falhas nos catálogos e termos que mudaram. Os testes de datas conferem o horário de votação nos fusos do Brasil.</li>
+<li>Como o inglês fica no código, dá para receber as novidades do Ben Adida sem refazer a tradução do zero.</li>
+</ul>
+</div>
+
+<div class="row">
+<h4>Vocabulário</h4>
+<table>
+<tr><th>Em inglês</th><th>Aqui</th></tr>
+<tr><td>voter</td><td>eleitor</td></tr>
+<tr><td>voter ID</td><td>ID do eleitor</td></tr>
+<tr><td>ballot</td><td>cédula</td></tr>
+<tr><td>to cast a ballot</td><td>depositar a cédula</td></tr>
+<tr><td>question</td><td>questão</td></tr>
+<tr><td>tally</td><td>apuração</td></tr>
+<tr><td>trustees</td><td>curadoria (cada integrante é uma pessoa curadora)</td></tr>
+<tr><td>election administrator</td><td>administrador (pessoa administradora)</td></tr>
+<tr><td>freeze ballot</td><td>congelar a urna</td></tr>
+</table>
+<p>O vocabulário completo, com o motivo de cada escolha, está no
+<a href="https://github.com/helios-ptbr/helios-server/blob/ptbr/docs/glossario.md">glossário</a>.
+Quando o texto fala com você e precisa de "eleitor(a)", usamos "pessoa eleitora".</p>
+</div>
+
+<div class="row">
+<h4>Quem nos ajudou</h4>
+<p>Antes de este projeto existir, outras instituições já usavam o Helios em
+português do Brasil. Estudamos o trabalho delas e adotamos parte do vocabulário
+(eleitor, cédula, depositar, questão e ID do eleitor). Obrigado a quem fez e
+manteve esses projetos:</p>
+<ul>
+<li><a href="https://github.com/shirlei/helios-server">shirlei/helios-server</a>: o catálogo de tradução assinado por Shirlei Chaves. Os outros quatro projetos usam o mesmo catálogo, com poucas mudanças. Traz também os manuais em português (pasta <tt>ajuda</tt>).</li>
+<li><a href="https://github.com/labsec/helios-server">labsec/helios-server</a>: Laboratório de Segurança em Computação da UFSC.</li>
+<li><a href="https://github.com/ifsc/helios-server">ifsc/helios-server</a>: Instituto Federal de Santa Catarina.</li>
+<li><a href="https://github.com/ufscar/helios-server">ufscar/helios-server</a>: Universidade Federal de São Carlos.</li>
+<li><a href="https://github.com/STI-UFMA/helios-server-main">STI-UFMA/helios-server-main</a>: Universidade Federal do Maranhão.</li>
+</ul>
+<p>Esses projetos trazem a tradução escrita direto nos arquivos de código. Nós
+mantemos o inglês original e a tradução em catálogos separados, e por isso o
+nosso trabalho é um complemento a eles, e não uma troca.</p>
+<p>E, claro, o <a href="https://github.com/benadida/helios-server">Helios</a>, de
+Ben Adida, e quem contribuiu com ele. O código é distribuído sob a licença
+Apache 2.0, a mesma do original.</p>
+</div>
+
+<div class="row">
+<h4>Encontrou um erro ou quer ajudar?</h4>
+<p>Abra uma <a href="https://github.com/helios-ptbr/helios-server/issues">issue</a>
+no projeto, dizendo em que tela está o texto e o que você sugere. O
+<a href="https://github.com/helios-ptbr/helios-server/blob/ptbr/docs/diario.md">diário do projeto</a>
+conta o que foi decidido e por quê.</p>
+</div>
+
+</div>
+
+{% endblock %}

@@ -78,7 +78,8 @@ msgstr "não será apurada"
 
 #: heliosbooth/templates/audit.html
 msgid "To cast a ballot, you must click the \"Back to Voting\" button below, re-encrypt it, and choose \"cast\" instead of \"audit.\""
-msgstr "Para enviar uma cédula, é preciso clicar no botão \"Voltar à votação\" abaixo, cifrá-la de novo e escolher \"enviar\" em vez de \"auditar.\""
+msgstr ""
+"Para depositar uma cédula, é preciso clicar no botão \"Voltar à votação\" abaixo, cifrá-la de novo e escolher \"depositar\" em vez de \"auditar.\""
 
 #: heliosbooth/templates/audit.html
 msgid "Why?"
@@ -86,7 +87,8 @@ msgstr "Por quê?"
 
 #: heliosbooth/templates/audit.html
 msgid "Helios prevents you from auditing and casting the same ballot to provide you with some protection against coercion."
-msgstr "O Helios impede que a mesma cédula seja auditada e enviada, para dar alguma proteção contra coerção."
+msgstr ""
+"O Helios impede que a mesma cédula seja auditada e depositada, para dar alguma proteção contra coerção."
 
 #: heliosbooth/templates/audit.html
 msgid "Now what?"
@@ -110,7 +112,8 @@ msgstr "para verificá-la."
 
 #: heliosbooth/templates/audit.html
 msgid "Once you're satisfied, click the \"back to voting\" button to re-encrypt and cast your ballot."
-msgstr "Quando tudo estiver certo, clique no botão \"voltar à votação\" para cifrar de novo e enviar sua cédula."
+msgstr ""
+"Quando tudo estiver certo, clique no botão \"voltar à votação\" para cifrar de novo e depositar sua cédula."
 
 #: heliosbooth/templates/audit.html
 msgid "Before going back to voting,"
@@ -122,7 +125,8 @@ msgstr "você pode publicar esta cédula auditada no centro de rastreamento do H
 
 #: heliosbooth/templates/audit.html
 msgid "Even if you post your audited ballot, you must go back to voting and choose \"cast\" if you want your vote to count."
-msgstr "Mesmo que você publique sua cédula auditada, é preciso voltar à votação e escolher \"enviar\" para que seu voto conte."
+msgstr ""
+"Mesmo que você publique sua cédula auditada, é preciso voltar à votação e escolher \"depositar\" para que seu voto conte."
 
 #: heliosbooth/templates/audit.html
 msgid "back to voting"
@@ -166,7 +170,7 @@ msgstr "Envie"
 
 #: heliosbooth/templates/election.html
 msgid "your encrypted ballot and authenticate to verify your eligibility."
-msgstr "a sua cédula cifrada e entre com o seu login para confirmar que você pode votar."
+msgstr "a sua cédula cifrada e entre para confirmar que você pode votar."
 
 #: heliosbooth/templates/election.html
 msgid "Start"
@@ -234,7 +238,7 @@ msgstr "Revise sua cédula"
 
 #: heliosbooth/templates/seal.html
 msgid "Question #"
-msgstr "Pergunta #"
+msgstr "Questão #"
 
 #: heliosbooth/templates/seal.html
 msgid "No choice selected"
@@ -270,7 +274,8 @@ msgstr "Se quiser, você pode anular esta cédula e revelar como suas escolhas f
 
 #: heliosbooth/templates/seal.html
 msgid "You will then be guided to re-encrypt your choices for final casting."
-msgstr "Em seguida, o sistema vai orientar você a cifrar suas escolhas de novo para o envio final."
+msgstr ""
+"Em seguida, o sistema vai orientar você a cifrar suas escolhas de novo para o depósito final."
 
 #: heliosbooth/templates/seal.html
 msgid "Spoil &amp; Audit"
@@ -298,7 +303,7 @@ msgstr "Segundo o arquivo de definição da eleição, esta cédula será enviad
 
 #: heliosbooth/templates/submit.html
 msgid "where you will log in to validate your eligibility to vote."
-msgstr "onde você entrará com o seu login para confirmar que pode votar."
+msgstr "onde você entrará para confirmar que pode votar."
 
 #: heliosbooth/single-ballot-verify.html
 msgid "Helios Voting System"

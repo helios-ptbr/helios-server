@@ -63,6 +63,10 @@
 	{% if not settings.MASTER_HELIOS %}
 	<li><a href="http://heliosvoting.org">{% translate "About Helios" %}</a></li>
 	{% endif %}
+	{% if LANGUAGE_CODE|slice:":2" != "en" %}
+	<li class="divider"></li>
+	<li><a href="/translation">{% translate "Translation" %}</a></li>
+	{% endif %}
       </ul>
       
       <ul>
