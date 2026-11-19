@@ -24,12 +24,16 @@ WORKDIR /app
 
 # instala as dependências antes do código, para o cache não se perder a cada mudança
 COPY pyproject.toml uv.lock ./
-RUN uv sync --frozen --no-dev --no-install-project
+# --compile-bytecode: a imagem final roda sem escrever em disco (PYTHONDONTWRITEBYTECODE), então os .pyc já vêm prontos
+RUN uv sync --frozen --no-dev --no-install-project --compile-bytecode
 
 COPY . .
 
 # o .mo não vai para o git: compila aqui. O compilemessages não usa banco de dados.
 RUN DJANGO_SETTINGS_MODULE=settings_ptbr /app/.venv/bin/python manage.py compilemessages
+
+# bytecode do código do Helios (o .venv já foi compilado pelo uv)
+RUN /app/.venv/bin/python -m compileall -q -x '/(\.venv|\.git)/' /app
 
 # ---- final ---------------------------------------------------------------
 FROM python:3.13-slim
@@ -47,12 +51,15 @@ COPY --from=build /app /app
 # settings_ptbr: Helios em português do Brasil. Quem quiser em inglês usa o repositório do Ben.
 ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
     DJANGO_SETTINGS_MODULE=settings_ptbr \
     PORT=8080
 
-# o Helios guarda os arquivos enviados no banco: o app nunca escreve em disco
-RUN useradd --system --no-create-home helios
-USER helios
+# o Helios guarda os arquivos enviados no banco: o app nunca escreve em disco (o compose roda com read_only)
+# UID e GID fixos (10001): permitem "runAsNonRoot" no Kubernetes, que só aceita usuário numérico
+RUN groupadd --system --gid 10001 helios \
+    && useradd --system --uid 10001 --gid 10001 --no-create-home helios
+USER 10001:10001
 
 EXPOSE 8080
 

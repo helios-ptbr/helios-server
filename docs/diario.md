@@ -353,3 +353,14 @@ Decisão final: a correção foi enviada ao Ben como [PR #568](https://github.co
 **Teste no Docker.** Com uma tarefa `election_notify_admin` e uma `voters_email` marcadas como `RUNNING` no banco, o `worker` reiniciou e escreveu `not requeued: ... voters_email` e `requeued 1 tasks`. A `notify_admin` foi refeita com sucesso, e a `voters_email` ficou como estava. O processo do `web` sobe com `--timeout 120`.
 
 **Não feito (de propósito).** Limites e reservas de memória: depois da correção do `iterator` (PR #568), com a issue de estudo. Também não medi o `combine_decryptions` numa eleição grande, e é por isso que o timeout subiu para 120 s sem a medição.
+
+
+## 24. Endurecimento do Docker e teste de CSV grande
+
+**Mudanças (itens 1 a 7 da análise).** `web`, `worker` e `migrate`: `read_only: true`, `tmpfs` em `/tmp` (`UPLOAD_TMP_SIZE`, 1 GiB), `cap_drop: ALL`, `no-new-privileges`. O `web` usa `--worker-tmp-dir /dev/shm`. A imagem usa `PYTHONDONTWRITEBYTECODE=1` (com `.pyc` prontos, via `--compile-bytecode` e `compileall`) e o usuário `10001:10001`. Redes `back` e `front`: o `caddy` só enxerga o `web`. O `caddy` só mantém `NET_BIND_SERVICE`. Versões fixas: `postgres:16.16-alpine`, `caddy:2.11.9-alpine`, `mailpit:v1.34.0`. A imagem passou de 318 MB para 341 MB (os `.pyc`).
+
+**Teste no Docker.** Os contêineres sobem com `ReadonlyRootfs=true`, `CapEff=0` e `User=10001`. O `web` não grava em `/app` e grava em `/tmp`. O `caddy` alcança o `web` e não o banco. A eleição do manual rodou inteira (criar, questões, CSV de eleitores, apuradores com chave no navegador, congelar, e-mail, votos na cabine, apuração, decifragem, resultado) com o mesmo resultado de antes: Machado 3, Graciliano 1, Cora 2, Clarice 1; Sim 3, Não 1. Sem erros de leitura somente nos logs.
+
+**CSV grande.** Tabela e leitura em `docs/docker.md` ("CSV grande de eleitores"). O gargalo é o processamento no `worker` (4,8 ms por eleitor com 100 mil, 8 min), não o envio nem a memória. `tools/imagens_manual/passo7.py` repete a medição.
+
+**Ficou de fora, por decisão sua:** CSP, digest das imagens, segredos em arquivo, log de acesso, limite de tentativas de login, cabeçalhos e limites do Caddy (itens 8 e 9). Fica em aberto: o que acontece se o `worker` reinicia no meio do processamento de um CSV gigante (o requeue refaz a tarefa; não testei se os eleitores já gravados atrapalham).

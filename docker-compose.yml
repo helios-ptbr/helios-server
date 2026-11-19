@@ -20,6 +20,18 @@ x-helios: &helios
   image: helios-ptbr:local
   env_file: .env
   restart: unless-stopped
+  # Endurecimento: o app nunca escreve em disco (os arquivos enviados vão para o banco), não precisa de privilégios e
+  # não ganha novos. O /tmp em memória guarda só os arquivos temporários do Django em envios grandes (acima de 2,5 MiB)
+  # e o do gunicorn. UPLOAD_TMP_SIZE limita esse espaço; ele conta na memória do contêiner.
+  read_only: true
+  tmpfs:
+    - /tmp:size=${UPLOAD_TMP_SIZE:-1g},mode=1777
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  networks:
+    - back
   environment: &helios-env
     DATABASE_URL: postgres://helios:${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}@db:5432/helios
     # o banco é uma rede interna do projeto: sem TLS entre web e db
@@ -41,8 +53,11 @@ x-helios: &helios
 
 services:
   db:
-    image: postgres:16-alpine
+    # versões fixas: uma atualização é uma mudança sua, e não um efeito do próximo "pull"
+    image: postgres:16.16-alpine
     restart: unless-stopped
+    networks:
+      - back
     environment:
       POSTGRES_USER: helios
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
@@ -66,7 +81,11 @@ services:
   web:
     <<: *helios
     # --timeout: o gunicorn mata a requisição que passa deste tempo (o padrão dele é 30 s)
-    command: ["sh", "-c", "exec gunicorn wsgi:application -b 0.0.0.0:8080 -w ${WEB_WORKERS:-4} --timeout ${GUNICORN_TIMEOUT:-120}"]
+    command: ["sh", "-c", "exec gunicorn wsgi:application -b 0.0.0.0:8080 -w ${WEB_WORKERS:-4} --timeout ${GUNICORN_TIMEOUT:-120} --worker-tmp-dir /dev/shm"]
+    # só o web fala com o caddy (rede front) e com o banco (rede back)
+    networks:
+      - back
+      - front
     healthcheck:
       test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 8080), 3)"]
       interval: 10s
@@ -84,8 +103,18 @@ services:
     stop_grace_period: 5m
 
   caddy:
-    image: caddy:2-alpine
+    image: caddy:2.11.9-alpine
     restart: unless-stopped
+    # o caddy só enxerga o web: não alcança o banco
+    networks:
+      - front
+    security_opt:
+      - no-new-privileges:true
+    # só precisa abrir as portas 80 e 443 dentro do contêiner
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
     depends_on:
       web:
         condition: service_healthy
@@ -109,11 +138,18 @@ services:
 
   mailpit:
     profiles: ["dev"]
-    image: axllent/mailpit
+    image: axllent/mailpit:v1.34.0
     restart: unless-stopped
+    networks:
+      - back
     ports:
       # só no próprio computador
       - "127.0.0.1:${MAILPIT_PORT:-8025}:8025"
+
+networks:
+  # back: banco, migrate, web, worker e mailpit. front: caddy e web.
+  back:
+  front:
 
 volumes:
   pgdata:
