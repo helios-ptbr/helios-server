@@ -10,9 +10,13 @@
 Este guia percorre uma eleição inteira: criar a eleição, incluir eleitores, abri-la, votar e publicar o resultado. A última parte é um guia para
 quem vota.
 
-As imagens vêm de uma eleição de teste, "Eleição da Diretoria do Clube Riverside
-2026", com três eleitores, e mostram a interface em português. Seu
-servidor pode oferecer outras opções de login e outro visual (logo e cores).
+As imagens vêm de uma eleição de exemplo, a "Eleição do Clube de Leitura 2026",
+e mostram a interface em português. Ela foi criada por Francisca, com Luiz como
+outro administrador, tem quatro eleitores (João da Silva, José dos Santos, Ana
+Maria Souza e Maria José Pereira) e uma curadoria com Paulo, Gabriel, Juliana e
+Antônia, além do Helios. As opções são autores brasileiros: Machado de Assis,
+Graciliano Ramos, Cora Coralina e Clarice Lispector. Seu servidor pode oferecer
+outras opções de login e outro visual (logo e cores).
 
 ## Parte 1: Administrar uma eleição
 
@@ -28,7 +32,7 @@ Entre no seu servidor Helios. Depois do login, a página inicial mostra
 Clique em **criar eleição** e preencha o formulário:
 
 - **Nome curto:** uma palavra, sem espaços. Ele passa a fazer parte do endereço
-  da eleição, por exemplo `/helios/e/diretoria-2026`.
+  da eleição, por exemplo `/helios/e/clube-leitura-2026`.
 - **Nome** e **Descrição:** o que os eleitores vão ver.
 - **Tipo:** Eleição ou Consulta.
 - **Usar apelidos de eleitores:** mostra as pessoas como "V12" e
@@ -76,9 +80,10 @@ e envie um arquivo CSV, com uma pessoa por linha. A maioria das eleições usa
 senhas do Helios:
 
 ```
-password,dana,dana@example.org,Dana Lee
-password,sam,sam@example.org,Sam Ortiz
-password,priya,priya@example.org,Priya Shah
+password,joao,joao@exemplo.org,João da Silva
+password,jose,jose@exemplo.org,José dos Santos
+password,ana,ana@exemplo.org,Ana Maria Souza
+password,maria,maria@exemplo.org,Maria José Pereira
 ```
 
 Os campos são: `password`, um ID do eleitor que você escolhe, o e-mail da pessoa e o
@@ -102,6 +107,10 @@ Helios é a única pessoa curadora e cuida disso por você, então você pode pu
 este passo.
 
 ![Página da curadoria](../images/manual/pt-BR/trustees.png)
+
+Na imagem, a curadoria tem o Helios e mais quatro pessoas (Paulo, Gabriel,
+Juliana e Antônia). Cada uma já enviou a chave pública, e a página mostra a
+impressão digital dela.
 
 Para ter mais proteção, inclua pessoas curadoras em **adicionar uma pessoa
 curadora** (nome e e-mail) e clique em **enviar o acesso** para mandar a cada
@@ -178,6 +187,16 @@ Agora todas as pessoas veem o resultado na página da eleição.
 
 ![O resultado publicado](../images/manual/pt-BR/results-public.png)
 
+### Outros administradores (opcional)
+
+Clique em **administradores** para ver quem administra a eleição. Quem criou a
+eleição não pode ser removida. Para dar a mais alguém o mesmo controle (eleitores,
+questões, curadoria e configurações), clique em **adicionar uma pessoa
+administradora** e digite o login dela. A pessoa precisa ter entrado no Helios
+pelo menos uma vez.
+
+![Administradores da eleição](../images/manual/pt-BR/admins.png)
+
 ## Parte 2: Guia para quem vota
 
 ### 1. Seu e-mail
@@ -185,14 +204,14 @@ Agora todas as pessoas veem o resultado na página da eleição.
 Você recebe um e-mail como este:
 
 ```
-Olá, Dana Lee,
+Olá, João da Silva,
 
 A votação está aberta até sexta-feira, às 17h.
 
 Endereço da eleição (clique para começar a votar):
-https://votacao.exemplo.org/helios/e/diretoria-2026/vote
+https://votacao.exemplo.org/helios/e/clube-leitura-2026/vote
 
-ID do eleitor: dana
+ID do eleitor: joao
 Sua senha: usyWtLo2yW
 ```
 

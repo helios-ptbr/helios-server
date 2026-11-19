@@ -113,6 +113,7 @@ Guia: `docs/docker.md`. Decisões:
 - #21 varredura de telas: feita (seção 13). Cobre eleição, site, login, opt-out, pessoa curadora e uma ferramenta que acha texto fora do catálogo nos templates.
 - #23 feita (seção 13): datas, plurais e números. Separador de milhar: mantido sem (decisão do usuário). Ordenação alfabética: fica como o banco ordena (não é tradução).
 - Pessoa curadora externa: testada de ponta a ponta no navegador, com a decifragem pela chave dela (seção 14).
+- O que falta para o Release está na seção 18 (fases A a G).
 
 ## 12. Páginas longas e plurais (issues #21 e #23)
 
@@ -266,3 +267,40 @@ Decisão do usuário, ponto a ponto, depois de ver a lista completa do que mudar
 **Imagens do manual** refeitas de novo (21 imagens), agora com o menu "questões / eleitores e cédulas / curadoria / administradores", "ID do eleitor", "depositar", a barra de cima com "Tradução" e sem barra de rolagem.
 
 **Ficou aberto:** a página que o item `administradores` abre ainda se chama "Pessoas administradoras de X".
+
+## 18. Fases que faltam (2026-11-19)
+
+Lista para revisar com o usuário. A ordem é a de hoje, e cada fase pode mudar de lugar.
+
+| Fase | O que é | Situação |
+|---|---|---|
+| A | **Imagens dos tutoriais.** Feita em parte: o exemplo agora usa nomes brasileiros (seção 19). O **formato** das imagens (capturas inteiras da tela) continua o mesmo, e o usuário pode pedir outro depois. | Em revisão |
+| B | **Documentação do repositório.** O repositório quase não tem documentação própria. Decidir entre a wiki do GitHub (fica fora do código, sem PR) e `docs/` com GitHub Pages (entra em PR e acompanha o código). Os manuais `ajuda` e `ajuda-gestor` dos outros projetos em português (mkdocs, licença Apache-2.0) podem servir de base. | A decidir |
+| C | **Termos em aberto.** A página do item `administradores` ainda se chama "Pessoas administradoras de X". "Apurador" (usado pelos outros projetos e pela UFU) foi considerado, e ficou "pessoa curadora" e "curadoria". | A decidir |
+| D | **Revisão do `/privacy`** por quem responde pela política de privacidade da instituição. | Aguarda a revisão |
+| E | **PR da correção da apuração (`iterator`)** para o Ben: Issue já aberta, falta a branch a partir da `ben-master`, o teste e a nova medição (923 MiB, antes 15,5 GiB). | A fazer |
+| F | **Docker:** requeue das tarefas presas ao subir o `worker`, `GUNICORN_TIMEOUT`, `stop_grace_period` maior e limites de memória (estes só depois do PR da fase E). | A fazer |
+| G | **Antes do Release:** religar o CI automático, atualizar as versões das actions e fazer o merge com o Ben (`docs/atualizar-upstream.md`). | Por último |
+
+Itens do Helios que não são tradução e ficaram só registrados (código do Ben): envio depois do fim da votação sem aviso, data de fim antes do início aceita, login repetido ou com espaço no CSV, página 404 com `lang="en"` e a senha de quem administra guardada em texto. A #17 (idioma do e-mail por eleição) é função nova e fica para depois.
+
+## 19. Exemplo do tutorial com nomes brasileiros (2026-11-19)
+
+As 22 imagens de `docs/images/manual/pt-BR/` e o texto do `docs/pt-BR/manual-do-usuario.md` passaram a usar um exemplo brasileiro, no lugar do "Riverside Club" do manual em inglês.
+
+| Parte | Exemplo |
+|---|---|
+| Eleição | "Eleição do Clube de Leitura 2026" (`clube-leitura-2026`), e-mail de ajuda `ajuda@exemplo.org` |
+| Questão 1 (de 0 a 2 opções) | "Quais autores vamos ler no próximo semestre?": Machado de Assis, Graciliano Ramos, Cora Coralina, Clarice Lispector (só autores falecidos) |
+| Questão 2 (Sim ou Não) | "Aprovar a compra de livros para a biblioteca do clube?" |
+| Eleitores | João da Silva, José dos Santos, Ana Maria Souza, Maria José Pereira |
+| Administração | Francisca (criou a eleição) e Luiz (outro administrador) |
+| Curadoria | Helios, Paulo, Gabriel, Juliana e Antônia (as quatro geraram a chave e decifraram, de verdade) |
+| Votos | João: Machado e Clarice, Sim. José: Machado e Cora, Sim. Ana: Machado, Não. Maria José: Graciliano e Cora, Sim |
+| Resultado | Machado 3, Cora 2, Graciliano 1, Clarice 1; Sim 3, Não 1 |
+
+- Novo: a imagem e uma seção "Outros administradores (opcional)" no manual, com a tela de administradores.
+- A curadoria do exemplo tem quatro pessoas de verdade, então a apuração só termina depois que as quatro decifram.
+- Os scripts que fazem as imagens ficam em `tools/imagens_manual/` (com `LEIAME.md`). Eles precisam de Chrome com CDP e da instância Docker; não rodam nos testes.
+- Os e-mails do exemplo usam `exemplo.org`. O domínio não é um dos reservados para exemplos (`example.org` é), e só serve de ilustração.
+

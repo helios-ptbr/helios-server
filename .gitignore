@@ -17,3 +17,6 @@ certificados/*
 !certificados/README.md
 personalizacao/*
 !personalizacao/README.md
+
+# imagens do manual: arquivos de trabalho (têm chaves secretas de teste)
+tools/imagens_manual/*.json
