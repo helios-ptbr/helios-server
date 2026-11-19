@@ -459,11 +459,11 @@ msgstr "Cancelar"
 #: helios/templates/election_admins.html:4
 #, python-format
 msgid "Administrators for %(name)s"
-msgstr "Pessoas administradoras de %(name)s"
+msgstr "Administradores de %(name)s"
 
 #: helios/templates/election_admins.html:7
 msgid "Administrators"
-msgstr "Pessoas administradoras"
+msgstr "Administradores"
 
 #: helios/templates/election_admins.html:7
 #: helios/templates/election_audited_ballots.html:7

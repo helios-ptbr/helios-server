@@ -225,7 +225,8 @@ class PtBrAdminPagesTests(WebTest):
     def test_admins_page(self):
         r = self.get(reverse('election@admins', args=[self.election.uuid]))
         self.assertEqual(r.status_code, 200)
-        self.assertContains(r, 'Pessoas administradoras')
+        self.assertContains(r, '&mdash; Administradores')
+        self.assertNotContains(r, 'Pessoas administradoras de')
         self.assertContains(r, 'adicionar uma pessoa administradora')
         self.assertNotContains(r, 'add an administrator')
 

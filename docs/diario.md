@@ -245,7 +245,7 @@ Decisão do usuário, ponto a ponto, depois de ver a lista completa do que mudar
 - **Arquivos gerados:** `heliosverifier/js/strings.pt-BR.js` foi refeito com `python3 tools/po2js.py pt_BR --po locale/pt_BR/LC_MESSAGES/verifier.po --out heliosverifier/js/strings.pt-BR.js`.
 - **Testes:** `helios/test_ptbr.py` confere o menu ("eleitores e cédulas", "curadoria (") e as contagens ("1 eleitor", "2 eleitores").
 - **Imagens do manual:** as 20 imagens foram refeitas com os novos nomes (mesma eleição da seção 15). O manual ganhou "Clique em **curadoria**" no passo 5.
-- **Ficou aberto:** a página que o item `administradores` abre ainda se chama "Pessoas administradoras de X". Se quiser combinar com o menu, vira "Administradores de X".
+- **Resolvido na Fase C (seção 18):** a página do item `administradores` agora se chama "Administradores de X".
 
 
 ## 17. Vocabulário dos outros projetos e página "Tradução" (2026-11-19)
@@ -276,7 +276,7 @@ Lista para revisar com o usuário. A ordem é a de hoje, e cada fase pode mudar 
 |---|---|---|
 | A | **Imagens dos tutoriais.** Feita em parte: o exemplo agora usa nomes brasileiros (seção 19). O **formato** das imagens (capturas inteiras da tela) continua o mesmo, e o usuário pode pedir outro depois. | Em revisão |
 | B | **Documentação do repositório.** O repositório quase não tem documentação própria. Decidir entre a wiki do GitHub (fica fora do código, sem PR) e `docs/` com GitHub Pages (entra em PR e acompanha o código). Os manuais `ajuda` e `ajuda-gestor` dos outros projetos em português (mkdocs, licença Apache-2.0) podem servir de base. | A decidir |
-| C | **Termos em aberto.** A página do item `administradores` ainda se chama "Pessoas administradoras de X". "Apurador" (usado pelos outros projetos e pela UFU) foi considerado, e ficou "pessoa curadora" e "curadoria". | A decidir |
+| C | **Termos.** Feita em 2026-11-19: a página do item `administradores` agora se chama "Administradores de X" (título e `<title>`). O resto dos textos de administração continua "pessoa administradora". "Apurador" (usado pelos outros projetos e pela UFU) foi considerado, e ficou "pessoa curadora" e "curadoria". | Feita |
 | D | **Revisão do `/privacy`** por quem responde pela política de privacidade da instituição. | Aguarda a revisão |
 | E | **PR da correção da apuração (`iterator`)** para o Ben: Issue já aberta, falta a branch a partir da `ben-master`, o teste e a nova medição (923 MiB, antes 15,5 GiB). | A fazer |
 | F | **Docker:** requeue das tarefas presas ao subir o `worker`, `GUNICORN_TIMEOUT`, `stop_grace_period` maior e limites de memória (estes só depois do PR da fase E). | A fazer |
