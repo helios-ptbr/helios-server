@@ -65,7 +65,8 @@ services:
 
   web:
     <<: *helios
-    command: ["sh", "-c", "exec gunicorn wsgi:application -b 0.0.0.0:8080 -w ${WEB_WORKERS:-4}"]
+    # --timeout: o gunicorn mata a requisição que passa deste tempo (o padrão dele é 30 s)
+    command: ["sh", "-c", "exec gunicorn wsgi:application -b 0.0.0.0:8080 -w ${WEB_WORKERS:-4} --timeout ${GUNICORN_TIMEOUT:-120}"]
     healthcheck:
       test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 8080), 3)"]
       interval: 10s
@@ -75,7 +76,10 @@ services:
 
   worker:
     <<: *helios
-    command: ["python", "manage.py", "db_worker", "--no-reload"]
+    # Ao subir, devolve à fila as tarefas que ficaram RUNNING porque o worker anterior morreu (OOM, queda, reinício
+    # além do stop_grace_period). SÓ É SEGURO COM UM ÚNICO WORKER: com dois, refaria a tarefa que o outro está rodando.
+    # Não refaz o envio de e-mails aos eleitores. O ";" faz o worker subir mesmo se o requeue falhar.
+    command: ["sh", "-c", "python manage.py requeue_stuck_tasks --older-than 0; exec python manage.py db_worker --no-reload"]
     # o db_worker termina a tarefa em andamento ao receber SIGTERM
     stop_grace_period: 5m
 

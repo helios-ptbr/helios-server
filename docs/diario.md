@@ -340,3 +340,16 @@ Decisão final: a correção foi enviada ao Ben como [PR #568](https://github.co
 **Fatos que os manuais registram.** O Helios não tem quórum: todos os apuradores precisam decifrar. Não tem voto branco nem nulo próprios: o branco é o "0 a n" sem marcar nada, e o nulo, se existir, é uma opção comum (A, B e Nulo numa questão 1 a 3 vale como voto para A, B e Nulo). Testado no Docker.
 
 **Troca de termo (decisão de 2026-11-19).** "Pessoa curadora" e "curadoria" viraram "apurador" e "apuradores" em `django.po` (47 textos), `verifier.po` (5), páginas fixas (FAQ, privacidade, Tradução), manual, "Como o Helios funciona", glossário, guia de estilo, testes e scripts das imagens. O menu da eleição diz `apuradores (n)`, e a página dele, "Apuradores de X". Este diário não foi reescrito: as seções anteriores falam em "curadoria" porque era o termo da época. As imagens do manual antigo ainda mostram "curadoria" e serão refeitas na fase das capturas.
+
+
+## 23. Fase F: requeue ao subir o `worker` e `GUNICORN_TIMEOUT`
+
+**Problema.** Se o `worker` morre no meio de uma tarefa (falta de memória, queda, reinício além do `stop_grace_period` de 5 minutos), a tarefa fica `RUNNING` para sempre e a eleição parece parada na apuração. O comando `requeue_stuck_tasks` do Ben resolve, mas só na mão e só para tarefas com mais de 120 minutos.
+
+**Mudanças (só no Docker, o código do Ben não mudou).**
+- `docker-compose.yml`, `worker`: roda `requeue_stuck_tasks --older-than 0` antes do `db_worker`. **Só é seguro com um único `worker`**, e isso está dito no compose e em `docs/docker.md` (seção "Tarefas presas e tempo limite").
+- `docker-compose.yml`, `web`: `--timeout ${GUNICORN_TIMEOUT:-120}` (o padrão do gunicorn é 30 s). Novo `GUNICORN_TIMEOUT` em `.env.example`.
+
+**Teste no Docker.** Com uma tarefa `election_notify_admin` e uma `voters_email` marcadas como `RUNNING` no banco, o `worker` reiniciou e escreveu `not requeued: ... voters_email` e `requeued 1 tasks`. A `notify_admin` foi refeita com sucesso, e a `voters_email` ficou como estava. O processo do `web` sobe com `--timeout 120`.
+
+**Não feito (de propósito).** Limites e reservas de memória: depois da correção do `iterator` (PR #568), com a issue de estudo. Também não medi o `combine_decryptions` numa eleição grande, e é por isso que o timeout subiu para 120 s sem a medição.

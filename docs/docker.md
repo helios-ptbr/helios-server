@@ -112,6 +112,24 @@ docker compose exec web python manage.py criar_administrador maria --nome "Maria
 
 O `down -v` apaga os volumes `pgdata` e `caddy_data`. Faça o backup antes.
 
+## Tarefas presas e tempo limite
+
+**Tarefas presas (requeue).** A apuração e os e-mails rodam no `worker`. Enquanto uma tarefa roda, o banco a marca como
+`RUNNING`. Se o `worker` morre no meio (falta de memória, queda do servidor, reinício que passa do `stop_grace_period` de 5
+minutos), a tarefa fica `RUNNING` para sempre e a eleição parece parada na apuração.
+
+Por isso o `worker` roda `python manage.py requeue_stuck_tasks --older-than 0` ao subir. O comando devolve à fila as
+tarefas `RUNNING` e a apuração recomeça do zero, com o mesmo resultado. Ele **não refaz** `voters_email` nem `voters_notify`,
+para não mandar o e-mail aos eleitores de novo.
+
+**Isso só funciona com um único `worker`.** Com dois ou mais, um `worker` que sobe refaria a tarefa que o outro está
+rodando. Não aumente o número de `worker` sem trocar esse comando (por exemplo, para `--older-than 120`, que só mexe em tarefa
+rodando há mais de duas horas). Para rodar o comando na mão: `docker compose exec worker python manage.py requeue_stuck_tasks --dry-run`.
+
+**Tempo limite do `web` (`GUNICORN_TIMEOUT`).** O gunicorn mata a requisição que passa de 30 segundos. Aqui o padrão é
+**120 segundos**, e o `.env` pode mudar isso com `GUNICORN_TIMEOUT`. Ele cobre as ações pesadas que rodam dentro da página, como
+combinar as decifragens de uma eleição grande.
+
 ## Segurança
 
 - O `.env` guarda os segredos e não vai para o git (`chmod 600` pelo `gerar-env.sh`). Guarde uma cópia em lugar seguro: perder a `SECRET_KEY` ou a `EMAIL_OPTOUT_SECRET` quebra links já enviados.
