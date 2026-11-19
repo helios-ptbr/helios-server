@@ -89,7 +89,7 @@ A randomização muda só a ordem das opções na cabine. **A apuração não mu
 
 - **Os apuradores não deixam a apuração mais lenta.** A decifragem leva cerca de 0,12 s por apurador, e não depende do número de eleitores nem de apuradores, porque ela age só sobre a soma já feita (uma por opção).
 - Dez apuradores somam cerca de 1,2 s no total.
-- Neste teste a decifragem roda no servidor (as chaves foram geradas aqui). Numa eleição real, a pessoa apuradora decifra **no navegador**, e o tempo dela não passa pelo servidor.
+- Neste teste a decifragem roda no servidor (as chaves foram geradas aqui). Numa eleição real, o apurador decifra **no navegador**, e o tempo dela não passa pelo servidor.
 - O pico de memória do `compute_tally` é o do "antes" (1.955 MiB com 10.000 eleitores) em todos os casos.
 
 ## 6. Administradores

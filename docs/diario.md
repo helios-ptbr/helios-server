@@ -331,3 +331,12 @@ A `/privacy` era a tradução do texto de heliosvoting.org, escrito como se "nó
 Decisão final: a correção foi enviada ao Ben como [PR #568](https://github.com/benadida/helios-server/pull/568). A `ptbr` **não** carrega a mudança: `Election.compute_tally` fica igual ao código do Ben (`ben-master`). Quando o PR for aceito, a correção volta pelo merge da `ben-master`, sem conflito. Até lá, a `ptbr` tem o consumo alto de memória na apuração.
 - Os marcadores `HELIOS-PTBR-INICIO/FIM` e o teste `helios/test_apuracao.py` foram removidos.
 - Medições antes e depois: `docs/relatorio-carga.md`. Com 50 mil eleitores o pico caiu de 9,5 GiB para 174 MiB, com resultado idêntico.
+
+
+## 22. Manuais em `docs/pt-BR/` e troca para "apurador"
+
+**Manuais novos.** A pasta `docs/pt-BR/` ganhou um `README.md` e uma pasta por papel: `gestor/`, `eleitor/`, `apurador/` e `fiscal/`, cada uma com o seu `README.md`. Os 16 estão escritos, sem capturas ainda: 6 do gestor, 3 do apurador, 4 do eleitor e 2 do fiscal. As imagens citadas nos textos (em `imagens/` de cada pasta) ainda não existem. Os arquivos do Ben em `docs/` ficam intactos, e o passo de conferir `docs/` na `ben-master` entrou em `docs/atualizar-upstream.md`.
+
+**Fatos que os manuais registram.** O Helios não tem quórum: todos os apuradores precisam decifrar. Não tem voto branco nem nulo próprios: o branco é o "0 a n" sem marcar nada, e o nulo, se existir, é uma opção comum (A, B e Nulo numa questão 1 a 3 vale como voto para A, B e Nulo). Testado no Docker.
+
+**Troca de termo (decisão de 2026-11-19).** "Pessoa curadora" e "curadoria" viraram "apurador" e "apuradores" em `django.po` (47 textos), `verifier.po` (5), páginas fixas (FAQ, privacidade, Tradução), manual, "Como o Helios funciona", glossário, guia de estilo, testes e scripts das imagens. O menu da eleição diz `apuradores (n)`, e a página dele, "Apuradores de X". Este diário não foi reescrito: as seções anteriores falam em "curadoria" porque era o termo da época. As imagens do manual antigo ainda mostram "curadoria" e serão refeitas na fase das capturas.

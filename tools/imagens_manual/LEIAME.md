@@ -20,12 +20,12 @@ done
 ## Ordem
 Rode da pasta `tools/imagens_manual`:
 
-1. `python3 passo1.py`: página inicial, nova eleição, questões, eleitores, curadoria e administradores.
-2. `python3 passo2.py`: cada pessoa da curadoria gera a chave e envia a chave pública (guarda as chaves secretas em `chaves_secretas.json`, que **não** deve ir para o git).
+1. `python3 passo1.py`: página inicial, nova eleição, questões, eleitores, apuradores e administradores.
+2. `python3 passo2.py`: cada pessoa dos apuradores gera a chave e envia a chave pública (guarda as chaves secretas em `chaves_secretas.json`, que **não** deve ir para o git).
 3. `python3 passo3.py`: congela, envia o e-mail e vota na cabine com os quatro eleitores.
-4. `python3 passo4.py`: apuração, decifragem pela curadoria, resultado e páginas públicas.
+4. `python3 passo4.py`: apuração, decifragem pelos apuradores, resultado e páginas públicas.
 
-Cada passo leva de 1 a 2 minutos. Os arquivos `manual.json`, `trustees.json`, `links_curadoria.json`, `senhas.json` e
+Cada passo leva de 1 a 2 minutos. Os arquivos `manual.json`, `trustees.json`, `links_apuradores.json`, `senhas.json` e
 `chaves_secretas.json` ficam na pasta de onde você rodar (não os versione).
 
 Os textos que os scripts clicam ("Adicionar a questão", "Próximo", "Congelar", "Enviar") são os da interface em pt-BR.

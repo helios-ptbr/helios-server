@@ -48,8 +48,8 @@ class PtBrRenderTests(WebTest):
         self.assertContains(r, 'lang="pt-br"')
         # menu da página da eleição (decisão de 2026-11-19)
         self.assertContains(r, 'eleitores e cédulas')
-        self.assertContains(r, 'curadoria (')
-        self.assertNotContains(r, 'pessoas curadoras (')
+        self.assertContains(r, 'apuradores (')
+        self.assertNotContains(r, 'curadoria (')
         self.assertNotContains(r, 'Audit Info')
 
     def test_election_view_stays_in_english_by_default(self):
@@ -135,13 +135,13 @@ class PtBrAdminPagesTests(WebTest):
         self.assertGreaterEqual(self.scan(urls), 5)
 
     def test_no_english_catalog_text_in_trustee_pages(self):
-        """A pessoa curadora entra pelo link do e-mail; varre início, gerador de chave, conferir chave e decifrar."""
+        """O apurador entra pelo link do e-mail; varre início, gerador de chave, conferir chave e decifrar."""
         trustee, _ = models.Trustee.objects.get_or_create(
             election=self.election, email='fulana@example.com',
             defaults={'uuid': 'trustee-varredura', 'name': 'Fulana', 'secret': 'segredo', 'public_key_hash': 'HASH'})
         login = reverse('trustee@login', args=[self.election.short_name, trustee.email, trustee.secret])
         self.client.logout()
-        self.get(login)  # grava a sessão da pessoa curadora
+        self.get(login)  # grava a sessão do apurador
         base = '/helios/elections/%s/trustees/%s/' % (self.election.uuid, trustee.uuid)
         urls = [base + 'home', base + 'keygenerator', base + 'check-sk', base + 'decrypt-and-prove']
         self.assertGreaterEqual(self.scan(urls), 3)
@@ -231,8 +231,8 @@ class PtBrAdminPagesTests(WebTest):
     def test_trustees_page(self):
         r = self.get(reverse('election@trustees@view', args=[self.election.uuid]))
         self.assertEqual(r.status_code, 200)
-        self.assertContains(r, '&mdash; Curadoria')
-        self.assertContains(r, 'As pessoas curadoras são responsáveis')
+        self.assertContains(r, '&mdash; Apuradores')
+        self.assertContains(r, 'Os apuradores são responsáveis')
         self.assertNotContains(r, 'Trustees are responsible')
 
     def test_trustees_page_in_english(self):
@@ -337,7 +337,7 @@ class PtBrOptOutTests(WebTest):
 
 @unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
 class PtBrTrusteePagesTests(WebTest):
-    """As telas da pessoa curadora têm JavaScript com textos: o Django traduz tudo no servidor."""
+    """As telas do apurador têm JavaScript com textos: o Django traduz tudo no servidor."""
     fixtures = ['users.json', 'election.json']
     allow_database_queries = True
 
@@ -382,7 +382,7 @@ class PtBrTrusteePagesTests(WebTest):
                 paginas[lang] = render_template(request, 'election_keygenerator',
                                                 {'election': election, 'trustee': trustee, 'eg_params_json': '{}'}).content.decode()
         self.assertIn('Gerar as chaves da eleição', paginas['pt-br'])
-        self.assertIn('Pessoa curadora Fulana', paginas['pt-br'])
+        self.assertIn('Apurador Fulana', paginas['pt-br'])
         self.assertNotIn('Generate Election Keys', paginas['pt-br'])
         self.assertIn('Generate Election Keys', paginas['en'])
         self.assertIn('Trustee Fulana', paginas['en'])
@@ -501,7 +501,7 @@ class PtBrBateriaDockerTests(WebTest):
 
 @unittest.skipUnless(os.path.exists(MO), "rode compilemessages antes (django.mo não existe)")
 class PtBrAvisosPorEmailTests(WebTest):
-    """E-mails de aviso para a administração e para a pessoa curadora (tasks.py e views.py)."""
+    """E-mails de aviso para a administração e para o apurador (tasks.py e views.py)."""
 
     def trad(self, fn, *args, lang='pt-br'):
         from django.utils import translation
@@ -516,7 +516,7 @@ class PtBrAvisosPorEmailTests(WebTest):
         self.assertIn('The encrypted tally for election X has been computed.',
                       self.trad(gettext, corpo, lang='en') % {'election': 'X'})
         self.assertEqual(self.trad(gettext, 'your trustee homepage for %(election)s') % {'election': 'X'},
-                         'a sua página de pessoa curadora de X')
+                         'a sua página de apurador de X')
 
     def test_plural_de_pessoas_criadas(self):
         from django.utils.translation import ngettext

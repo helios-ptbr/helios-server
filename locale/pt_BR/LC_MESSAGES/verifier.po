@@ -86,11 +86,11 @@ msgstr "Questão #%(q)s, NO TOTAL -- %(result)s"
 
 #: heliosverifier/verify.html
 msgid "Trustees"
-msgstr "Pessoas curadoras"
+msgstr "Apuradores"
 
 #: heliosverifier/verify.html
 msgid "Trustee #%(num)s: %(email)s"
-msgstr "Pessoa curadora #%(num)s: %(email)s"
+msgstr "Apurador #%(num)s: %(email)s"
 
 #: heliosverifier/verify.html
 msgid "-- PK %(hash)s -- VERIFIED."
@@ -98,7 +98,7 @@ msgstr "-- Chave pública %(hash)s -- VERIFICADA."
 
 #: heliosverifier/verify.html
 msgid "==== ERROR for PK of trustee %(email)s"
-msgstr "==== ERRO na chave pública da pessoa curadora %(email)s"
+msgstr "==== ERRO na chave pública do apurador %(email)s"
 
 #: heliosverifier/verify.html
 msgid "election public key CORRECTLY FORMED"
@@ -122,11 +122,11 @@ msgstr "Opção #%(num)s: %(answer)s - CONTAGEM = %(count)s"
 
 #: heliosverifier/verify.html
 msgid "-- Trustee %(email)s: decryption factor verifies"
-msgstr "-- Pessoa curadora %(email)s: o fator de decifragem confere"
+msgstr "-- Apurador %(email)s: o fator de decifragem confere"
 
 #: heliosverifier/verify.html
 msgid "==== ERROR with Trustee %(email)s: decryption factor does not verify"
-msgstr "==== ERRO com a pessoa curadora %(email)s: o fator de decifragem não confere"
+msgstr "==== ERRO com o apurador %(email)s: o fator de decifragem não confere"
 
 #: heliosverifier/verify.html
 msgid "FINAL RESULT"

@@ -10,8 +10,8 @@
 O Helios é um sistema de votação online em que as cédulas são cifradas no
 próprio dispositivo do eleitor, e em que qualquer pessoa autorizada a
 ver uma eleição pode conferir se ela foi apurada corretamente. Esta página
-explica o processo para quem administra a eleição, para quem vota e para as
-pessoas curadoras. Para o projeto técnico, veja a
+explica o processo para quem administra a eleição, para quem vota e para os
+apuradores. Para o projeto técnico, veja a
 [Arquitetura](../architecture.md) (em inglês).
 
 ## Quem participa
@@ -20,25 +20,25 @@ pessoas curadoras. Para o projeto técnico, veja a
   a lista de eleitores e fazem a apuração. Uma eleição pode ter mais de
   uma pessoa administradora.
 - **Eleitores** depositam cédulas cifradas.
-- **Pessoas curadoras** guardam as chaves necessárias para decifrar a apuração
-  final. Por padrão, o próprio Helios é a única pessoa curadora. Quem
-  administra pode incluir outras pessoas como curadoras.
+- **Apuradores** guardam as chaves necessárias para decifrar a apuração
+  final. Por padrão, o próprio Helios é o único apurador. Quem
+  administra pode incluir outros apuradores.
 - **Quem pode ver a eleição** pode conferir se cada cédula está bem formada e
   se o resultado corresponde às cédulas. Em uma eleição pública, isso vale
   para qualquer pessoa. Em uma eleição privada, para os eleitores,
-  administradoras e curadoras.
+  as pessoas administradoras e os apuradores.
 
 ## Os passos de uma eleição
 
 1. **Preparação.** Quem administra cria a eleição, escreve as questões e as
-   opções, inclui as pessoas curadoras, se houver, e envia a lista de eleitores. Cada questão pode permitir uma ou várias escolhas, com um mínimo
+   opções, inclui os apuradores, se houver, e envia a lista de eleitores. Cada questão pode permitir uma ou várias escolhas, com um mínimo
    e um máximo.
-2. **Chaves das pessoas curadoras.** Cada pessoa curadora incluída gera um par
+2. **Chaves dos apuradores.** Cada apurador incluído gera um par
    de chaves no navegador e guarda a parte secreta. Só a parte pública é
    enviada ao Helios. Essas chaves públicas são combinadas na chave de cifragem
    da eleição.
 3. **Congelamento.** Quem administra congela a eleição. A partir daí, as
-   questões, as pessoas curadoras e a chave de cifragem não mudam mais. As
+   questões, os apuradores e a chave de cifragem não mudam mais. As
    eleitores ainda podem ser incluídos ou removidos até o início da
    apuração. A votação abre na hora marcada, ou na mesma hora, se não houver
    horário.
@@ -47,12 +47,12 @@ pessoas curadoras. Para o projeto técnico, veja a
 5. **Apuração.** Quando a votação termina, quem administra inicia a apuração.
    O Helios soma todas as cédulas cifradas sem decifrar nenhuma, e obtém um
    total cifrado para cada opção.
-6. **Decifragem.** Cada pessoa curadora decifra a sua parte dos totais
-   cifrados, com uma prova de que fez isso corretamente. A pessoa curadora do
+6. **Decifragem.** Cada apurador decifra a sua parte dos totais
+   cifrados, com uma prova de que fez isso corretamente. O apurador do
    Helios faz isso automaticamente. As outras usam a chave secreta no
-   navegador. Todas as pessoas curadoras precisam participar: sem isso, os
+   navegador. Todos os apuradores precisam participar: sem isso, os
    totais não podem ser decifrados.
-7. **Resultados.** Quem administra combina as partes das pessoas curadoras para
+7. **Resultados.** Quem administra combina as partes dos apuradores para
    obter as contagens e depois as libera. Também pode avisar os eleitores por e-mail quando o resultado sair.
 
 ## Votação
@@ -88,17 +88,17 @@ pessoas curadoras. Para o projeto técnico, veja a
   publicar uma cédula auditada publica essas escolhas.
 - As cédulas nunca são decifradas uma a uma. Só os totais combinados são
   decifrados.
-- Decifrar qualquer coisa exige todas as pessoas curadoras. Quem consegue
-  decifrar depende, portanto, de quem são as pessoas curadoras:
-  - Se o Helios é a única pessoa curadora (o padrão), o servidor do Helios
+- Decifrar qualquer coisa exige todos os apuradores. Quem consegue
+  decifrar depende, portanto, de quem são os apuradores:
+  - Se o Helios é o único apurador (o padrão), o servidor do Helios
     guarda a chave inteira, e quem opera o servidor poderia, em princípio,
     decifrar cédulas individuais.
-  - Incluir pessoas curadoras independentes evita isso: nenhuma parte
+  - Incluir apuradores independentes evita isso: nenhuma parte
     isolada, nem o Helios, consegue decifrar sem as outras.
 - As eleições podem usar **apelidos para os eleitores**, de modo que a
   lista pública mostre `V1`, `V2`, ... no lugar dos nomes.
 - Uma eleição **privada** só pode ser vista pelos seus eleitores,
-  administradoras e curadoras.
+  as pessoas administradoras e os apuradores.
 
 ## Verificar uma eleição
 
@@ -108,10 +108,10 @@ Qualquer pessoa que possa ver a eleição pode conferir:
 - se cada cédula da lista está bem formada: ela cifra uma escolha válida para
   cada questão, o que as provas dentro da cédula mostram sem revelar a
   escolha;
-- se a chave de cada pessoa curadora é genuína e se a chave da eleição foi
+- se a chave de cada apurador é genuína e se a chave da eleição foi
   construída a partir delas;
 - se os totais cifrados são o produto das cédulas da lista;
-- se cada pessoa curadora decifrou os totais corretamente e se as contagens
+- se cada apurador decifrou os totais corretamente e se as contagens
   publicadas decorrem disso.
 
 O Helios inclui uma página de verificação que faz todas essas conferências no
@@ -133,9 +133,9 @@ corretamente. Elas não cobrem tudo:
 - **O dispositivo e a cabine de votação.** A cifragem acontece no navegador da
   pessoa. A auditoria de cédulas é a proteção contra uma cabine ou um
   dispositivo que altere votos.
-- **As pessoas curadoras.** O sigilo depende de as pessoas curadoras não se
+- **Os apuradores.** O sigilo depende de os apuradores não se
   combinarem para decifrar cédulas individuais. Isso inclui o Helios, quando
-  ele é uma pessoa curadora.
+  ele é um apurador.
 - **Coação.** Os eleitores podem ver e mostrar o próprio código de
   rastreamento e podem votar de novo, mas o Helios não tem nenhuma outra
   proteção contra pessoas pressionadas ou pagas para votar de certa forma.

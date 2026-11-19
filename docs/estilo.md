@@ -21,10 +21,10 @@ Os termos técnicos ficam no glossário (`docs/glossario.md`, issue #4).
   | candidato | pessoa candidata |
   | administrador | pessoa administradora |
   | usuário | pessoa usuária |
-  | curador (trustee) | pessoa curadora |
+  | trustee | apurador |
   | todos | todas as pessoas |
 
-- **Exceção, decidida em 2026-11-19:** para quem vota, use **"eleitor" e "eleitores"** em todo lugar. **"Pessoa eleitora"** só onde o texto fala com quem lê e precisaria de "eleitor(a)" ("Você entrou como pessoa eleitora X"). O item do menu da eleição que leva à página dos trustees diz "curadoria", e o que leva à página dos administradores diz "administradores". Os outros papéis seguem a regra da tabela acima.
+- **Exceção, decidida em 2026-11-19 (e "apurador" no lugar de "pessoa curadora", decidido em 2026-11-19):** para quem vota, use **"eleitor" e "eleitores"** em todo lugar. **"Pessoa eleitora"** só onde o texto fala com quem lê e precisaria de "eleitor(a)" ("Você entrou como pessoa eleitora X"). O item do menu da eleição que leva à página dos trustees diz "apuradores", e o que leva à página dos administradores diz "administradores". Os outros papéis seguem a regra da tabela acima.
 
 - Se "pessoa + papel" ficar pesado, reescreva a frase. Exemplos: "quem vota", "quem administra", "quem se candidata".
 - Fora a exceção de "eleitor" acima, evite o masculino genérico ("todos"). Não use "(a)", "@", "x" ou "e" para neutralizar.

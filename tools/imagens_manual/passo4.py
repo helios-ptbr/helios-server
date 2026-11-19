@@ -1,9 +1,9 @@
-"""Exemplo do tutorial (parte 4): apuração, decifragem pela curadoria, resultado, páginas públicas."""
+"""Exemplo do tutorial (parte 4): apuração, decifragem pelos apuradores, resultado, páginas públicas."""
 from h import *
 
 SHORT = 'clube-leitura-2026'
 u = json.load(open('manual.json'))['u']
-links = json.load(open('links_curadoria.json'))
+links = json.load(open('links_apuradores.json'))
 chaves = json.load(open('chaves_secretas.json'))
 
 a = alice('francisca@exemplo.org')
@@ -16,7 +16,7 @@ time.sleep(4)
 for _ in range(40):
     time.sleep(3)
     a.ir(f'{B}/helios/elections/{u}/view', 0.3)
-    if 'curadoria' in a.vis(0, 3000) and 'Próximo passo: curadoria' in a.vis(0, 3000):
+    if 'apuradores' in a.vis(0, 3000) and 'Próximo passo: apuradores' in a.vis(0, 3000):
         break
 p('próximo:', re.search(r'Próximo passo: [^.]{0,80}', a.vis(0, 3000)).group(0))
 a.fechar()

@@ -183,12 +183,12 @@ msgstr "adicionar questões à urna"
 
 #: helios/models.py:454
 msgid "add at least one trustee"
-msgstr "adicionar pelo menos uma pessoa curadora"
+msgstr "adicionar pelo menos um apurador"
 
 #: helios/models.py:461
 #, python-format
 msgid "have trustee %(name)s generate a keypair"
-msgstr "pedir que a pessoa curadora %(name)s gere um par de chaves"
+msgstr "pedir que o apurador %(name)s gere um par de chaves"
 
 #: helios/models.py:467
 msgid "enter your voter list (or open registration to the public)"
@@ -368,9 +368,9 @@ msgid ""
 "saved. Check that every trustee's partial decryption is for the current "
 "tally."
 msgstr ""
-"As decifragens parciais das pessoas curadoras não decifram a apuração, então "
-"nenhum resultado foi salvo. Confira se a decifragem parcial de cada pessoa "
-"curadora é da apuração atual."
+"As decifragens parciais dos apuradores não decifram a apuração, então "
+"nenhum resultado foi salvo. Confira se a decifragem parcial de cada "
+"apurador é da apuração atual."
 
 #: helios/templates/combine_decryptions.html:16
 msgid ""
@@ -413,7 +413,9 @@ msgid ""
 "the same privileges as you, including the ability to manage voters, "
 "questions, trustees, and other settings."
 msgstr ""
-"Adicione outra pessoa administradora a esta eleição. Ela terá os mesmos privilégios que você, incluindo gerenciar eleitores, questões, pessoas curadoras e outras configurações."
+"Adicione outra pessoa administradora a esta eleição. Ela terá os mesmos "
+"privilégios que você, incluindo gerenciar eleitores, questões, apuradores "
+"e outras configurações."
 
 #: helios/templates/election_admin_add.html:39
 msgid ""
@@ -484,7 +486,8 @@ msgid ""
 "Administrators have full control over this election, including managing "
 "voters, questions, trustees, and settings."
 msgstr ""
-"As pessoas administradoras têm controle total desta eleição, incluindo gerenciar eleitores, questões, pessoas curadoras e configurações."
+"As pessoas administradoras têm controle total desta eleição, incluindo "
+"gerenciar eleitores, questões, apuradores e configurações."
 
 #: helios/templates/election_admins.html:14
 msgid "add an administrator"
@@ -777,7 +780,8 @@ msgid ""
 "Once an election is frozen, the questions, options, and trustees can no "
 "longer be modified."
 msgstr ""
-"Depois que uma eleição é congelada, as questões, as opções e as pessoas curadoras não podem mais ser alteradas."
+"Depois que uma eleição é congelada, as questões, as opções e os "
+"apuradores não podem mais ser alterados."
 
 #: helios/templates/election_freeze.html:12
 msgid ""
@@ -852,7 +856,7 @@ msgstr "Uma eleição gerenciada por você, a única pessoa administradora"
 
 #: helios/templates/election_new_2.html:57
 msgid "An election managed by multiple trustees"
-msgstr "Uma eleição gerenciada por várias pessoas curadoras"
+msgstr "Uma eleição gerenciada por vários apuradores"
 
 #: helios/templates/election_new_2.html:67
 msgid "Generate Election Keys"
@@ -860,7 +864,7 @@ msgstr "Gerar as chaves da eleição"
 
 #: helios/templates/election_new_2.html:70
 msgid "Trustees (up to 5)"
-msgstr "Pessoas curadoras (até 5)"
+msgstr "Apuradores (até 5)"
 
 #: helios/templates/election_new_2.html:79
 msgid "create"
@@ -1188,7 +1192,7 @@ msgstr "eleitores e cédulas"
 #: helios/templates/election_view.html:89
 #, python-format
 msgid "trustees (%(n)s)"
-msgstr "curadoria (%(n)s)"
+msgstr "apuradores (%(n)s)"
 
 #: helios/templates/election_view.html:92
 msgid "administrators"
@@ -1247,8 +1251,8 @@ msgid ""
 "The encrypted votes will be combined into an encrypted tally. Once this is "
 "done,<br /> trustees will be asked to provide their share of the decryption."
 msgstr ""
-"Os votos cifrados serão combinados em uma apuração cifrada. Depois disso,"
-"<br /> as pessoas curadoras serão chamadas a fornecer a sua parte da "
+"Os votos cifrados serão combinados em uma apuração cifrada. Depois "
+"disso,<br /> os apuradores serão chamados a fornecer a sua parte da "
 "decifragem."
 
 #: helios/templates/election_view.html:149
@@ -1269,7 +1273,7 @@ msgstr "calcular os resultados"
 
 #: helios/templates/election_view.html:159
 msgid "combine trustee decryptions and compute results"
-msgstr "combinar as decifragens das pessoas curadoras e calcular os resultados"
+msgstr "combinar as decifragens dos apuradores e calcular os resultados"
 
 #: helios/templates/election_view.html:163
 msgid "The result will be computed and shown to you, the administrator, only."
@@ -1283,13 +1287,13 @@ msgid ""
 "computed.<br /> Once you do this, the tally will visible to you, the "
 "administrator, only."
 msgstr ""
-"As partes da decifragem das pessoas curadoras serão combinadas e a apuração "
-"será calculada.<br /> Depois disso, a apuração ficará visível somente para "
+"As partes da decifragem dos apuradores serão combinadas e a apuração será "
+"calculada.<br /> Depois disso, a apuração ficará visível somente para "
 "você, a pessoa administradora."
 
 #: helios/templates/election_view.html:169
 msgid "trustees (for decryption)"
-msgstr "curadoria (para a decifragem)"
+msgstr "apuradores (para a decifragem)"
 
 #: helios/templates/election_view.html:190
 msgid "This election is complete."
@@ -1584,11 +1588,11 @@ msgstr ""
 #: helios/templates/list_trustees.html:4
 #, python-format
 msgid "Trustees for %(name)s"
-msgstr "Curadoria de %(name)s"
+msgstr "Apuradores de %(name)s"
 
 #: helios/templates/list_trustees.html:7
 msgid "Trustees"
-msgstr "Curadoria"
+msgstr "Apuradores"
 
 #: helios/templates/list_trustees.html:10
 msgid ""
@@ -1596,10 +1600,10 @@ msgid ""
 "trustee generates a keypair and submits the public portion to Helios.<br /> "
 "When it's time to decrypt, each trustee needs to provide their secret key."
 msgstr ""
-"As pessoas curadoras são responsáveis por decifrar o resultado da eleição."
-"<br /> Cada pessoa curadora gera um par de chaves e envia a parte pública ao "
-"Helios.<br /> Na hora de decifrar, cada pessoa curadora precisa informar a "
-"sua chave secreta."
+"Os apuradores são responsáveis por decifrar o resultado da eleição.<br /> "
+"Cada apurador gera um par de chaves e envia a parte pública ao Helios.<br "
+"/> Na hora de decifrar, cada apurador precisa informar a sua chave "
+"secreta."
 
 #: helios/templates/list_trustees.html:18
 msgid ""
@@ -1609,26 +1613,25 @@ msgid ""
 "However, we recommend you do this only if you have a solid understanding of "
 "the trustee's role."
 msgstr ""
-"O Helios é automaticamente a sua primeira pessoa curadora e cuida sozinho da "
-"geração do par de chaves e da decifragem.<br /> Você pode adicionar outras "
-"pessoas curadoras se quiser, e pode até remover o Helios.<br /> Mesmo assim, "
-"recomendamos fazer isso só se você entende bem o papel de uma pessoa "
-"curadora."
+"O Helios é automaticamente o seu primeiro apurador e cuida sozinho da "
+"geração do par de chaves e da decifragem.<br /> Você pode adicionar "
+"outros apuradores se quiser, e pode até remover o Helios.<br /> Mesmo "
+"assim, recomendamos fazer isso só se você entende bem o papel de um "
+"apurador."
 
 #: helios/templates/list_trustees.html:25
 msgid ""
 "Adding your own trustee requires a good bit more work to tally the election."
 msgstr ""
-"Adicionar uma pessoa curadora própria dá bem mais trabalho para apurar a "
-"eleição."
+"Adicionar um apurador próprio dá bem mais trabalho para apurar a eleição."
 
 #: helios/templates/list_trustees.html:25
 msgid ""
 "You will need to have trustees generate keypairs and safeguard their secret "
 "key."
 msgstr ""
-"Você precisará pedir que as pessoas curadoras gerem pares de chaves e "
-"guardem a chave secreta com segurança."
+"Você precisará pedir que os apuradores gerem pares de chaves e guardem a "
+"chave secreta com segurança."
 
 #: helios/templates/list_trustees.html:25
 msgid ""
@@ -1640,30 +1643,29 @@ msgstr ""
 
 #: helios/templates/list_trustees.html:25
 msgid "add a trustee"
-msgstr "adicionar uma pessoa curadora"
+msgstr "adicionar um apurador"
 
 #: helios/templates/list_trustees.html:31
 msgid "add Helios as a trustee"
-msgstr "adicionar o Helios como pessoa curadora"
+msgstr "adicionar o Helios como apurador"
 
 #: helios/templates/list_trustees.html:46
 #, python-format
 msgid "Trustee #%(n)s: %(name)s"
-msgstr "Pessoa curadora #%(n)s: %(name)s"
+msgstr "Apurador #%(n)s: %(name)s"
 
 #: helios/templates/list_trustees.html:49
 msgid "Are you sure you want to remove Helios as a trustee?"
-msgstr "Tem certeza de que quer remover o Helios como pessoa curadora?"
+msgstr "Tem certeza de que quer remover o Helios como apurador?"
 
 #: helios/templates/list_trustees.html:52
 msgid "Are you sure you want to remove this Trustee?"
-msgstr "Tem certeza de que quer remover esta pessoa curadora?"
+msgstr "Tem certeza de que quer remover este apurador?"
 
 #: helios/templates/list_trustees.html:53
 msgid "Are you sure you want to send this trustee his/her admin URL?"
 msgstr ""
-"Tem certeza de que quer enviar a esta pessoa curadora o endereço de acesso "
-"dela?"
+"Tem certeza de que quer enviar a este apurador o endereço de acesso dele?"
 
 #: helios/templates/list_trustees.html:53
 msgid "send login"
@@ -1680,15 +1682,15 @@ msgstr "Nenhuma chave pública enviada ainda."
 
 #: helios/templates/list_trustees.html:68
 msgid "tally recorded for this trustee."
-msgstr "apuração registrada para esta pessoa curadora."
+msgstr "apuração registrada para este apurador."
 
 #: helios/templates/list_trustees.html:70
 msgid "waiting for this trustee's tally"
-msgstr "aguardando a apuração desta pessoa curadora"
+msgstr "aguardando a apuração deste apurador"
 
 #: helios/templates/new_trustee.html:5
 msgid "New Trustee"
-msgstr "Nova pessoa curadora"
+msgstr "Novo apurador"
 
 #: helios/templates/new_trustee.html:13
 msgid "Name:"
@@ -1696,7 +1698,7 @@ msgstr "Nome:"
 
 #: helios/templates/new_trustee.html:16
 msgid "Add Trustee"
-msgstr "Adicionar pessoa curadora"
+msgstr "Adicionar apurador"
 
 #: helios/templates/nocookies.html:4
 msgid "Cookies are required for Helios use"
@@ -2197,7 +2199,7 @@ msgstr "Eleições como eleitor (%(n)s)"
 #: helios/templates/stats_user_search.html:60
 #, python-format
 msgid "Elections as Trustee (%(n)s)"
-msgstr "Eleições como pessoa curadora (%(n)s)"
+msgstr "Eleições como apurador (%(n)s)"
 
 #: helios/templates/stats_user_search.html:78
 #, python-format
@@ -2225,12 +2227,12 @@ msgstr "Ops, a sua chave está errada."
 msgid ""
 "%(election_name)s &mdash; Trustee %(trustee_name)s &mdash; Check Secret Key"
 msgstr ""
-"%(election_name)s &mdash; Pessoa curadora %(trustee_name)s &mdash; Conferir "
-"a chave secreta"
+"%(election_name)s &mdash; Apurador %(trustee_name)s &mdash; Conferir a "
+"chave secreta"
 
 #: helios/templates/trustee_check_sk.html:55
 msgid "back to trustee home"
-msgstr "voltar ao início da pessoa curadora"
+msgstr "voltar ao início do apurador"
 
 #: helios/templates/trustee_check_sk.html:58
 #, python-format
@@ -2261,12 +2263,12 @@ msgstr "a verificação falhou. Você provavelmente usou a chave errada."
 #, python-format
 msgid "Trustee %(trustee_name)s &mdash; Decrypt Result for %(election_name)s"
 msgstr ""
-"Pessoa curadora %(trustee_name)s &mdash; Decifrar o resultado de "
+"Apurador %(trustee_name)s &mdash; Decifrar o resultado de "
 "%(election_name)s"
 
 #: helios/templates/trustee_decrypt_and_prove.html:138
 msgid "Trustee:"
-msgstr "Pessoa curadora:"
+msgstr "Apurador:"
 
 #: helios/templates/trustee_decrypt_and_prove.html:140
 msgid "Encrypted Tally Fingerprint:"
@@ -2366,7 +2368,7 @@ msgstr "Erro: a sua chave secreta provavelmente está errada."
 #: helios/templates/trustee_home.html:5
 #, python-format
 msgid "Trustee %(name)s Home"
-msgstr "Página inicial da pessoa curadora %(name)s"
+msgstr "Página inicial do apurador %(name)s"
 
 #: helios/templates/trustee_home.html:9
 #, python-format
@@ -2403,8 +2405,8 @@ msgid ""
 "homepage link, which contains the credentials needed to get back here."
 msgstr ""
 "Depois que a apuração for calculada, volte aqui para informar a sua chave "
-"secreta e fazer a decifragem.<br /> Guarde o e-mail com o link da sua página "
-"de pessoa curadora: ele traz as credenciais necessárias para voltar aqui."
+"secreta e fazer a decifragem.<br /> Guarde o e-mail com o link da sua "
+"página de apurador: ele traz as credenciais necessárias para voltar aqui."
 
 #: helios/templates/voters_eligibility.html:4
 #, python-format
@@ -2760,8 +2762,8 @@ msgstr "não, quero enviar outro arquivo"
 #: helios/views.py:168 helios/views.py:634 helios/views.py:652
 msgid "the election is frozen, so trustee keys can no longer be changed"
 msgstr ""
-"a eleição está congelada, então as chaves das pessoas curadoras não podem "
-"mais ser alteradas"
+"a eleição está congelada, então as chaves dos apuradores não podem mais "
+"ser alteradas"
 
 #: helios/views.py:177
 msgid "only an administrator has elections to administer"
@@ -2773,7 +2775,7 @@ msgstr "só pessoas administradoras podem criar uma eleição"
 
 #: helios/views.py:428
 msgid "There is already a trustee with that email address for this election."
-msgstr "Já existe uma pessoa curadora com esse e-mail nesta eleição."
+msgstr "Já existe um apurador com esse e-mail nesta eleição."
 
 #: helios/views.py:488
 msgid "Please enter an email address."
@@ -3315,11 +3317,11 @@ msgstr "Não existe esse login."
 #: helios/templates/election_keygenerator.html
 #, python-format
 msgid "%(election_name)s &mdash; Trustee %(trustee_name)s &mdash; Key Setup"
-msgstr "%(election_name)s &mdash; Pessoa curadora %(trustee_name)s &mdash; Configuração da chave"
+msgstr "%(election_name)s &mdash; Apurador %(trustee_name)s &mdash; Configuração da chave"
 
 #: helios/templates/election_keygenerator.html
 msgid "As a trustee, it's time to set up your key for this election."
-msgstr "Como pessoa curadora, chegou a hora de configurar a sua chave para esta eleição."
+msgstr "Como apurador, chegou a hora de configurar a sua chave para esta eleição."
 
 #: helios/templates/election_keygenerator.html
 msgid "Please wait for the generator to load..."
@@ -3355,7 +3357,7 @@ msgstr "Mostrar a minha chave secreta"
 
 #: helios/templates/election_keygenerator.html
 msgid "Bellow is your trustee secret key content. Please copy its content and save it securely. <br> You can also click to dowload it to a file. And please don't lose it! Otherwise it will not be possible to decrypt the election tally.<br>"
-msgstr "Abaixo está o conteúdo da sua chave secreta de pessoa curadora. Copie esse conteúdo e guarde-o em lugar seguro. <br> Você também pode clicar para baixá-lo em um arquivo. E não perca a chave! Sem ela, não será possível decifrar a apuração da eleição.<br>"
+msgstr "Abaixo está o conteúdo da sua chave secreta de apurador. Copie esse conteúdo e guarde-o em lugar seguro. <br> Você também pode clicar para baixá-lo em um arquivo. E não perca a chave! Sem ela, não será possível decifrar a apuração da eleição.<br>"
 
 #: helios/templates/election_keygenerator.html
 msgid "download private key to a file"
@@ -3483,22 +3485,22 @@ msgstr "\n\nEssas pessoas precisam pedir a volta à lista de e-mails antes de en
 #: helios/tasks.py helios/views.py
 #, python-format
 msgid "\n\nYou are a trustee for %(election)s.\n\nYour trustee dashboard is at\n\n  %(url)s\n  \n--\nHelios  \n"
-msgstr "\n\nVocê é pessoa curadora da eleição %(election)s.\n\nO seu painel de pessoa curadora está em\n\n  %(url)s\n  \n--\nHelios  \n"
+msgstr "\n\nVocê é apurador da eleição %(election)s.\n\nO seu painel de apurador está em\n\n  %(url)s\n  \n--\nHelios  \n"
 
 #: helios/tasks.py helios/views.py
 #, python-format
 msgid "your trustee homepage for %(election)s"
-msgstr "a sua página de pessoa curadora de %(election)s"
+msgstr "a sua página de apurador de %(election)s"
 
 #: helios/tasks.py helios/views.py
 #, python-format
 msgid "%(election)s - trustee pk upload"
-msgstr "%(election)s - envio da chave pública da pessoa curadora"
+msgstr "%(election)s - envio da chave pública do apurador"
 
 #: helios/tasks.py helios/views.py
 #, python-format
 msgid "trustee %(name)s (%(email)s) uploaded a pk."
-msgstr "A pessoa curadora %(name)s (%(email)s) enviou a chave pública."
+msgstr "O apurador %(name)s (%(email)s) enviou a chave pública."
 
 #: helios/tasks.py helios/views.py
 #, python-format
@@ -3513,12 +3515,12 @@ msgstr "\nO seu voto foi removido por uma pessoa administradora da eleição.\n\
 #: helios/tasks.py helios/views.py
 #, python-format
 msgid "%(election)s - trustee partial decryption"
-msgstr "%(election)s - decifragem parcial da pessoa curadora"
+msgstr "%(election)s - decifragem parcial do apurador"
 
 #: helios/tasks.py helios/views.py
 #, python-format
 msgid "trustee %(name)s (%(email)s) did their partial decryption."
-msgstr "A pessoa curadora %(name)s (%(email)s) fez a sua decifragem parcial."
+msgstr "O apurador %(name)s (%(email)s) fez a sua decifragem parcial."
 
 #: helios/views.py
 msgid "No special characters allowed in the short name."

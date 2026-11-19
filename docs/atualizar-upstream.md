@@ -63,7 +63,17 @@ python3 -m unittest tools.test_booth_i18n
      `python3 tools/gen_booth_pages.py pt_BR`.
    - Rode os testes de novo e faça commit dos arquivos gerados.
 
-5. Envie:
+5. Veja se o Ben mudou a documentação dele. Os nossos manuais ficam em `docs/pt-BR/` e não
+   recebem as mudanças sozinhos:
+
+```
+git diff HEAD...ben-master -- docs
+```
+
+   Se mudou o `user-manual.md` ou o `how-helios-works.md`, leia a mudança e decida se ela
+   entra nos manuais de `docs/pt-BR/`. Se não houver diferença, nada a fazer.
+
+6. Envie:
 
 ```
 git push origin ptbr

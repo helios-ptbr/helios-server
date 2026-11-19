@@ -54,12 +54,12 @@ a.ir(f'{B}/helios/elections/{u}/voters/list', 1)
 p('lista:', re.search(r'processamento concluído[^.]*', a.vis(0, 1500)))
 foto(a, 'voters-list', cheia=True)
 
-# curadoria: o Helios mais quatro pessoas
+# apuradores: o Helios mais quatro pessoas
 a.ir(f'{B}/helios/elections/{u}/trustees/view', 1)
 foto(a, 'trustees-vazio', cheia=False)
 for nome, email in CUR:
     r = post(a, f'/helios/elections/{u}/trustees/view', f'/helios/elections/{u}/trustees/new', {'name': nome, 'email': email})
-    p('curadoria', nome, r[0])
+    p('apuradores', nome, r[0])
 a.ir(f'{B}/helios/elections/{u}/trustees/view', 1)
 html = a.js('document.documentElement.outerHTML')
 tus = re.findall(r'trustees/([0-9a-f-]{36})/sendurl', html)

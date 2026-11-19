@@ -11,7 +11,7 @@ Registro: `docs/relatorio-carga.md` (relatório final) e `tools/carga/resultados
 - Igualdade do resultado: `encrypted_tally` de `antes` e `depois` comparados.
 
 ## Matriz (não é o produto cartesiano, que daria milhares de execuções)
-Linha de base: 3 questões, 1 curador (Helios), 1 administrador, sem randomização, N=1000.
+Linha de base: 3 questões, 1 apurador (Helios), 1 administrador, sem randomização, N=1000.
 
 | Eixo | Valores | Fixos |
 |---|---|---|

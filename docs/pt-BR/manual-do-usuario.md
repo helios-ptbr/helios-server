@@ -13,7 +13,7 @@ quem vota.
 As imagens vêm de uma eleição de exemplo, a "Eleição do Clube de Leitura 2026",
 e mostram a interface em português. Ela foi criada por Francisca, com Luiz como
 outro administrador, tem quatro eleitores (João da Silva, José dos Santos, Ana
-Maria Souza e Maria José Pereira) e uma curadoria com Paulo, Gabriel, Juliana e
+Maria Souza e Maria José Pereira) e quatro apuradores: Paulo, Gabriel, Juliana e
 Antônia, além do Helios. As opções são autores brasileiros: Machado de Assis,
 Graciliano Ramos, Cora Coralina e Clarice Lispector. Seu servidor pode oferecer
 outras opções de login e outro visual (logo e cores).
@@ -100,35 +100,34 @@ remover pessoas até calcular a apuração, mesmo com a votação aberta.
 
 ![A lista de eleitores](../images/manual/pt-BR/voters-list.png)
 
-### 5. Curadoria (opcional)
+### 5. Apuradores (opcional)
 
-Clique em **curadoria**. As pessoas curadoras guardam as chaves que decifram o resultado. Por padrão, o
-Helios é a única pessoa curadora e cuida disso por você, então você pode pular
+Clique em **apuradores**. Os apuradores guardam as chaves que decifram o resultado. Por padrão, o
+Helios é o único apurador e cuida disso por você, então você pode pular
 este passo.
 
-![Página da curadoria](../images/manual/pt-BR/trustees.png)
+![Página dos apuradores](../images/manual/pt-BR/trustees.png)
 
-Na imagem, a curadoria tem o Helios e mais quatro pessoas (Paulo, Gabriel,
-Juliana e Antônia). Cada uma já enviou a chave pública, e a página mostra a
-impressão digital dela.
+Na imagem, os apuradores são o Helios e mais quatro pessoas (Paulo, Gabriel,
+Juliana e Antônia). Cada um já enviou a chave pública, e a página mostra a
+impressão digital da chave.
 
-Para ter mais proteção, inclua pessoas curadoras em **adicionar uma pessoa
-curadora** (nome e e-mail) e clique em **enviar o acesso** para mandar a cada
-uma o seu link. Cada pessoa curadora abre o link, clica em **configurar a sua
+Para ter mais proteção, inclua apuradores em **adicionar um apurador** (nome e e-mail) e clique em **enviar o acesso** para mandar a cada
+um o seu link. Cada apurador abre o link, clica em **configurar a sua
 chave**, gera uma chave, guarda o arquivo da chave secreta em um lugar seguro e
-envia a chave pública. Você também pode remover a pessoa curadora do Helios,
-para que ninguém consiga decifrar o resultado sem as suas pessoas curadoras.
+envia a chave pública. Você também pode remover o apurador do Helios,
+para que ninguém consiga decifrar o resultado sem os seus apuradores.
 
-Você só consegue congelar a eleição quando todas as pessoas curadoras tiverem
-enviado a chave pública. Decifrar o resultado exige todas elas: se uma perder
+Você só consegue congelar a eleição quando todos os apuradores tiverem
+enviado a chave pública. Decifrar o resultado exige todos: se um perder
 a chave secreta, o resultado não pode ser decifrado.
 
 ### 6. Congele a eleição
 
-Quando a cédula e as pessoas curadoras estiverem prontas, clique em **congelar
+Quando a cédula e os apuradores estiverem prontos, clique em **congelar
 a urna e abrir a eleição** em Próximo passo e depois em **Congelar a urna**.
 
-Depois do congelamento, as questões, as opções e as pessoas curadoras não
+Depois do congelamento, as questões, as opções e os apuradores não
 mudam mais. Você ainda pode mudar a lista de eleitores. A votação abre
 na hora, ou no horário de início que você definiu.
 
@@ -165,14 +164,13 @@ votação: ninguém mais consegue depositar cédula.
 
 ![Calculando a apuração](../images/manual/pt-BR/compute-tally.png)
 
-O Helios soma as cédulas cifradas sem decifrar nenhuma. Se o Helios é pessoa
-curadora, ele decifra a sua parte automaticamente. As outras pessoas curadoras
+O Helios soma as cédulas cifradas sem decifrar nenhuma. Se o Helios é apurador, ele decifra a sua parte automaticamente. Os outros apuradores
 agora abrem o seu link, clicam em decifrar com a sua chave, digitam a chave
 secreta e enviam a decifragem parcial.
 
 ### 10. Calcule e libere o resultado
 
-Quando todas as pessoas curadoras tiverem decifrado, clique em **calcular os
+Quando todos os apuradores tiverem decifrado, clique em **calcular os
 resultados** em Próximo passo e depois em **calcular a apuração!**. O
 resultado agora aparece só para você.
 
@@ -191,7 +189,7 @@ Agora todas as pessoas veem o resultado na página da eleição.
 
 Clique em **administradores** para ver quem administra a eleição. Quem criou a
 eleição não pode ser removida. Para dar a mais alguém o mesmo controle (eleitores,
-questões, curadoria e configurações), clique em **adicionar uma pessoa
+questões, apuradores e configurações), clique em **adicionar uma pessoa
 administradora** e digite o login dela. A pessoa precisa ter entrado no Helios
 pelo menos uma vez.
 

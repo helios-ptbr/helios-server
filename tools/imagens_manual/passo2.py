@@ -1,4 +1,4 @@
-"""Exemplo do tutorial (parte 2): cada pessoa da curadoria gera a chave e envia a chave pública."""
+"""Exemplo do tutorial (parte 2): cada pessoa dos apuradores gera a chave e envia a chave pública."""
 from h import *
 
 u = json.load(open('manual.json'))['u']
@@ -21,7 +21,7 @@ for m in d['messages']:
         if 'clube-leitura-2026' in t:
             links[para] = re.search(r'https://\S+', t).group(0)
 p('links:', list(links))
-json.dump(links, open('links_curadoria.json', 'w'))
+json.dump(links, open('links_apuradores.json', 'w'))
 
 chaves = {}
 for email, link in links.items():
