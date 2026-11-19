@@ -277,7 +277,7 @@ Lista para revisar com o usuário. A ordem é a de hoje, e cada fase pode mudar 
 | A | **Imagens dos tutoriais.** Feita em parte: o exemplo agora usa nomes brasileiros (seção 19). O **formato** das imagens (capturas inteiras da tela) continua o mesmo, e o usuário pode pedir outro depois. | Em revisão |
 | B | **Documentação do repositório.** O repositório quase não tem documentação própria. Decidir entre a wiki do GitHub (fica fora do código, sem PR) e `docs/` com GitHub Pages (entra em PR e acompanha o código). Os manuais `ajuda` e `ajuda-gestor` dos outros projetos em português (mkdocs, licença Apache-2.0) podem servir de base. | A decidir |
 | C | **Termos.** Feita em 2026-11-19: a página do item `administradores` agora se chama "Administradores de X" (título e `<title>`). O resto dos textos de administração continua "pessoa administradora". "Apurador" (usado pelos outros projetos e pela UFU) foi considerado, e ficou "pessoa curadora" e "curadoria". | Feita |
-| D | **Revisão do `/privacy`** por quem responde pela política de privacidade da instituição. | Aguarda a revisão |
+| D | **Página `/privacy`.** Feita em 2026-11-19 (seção 20): texto próprio, conferido com o código, e configurável por quem opera a instância. As regras de proteção de dados seguem o regramento da unidade; o que não for preenchido fica no texto padrão. Não há revisão jurídica do projeto: cada instituição confere o que vale para ela. | Feita |
 | E | **PR da correção da apuração (`iterator`)** para o Ben: Issue já aberta, falta a branch a partir da `ben-master`, o teste e a nova medição (923 MiB, antes 15,5 GiB). | A fazer |
 | F | **Docker:** requeue das tarefas presas ao subir o `worker`, `GUNICORN_TIMEOUT`, `stop_grace_period` maior e limites de memória (estes só depois do PR da fase E). | A fazer |
 | G | **Antes do Release:** religar o CI automático, atualizar as versões das actions e fazer o merge com o Ben (`docs/atualizar-upstream.md`). | Por último |
@@ -303,4 +303,25 @@ As 22 imagens de `docs/images/manual/pt-BR/` e o texto do `docs/pt-BR/manual-do-
 - A curadoria do exemplo tem quatro pessoas de verdade, então a apuração só termina depois que as quatro decifram.
 - Os scripts que fazem as imagens ficam em `tools/imagens_manual/` (com `LEIAME.md`). Eles precisam de Chrome com CDP e da instância Docker; não rodam nos testes.
 - Os e-mails do exemplo usam `exemplo.org`. O domínio não é um dos reservados para exemplos (`example.org` é), e só serve de ilustração.
+
+## 20. Página de privacidade (2026-11-19, fase D)
+
+A `/privacy` era a tradução do texto de heliosvoting.org, escrito como se "nós" fôssemos esse serviço. Conferimos cada frase com o código e achamos o que não batia:
+
+| Texto antigo | Realidade |
+|---|---|
+| "Não usamos rastreadores, exceto botões de compartilhar do Facebook e do Twitter" | Não existe nenhum botão desses nas telas. Saiu. |
+| "Para administrar, entre com Google, Facebook, Yahoo ou Twitter" | No Docker é login e senha, LDAP ou o que a instituição ligar. |
+| "Envie um e-mail para nós" (`help@heliosvoting.org`) | Era o endereço do Helios do Ben. |
+| "Os dados do voto (de onde, quando) podem ser fornecidos à administração" | Verdade em parte: o IP de cada cédula (`cast_ip`) fica no banco, mas nenhuma tela o mostra. |
+| Sem menção | A senha de votação fica guardada no banco, e não só um resumo, para poder ser reenviada. O e-mail de quem saiu da lista também fica guardado. |
+| "O Helios nunca tem acesso às suas credenciais nesses serviços" | Vale para Google e GitHub. No LDAP o Helios recebe usuário e senha só para conferir, e não os guarda (conferido em `ldapauth.py`). |
+
+**O que mudou.** `server_ui/templates/privacy.pt-BR.html` foi reescrito, com: quem é a controladora e o contato; uma tabela do que fica guardado, para quê e quem vê; as seções para quem vota e para quem administra (já corrigidas); segurança; finalidade, base legal e prazo; e os direitos do art. 18 da LGPD. O original em inglês (`privacy.html`) não mudou.
+
+**Configurável, sem decidir pelos outros.** O repositório não pertence a nenhuma instituição. Cada utilizador preenche, no `.env`, `PRIVACY_CONTROLADOR`, `PRIVACY_CONTATO_EMAIL`, `PRIVACY_ENCARREGADO`, `PRIVACY_ENCARREGADO_EMAIL`, `PRIVACY_BASE_LEGAL`, `PRIVACY_RETENCAO` e `PRIVACY_REGRAS_URL` (`settings_ptbr.py`, `.env.example`). Vazias, o texto padrão diz que as regras são as do regramento da unidade responsável. O contato cai no `HELP_EMAIL_ADDRESS` (menos o do Ben). Os valores são texto simples e saem escapados. Guia: `docs/privacidade.md`.
+
+**Testes:** `helios/test_ptbr.py` (página padrão, página preenchida, HTML escapado, nada de Facebook, Twitter ou Yahoo) e `tools/test_settings_ptbr.py` (variáveis).
+
+**Limite:** o texto descreve o sistema e não é aconselhamento jurídico. Base legal, prazo e encarregado ficam com quem opera.
 

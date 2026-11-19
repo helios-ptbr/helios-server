@@ -65,6 +65,22 @@ class SettingsPtbrTest(unittest.TestCase):
             if old is not None:
                 os.environ["WELCOME_MESSAGE"] = old
 
+    def test_privacidade_vazia_por_padrao(self):
+        s = self.load(self.BASE)
+        for nome in ("CONTROLADOR", "ENCARREGADO", "ENCARREGADO_EMAIL", "BASE_LEGAL", "RETENCAO", "REGRAS_URL", "CONTATO_EMAIL"):
+            self.assertEqual(getattr(s, "PRIVACY_" + nome), "")
+
+    def test_privacidade_le_o_ambiente(self):
+        import os
+        os.environ["PRIVACY_CONTROLADOR"] = "Universidade Exemplo"
+        os.environ["PRIVACY_RETENCAO"] = "cinco anos"
+        try:
+            s = self.load(self.BASE)
+        finally:
+            del os.environ["PRIVACY_CONTROLADOR"], os.environ["PRIVACY_RETENCAO"]
+        self.assertEqual(s.PRIVACY_CONTROLADOR, "Universidade Exemplo")
+        self.assertEqual(s.PRIVACY_RETENCAO, "cinco anos")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -155,9 +155,37 @@ class PtBrAdminPagesTests(WebTest):
         for url, (pt, en) in self.STATIC_PAGES.items():
             r = self.get(url)
             self.assertContains(r, pt, msg_prefix=url)
-            self.assertContains(r, 'Tradução não oficial', msg_prefix=url)
+            # /privacy é texto próprio do fork (descreve este código), com o próprio aviso
+            self.assertContains(r, 'Sobre este texto' if url == '/privacy' else 'Tradução não oficial', msg_prefix=url)
             self.assertContains(r, 'https://vote.heliosvoting.org' + url, msg_prefix=url)
             self.assertNotContains(r, en, msg_prefix=url)
+
+    def test_pagina_de_privacidade_padrao(self):
+        r = self.get('/privacy')
+        # sem variáveis PRIVACY_*: as regras são as do regramento da unidade
+        for t in ('regramento da unidade', 'Lei Geral de Proteção de Dados', 'Dados que ficam guardados',
+                  'Os seus direitos', 'Encarregado pelo tratamento de dados pessoais', 'ID do eleitor e senha de votação',
+                  'não só um resumo dela'):
+            self.assertContains(r, t)
+        # afirmações do texto antigo que o código não sustenta
+        for t in ('Facebook', 'Twitter', 'Yahoo', '>help@heliosvoting.org</a>'):
+            self.assertNotContains(r, t)
+
+    def test_pagina_de_privacidade_preenchida(self):
+        with override_settings(PRIVACY_CONTROLADOR='Universidade Exemplo', PRIVACY_CONTATO_EMAIL='privacidade@exemplo.br',
+                               PRIVACY_ENCARREGADO='Maria da Silva', PRIVACY_ENCARREGADO_EMAIL='dpo@exemplo.br',
+                               PRIVACY_BASE_LEGAL='execução de políticas públicas', PRIVACY_RETENCAO='cinco anos',
+                               PRIVACY_REGRAS_URL='https://exemplo.br/regras'):
+            r = self.get('/privacy')
+        for t in ('<b>Universidade Exemplo</b>', 'mailto:privacidade@exemplo.br', 'Maria da Silva', 'mailto:dpo@exemplo.br',
+                  'execução de políticas públicas', 'cinco anos', 'href="https://exemplo.br/regras"'):
+            self.assertContains(r, t)
+
+    def test_pagina_de_privacidade_escapa_html(self):
+        with override_settings(PRIVACY_CONTROLADOR='<script>x</script>'):
+            r = self.get('/privacy')
+        self.assertNotContains(r, '<script>x</script>')
+        self.assertContains(r, '&lt;script&gt;x&lt;/script&gt;')
 
     def test_pagina_traducao_e_link_no_topo(self):
         r = self.get('/translation')

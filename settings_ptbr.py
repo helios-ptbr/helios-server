@@ -32,3 +32,20 @@ MIDDLEWARE.insert(MIDDLEWARE.index(_session) + 1, _locale)
 # sem ela, o texto padrão do Ben ("This is the default message") sai em português.
 if not os.environ.get('WELCOME_MESSAGE'):
     WELCOME_MESSAGE = 'Esta é a mensagem padrão. Defina a variável de ambiente WELCOME_MESSAGE para trocá-la.'
+
+# Página /privacy: quem opera a instância preenche estas variáveis (veja docs/privacidade.md).
+# Vazias, a página usa o texto padrão: as regras são as do regramento da unidade responsável.
+def _privacy(var):
+    # como o get_from_env do settings.py: nos testes, o ambiente não vale
+    return '' if globals().get('TESTING') else os.environ.get(var, '')
+
+
+_ajuda = globals().get('HELP_EMAIL_ADDRESS', '')
+PRIVACY_CONTROLADOR = _privacy('PRIVACY_CONTROLADOR')            # nome da unidade (controladora dos dados)
+# contato: sem valor, usa o HELP_EMAIL_ADDRESS (menos o do Ben, que não é de ninguém daqui)
+PRIVACY_CONTATO_EMAIL = _privacy('PRIVACY_CONTATO_EMAIL') or ('' if _ajuda == 'help@heliosvoting.org' else _ajuda)
+PRIVACY_ENCARREGADO = _privacy('PRIVACY_ENCARREGADO')            # nome do encarregado (LGPD, art. 41)
+PRIVACY_ENCARREGADO_EMAIL = _privacy('PRIVACY_ENCARREGADO_EMAIL')
+PRIVACY_BASE_LEGAL = _privacy('PRIVACY_BASE_LEGAL')              # base legal (LGPD, art. 7º)
+PRIVACY_RETENCAO = _privacy('PRIVACY_RETENCAO')                  # por quanto tempo os dados ficam
+PRIVACY_REGRAS_URL = _privacy('PRIVACY_REGRAS_URL')              # endereço do regramento da unidade

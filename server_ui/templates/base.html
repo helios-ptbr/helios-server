@@ -63,7 +63,7 @@
 	{% if not settings.MASTER_HELIOS %}
 	<li><a href="http://heliosvoting.org">{% translate "About Helios" %}</a></li>
 	{% endif %}
-	{% if LANGUAGE_CODE|slice:":2" != "en" %}
+	{% if not settings.MASTER_HELIOS and LANGUAGE_CODE|slice:":2" != "en" %}
 	<li class="divider"></li>
 	<li><a href="/translation">{% translate "Translation" %}</a></li>
 	{% endif %}
@@ -74,6 +74,10 @@
 	{% if settings.MASTER_HELIOS %}
         <li class="divider"></li>
         <li class="active"><a href="/about">{% translate "About" %}</a></li>
+	{% if LANGUAGE_CODE|slice:":2" != "en" %}
+        <li class="divider"></li>
+        <li><a href="/translation">{% translate "Translation" %}</a></li>
+	{% endif %}
         <li class="divider"></li>
         <li><a target="_new" href="https://github.com/benadida/helios-server">{% translate "Code" %}</a></li>
         <li class="divider"></li>

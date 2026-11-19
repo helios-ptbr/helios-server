@@ -73,6 +73,10 @@ O nome vira o `COMPOSE_PROJECT_NAME`. Com ele, cada instância tem volumes (`hel
 
 A logo do rodapé funciona igual, com `FOOTER_LOGO_URL`. Esses arquivos não entram na imagem.
 
+## Página de privacidade
+
+A página `/privacy` vem com um texto padrão, que manda a pessoa ao regramento da unidade. Para pôr o nome da instituição, o contato, o encarregado, a base legal e o prazo de retenção, preencha as variáveis `PRIVACY_*` no `.env` e rode `docker compose up -d`. Detalhes em `docs/privacidade.md`.
+
 ## E-mail
 
 - Desenvolvimento: deixe `EMAIL_HOST` e `EMAIL_PORT` vazios no `.env` e use `--profile dev`.
