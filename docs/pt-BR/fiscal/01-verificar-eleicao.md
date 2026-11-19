@@ -27,7 +27,9 @@ Se qualquer etapa falhar, a tela mostra **PROBLEMA** ou **ERRO** na linha em que
 5. Espere. O navegador baixa uma cédula por eleitor, e isso leva mais tempo em eleições grandes.
 6. Leia o fim. O resultado certo é **ELEIÇÃO TOTALMENTE VERIFICADA -- SUCESSO!**
 
-![O verificador de eleição](imagens/verificador-eleicao.png)
+![O começo do verificador](imagens/verificador-eleicao-inicio.png)
+
+![O fim do verificador: resultado final](imagens/verificador-eleicao.png)
 
 ## O que olhar além do verificador
 

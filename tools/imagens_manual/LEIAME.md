@@ -30,3 +30,14 @@ Cada passo leva de 1 a 2 minutos. Os arquivos `manual.json`, `trustees.json`, `l
 
 Os textos que os scripts clicam ("Adicionar a questão", "Próximo", "Congelar", "Enviar") são os da interface em pt-BR.
 Se um deles mudar, o script para com um erro.
+
+## Capturas dos manuais por papel (`docs/pt-BR/<papel>/imagens/`)
+
+Rode depois dos passos 1 a 4, com `OUT_DIR=/caminho/da/pasta` para escolher onde as imagens caem (sem isso, elas vão para
+`docs/images/manual/pt-BR/`). Depois, copie cada imagem para a pasta do papel e use o Pillow para recortar a
+`verificador-eleicao.png` (a página é longa).
+
+5. `python3 passo5.py`: e-mails no Mailpit em tema claro (`mp-theme=light`) e o verificador da eleição inteira.
+6. `python3 passo6a.py`, `passo6b.py` e `passo6c.py`: uma eleição de demonstração (`clube-demo`) com um apurador, para as
+   telas de gerar a chave, de auditoria na cabine (anular e auditar, publicar), de cédulas auditadas, do verificador de
+   cédula única e da decifragem. O `demo.json` e o `trail.json` guardam a chave secreta de teste e a cédula auditada: não os versione.

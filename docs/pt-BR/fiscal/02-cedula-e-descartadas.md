@@ -12,13 +12,13 @@ Se a cabine tentasse trocar um voto, a auditoria pegaria o erro. Por isso, quant
 
 Você precisa de duas coisas: o **endereço da eleição** e as **informações de auditoria** da cédula.
 
-1. Abra o verificador de cédula única em `/helios/elections/single_ballot_verifier`, no endereço do seu servidor.
-2. Em **Digite o endereço (URL) da eleição**, cole o endereço da eleição. Você o encontra em **Informações de auditoria**, na página da eleição.
+1. Abra o verificador de cédula única. O jeito mais fácil é pelo link **verificador de cédula única** da página **Cédulas auditadas**. O endereço direto é `/booth/single-ballot-verify.pt-BR.html?election_url=/helios/elections/_UUID_`, no seu servidor, com o `_UUID_` da eleição.
+2. Em **Digite o endereço (URL) da eleição**, confira o endereço da eleição. Se você veio pelo link, ele já está preenchido.
 3. Em **Sua cédula**, cole as informações de auditoria. Elas vêm de um destes lugares:
    - da **sua própria auditoria**, na cabine;
    - da página **Cédulas auditadas** da eleição, que lista as cédulas que outras pessoas publicaram.
 4. Clique em **Verificar**.
-5. A resposta certa é **Cifragem verificada**. Se a tela mostrar **PROBLEMA = a cifragem não confere**, a cédula não foi cifrada como deveria.
+5. A resposta certa traz **a impressão digital da eleição confere com a cédula**, as escolhas da cédula, **Cifragem verificada**, **Provas conferem** e **VERIFICAÇÃO CONCLUÍDA COM SUCESSO!** Se a tela mostrar **PROBLEMA = a cifragem não confere**, a cédula não foi cifrada como deveria.
 
 ![O verificador de cédula única](imagens/verificador-cedula.png)
 

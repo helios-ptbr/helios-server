@@ -11,12 +11,15 @@ O navegador cifra a cédula com números aleatórios. Se você pedir uma **audit
 ## Passo a passo
 
 1. Preencha a cédula normalmente (veja o [manual 2](02-votar-e-depositar.md)).
-2. Na tela de revisão, procure **Anular e auditar**.
-3. Clique em **Anular e auditar**. A cabine mostra a sua **cédula auditada**: as suas escolhas, os números aleatórios usados e o texto cifrado.
-4. Copie as **informações de auditoria**.
-5. Abra o **verificador de cédula única** (veja o [manual do fiscal](../fiscal/02-cedula-e-descartadas.md)) e cole as informações. Se tudo bate, a tela diz **Cifragem verificada**.
-6. Se não bater, a tela diz **PROBLEMA = a cifragem não confere**. Avise a administração e não deposite essa cédula.
-7. Volte à cabine. Ela começa uma cédula nova, e você pode votar de verdade.
+2. Na tela de revisão, procure a caixa amarela **Anular e auditar [opcional]**.
+3. Clique no link **Anular e auditar**. A caixa abre e explica o que vai acontecer.
+4. Clique no botão **Anular e auditar**. A cabine mostra a **cédula auditada**: o aviso de que ela não será apurada, as suas escolhas, os números aleatórios usados e o texto cifrado.
+5. Clique em **Selecione as informações de auditoria da sua cédula** e copie o texto.
+6. Abra o **verificador de cédulas** (o link está na própria tela) e cole as informações. Veja o [manual do fiscal](../fiscal/02-cedula-e-descartadas.md). Se tudo bate, a tela diz **Cifragem verificada** e **VERIFICAÇÃO CONCLUÍDA COM SUCESSO!**
+7. Se não bater, a tela diz **PROBLEMA = a cifragem não confere**. Avise a administração e não deposite essa cédula.
+8. Volte à cabine. Ela começa uma cédula nova, e você pode votar de verdade.
+
+![A opção de anular e auditar](imagens/cabine-anular.png)
 
 ![Cédula auditada](imagens/cedula-auditada.png)
 

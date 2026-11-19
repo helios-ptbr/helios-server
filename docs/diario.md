@@ -335,7 +335,7 @@ Decisão final: a correção foi enviada ao Ben como [PR #568](https://github.co
 
 ## 22. Manuais em `docs/pt-BR/` e troca para "apurador"
 
-**Manuais novos.** A pasta `docs/pt-BR/` ganhou um `README.md` e uma pasta por papel: `gestor/`, `eleitor/`, `apurador/` e `fiscal/`, cada uma com o seu `README.md`. Os 16 estão escritos, sem capturas ainda: 6 do gestor, 3 do apurador, 4 do eleitor e 2 do fiscal. As imagens citadas nos textos (em `imagens/` de cada pasta) ainda não existem. Os arquivos do Ben em `docs/` ficam intactos, e o passo de conferir `docs/` na `ben-master` entrou em `docs/atualizar-upstream.md`.
+**Manuais novos.** A pasta `docs/pt-BR/` ganhou um `README.md` e uma pasta por papel: `gestor/`, `eleitor/`, `apurador/` e `fiscal/`, cada uma com o seu `README.md`. Os 15 estão escritos: 6 do gestor, 3 do apurador, 4 do eleitor e 2 do fiscal. As capturas ficam em `imagens/` de cada pasta (31 arquivos), feitas no Docker com o exemplo brasileiro, os e-mails no Mailpit em tema claro e as telas novas de apurador, auditoria e verificadores. Os scripts estão em `tools/imagens_manual/` (`passo5.py` e `passo6a` a `6c`). Achado: o link `/helios/elections/single_ballot_verifier` do Ben abre um template que não existe; o verificador de cédula única está em `/booth/single-ballot-verify.html` (e `.pt-BR.html`). Os arquivos do Ben em `docs/` ficam intactos, e o passo de conferir `docs/` na `ben-master` entrou em `docs/atualizar-upstream.md`.
 
 **Fatos que os manuais registram.** O Helios não tem quórum: todos os apuradores precisam decifrar. Não tem voto branco nem nulo próprios: o branco é o "0 a n" sem marcar nada, e o nulo, se existir, é uma opção comum (A, B e Nulo numa questão 1 a 3 vale como voto para A, B e Nulo). Testado no Docker.
 

@@ -16,6 +16,8 @@ https://votacao.exemplo.org/helios/e/clube-leitura-2026/vote
 
 ID do eleitor: joao
 Sua senha: usyWtLo2yW
+
+Confira a impressão digital da eleição, que aparece no rodapé da tela de votação: tJYAwXQ3Y5C4I...
 ```
 
 ![E-mail da eleição, aberto no Mailpit](imagens/email-eleitor.png)
@@ -24,6 +26,7 @@ O e-mail traz três coisas:
 - **O link da eleição.** Ele abre a cabine de votação.
 - **O seu ID do eleitor.**
 - **A sua senha.**
+- **A impressão digital da eleição.** Ela também aparece no rodapé da cabine. Compare as duas: se forem iguais, você está na eleição certa.
 
 **Guarde o e-mail até o fim da votação.** Você precisa do ID e da senha para depositar a cédula.
 

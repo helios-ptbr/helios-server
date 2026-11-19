@@ -6,7 +6,7 @@ import websocket
 
 B = 'https://localhost:8443'
 CDP = 'http://127.0.0.1:9222'
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'docs', 'images', 'manual', 'pt-BR')
+OUT = os.environ.get('OUT_DIR') or os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'docs', 'images', 'manual', 'pt-BR')
 
 
 class Aba:
