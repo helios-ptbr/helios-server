@@ -112,7 +112,7 @@ Guia: `docs/docker.md`. Decisões:
 - #17 idioma do e-mail por eleição (hoje vem do `LANGUAGE_CODE`).
 - #21 varredura de telas: feita (seção 13). Cobre eleição, site, login, opt-out, pessoa curadora e uma ferramenta que acha texto fora do catálogo nos templates.
 - #23 feita (seção 13): datas, plurais e números. Separador de milhar: mantido sem (decisão do usuário). Ordenação alfabética: fica como o banco ordena (não é tradução).
-- Pessoa curadora externa: gerar chave e enviar a chave pública já foi testado no navegador (seção 13). Falta testar a decifragem com a chave dela.
+- Pessoa curadora externa: testada de ponta a ponta no navegador, com a decifragem pela chave dela (seção 14).
 
 ## 12. Páginas longas e plurais (issues #21 e #23)
 
@@ -200,3 +200,19 @@ Foco só em tradução; nenhuma funcionalidade mudou. O inglês continua igual (
 **#23.** Datas e fusos, plurais e números estão feitos. O separador de milhar fica sem (decisão de 2026-11-18) e a ordenação alfabética é a do banco: não é texto traduzido.
 
 **#17 (idioma do e-mail por eleição) não entra agora.** Seria uma função nova (campo na eleição, migração e escolha na tela), e o foco é tradução.
+
+## 14. Pessoa curadora externa de ponta a ponta (2026-11-19)
+
+Teste no Chrome, no Docker (`DEBUG=1`, `AUTH_ENABLED_SYSTEMS=password`), na eleição `curadora-ext`: 1 pergunta com 3 opções, 3 pessoas eleitoras, o Helios e uma pessoa curadora externa (`curadora@example.com`).
+
+| Etapa | Resultado |
+|---|---|
+| Adicionar a pessoa curadora e "enviar o acesso" | O e-mail chega em pt-BR, com o link da página dela |
+| Gerar a chave, mostrar a chave secreta (2066 caracteres) e enviar a chave pública | OK. A impressão digital aparece na página dela e na da administração |
+| Congelar, e-mail de votação e 3 votos pela cabine (Azul, Verde, Verde) | OK |
+| Apuração cifrada | OK. A tela mostra "aguardando a apuração desta pessoa curadora" |
+| Conferir a chave secreta | Chave certa: "a sua chave secreta confere!". Chave com 5 caracteres trocados: "Ops, a sua chave está errada." |
+| Decifrar: passo 1 (no navegador) e passo 2 (enviar os fatores ao servidor) | OK, sem erro de JavaScript e sem janelas de aviso |
+| Combinar as decifragens e liberar | Azul 1, Verde 2, Vermelho 0, que é o que foi votado. "Esta eleição está concluída." |
+
+Os textos da tela de decifrar saíram todos em pt-BR, inclusive os dois passos e o aviso de deixar o navegador "offline" no primeiro passo. Nada novo para traduzir. A etapa de decifragem com chave externa, que faltava, está fechada.
