@@ -1907,8 +1907,8 @@ msgid ""
 "You are logged in as %(name)s (%(user_type)s), which is not a voter in this "
 "election."
 msgstr ""
-"Você entrou como %(name)s (%(user_type)s), que não é uma pessoa eleitora "
-"desta eleição."
+"Você entrou como %(name)s (%(user_type)s), que não é eleitor desta "
+"eleição."
 
 #: helios/templates/password_voter_login.html:26
 msgid "Or, if you were invited to vote with an account, log in with it:"
