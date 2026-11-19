@@ -325,3 +325,11 @@ A `/privacy` era a tradução do texto de heliosvoting.org, escrito como se "nó
 
 **Limite:** o texto descreve o sistema e não é aconselhamento jurídico. Base legal, prazo e encarregado ficam com quem opera.
 
+
+## 21. Apuração em lotes (`iterator`) no `ptbr`
+
+Sem PR para o Ben. A mudança entra direto na `ptbr`, em `Election.compute_tally` (`helios/models.py`):
+- O código original do Ben ficou como comentário, logo acima.
+- O nosso código fica entre `HELIOS-PTBR-INICIO` e `HELIOS-PTBR-FIM`, com a referência à Issue (apuração com 15,5 GiB). Esses marcadores ajudam a achar o trecho num merge com o upstream.
+- Teste: `helios/test_apuracao.py` (confere `.iterator(chunk_size=500)` e a soma).
+- Medições antes e depois: `docs/relatorio-carga.md`. Com 50 mil eleitores o pico caiu de 9,5 GiB para 174 MiB, com resultado idêntico.

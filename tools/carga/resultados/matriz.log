@@ -1,0 +1,128 @@
+n30000 antes pico_MiB 5723.9 wall_s 47.24 sha e5d56e58
+n30000 depois pico_MiB 174.7 wall_s 46.29 sha e5d56e58
+FIM {"cenario":"n30000","n":30000,"q":3,"opcoes":5} 15:13:04
+n50000 antes pico_MiB 9492.2 wall_s 79.83 sha 0db9a5f8
+n50000 depois pico_MiB 174.5 wall_s 78.17 sha 0db9a5f8
+FIM {"cenario":"n50000","n":50000,"q":3,"opcoes":5} 15:24:10
+q1_n1000 antes pico_MiB 135.3 wall_s 0.52 sha 63232792
+q1_n1000 depois pico_MiB 106.1 wall_s 0.53 sha 63232792
+FIM {"cenario":"q1_n1000","n":1000,"q":1,"opcoes":5} 15:24:31
+q2_n1000 antes pico_MiB 197.3 wall_s 1.04 sha 22d39ec4
+q2_n1000 depois pico_MiB 140.6 wall_s 1.1 sha 22d39ec4
+FIM {"cenario":"q2_n1000","n":1000,"q":2,"opcoes":5} 15:24:56
+q3_n1000 antes pico_MiB 259.9 wall_s 1.6 sha 16381215
+q3_n1000 depois pico_MiB 174.5 wall_s 1.64 sha 16381215
+FIM {"cenario":"q3_n1000","n":1000,"q":3,"opcoes":5} 15:25:26
+q4_n1000 antes pico_MiB 321.9 wall_s 2.12 sha 87deb7d6
+q4_n1000 depois pico_MiB 208.3 wall_s 2.15 sha 87deb7d6
+FIM {"cenario":"q4_n1000","n":1000,"q":4,"opcoes":5} 15:26:01
+q5_n1000 antes pico_MiB 383.3 wall_s 2.69 sha 267904a2
+q5_n1000 depois pico_MiB 242.5 wall_s 2.72 sha 267904a2
+FIM {"cenario":"q5_n1000","n":1000,"q":5,"opcoes":5} 15:26:46
+q1_n10000 antes pico_MiB 713.2 wall_s 5.29 sha 495ea7e3
+q1_n10000 depois pico_MiB 105.8 wall_s 5.14 sha 495ea7e3
+FIM {"cenario":"q1_n10000","n":10000,"q":1,"opcoes":5} 15:27:44
+q2_n10000 antes pico_MiB 1334.0 wall_s 10.53 sha c4fc7315
+q2_n10000 depois pico_MiB 140.7 wall_s 10.83 sha c4fc7315
+FIM {"cenario":"q2_n10000","n":10000,"q":2,"opcoes":5} 15:29:28
+q3_n10000 antes pico_MiB 1954.8 wall_s 15.78 sha 68f7a55a
+q3_n10000 depois pico_MiB 174.8 wall_s 15.34 sha 68f7a55a
+FIM {"cenario":"q3_n10000","n":10000,"q":3,"opcoes":5} 15:31:52
+q4_n10000 antes pico_MiB 2575.5 wall_s 22.38 sha af350529
+q4_n10000 depois pico_MiB 208.9 wall_s 20.54 sha af350529
+FIM {"cenario":"q4_n10000","n":10000,"q":4,"opcoes":5} 15:35:07
+q5_n10000 antes pico_MiB 3197.2 wall_s 26.51 sha e1643a91
+q5_n10000 depois pico_MiB 242.9 wall_s 25.3 sha e1643a91
+FIM {"cenario":"q5_n10000","n":10000,"q":5,"opcoes":5} 15:39:01
+ERRO ao gerar tipo_min0_max1_o2
+FIM {"cenario":"tipo_min0_max1_o2","n":1000,"q":3,"opcoes":2,"min":0,"max":"1"} 15:39:03
+ERRO ao gerar tipo_min0_max1_o5
+FIM {"cenario":"tipo_min0_max1_o5","n":1000,"q":3,"opcoes":5,"min":0,"max":"1"} 15:39:05
+ERRO ao gerar tipo_min0_max1_o18
+FIM {"cenario":"tipo_min0_max1_o18","n":1000,"q":3,"opcoes":18,"min":0,"max":"1"} 15:39:06
+tipo_min0_maxtodas_o2 antes pico_MiB 173.2 wall_s 0.82 sha d998a2ef
+tipo_min0_maxtodas_o2 depois pico_MiB 126.6 wall_s 0.86 sha d998a2ef
+FIM {"cenario":"tipo_min0_maxtodas_o2","n":1000,"q":3,"opcoes":2,"min":0,"max":"todas"} 15:39:30
+tipo_min0_maxtodas_o5 antes pico_MiB 304.8 wall_s 1.87 sha c583e099
+tipo_min0_maxtodas_o5 depois pico_MiB 199.2 wall_s 1.91 sha c583e099
+FIM {"cenario":"tipo_min0_maxtodas_o5","n":1000,"q":3,"opcoes":5,"min":0,"max":"todas"} 15:40:05
+tipo_min0_maxtodas_o18 antes pico_MiB 873.6 wall_s 6.64 sha 86a6fdc3
+tipo_min0_maxtodas_o18 depois pico_MiB 514.3 wall_s 6.56 sha 86a6fdc3
+FIM {"cenario":"tipo_min0_maxtodas_o18","n":1000,"q":3,"opcoes":18,"min":0,"max":"todas"} 15:41:41
+ERRO ao gerar tipo_min1_max1_o2
+FIM {"cenario":"tipo_min1_max1_o2","n":1000,"q":3,"opcoes":2,"min":1,"max":"1"} 15:41:43
+ERRO ao gerar tipo_min1_max1_o5
+FIM {"cenario":"tipo_min1_max1_o5","n":1000,"q":3,"opcoes":5,"min":1,"max":"1"} 15:41:44
+ERRO ao gerar tipo_min1_max1_o18
+FIM {"cenario":"tipo_min1_max1_o18","n":1000,"q":3,"opcoes":18,"min":1,"max":"1"} 15:41:46
+tipo_min1_maxtodas_o2 antes pico_MiB 162.3 wall_s 0.7 sha 47739bef
+tipo_min1_maxtodas_o2 depois pico_MiB 121.0 wall_s 0.69 sha 47739bef
+FIM {"cenario":"tipo_min1_maxtodas_o2","n":1000,"q":3,"opcoes":2,"min":1,"max":"todas"} 15:42:08
+tipo_min1_maxtodas_o5 antes pico_MiB 293.3 wall_s 1.63 sha 8949b768
+tipo_min1_maxtodas_o5 depois pico_MiB 193.1 wall_s 1.7 sha 8949b768
+FIM {"cenario":"tipo_min1_maxtodas_o5","n":1000,"q":3,"opcoes":5,"min":1,"max":"todas"} 15:42:40
+tipo_min1_maxtodas_o18 antes pico_MiB 862.8 wall_s 6.51 sha 15450cf7
+tipo_min1_maxtodas_o18 depois pico_MiB 508.0 wall_s 6.45 sha 15450cf7
+FIM {"cenario":"tipo_min1_maxtodas_o18","n":1000,"q":3,"opcoes":18,"min":1,"max":"todas"} 15:44:13
+rand_nenhuma antes pico_MiB 259.1 wall_s 1.59 sha 6161ffd2
+rand_nenhuma depois pico_MiB 174.7 wall_s 1.62 sha 6161ffd2
+FIM {"cenario":"rand_nenhuma","n":1000,"q":3,"opcoes":5,"rand":false} 15:44:44
+rand_eleicao antes pico_MiB 259.3 wall_s 1.59 sha 10abe386
+rand_eleicao depois pico_MiB 174.2 wall_s 1.61 sha 10abe386
+FIM {"cenario":"rand_eleicao","n":1000,"q":3,"opcoes":5,"rand":true} 15:45:14
+apur1_n1000 antes pico_MiB 259.3 wall_s 1.57 sha 95a3da44
+apur1_n1000 depois pico_MiB 174.5 wall_s 1.61 sha 95a3da44
+apur1_n1000 decifrar pico_MiB 259.0 wall_s 1.7 sha 
+FIM {"cenario":"apur1_n1000","n":1000,"q":3,"opcoes":5,"apuradores":1} 15:45:50
+apur2_n1000 antes pico_MiB 259.5 wall_s 1.6 sha 2e0789de
+apur2_n1000 depois pico_MiB 174.4 wall_s 1.63 sha 2e0789de
+apur2_n1000 decifrar pico_MiB 259.3 wall_s 1.83 sha 
+FIM {"cenario":"apur2_n1000","n":1000,"q":3,"opcoes":5,"apuradores":2} 15:46:27
+apur3_n1000 antes pico_MiB 259.6 wall_s 1.76 sha 31119cb8
+apur3_n1000 depois pico_MiB 174.5 wall_s 1.57 sha 31119cb8
+apur3_n1000 decifrar pico_MiB 259.4 wall_s 1.98 sha 
+FIM {"cenario":"apur3_n1000","n":1000,"q":3,"opcoes":5,"apuradores":3} 15:47:03
+apur5_n1000 antes pico_MiB 259.1 wall_s 1.53 sha cf09ac8e
+apur5_n1000 depois pico_MiB 174.6 wall_s 1.55 sha cf09ac8e
+apur5_n1000 decifrar pico_MiB 259.8 wall_s 2.14 sha 
+FIM {"cenario":"apur5_n1000","n":1000,"q":3,"opcoes":5,"apuradores":5} 15:47:39
+apur10_n1000 antes pico_MiB 259.0 wall_s 1.54 sha f3f096aa
+apur10_n1000 depois pico_MiB 174.4 wall_s 1.55 sha f3f096aa
+apur10_n1000 decifrar pico_MiB 259.7 wall_s 2.85 sha 
+FIM {"cenario":"apur10_n1000","n":1000,"q":3,"opcoes":5,"apuradores":10} 15:48:18
+apur1_n10000 antes pico_MiB 1954.7 wall_s 15.49 sha 8c8d273f
+apur1_n10000 depois pico_MiB 174.9 wall_s 15.09 sha 8c8d273f
+apur1_n10000 decifrar pico_MiB 1955.0 wall_s 15.79 sha 
+FIM {"cenario":"apur1_n10000","n":10000,"q":3,"opcoes":5,"apuradores":1} 15:50:59
+apur2_n10000 antes pico_MiB 1954.7 wall_s 15.64 sha dc9390c7
+apur2_n10000 depois pico_MiB 174.5 wall_s 15.45 sha dc9390c7
+apur2_n10000 decifrar pico_MiB 1954.6 wall_s 15.92 sha 
+FIM {"cenario":"apur2_n10000","n":10000,"q":3,"opcoes":5,"apuradores":2} 15:53:40
+apur3_n10000 antes pico_MiB 1955.0 wall_s 15.78 sha e21eabbd
+apur3_n10000 depois pico_MiB 174.3 wall_s 15.24 sha e21eabbd
+apur3_n10000 decifrar pico_MiB 1955.2 wall_s 15.99 sha 
+FIM {"cenario":"apur3_n10000","n":10000,"q":3,"opcoes":5,"apuradores":3} 15:56:24
+apur5_n10000 antes pico_MiB 1954.7 wall_s 16.35 sha 49be3ce0
+apur5_n10000 depois pico_MiB 174.3 wall_s 16.31 sha 49be3ce0
+apur5_n10000 decifrar pico_MiB 1955.3 wall_s 16.14 sha 
+FIM {"cenario":"apur5_n10000","n":10000,"q":3,"opcoes":5,"apuradores":5} 15:59:09
+apur10_n10000 antes pico_MiB 1954.7 wall_s 15.57 sha 27416a80
+apur10_n10000 depois pico_MiB 174.6 wall_s 15.33 sha 27416a80
+apur10_n10000 decifrar pico_MiB 1955.1 wall_s 16.72 sha 
+FIM {"cenario":"apur10_n10000","n":10000,"q":3,"opcoes":5,"apuradores":10} 16:01:52
+adm1_n1000 antes pico_MiB 259.3 wall_s 1.51 sha 74b151c7
+adm1_n1000 depois pico_MiB 174.7 wall_s 1.54 sha 74b151c7
+FIM {"cenario":"adm1_n1000","n":1000,"q":3,"opcoes":5,"admins":1} 16:02:22
+adm2_n1000 antes pico_MiB 259.8 wall_s 1.56 sha 405297de
+adm2_n1000 depois pico_MiB 174.6 wall_s 1.61 sha 405297de
+FIM {"cenario":"adm2_n1000","n":1000,"q":3,"opcoes":5,"admins":2} 16:02:52
+adm3_n1000 antes pico_MiB 259.7 wall_s 1.59 sha 0bfaef77
+adm3_n1000 depois pico_MiB 174.7 wall_s 1.61 sha 0bfaef77
+FIM {"cenario":"adm3_n1000","n":1000,"q":3,"opcoes":5,"admins":3} 16:03:22
+adm5_n1000 antes pico_MiB 259.0 wall_s 1.58 sha 6e411205
+adm5_n1000 depois pico_MiB 174.5 wall_s 1.59 sha 6e411205
+FIM {"cenario":"adm5_n1000","n":1000,"q":3,"opcoes":5,"admins":5} 16:03:52
+adm10_n1000 antes pico_MiB 259.7 wall_s 1.57 sha 089983dc
+adm10_n1000 depois pico_MiB 174.7 wall_s 1.61 sha 089983dc
+FIM {"cenario":"adm10_n1000","n":1000,"q":3,"opcoes":5,"admins":10} 16:04:22
+MATRIZ_COMPLETA

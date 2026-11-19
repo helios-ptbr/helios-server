@@ -1,0 +1,24 @@
+n10 antes pico_MiB 73.5 wall_s 0.02 sha 65757239
+n10 depois pico_MiB 73.3 wall_s 0.03 sha 65757239
+FIM n=10 14:48:25
+n100 antes pico_MiB 90.2 wall_s 0.14 sha ca6cfefa
+n100 depois pico_MiB 85.1 wall_s 0.15 sha ca6cfefa
+FIM n=100 14:48:41
+n500 antes pico_MiB 165.2 wall_s 0.7 sha 1cf51bdb
+n500 depois pico_MiB 140.2 wall_s 0.74 sha 1cf51bdb
+FIM n=500 14:49:05
+n1000 antes pico_MiB 259.5 wall_s 1.39 sha 1406a043
+n1000 depois pico_MiB 174.6 wall_s 1.44 sha 1406a043
+FIM n=1000 14:49:33
+n2000 antes pico_MiB 447.9 wall_s 3.17 sha b96658fd
+n2000 depois pico_MiB 174.7 wall_s 3.03 sha b96658fd
+FIM n=2000 14:50:13
+n5000 antes pico_MiB 1013.5 wall_s 7.55 sha c12b84ea
+n5000 depois pico_MiB 174.3 wall_s 7.43 sha c12b84ea
+FIM n=5000 14:51:30
+n10000 antes pico_MiB 1954.7 wall_s 15.0 sha 63529e6f
+n10000 depois pico_MiB 174.3 wall_s 14.65 sha 63529e6f
+FIM n=10000 14:53:48
+n20000 antes pico_MiB 3839.4 wall_s 30.55 sha f9e30faf
+n20000 depois pico_MiB 174.3 wall_s 29.27 sha f9e30faf
+FIM n=20000 14:58:06

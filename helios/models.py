@@ -512,8 +512,15 @@ class Election(HeliosModel):
     tally the election, assuming votes already verified
     """
     tally = self.init_tally()
-    for voter in self.voter_set.exclude(vote=None):
+    # Código original do Ben Adida (upstream), mantido aqui como referência para o merge:
+    #   for voter in self.voter_set.exclude(vote=None):
+    #     tally.add_vote(voter.vote, verify_p=False)
+    # Ele carrega todos os eleitores e cédulas na memória (15,5 GiB com 10 mil eleitores e 11 questões).
+    # HELIOS-PTBR-INICIO: apuração em lotes (issue "Apuração gasta 15,5 GiB de memória com 10 mil eleitores",
+    # repositório helios-ptbr/helios-server, label infra). Medições em docs/relatorio-carga.md.
+    for voter in self.voter_set.exclude(vote=None).iterator(chunk_size=500):
       tally.add_vote(voter.vote, verify_p=False)
+    # HELIOS-PTBR-FIM
 
     self.encrypted_tally = tally
     self.save()
