@@ -11,10 +11,9 @@ Este guia percorre uma eleição inteira: criar a eleição, incluir pessoas
 eleitoras, abri-la, votar e publicar o resultado. A última parte é um guia para
 quem vota.
 
-As imagens vêm de uma eleição de teste, "Riverside Club Board Election 2026",
-com três pessoas eleitoras. **As imagens estão na interface em inglês**, e os
-nomes de botões e campos no texto seguem a interface em português. Seu servidor
-pode oferecer outras opções de login.
+As imagens vêm de uma eleição de teste, "Eleição da Diretoria do Clube Riverside
+2026", com três pessoas eleitoras, e mostram a interface em português. Seu
+servidor pode oferecer outras opções de login e outro visual (logo e cores).
 
 ## Parte 1: Administrar uma eleição
 
@@ -23,7 +22,7 @@ pode oferecer outras opções de login.
 Entre no seu servidor Helios. Depois do login, a página inicial mostra
 **criar eleição**, além das eleições que você administra e das que você votou.
 
-![Página inicial depois do login](../images/manual/admin-home.png)
+![Página inicial depois do login](../images/manual/pt-BR/admin-home.png)
 
 ### 2. Crie a eleição
 
@@ -48,7 +47,7 @@ Clique em **criar eleição** e preencha o formulário:
 Clique em **Próximo**. Você chega à página da eleição, que sempre mostra o
 **Próximo passo**.
 
-![Formulário da nova eleição](../images/manual/new-election.png)
+![Formulário da nova eleição](../images/manual/pt-BR/new-election.png)
 
 ### 3. Inclua as perguntas
 
@@ -56,11 +55,11 @@ Clique em **perguntas**. Em cada pergunta, digite o texto, quantas opções a
 pessoa pode escolher ("Seleção: 0 a 2") e as opções. Clique em **Adicionar a
 pergunta**.
 
-![Incluindo uma pergunta](../images/manual/question-form.png)
+![Incluindo uma pergunta](../images/manual/pt-BR/question-form.png)
 
 Você pode editar, remover e reordenar as perguntas até congelar a eleição.
 
-![A cédula pronta](../images/manual/questions.png)
+![A cédula pronta](../images/manual/pt-BR/questions.png)
 
 ### 4. Inclua as pessoas eleitoras
 
@@ -71,7 +70,7 @@ Clique em **pessoas eleitoras e cédulas**. Primeiro escolha quem pode votar
 - **só as pessoas eleitoras listadas abaixo podem votar:** só as pessoas que
   você enviar.
 
-![Página das pessoas eleitoras](../images/manual/voters-empty.png)
+![Página das pessoas eleitoras](../images/manual/pt-BR/voters-empty.png)
 
 Para incluir pessoas eleitoras, clique em **enviar pessoas eleitoras em lote**
 e envie um arquivo CSV, com uma pessoa por linha. A maioria das eleições usa
@@ -90,12 +89,12 @@ nome de usuário, por exemplo `github,benadida`.
 
 Confira a prévia e clique em **Sim, pode seguir**.
 
-![Conferindo o envio](../images/manual/voters-confirm.png)
+![Conferindo o envio](../images/manual/pt-BR/voters-confirm.png)
 
 As pessoas eleitoras agora aparecem na lista. Você pode enviar mais arquivos e
 remover pessoas até calcular a apuração, mesmo com a votação aberta.
 
-![A lista de pessoas eleitoras](../images/manual/voters-list.png)
+![A lista de pessoas eleitoras](../images/manual/pt-BR/voters-list.png)
 
 ### 5. Pessoas curadoras (opcional)
 
@@ -103,7 +102,7 @@ As pessoas curadoras guardam as chaves que decifram o resultado. Por padrão, o
 Helios é a única pessoa curadora e cuida disso por você, então você pode pular
 este passo.
 
-![Página das pessoas curadoras](../images/manual/trustees.png)
+![Página das pessoas curadoras](../images/manual/pt-BR/trustees.png)
 
 Para ter mais proteção, inclua pessoas curadoras em **adicionar uma pessoa
 curadora** (nome e e-mail) e clique em **enviar o acesso** para mandar a cada
@@ -125,9 +124,9 @@ Depois do congelamento, as perguntas, as opções e as pessoas curadoras não
 mudam mais. Você ainda pode mudar a lista de pessoas eleitoras. A votação abre
 na hora, ou no horário de início que você definiu.
 
-![Congelando a urna](../images/manual/freeze.png)
+![Congelando a urna](../images/manual/pt-BR/freeze.png)
 
-![A eleição está aberta](../images/manual/election-open.png)
+![A eleição está aberta](../images/manual/pt-BR/election-open.png)
 
 ### 7. Envie e-mail às pessoas eleitoras
 
@@ -140,7 +139,7 @@ campos mostrados entre sinais de menor e maior. Para acrescentar um texto seu,
 escreva-o em **Corpo da mensagem**: ele aparece no lugar de `<BODY>`. Não cole
 a prévia ali. Escolha quem recebe e clique em **Enviar**.
 
-![Enviando e-mail às pessoas eleitoras](../images/manual/email-voters.png)
+![Enviando e-mail às pessoas eleitoras](../images/manual/pt-BR/email-voters.png)
 
 Depois, você pode usar a mesma página para lembrar só as pessoas que ainda não
 votaram.
@@ -157,7 +156,7 @@ Quando quiser parar a votação, clique em **calcular a apuração cifrada** em
 Próximo passo e depois em **calcular a apuração cifrada!**. Isso encerra a
 votação: ninguém mais consegue enviar cédula.
 
-![Calculando a apuração](../images/manual/compute-tally.png)
+![Calculando a apuração](../images/manual/pt-BR/compute-tally.png)
 
 O Helios soma as cédulas cifradas sem decifrar nenhuma. Se o Helios é pessoa
 curadora, ele decifra a sua parte automaticamente. As outras pessoas curadoras
@@ -170,34 +169,33 @@ Quando todas as pessoas curadoras tiverem decifrado, clique em **calcular os
 resultados** em Próximo passo e depois em **calcular a apuração!**. O
 resultado agora aparece só para você.
 
-![O resultado, antes de liberar](../images/manual/results-admin.png)
+![O resultado, antes de liberar](../images/manual/pt-BR/results-admin.png)
 
 Confira e clique em **liberar o resultado**. Deixe a caixa marcada para enviar
 e-mail às pessoas eleitoras e clique em **liberar o resultado!**.
 
-![Liberando o resultado](../images/manual/release.png)
+![Liberando o resultado](../images/manual/pt-BR/release.png)
 
 Agora todas as pessoas veem o resultado na página da eleição.
 
-![O resultado publicado](../images/manual/results-public.png)
+![O resultado publicado](../images/manual/pt-BR/results-public.png)
 
 ## Parte 2: Guia para quem vota
 
 ### 1. Seu e-mail
 
-Você recebe um e-mail como este (o texto abaixo é o do modelo em inglês; no
-servidor em português, ele vem em português):
+Você recebe um e-mail como este:
 
 ```
-Dear Dana Lee,
+Olá, Dana Lee,
 
-Voting is open until Friday at 5pm.
+A votação está aberta até sexta-feira, às 17h.
 
-Election URL (click to begin voting):
-https://vote.example.org/helios/e/club-board-2026/vote
+Endereço da eleição (clique para começar a votar):
+https://votacao.exemplo.org/helios/e/diretoria-2026/vote
 
-Your voter ID: dana
-Your password: usyWtLo2yW
+Seu login: dana
+Sua senha: usyWtLo2yW
 ```
 
 Guarde o e-mail: você vai precisar do login e da senha para enviar a cédula.
@@ -207,12 +205,12 @@ Algumas eleições pedem que você entre com uma conta, como Google ou GitHub.
 
 Clique no link do e-mail. A cabine de votação abre. Clique em **Iniciar**.
 
-![A cabine de votação](../images/manual/booth-start.png)
+![A cabine de votação](../images/manual/pt-BR/booth-start.png)
 
 Marque as respostas de cada pergunta e clique em **Próximo** (**Prosseguir**
 depois da última pergunta). A cabine diz quantas opções você pode escolher.
 
-![Escolhendo as opções](../images/manual/booth-question.png)
+![Escolhendo as opções](../images/manual/pt-BR/booth-question.png)
 
 ### 3. Revise e cifre
 
@@ -223,7 +221,7 @@ Em seguida, o navegador cifra a cédula e mostra o seu **código de
 rastreamento**, um código longo como `Ag/lQORWPk...`. Anote-o ou deixe a
 página aberta. Clique em **Prosseguir para o login**.
 
-![Revisando a cédula](../images/manual/booth-review.png)
+![Revisando a cédula](../images/manual/pt-BR/booth-review.png)
 
 **Anular e auditar** é opcional. Com isso você confere se a cabine cifrou as
 suas escolhas corretamente, mas essa cédula é descartada e você começa de novo.
@@ -235,7 +233,7 @@ qualquer pessoa pode vê-las.
 A sua cédula ainda não foi enviada. Digite o login e a senha do e-mail e
 clique em **autenticar & enviar a cédula**.
 
-![Entrando para enviar](../images/manual/cast-login.png)
+![Entrando para enviar](../images/manual/pt-BR/cast-login.png)
 
 Perdeu a senha? Clique em **Esqueceu a senha? Clique aqui para receber de
 novo.**
@@ -247,7 +245,7 @@ Se você entrou com uma conta, clique em **ENVIAR esta cédula**.
 Você vê **Voto enviado com sucesso!** e o seu código de rastreamento. O Helios
 também envia o código por e-mail.
 
-![Cédula enviada](../images/manual/cast-done.png)
+![Cédula enviada](../images/manual/pt-BR/cast-done.png)
 
 ### 6. Confira a sua cédula
 
@@ -256,7 +254,7 @@ minutos, o seu código de rastreamento aparece ao lado do seu nome (ou do seu
 apelido). Se ele for igual ao que você anotou, a sua cédula foi registrada como
 você a enviou.
 
-![Centro de rastreamento de cédulas](../images/manual/tracking-center.png)
+![Centro de rastreamento de cédulas](../images/manual/pt-BR/tracking-center.png)
 
 ### Votar de novo
 

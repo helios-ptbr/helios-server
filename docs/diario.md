@@ -118,7 +118,7 @@ Guia: `docs/docker.md`. Decisões:
 
 - `/about`, `/faq`, `/privacy` e `/docs` têm um template por idioma: `server_ui/templates/<nome>.pt-BR.html`. Motivo: são textos longos, e marcar com `{% trans %}` geraria conflito de merge com o Ben. O `server_ui/view_utils.py` (`render_template`) procura `<nome>.<idioma>.html` e, se não achar, usa o original. Em inglês nada muda.
 - Cada página traduzida mostra o aviso "Tradução não oficial" (`server_ui/templates/aviso_traducao.html`), com link para o fork, para o Helios de Ben Adida e para a versão original em inglês (`vote.heliosvoting.org/<página>`).
-- `/docs` aponta para a tradução do manual e de "Como o Helios funciona" (`docs/pt-BR/manual-do-usuario.md` e `docs/pt-BR/como-o-helios-funciona.md`), cada uma com link para o original em inglês. A arquitetura segue só em inglês. As imagens do manual estão na interface em inglês.
+- `/docs` aponta para a tradução do manual e de "Como o Helios funciona" (`docs/pt-BR/manual-do-usuario.md` e `docs/pt-BR/como-o-helios-funciona.md`), cada uma com link para o original em inglês. A arquitetura segue só em inglês. As imagens do manual foram refeitas em português (seção 15).
 - Separador de milhar: decidido manter sem separador (2603).
 - A tradução de `/privacy` precisa de revisão de quem responde pela política de privacidade da instituição.
 - Plurais: 8 textos que mostravam "1 voters" ou "voter(s)" passaram a usar `{% blocktranslate count %}` com singular e plural (bboard, stats, lista de pessoas eleitoras, confirmação de remoção). No pt-BR, 0 e 1 usam o singular. Em inglês só muda o caso n = 1 ("1 voter").
@@ -216,3 +216,12 @@ Teste no Chrome, no Docker (`DEBUG=1`, `AUTH_ENABLED_SYSTEMS=password`), na elei
 | Combinar as decifragens e liberar | Azul 1, Verde 2, Vermelho 0, que é o que foi votado. "Esta eleição está concluída." |
 
 Os textos da tela de decifrar saíram todos em pt-BR, inclusive os dois passos e o aviso de deixar o navegador "offline" no primeiro passo. Nada novo para traduzir. A etapa de decifragem com chave externa, que faltava, está fechada.
+
+## 15. Imagens do manual em português (2026-11-19)
+
+As 20 imagens do manual passaram a ser capturas da interface em pt-BR, em `docs/images/manual/pt-BR/` (mesmos nomes e tamanhos das originais, que ficam em `docs/images/manual/` para o manual em inglês). O `docs/pt-BR/manual-do-usuario.md` aponta para elas.
+
+- **Como foram feitas:** no Docker, no Chrome por CDP, com a mesma eleição do manual em inglês: "Eleição da Diretoria do Clube Riverside 2026", 2 perguntas (4 pessoas candidatas, de 0 a 2; orçamento Sim/Não), 3 pessoas eleitoras (Dana Lee, Sam Ortiz, Priya Shah) e a pessoa administradora "Alice Admin" (criada com `criar_administrador`). Os 3 votaram pela cabine e a apuração saiu Dana 2, Sam 1, Priya 2, Tom 0; Sim 2, Não 1, igual ao manual em inglês.
+- **Cuidado ao refazer:** a página de perguntas tem formulários de edição escondidos; preencher o primeiro campo `question` da página preenche o formulário escondido. Preencha o campo visível.
+- O e-mail de exemplo da Parte 2 passou a ser o texto real em português.
+- Para refazer as imagens, a instância precisa de `WELCOME_MESSAGE=Bem-vindo ao Helios, eleições online seguras.` no `.env` (a mensagem padrão é outra).
