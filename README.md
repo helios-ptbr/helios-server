@@ -142,7 +142,7 @@ Para criar uma conta de gestor, use o comando `criar_administrador` descrito em 
 Use outro nome e o domínio da sua instituição, com as portas 443 e 80:
 
 ```bash
-./docker/gerar-env.sh cetae eleicoes.exemplo.br
+./docker/gerar-env.sh producao eleicoes.exemplo.br
 docker compose up -d --build
 ```
 

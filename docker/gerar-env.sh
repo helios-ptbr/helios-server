@@ -5,7 +5,7 @@
 #
 # Exemplos:
 #   ./docker/gerar-env.sh teste localhost 8443 8080
-#   ./docker/gerar-env.sh cetae eleicoes.exemplo.br
+#   ./docker/gerar-env.sh producao eleicoes.exemplo.br
 #
 # NOME vira o COMPOSE_PROJECT_NAME (letras minúsculas, números, - e _).
 set -eu

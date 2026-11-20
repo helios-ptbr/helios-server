@@ -27,7 +27,7 @@ A imagem fixa `settings_ptbr`. Quem quiser o Helios em inglês usa o repositóri
    Exemplo de produção, nas portas 443 e 80:
 
    ```
-   ./docker/gerar-env.sh cetae eleicoes.exemplo.br
+   ./docker/gerar-env.sh producao eleicoes.exemplo.br
    ```
 
 2. Revise o `.env` (e-mail e aparência). O arquivo `.env.example` explica cada linha.
