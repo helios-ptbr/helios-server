@@ -32,6 +32,10 @@ O gestor da eleição envia a você um e-mail. O assunto é **a sua página de a
 
 Confira agora, não na hora da apuração.
 
+Depois do envio, o painel diz que você enviou a chave pública e mostra a impressão digital dela:
+
+![Painel do apurador depois do envio da chave pública](imagens/apurador-painel.png)
+
 1. Volte ao painel e clique em **verificar que você tem a chave secreta certa**.
 2. Cole a chave secreta no campo.
 3. Se estiver certa, a tela diz **a sua chave secreta confere!**.

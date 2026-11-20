@@ -62,6 +62,7 @@ O nome vira o `COMPOSE_PROJECT_NAME`. Com ele, cada instância tem volumes (`hel
 ## Certificado HTTPS
 
 - **Seu certificado**: ponha `fullchain.pem` e `privkey.pem` na pasta `certificados/` e rode `docker compose up -d --force-recreate caddy`.
+- **Permissão da chave**: o `caddy` roda sem capabilities (`cap_drop: ALL`), então não lê uma `privkey.pem` com modo `600` que seja de outro usuário (o caso comum, quando você copia o arquivo com a sua conta). O log mostra `open /certificados/privkey.pem: permission denied` e o HTTPS não sobe. Deixe o dono como `root` (`sudo chown root privkey.pem`) ou use `chmod 644 privkey.pem`. Em um servidor com mais de um usuário, prefira o `chown`, porque o `644` deixa a chave legível para todos.
 - **Sem arquivos**: o Caddy usa um certificado autoassinado (`tls internal`). Serve para teste e laboratório.
 - O log do `caddy` diz qual dos dois foi usado: `docker compose logs caddy | grep helios`.
 
@@ -107,10 +108,14 @@ docker compose exec web python manage.py criar_administrador maria --nome "Maria
 | Atualizar o código | `git pull` e `docker compose up -d --build` (as migrações rodam sozinhas) |
 | Parar, mantendo os dados | `docker compose down` |
 | Backup do banco | `docker compose exec db pg_dump -U helios helios > helios.sql` |
-| Restaurar | `docker compose exec -T db psql -U helios helios < helios.sql` |
+| Restaurar (em banco vazio) | `docker compose exec -T db psql -U helios helios < helios.sql` |
 | **Apagar tudo, inclusive o banco** | `docker compose down -v` |
 
 O `down -v` apaga os volumes `pgdata` e `caddy_data`. Faça o backup antes.
+
+Se você subiu com `--profile dev`, use `docker compose --profile dev down` (e `--profile dev down -v`). Sem o perfil, o `down` deixa o `mailpit` no ar e a rede `back` fica em uso.
+
+Para restaurar, o banco precisa estar vazio (por exemplo, depois de um `down -v` e um `up -d db`). Em um banco que já tem as tabelas, o `psql` mostra erros de "já existe".
 
 ## Tarefas presas e tempo limite
 
@@ -129,6 +134,8 @@ rodando há mais de duas horas). Para rodar o comando na mão: `docker compose e
 **Tempo limite do `web` (`GUNICORN_TIMEOUT`).** O gunicorn mata a requisição que passa de 30 segundos. Aqui o padrão é
 **120 segundos**, e o `.env` pode mudar isso com `GUNICORN_TIMEOUT`. Ele cobre as ações pesadas que rodam dentro da página, como
 combinar as decifragens de uma eleição grande.
+
+**Processos do `web` (`WEB_WORKERS`).** É o número de processos do gunicorn dentro do `web`. Não tem relação com o contêiner `worker` de tarefas, e mudar esse número não afeta o requeue acima. Está comentado no `.env.example`. Quando fica vazio, o padrão é 4.
 
 ## CSV grande de eleitores
 
