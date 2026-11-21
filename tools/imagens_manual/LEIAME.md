@@ -62,3 +62,12 @@ python3 tools/imagens_manual/anotar.py PASTA_DAS_CAPTURAS_BRUTAS --legendas
   confira com `--saida` e rode de novo. O `anotar.py` precisa do Pillow (`pip install pillow`).
 - Ao mudar uma marca, mude também a legenda dela em `LEGENDAS`: o número de itens deve ser o mesmo.
 - As capturas brutas não vão para o git (os `passo*.py` as refazem).
+
+## Capa do README (`capa.py`)
+
+A imagem do topo do `README.md` (`docs/images/capa.png`) tem a logo do Helios e duas capturas **sem marcas**: a cabine
+(`booth-question.png`) e o resultado público (`results-public.png`). Para refazer:
+
+```
+python3 tools/imagens_manual/capa.py PASTA_DAS_CAPTURAS_BRUTAS
+```

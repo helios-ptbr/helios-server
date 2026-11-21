@@ -2,7 +2,7 @@
 
 Tradução para o português do Brasil do [Helios](https://github.com/benadida/helios-server), o sistema de votação verificável de ponta a ponta criado por Ben Adida, com manuais por papel e uma instalação pronta em Docker Compose.
 
-![Cabine de votação do Helios em português](docs/pt-BR/eleitor/imagens/cabine-questao.png)
+![Helios em português: a cabine de votação e o resultado público](docs/images/capa.png)
 
 > [!IMPORTANT]
 > **Tradução não oficial.** Este repositório é um fork de [benadida/helios-server](https://github.com/benadida/helios-server) e não tem ligação com o projeto original. O código de votação e de criptografia é o do Ben. Os textos, os manuais e a instalação em Docker são deste fork. Cada instituição deve conferir as regras de eleição e de proteção de dados que valem para ela.
