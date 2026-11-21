@@ -11,7 +11,11 @@ Votar tem três etapas: preencher, revisar e depositar. A cédula só vale depoi
 
 ![A cabine de votação](imagens/cabine-inicio.png)
 
+*Na imagem: (1) **Iniciar**.*
+
 ![Escolhendo as opções](imagens/cabine-questao.png)
+
+*Na imagem: (1) Opções marcadas. (2) Aviso de máximo de opções. (3) **Próximo**.*
 
 **Voto em branco.** Se a questão aceita "0" no mínimo (por exemplo "entre 0 e 2"), você pode avançar **sem marcar nada**. Isso vale como voto em branco naquela questão. Se o mínimo é 1, a cabine não deixa avançar sem marcar.
 
@@ -29,6 +33,8 @@ Votar tem três etapas: preencher, revisar e depositar. A cédula só vale depoi
 
 ![Revisando a cédula](imagens/cabine-revisao.png)
 
+*Na imagem: (1) Resumo da cédula. (2) Código de rastreamento. (3) **Prosseguir para o login**. (4) **Anular e auditar**.*
+
 Se você quiser conferir que a cabine cifrou as suas escolhas sem erro, use **Anular e auditar**. Isso descarta esta cédula. Veja o [manual 3](03-auditar.md).
 
 ## 3. Depositar
@@ -42,11 +48,15 @@ Se a eleição pede conta externa, entre com ela e clique em **DEPOSITAR esta c�
 
 ![Entrando para depositar](imagens/depositar-login.png)
 
+*Na imagem: (1) Código de rastreamento da sua cédula. (2) **ID do eleitor** e **Senha**. (3) **autenticar & depositar a cédula**. (4) **Esqueceu a senha?***
+
 ## 4. Pronto
 
 Você vê **Voto depositado com sucesso!** e o seu código de rastreamento. O Helios também envia o código por e-mail.
 
 ![Cédula depositada](imagens/voto-depositado.png)
+
+*Na imagem: (1) Código de rastreamento da sua cédula. (2) **lista de eleitores**.*
 
 **Guarde o código de rastreamento.** Ele serve para [conferir a sua cédula](04-conferir.md).
 

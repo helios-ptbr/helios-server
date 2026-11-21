@@ -364,3 +364,13 @@ Decisão final: a correção foi enviada ao Ben como [PR #568](https://github.co
 **CSV grande.** Tabela e leitura em `docs/docker.md` ("CSV grande de eleitores"). O gargalo é o processamento no `worker` (4,8 ms por eleitor com 100 mil, 8 min), não o envio nem a memória. `tools/imagens_manual/passo7.py` repete a medição.
 
 **Ficou de fora, por decisão sua:** CSP, digest das imagens, segredos em arquivo, log de acesso, limite de tentativas de login, cabeçalhos e limites do Caddy (itens 8 e 9). Fica em aberto: o que acontece se o `worker` reinicia no meio do processamento de um CSV gigante (o requeue refaz a tarefa; não testei se os eleitores já gravados atrapalham).
+
+## 25. Formato das imagens dos manuais (2026-11-20, fase A)
+
+**Decisão do usuário:** as capturas de tela inteira (1085 ou 1100 px de largura, 560 a 1340 px de altura, com menu, rodapé e muito branco) foram trocadas por recortes com marcas numeradas.
+
+- **Formato:** recorte sem a barra de menu e sem a barra "sessão iniciada", margem de 14 px, borda cinza, largura de 1013 px em todas, círculo vermelho numerado e contorno em cada elemento que o manual cita. Sob cada imagem há a linha "Na imagem: (1) ... (2) ...".
+- **Quem faz:** `tools/imagens_manual/anotar.py` (Pillow). As caixas das marcas e as legendas estão no próprio arquivo. As 54 imagens são 33 capturas diferentes: 21 delas estão em dois lugares (`docs/images/manual/pt-BR/` e `docs/pt-BR/<papel>/imagens/`, ou em duas pastas de papel).
+- **Tamanho:** `docs/pt-BR` foi de 3,0 MB para 4,2 MB, e `docs/images/manual/pt-BR` de 1,7 MB para 2,0 MB (as marcas aumentam o PNG; a maior parte da área em branco saiu).
+- **Achados nas capturas (não corrigidos):** as de `docs/pt-BR/apurador/` e a `cedulas-auditadas`, `cedula-auditada`, `cabine-anular` e `decifragem` mostram a eleição "Eleição de Demonstração do Clube" e o apurador "Paulo", e não a "Eleição do Clube de Leitura 2026" das outras. As duas capturas do Mailpit (`email-apurador`, `email-eleitor`) têm a interface do Mailpit em inglês (Back, Mark unread, Delete, Download).
+

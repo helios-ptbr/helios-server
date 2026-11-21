@@ -20,6 +20,8 @@ Isso **encerra a votação**: ninguém mais deposita cédula, e a lista de eleit
 
 ![Calculando a apuração](imagens/compute-tally.png)
 
+*Na imagem: (1) **calcular a apuração cifrada!** (2) **desistir**.*
+
 O cálculo roda em segundo plano. Em eleições grandes, espere. Nos nossos testes, 50.000 eleitores levaram cerca de 80 s.
 
 ## 2. Esperar os apuradores
@@ -44,6 +46,8 @@ O resultado aparece **só para você**.
 
 ![O resultado, antes de liberar](imagens/results-admin.png)
 
+*Na imagem: (1) **Próximo passo**: liberar o resultado. (2) Apuração, visível só para quem administra.*
+
 **Se o Helios recusar** ("as decifragens parciais dos apuradores não decifram a apuração"), algum apurador enviou a decifragem de outra apuração, ou a de outra eleição. Peça ao apurador que decifre de novo, com a apuração atual.
 
 ## 4. Liberar o resultado
@@ -55,9 +59,13 @@ O resultado aparece **só para você**.
 
 ![Liberando o resultado](imagens/release.png)
 
+*Na imagem: (1) Aviso por e-mail aos eleitores. (2) **liberar o resultado!***
+
 Agora todos veem o resultado na página da eleição.
 
 ![O resultado publicado](imagens/results-public.png)
+
+*Na imagem: (1) Aviso de eleição concluída. (2) Apuração. (3) **Informações de auditoria**.*
 
 ## 5. Depois de liberar
 

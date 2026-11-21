@@ -18,6 +18,8 @@ Depois que a votação termina, o gestor calcula a **apuração cifrada**. Nesse
 
 ![Decifragem: os dois passos](imagens/decifragem.png)
 
+*Na imagem: (1) Impressões digitais da chave pública e da apuração cifrada. (2) Decifragem parcial. (3) **Enviar os fatores de decifragem ao servidor**.*
+
 Seu painel passa a dizer que você já enviou a decifragem.
 
 ## Se algo der errado

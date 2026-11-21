@@ -11,6 +11,8 @@ Depois de depositar, você pode conferir que o Helios registrou a sua cédula e 
 
 ![Centro de rastreamento de cédulas](imagens/rastreamento.png)
 
+*Na imagem: (1) Número de votos depositados. (2) Código de rastreamento de cada cédula.*
+
 Se o código for **diferente**, ou se não aparecer depois de um tempo longo, avise a administração.
 
 **Você pode conferir também** o código em um endereço direto. Quem tem o seu código pode abrir a cédula cifrada, mas não consegue ver as suas escolhas.

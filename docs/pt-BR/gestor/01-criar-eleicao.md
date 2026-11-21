@@ -23,6 +23,8 @@ Entre no seu servidor Helios. Depois do login, a página inicial mostra **criar 
 
 ![Página inicial depois do login](imagens/admin-home.png)
 
+*Na imagem: (1) **criar eleição**.*
+
 ## 2. Criar a eleição
 
 Clique em **criar eleição** e preencha o formulário.
@@ -42,6 +44,8 @@ Clique em **criar eleição** e preencha o formulário.
 Clique em **Próximo**.
 
 ![Formulário da nova eleição](imagens/new-election.png)
+
+*Na imagem: (1) **Nome curto**. (2) **Início da votação**, opcional. (3) **Fim da votação**, opcional. (4) **Próximo**.*
 
 ### Datas de início e de fim
 

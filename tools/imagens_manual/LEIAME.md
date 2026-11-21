@@ -41,3 +41,24 @@ Rode depois dos passos 1 a 4, com `OUT_DIR=/caminho/da/pasta` para escolher onde
 6. `python3 passo6a.py`, `passo6b.py` e `passo6c.py`: uma eleição de demonstração (`clube-demo`) com um apurador, para as
    telas de gerar a chave, de auditoria na cabine (anular e auditar, publicar), de cédulas auditadas, do verificador de
    cédula única e da decifragem. O `demo.json` e o `trail.json` guardam a chave secreta de teste e a cédula auditada: não os versione.
+
+## Recorte e marcas numeradas (`anotar.py`)
+
+Os passos acima geram **capturas brutas** (a tela inteira, com menu e rodapé). As imagens que entram nos manuais são
+as capturas já recortadas, com todas na mesma largura (1013 px) e com círculos numerados nos elementos que o texto cita.
+Quem faz isso é o `anotar.py`.
+
+Junte as 33 capturas brutas em uma pasta (os nomes são os das chaves de `DESTINOS` no `anotar.py`, por exemplo
+`freeze.png`, `booth-review.png`, `email-eleitor.png`) e rode, da raiz do repositório:
+
+```
+python3 tools/imagens_manual/anotar.py PASTA_DAS_CAPTURAS_BRUTAS --legendas
+```
+
+- Ele grava cada imagem nos dois lugares em que ela aparece (`docs/images/manual/pt-BR/` e `docs/pt-BR/<papel>/imagens/`).
+- `--so freeze.png` refaz só uma. `--saida PASTA` grava fora do repositório, para conferir antes.
+- `--legendas` escreve, sob cada imagem dos manuais, a linha "Na imagem: (1) ... (2) ...", a partir de `LEGENDAS`.
+- As caixas das marcas (`MARCAS`) estão em pixels da captura bruta. Se uma tela mudar de lugar, ajuste a caixa,
+  confira com `--saida` e rode de novo. O `anotar.py` precisa do Pillow (`pip install pillow`).
+- Ao mudar uma marca, mude também a legenda dela em `LEGENDAS`: o número de itens deve ser o mesmo.
+- As capturas brutas não vão para o git (os `passo*.py` as refazem).

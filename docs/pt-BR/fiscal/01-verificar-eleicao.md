@@ -29,7 +29,11 @@ Se qualquer etapa falhar, a tela mostra **PROBLEMA** ou **ERRO** na linha em que
 
 ![O começo do verificador](imagens/verificador-eleicao-inicio.png)
 
+*Na imagem: (1) Endereço da eleição. (2) **iniciar a verificação**.*
+
 ![O fim do verificador: resultado final](imagens/verificador-eleicao.png)
+
+*Na imagem: (1) Contagens e fatores de decifragem de cada apurador. (2) Resultado final.*
 
 ## O que olhar além do verificador
 

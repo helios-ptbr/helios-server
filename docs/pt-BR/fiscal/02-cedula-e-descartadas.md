@@ -22,6 +22,8 @@ Você precisa de duas coisas: o **endereço da eleição** e as **informações 
 
 ![O verificador de cédula única](imagens/verificador-cedula.png)
 
+*Na imagem: (1) Endereço da eleição. (2) Cédula auditada. (3) **Verificar**. (4) Resultado da verificação.*
+
 Se der PROBLEMA, **guarde** as informações de auditoria, o endereço da eleição e a data. Avise a administração. Esse é o sinal que a auditoria existe para achar.
 
 ## 2. A página de cédulas auditadas
@@ -31,6 +33,8 @@ Se der PROBLEMA, **guarde** as informações de auditoria, o endereço da eleiç
 3. O link **ver** abre a cédula. Copie o conteúdo e use no verificador de cédula única.
 
 ![Cédulas auditadas](imagens/cedulas-auditadas.png)
+
+*Na imagem: (1) **verificador de cédula única**. (2) **ver**.*
 
 A lista mostra **"nenhuma cédula auditada ainda"** quando ninguém publicou.
 

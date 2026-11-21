@@ -21,7 +21,11 @@ O navegador cifra a cédula com números aleatórios. Se você pedir uma **audit
 
 ![A opção de anular e auditar](imagens/cabine-anular.png)
 
+*Na imagem: (1) **Prosseguir para o login**. (2) **Anular e auditar**.*
+
 ![Cédula auditada](imagens/cedula-auditada.png)
+
+*Na imagem: (1) Dados da cédula auditada. (2) **voltar à votação**. (3) **publicar cédula auditada no centro de rastreamento**.*
 
 ## Publicar a cédula auditada (opcional)
 
@@ -30,6 +34,8 @@ A cabine oferece **publicar cédula auditada no centro de rastreamento**. Se voc
 **Atenção:** a cédula auditada mostra as suas escolhas, em texto claro. Publique só se estiver tudo bem em as escolhas dessa cédula ficarem públicas. Como ela foi descartada, não é o seu voto verdadeiro, e você pode fazer a auditoria com escolhas de teste.
 
 ![Cédulas auditadas](imagens/cedulas-auditadas.png)
+
+*Na imagem: (1) **verificador de cédula única**. (2) **ver**.*
 
 ## Por que auditar?
 

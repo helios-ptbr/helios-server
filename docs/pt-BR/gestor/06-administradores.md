@@ -16,6 +16,8 @@ A pessoa precisa ter **entrado no Helios pelo menos uma vez**. Se ela nunca entr
 
 ![Administradores da eleição](imagens/admins.png)
 
+*Na imagem: (1) **adicionar uma pessoa administradora**. (2) **remover**.*
+
 ## Remover um administrador
 
 Na mesma página, use o botão de remover, na linha da pessoa. **Quem criou a eleição não pode ser removido.**

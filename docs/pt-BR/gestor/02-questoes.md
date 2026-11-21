@@ -16,6 +16,8 @@ Você pode editar, remover e reordenar as questões até congelar a eleição. D
 
 ![Formulário de questão](imagens/question-form.png)
 
+*Na imagem: (1) Texto da questão. (2) **Escolha entre _X_ e _Y_ opções**. (3) Opções de resposta. (4) **Adicionar mais 5 opções**. (5) **Ordem aleatória**. (6) **Adicionar a questão**.*
+
 ## 2. Mínimo e máximo: "0 a n" e "1 a n"
 
 O mínimo e o máximo dizem **quantas opções** o eleitor marca na mesma questão.

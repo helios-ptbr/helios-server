@@ -27,6 +27,8 @@ Entre no seu servidor Helios. Depois do login, a página inicial mostra
 
 ![Página inicial depois do login](../images/manual/pt-BR/admin-home.png)
 
+*Na imagem: (1) **criar eleição**.*
+
 ### 2. Crie a eleição
 
 Clique em **criar eleição** e preencha o formulário:
@@ -52,6 +54,8 @@ Clique em **Próximo**. Você chega à página da eleição, que sempre mostra o
 
 ![Formulário da nova eleição](../images/manual/pt-BR/new-election.png)
 
+*Na imagem: (1) **Nome curto**. (2) **Início da votação**, opcional. (3) **Fim da votação**, opcional. (4) **Próximo**.*
+
 ### 3. Inclua as questões
 
 Clique em **questões**. Em cada questão, digite o texto, quantas opções a
@@ -60,9 +64,13 @@ questão**.
 
 ![Incluindo uma questão](../images/manual/pt-BR/question-form.png)
 
+*Na imagem: (1) Texto da questão. (2) **Escolha entre _X_ e _Y_ opções**. (3) Opções de resposta. (4) **Adicionar mais 5 opções**. (5) **Ordem aleatória**. (6) **Adicionar a questão**.*
+
 Você pode editar, remover e reordenar as questões até congelar a eleição.
 
 ![A cédula pronta](../images/manual/pt-BR/questions.png)
+
+*Na imagem: (1) **editar** e **×**, que editam e removem a questão. (2) **↑**, que sobe a questão. (3) Formulário de uma nova questão.*
 
 ### 4. Inclua os eleitores
 
@@ -74,6 +82,8 @@ Clique em **eleitores e cédulas**. Primeiro escolha quem pode votar
   você enviar.
 
 ![Página dos eleitores](../images/manual/pt-BR/voters-empty.png)
+
+*Na imagem: (1) **Quem pode votar?** (2) **enviar eleitores em lote**.*
 
 Para incluir eleitores, clique em **enviar eleitores em lote**
 e envie um arquivo CSV, com uma pessoa por linha. A maioria das eleições usa
@@ -95,10 +105,14 @@ Confira a prévia e clique em **Sim, pode seguir**.
 
 ![Conferindo o envio](../images/manual/pt-BR/voters-confirm.png)
 
+*Na imagem: (1) As primeiras linhas do arquivo enviado. (2) **Sim, pode seguir**.*
+
 Os eleitores agora aparecem na lista. Você pode enviar mais arquivos e
 remover pessoas até calcular a apuração, mesmo com a votação aberta.
 
 ![A lista de eleitores](../images/manual/pt-BR/voters-list.png)
+
+*Na imagem: (1) **enviar eleitores em lote**. (2) **remover todos os eleitores**. (3) **[x]**, que remove um eleitor.*
 
 ### 5. Apuradores (opcional)
 
@@ -107,6 +121,8 @@ Helios é o único apurador e cuida disso por você, então você pode pular
 este passo.
 
 ![Página dos apuradores](../images/manual/pt-BR/trustees.png)
+
+*Na imagem: (1) **adicionar um apurador**. (2) **enviar o acesso**. (3) Impressão digital da chave pública.*
 
 Na imagem, os apuradores são o Helios e mais quatro pessoas (Paulo, Gabriel,
 Juliana e Antônia). Cada um já enviou a chave pública, e a página mostra a
@@ -133,7 +149,11 @@ na hora, ou no horário de início que você definiu.
 
 ![Congelando a urna](../images/manual/pt-BR/freeze.png)
 
+*Na imagem: (1) **Congelar a urna**. (2) **NÃO congelar ainda**.*
+
 ![A eleição está aberta](../images/manual/pt-BR/election-open.png)
+
+*Na imagem: (1) Menu da eleição. (2) **Próximo passo**.*
 
 ### 7. Envie e-mail aos eleitores
 
@@ -146,6 +166,8 @@ escreva-o em **Corpo da mensagem**: ele aparece no lugar de `<BODY>`. Não cole
 a prévia ali. Escolha quem recebe e clique em **Enviar**.
 
 ![Enviando e-mail aos eleitores](../images/manual/pt-BR/email-voters.png)
+
+*Na imagem: (1) Modelos. (2) Prévia do e-mail. (3) **Corpo da mensagem**. (4) **Enviar para**. (5) **Enviar**.*
 
 Depois, você pode usar a mesma página para lembrar só as pessoas que ainda não
 votaram.
@@ -164,6 +186,8 @@ votação: ninguém mais consegue depositar cédula.
 
 ![Calculando a apuração](../images/manual/pt-BR/compute-tally.png)
 
+*Na imagem: (1) **calcular a apuração cifrada!** (2) **desistir**.*
+
 O Helios soma as cédulas cifradas sem decifrar nenhuma. Se o Helios é apurador, ele decifra a sua parte automaticamente. Os outros apuradores
 agora abrem o seu link, clicam em decifrar com a sua chave, digitam a chave
 secreta e enviam a decifragem parcial.
@@ -176,14 +200,20 @@ resultado agora aparece só para você.
 
 ![O resultado, antes de liberar](../images/manual/pt-BR/results-admin.png)
 
+*Na imagem: (1) **Próximo passo**: liberar o resultado. (2) Apuração, visível só para quem administra.*
+
 Confira e clique em **liberar o resultado**. Deixe a caixa marcada para enviar
 e-mail aos eleitores e clique em **liberar o resultado!**.
 
 ![Liberando o resultado](../images/manual/pt-BR/release.png)
 
+*Na imagem: (1) Aviso por e-mail aos eleitores. (2) **liberar o resultado!***
+
 Agora todas as pessoas veem o resultado na página da eleição.
 
 ![O resultado publicado](../images/manual/pt-BR/results-public.png)
+
+*Na imagem: (1) Aviso de eleição concluída. (2) Apuração. (3) **Informações de auditoria**.*
 
 ### Outros administradores (opcional)
 
@@ -194,6 +224,8 @@ administradora** e digite o login dela. A pessoa precisa ter entrado no Helios
 pelo menos uma vez.
 
 ![Administradores da eleição](../images/manual/pt-BR/admins.png)
+
+*Na imagem: (1) **adicionar uma pessoa administradora**. (2) **remover**.*
 
 ## Parte 2: Guia para quem vota
 
@@ -222,10 +254,14 @@ Clique no link do e-mail. A cabine de votação abre. Clique em **Iniciar**.
 
 ![A cabine de votação](../images/manual/pt-BR/booth-start.png)
 
+*Na imagem: (1) **Iniciar**.*
+
 Marque as respostas de cada questão e clique em **Próximo** (**Prosseguir**
 depois da última questão). A cabine diz quantas opções você pode escolher.
 
 ![Escolhendo as opções](../images/manual/pt-BR/booth-question.png)
+
+*Na imagem: (1) Opções marcadas. (2) Aviso de máximo de opções. (3) **Próximo**.*
 
 ### 3. Revise e cifre
 
@@ -237,6 +273,8 @@ rastreamento**, um código longo como `Ag/lQORWPk...`. Anote-o ou deixe a
 página aberta. Clique em **Prosseguir para o login**.
 
 ![Revisando a cédula](../images/manual/pt-BR/booth-review.png)
+
+*Na imagem: (1) Resumo da cédula. (2) Código de rastreamento. (3) **Prosseguir para o login**. (4) **Anular e auditar**.*
 
 **Anular e auditar** é opcional. Com isso você confere se a cabine cifrou as
 suas escolhas corretamente, mas essa cédula é descartada e você começa de novo.
@@ -250,6 +288,8 @@ clique em **autenticar & depositar a cédula**.
 
 ![Entrando para depositar](../images/manual/pt-BR/cast-login.png)
 
+*Na imagem: (1) Código de rastreamento da sua cédula. (2) **ID do eleitor** e **Senha**. (3) **autenticar & depositar a cédula**. (4) **Esqueceu a senha?***
+
 Perdeu a senha? Clique em **Esqueceu a senha? Clique aqui para receber de
 novo.**
 
@@ -262,6 +302,8 @@ também envia o código por e-mail.
 
 ![Cédula depositada](../images/manual/pt-BR/cast-done.png)
 
+*Na imagem: (1) Código de rastreamento da sua cédula. (2) **lista de eleitores**.*
+
 ### 6. Confira a sua cédula
 
 Abra a página da eleição e clique em **eleitores e cédulas**. Em alguns
@@ -270,6 +312,8 @@ apelido). Se ele for igual ao que você anotou, a sua cédula foi registrada com
 você a depositou.
 
 ![Centro de rastreamento de cédulas](../images/manual/pt-BR/tracking-center.png)
+
+*Na imagem: (1) Número de votos depositados. (2) Código de rastreamento de cada cédula.*
 
 ### Votar de novo
 

@@ -20,9 +20,13 @@ Depois de congelada, não dá para mudar as questões, as opções nem os apurad
 
 ![Congelando a urna](imagens/freeze.png)
 
+*Na imagem: (1) **Congelar a urna**. (2) **NÃO congelar ainda**.*
+
 A votação abre na hora, ou no horário de início que você definiu.
 
 ![A eleição está aberta](imagens/election-open.png)
+
+*Na imagem: (1) Menu da eleição. (2) **Próximo passo**.*
 
 Ao congelar, o Helios calcula a **impressão digital da eleição**. Ela aparece em **Informações de auditoria**. **Anote-a e publique-a** no canal oficial da eleição. Os fiscais usam essa impressão digital para conferir que a eleição não mudou.
 

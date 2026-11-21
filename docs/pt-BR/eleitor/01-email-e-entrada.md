@@ -22,6 +22,8 @@ Confira a impressão digital da eleição, que aparece no rodapé da tela de vot
 
 ![E-mail da eleição, aberto no Mailpit](imagens/email-eleitor.png)
 
+*Na imagem: (1) Endereço da eleição. (2) **ID do eleitor** e **Senha**. (3) Impressão digital da eleição.*
+
 O e-mail traz três coisas:
 - **O link da eleição.** Ele abre a cabine de votação.
 - **O seu ID do eleitor.**

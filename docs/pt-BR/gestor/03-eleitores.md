@@ -11,6 +11,8 @@ Clique em **eleitores e cédulas**. Primeiro escolha quem pode votar. **Isso nã
 
 ![Página dos eleitores](imagens/voters-empty.png)
 
+*Na imagem: (1) **Quem pode votar?** (2) **enviar eleitores em lote**.*
+
 ## 2. Incluir eleitores por arquivo CSV
 
 Clique em **enviar eleitores em lote** e envie um arquivo CSV, com um eleitor por linha. A maioria das eleições usa senhas do Helios:
@@ -43,11 +45,15 @@ Depois de enviar, confira a prévia e clique em **Sim, pode seguir**.
 
 ![Conferindo o envio](imagens/voters-confirm.png)
 
+*Na imagem: (1) As primeiras linhas do arquivo enviado. (2) **Sim, pode seguir**.*
+
 ## 3. Acompanhar a lista
 
 Os eleitores aparecem na lista, com o nome, o ID, o e-mail e o código de rastreamento (quando votarem).
 
 ![A lista de eleitores](imagens/voters-list.png)
+
+*Na imagem: (1) **enviar eleitores em lote**. (2) **remover todos os eleitores**. (3) **[x]**, que remove um eleitor.*
 
 Você pode:
 - **enviar mais arquivos**, para incluir mais eleitores;
@@ -80,6 +86,8 @@ Depois de congelar a urna, clique em **enviar e-mail aos eleitores**.
 5. Clique em **Enviar**.
 
 ![Enviando e-mail aos eleitores](imagens/email-voters.png)
+
+*Na imagem: (1) Modelos. (2) Prévia do e-mail. (3) **Corpo da mensagem**. (4) **Enviar para**. (5) **Enviar**.*
 
 Para enviar a **um só eleitor**, use o link **e-mail** na linha dele, na lista.
 

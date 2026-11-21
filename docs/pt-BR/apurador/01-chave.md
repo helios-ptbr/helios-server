@@ -12,6 +12,8 @@ O gestor da eleição envia a você um e-mail. O assunto é **a sua página de a
 
 ![E-mail do apurador, no Mailpit](imagens/email-apurador.png)
 
+*Na imagem: (1) Assunto. (2) Link do painel do apurador.*
+
 **Guarde esse e-mail.** O link dele é o que dá acesso ao seu painel. Você vai precisar dele de novo na hora da apuração.
 
 ## 2. Gerar a chave
@@ -26,6 +28,8 @@ O gestor da eleição envia a você um e-mail. O assunto é **a sua página de a
 
 ![A chave secreta aparece uma vez](imagens/chave-secreta.png)
 
+*Na imagem: (1) **Mostrar a minha chave secreta**. (2) Chave secreta, que aparece uma vez.*
+
 **A tela não mostra a chave secreta de novo.** Se você fechar a página sem guardar, a chave se perdeu.
 
 ## 3. Conferir a chave
@@ -35,6 +39,8 @@ Confira agora, não na hora da apuração.
 Depois do envio, o painel diz que você enviou a chave pública e mostra a impressão digital dela:
 
 ![Painel do apurador depois do envio da chave pública](imagens/apurador-painel.png)
+
+*Na imagem: (1) Impressão digital da chave pública. (2) **verificar se tem a chave secreta certa**. (3) Aviso para guardar o e-mail.*
 
 1. Volte ao painel e clique em **verificar que você tem a chave secreta certa**.
 2. Cole a chave secreta no campo.
